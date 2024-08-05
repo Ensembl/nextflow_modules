@@ -14,19 +14,12 @@
 // limitations under the License.
 
 process DOWNLOAD_GENOME_META_FROM_ACC {
-    tag "$accession"
-    label 'local'
-    label 'cached'
-    label 'datasets_container'
 
     input:
-        val accession
-
-    output:
-        path "ncbi_meta.json"
+        val "disha"
     
     script:
         """
-        echo '{"reports":[{"organism":{"tax_id":1000}}]}' > ncbi_meta.json
+        echo "disha"
         """
 }
