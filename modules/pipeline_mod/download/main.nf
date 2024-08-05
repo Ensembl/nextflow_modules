@@ -23,7 +23,7 @@ process DOWNLOAD_GENOME_META_FROM_ACC {
         val accession
 
     output:
-        tuple val(accession), path("ncbi_meta.json")
+        path "ncbi_meta.json"
     
     script:
         """
