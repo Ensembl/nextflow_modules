@@ -1,48 +1,62 @@
 
-// See the NOTICE file distributed with this work for additional information
-// regarding copyright ownership.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+process FASTQC {
+    tag "$meta.id"
+    label 'process_medium'
 
-
-process DOWNLOAD_ASM_DATA {
-    tag "${meta.accession}"
-    label 'adaptive'
-    label 'cached'
+    conda "${moduleDir}/environment.yml"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0' :
+        'biocontainers/fastqc:0.12.1--hdfd78af_0' }"
 
     input:
-        tuple val(meta), path(json_file)
+    tuple val(meta), path(reads)
 
     output:
-        tuple val(meta),
-            path("*_assembly_report.txt"),
-            path("*_genomic.fna.gz"),
-            path("*_genomic.gbff.gz"),
-            emit: min_set
-        tuple val(meta),
-            path("*_genomic.gff.gz"),
-            path("*_protein.faa.gz"),
-            path("*_genomic.gbff.gz"),
-            emit: opt_set, optional: true
+    tuple val(meta), path("*.html"), emit: html
+    tuple val(meta), path("*.zip") , emit: zip
+    path  "versions.yml"           , emit: versions
 
-    shell:
-        '''
-        assembly_download --accession !{meta.accession} --download_dir ./ --verbose
-        '''
-    
+    when:
+    task.ext.when == null || task.ext.when
+
+    script:
+    def args = task.ext.args ?: ''
+    def prefix = task.ext.prefix ?: "${meta.id}"
+    // Make list of old name and new name pairs to use for renaming in the bash while loop
+    def old_new_pairs = reads instanceof Path || reads.size() == 1 ? [[ reads, "${prefix}.${reads.extension}" ]] : reads.withIndex().collect { entry, index -> [ entry, "${prefix}_${index + 1}.${entry.extension}" ] }
+    def rename_to = old_new_pairs*.join(' ').join(' ')
+    def renamed_files = old_new_pairs.collect{ old_name, new_name -> new_name }.join(' ')
+
+    def memory_in_mb = MemoryUnit.of("${task.memory}").toUnit('MB')
+    // FastQC memory value allowed range (100 - 10000)
+    def fastqc_memory = memory_in_mb > 10000 ? 10000 : (memory_in_mb < 100 ? 100 : memory_in_mb)
+
+    """
+    printf "%s %s\\n" $rename_to | while read old_name new_name; do
+        [ -f "\${new_name}" ] || ln -s \$old_name \$new_name
+    done
+
+    fastqc \\
+        $args \\
+        --threads $task.cpus \\
+        --memory $fastqc_memory \\
+        $renamed_files
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        fastqc: \$( fastqc --version | sed '/FastQC v/!d; s/.*v//' )
+    END_VERSIONS
+    """
+
     stub:
-        """
-        assembly_download --help
-        cp $workflow.projectDir/../test/data/download_asm_data/output/* .
-        """
+    def prefix = task.ext.prefix ?: "${meta.id}"
+    """
+    touch ${prefix}.html
+    touch ${prefix}.zip
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        fastqc: \$( fastqc --version | sed '/FastQC v/!d; s/.*v//' )
+    END_VERSIONS
+    """
 }
