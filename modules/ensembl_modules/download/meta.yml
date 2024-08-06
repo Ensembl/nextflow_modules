@@ -1,82 +1,47 @@
----
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "download"
-## TODO nf-core: Add a description of the module and list keywords
-description: this module is used to download data from INSDC
+name: fastqc
+description: Run FastQC on sequenced reads
 keywords:
-  - fasta
-  - gff3
-  - json
-  - INSDC
-  - genbank
-  - gbff
-  
-  - "download":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: 
-
-## TODO nf-core: Add a description of all of the variables used as input
+  - quality control
+  - qc
+  - adapters
+  - fastq
+tools:
+  - fastqc:
+      description: |
+        FastQC gives general quality metrics about your reads.
+        It provides information about the quality score distribution
+        across your reads, the per base sequence content (%A/C/G/T).
+        You get information about adapter contamination and other
+        overrepresented sequences.
+      homepage: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+      documentation: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/
+      licence: ["GPL-2.0-only"]
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
-  
-  ## TODO nf-core: Delete / customise this example input
-  - json_file:
-      type: file
-      description: metadata for the accession
-      pattern: "*.{json}"
-
-## TODO nf-core: Add a description of all of the variables used as output
-utput:
-  - fasta_dna:
+        e.g. [ id:'test', single_end:false ]
+  - reads:
       type: file
       description: |
-        File containing genomic nucleotide sequence data; in one fasta file per INSDC accession processed.
-      pattern: "fasta_dna.fa"
-  - fasta_pep:
-      type: file
+        List of input FastQ files of size 1 and 2 for single-end and paired-end data,
+        respectively.
+output:
+  - meta:
+      type: map
       description: |
-        File containing protein coding gene peptide sequences; in one fasta file per INSDC accession processed.
-      pattern: "fasta_pep.fa"
-  - functional_annotation:
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - html:
       type: file
-      description: |
-        Functional annotation information stored with JSON formatted output file.
-      pattern: "functional_annotation.json"
-  - gene_models:
+      description: FastQC report
+      pattern: "*_{fastqc.html}"
+  - zip:
       type: file
-      description: |
-        Gene models extracted and linked to genome INSDC accession
-      pattern: "gene_models.gff3"
-  - genome_amended:
+      description: FastQC report archive
+      pattern: "*_{fastqc.zip}"
+  - versions:
       type: file
-      description: |
-        Updated genome metadata, includes additional seq_regions added e.g. mtDNA sequence
-      pattern: "genome_amended.json"
-  - manifest:
-      type: file
-      description: |
-        Manifest json file listing all generated output files in main output folder and associated md5 checksums.
-      pattern: "manifest.json"
-  - seq_region:
-      type: file
-      description: |
-        JSON file describing added sequence(s), sequence length(s), coordinate level(s), codon table(s), sequence topology etc.
-      pattern: "manifest.json"
-  - stats:
-      type: file
-      description: |
-        General stats on gene amendments and summary of coord_system and seq_region alterations.
-      pattern: "stats.txt"
-authors:
-  - Ensembl
-
+      description: File containing software versions
+      pattern: "versions.yml"
