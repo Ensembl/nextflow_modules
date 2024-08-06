@@ -2,12 +2,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "download"
 ## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: this module is used to download data from INSDC
 keywords:
-  - sort
-  - example
-  - genomics
-tools:
+  - fasta
+  - gff3
+  - json
+  - INSDC
+  - genbank
+  - gbff
+  
   - "download":
       ## TODO nf-core: Add a description and other details for the software below
       description: ""
@@ -27,31 +30,53 @@ input:
         e.g. `[ id:'sample1', single_end:false ]`
   
   ## TODO nf-core: Delete / customise this example input
-  - bam:
+  - json_file:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: metadata for the accession
+      pattern: "*.{json}"
 
 ## TODO nf-core: Add a description of all of the variables used as output
-output:
-  #Only when we have meta
-  - meta:
-      type: map
+utput:
+  - fasta_dna:
+      type: file
       description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
-  
-  - versions:
+        File containing genomic nucleotide sequence data; in one fasta file per INSDC accession processed.
+      pattern: "fasta_dna.fa"
+  - fasta_pep:
       type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
+      description: |
+        File containing protein coding gene peptide sequences; in one fasta file per INSDC accession processed.
+      pattern: "fasta_pep.fa"
+  - functional_annotation:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
-
+      description: |
+        Functional annotation information stored with JSON formatted output file.
+      pattern: "functional_annotation.json"
+  - gene_models:
+      type: file
+      description: |
+        Gene models extracted and linked to genome INSDC accession
+      pattern: "gene_models.gff3"
+  - genome_amended:
+      type: file
+      description: |
+        Updated genome metadata, includes additional seq_regions added e.g. mtDNA sequence
+      pattern: "genome_amended.json"
+  - manifest:
+      type: file
+      description: |
+        Manifest json file listing all generated output files in main output folder and associated md5 checksums.
+      pattern: "manifest.json"
+  - seq_region:
+      type: file
+      description: |
+        JSON file describing added sequence(s), sequence length(s), coordinate level(s), codon table(s), sequence topology etc.
+      pattern: "manifest.json"
+  - stats:
+      type: file
+      description: |
+        General stats on gene amendments and summary of coord_system and seq_region alterations.
+      pattern: "stats.txt"
 authors:
-  - "@dishalodha"
-maintainers:
-  - "@dishalodha"
+  - Ensembl
+
