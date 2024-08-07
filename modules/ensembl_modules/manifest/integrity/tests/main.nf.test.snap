@@ -7,25 +7,37 @@
                         {
                             "id": "test"
                         },
-                        "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541"
+                        [
+                            "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541",
+                            "versions.yml:md5,a0095dcbbbfdcbd9c2b17b3d36571d42"
+                        ]
                     ]
                 ],
                 "1": [
                     
+                ],
+                "2": [
+                    "versions.yml:md5,a0095dcbbbfdcbd9c2b17b3d36571d42"
                 ],
                 "all_files": [
                     [
                         {
                             "id": "test"
                         },
-                        "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541"
+                        [
+                            "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541",
+                            "versions.yml:md5,a0095dcbbbfdcbd9c2b17b3d36571d42"
+                        ]
                     ]
                 ],
                 "error_log": [
                     
+                ],
+                "versions": [
+                    "versions.yml:md5,a0095dcbbbfdcbd9c2b17b3d36571d42"
                 ]
             }
         ],
-        "timestamp": "2024-08-07T14:07:07+0000"
+        "timestamp": "2024-08-07T14:32:11+0000"
     }
 }
