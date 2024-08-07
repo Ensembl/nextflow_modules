@@ -22,22 +22,22 @@ process MANIFEST_INTEGRITY {
     when:
     task.ext.when == null || task.ext.when
 
-    shell:
+    script:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.id}"
         integrity_file = "integrity.out"
-        '''
+        """
         manifest_check_integrity \
             --manifest_file ./manifest.json \
             --no_fail \
-            !{brc_mode} \
-            > !{integrity_file}
+            $brc_mode \
+            > $integrity_file
         
         # Only keep integrity file if there are errors to report
-        if [ ! -s !{integrity_file} ]
-            then rm !{integrity_file}
+        if [ ! -s $integrity_file ]
+            then rm $integrity_file
         fi
-        '''
+        """
 
     stub:
         def args = task.ext.args ?: ''
