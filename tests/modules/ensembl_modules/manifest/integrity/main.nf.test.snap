@@ -1,0 +1,31 @@
+{
+    "Integrity check stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "all_files": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541"
+                    ]
+                ],
+                "error_log": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2024-08-07T14:07:07+0000"
+    }
+}
