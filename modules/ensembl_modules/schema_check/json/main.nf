@@ -1,23 +1,27 @@
-process MANIFEST_INTEGRITY {
+process CHECK_JSON_SCHEMA {
     tag "$meta.id"
     label 'process_low'
 
-    // TODO nf-core: List required Conda package(s).
-    //               Software MUST be pinned to channel (i.e. "bioconda"), version (i.e. "1.10").
-    //               For Conda, the build (i.e. "h9402c20_2") must be EXCLUDED to support installation on different operating systems.
-    // TODO nf-core: See section in main README for further information regarding finding and adding container addresses to the section below.
-    // conda "${moduleDir}/environment.yml"
-    // container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-    //     'https://depot.galaxyproject.org/singularity/YOUR-TOOL-HERE':
-    //     'biocontainers/YOUR-TOOL-HERE' }"
-
     input:
-        tuple val(meta), path(manifest_files)
-    
+        tuple val(meta), path(json_file)
+
     output:
-        tuple val(meta), path("*.*", includeInputs: true), emit: all_files, optional: true
-        tuple val(meta), path(integrity_file), emit: error_log, optional: true
-        path "versions.yml"           , emit: versions
+        tuple val(meta), path(json_file), emit: verified_json
+        path "versions.yml"                , emit: versions
+
+    when:
+    task.ext.when == null || task.ext.when
+
+    shell:
+        def args = task.ext.args ?: ''
+        def prefix = task.ext.prefix ?: "${meta.id}"
+        schema_name = json_file.simpleName
+        def VERSION = 1
+        '''
+        schemas_json_validate --json_file !{json_file} --json_schema !{schema_name}
+        '''
+}
+
 
     when:
     task.ext.when == null || task.ext.when
