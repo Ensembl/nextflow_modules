@@ -1,4 +1,4 @@
-process CHECK_JSON_SCHEMA {
+process SCHEMA_JSON {
     tag "$meta.id"
     label 'process_low'
 
@@ -12,40 +12,14 @@ process CHECK_JSON_SCHEMA {
     when:
     task.ext.when == null || task.ext.when
 
-    shell:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
+    script:
         schema_name = json_file.simpleName
         def VERSION = 1
-        '''
-        schemas_json_validate --json_file !{json_file} --json_schema !{schema_name}
-        '''
-}
-
-
-    when:
-    task.ext.when == null || task.ext.when
-
-    script:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
-        integrity_file = "integrity.out"
-        def VERSION = 1
         """
-        manifest_check_integrity \
-            --manifest_file ./manifest.json \
-            --no_fail \
-            $brc_mode \
-            > $integrity_file
-        
-        # Only keep integrity file if there are errors to report
-        if [ ! -s $integrity_file ]
-            then rm $integrity_file
-        fi
-
+        schemas_json_validate --json_file !{json_file} --json_schema !{schema_name}
 
         # Get version from genomio please
-        # VERSION=\$(manifest_check_integrity --version)
+        VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
             Genomio: $VERSION
@@ -53,12 +27,10 @@ process CHECK_JSON_SCHEMA {
         """
 
     stub:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
-        integrity_file = "integrity.out"
+        schema_name = json_file.simpleName
         def VERSION = 1
         """
-        echo "No change, don't create manifest error log"
+        echo "No change, don't create schema error log"
 
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
