@@ -46,9 +46,10 @@ process MANIFEST_INTEGRITY {
         """
         echo "No change, don't create manifest error log"
 
+        VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
-            Genomio: $VERSION
+            Genomio: \$VERSION
         END_VERSIONS
         """
 }
