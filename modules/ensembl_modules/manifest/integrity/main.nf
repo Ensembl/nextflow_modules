@@ -11,16 +11,15 @@ process MANIFEST_INTEGRITY {
     output:
         tuple val(meta), path("*.*", includeInputs: true), emit: all_files, optional: true
         tuple val(meta), path(integrity_file), emit: error_log, optional: true
-        path "versions.yml"           , emit: versions
+        path "versions.yml", emit: versions
 
     when:
-    task.ext.when == null || task.ext.when
+        task.ext.when == null || task.ext.when
 
     script:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.id}"
         integrity_file = "integrity.out"
-        def VERSION = 1
         """
         manifest_check_integrity \
             --manifest_file ./manifest.json \
@@ -36,9 +35,10 @@ process MANIFEST_INTEGRITY {
 
         # Get version from genomio please
         # VERSION=\$(manifest_check_integrity --version)
+        VERSION=1
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
-            Genomio: $VERSION
+            Genomio: \$VERSION
         END_VERSIONS
         """
 
