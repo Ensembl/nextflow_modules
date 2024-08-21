@@ -51,6 +51,6 @@ output:
       pattern: "integrity.out"
 
 authors:
-  - "@MatBarba"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@MatBarba"
+  - "ensembl-dev@ebi.ac.uk"
