@@ -18,8 +18,8 @@ nextflow_process {
                 // Just one GFF file
                 
                 input[0] = Channel.of(
-                    '##gff-version 3',
-                    'chr1\tID=gene1'
+                        '##gff-version 3',
+                        'chr1\tID=gene1'
                     )
                     .collectFile(name: 'genes.gff3', newLine: true)
                     .map { file -> [ [ id:'test' ], file ] }

@@ -34,7 +34,7 @@ process MANIFEST_INTEGRITY {
 
 
         # Get version from genomio please
-        # VERSION=\$(manifest_check_integrity --version)
+        VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
         VERSION=1
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
@@ -43,8 +43,6 @@ process MANIFEST_INTEGRITY {
         """
 
     stub:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
         integrity_file = "integrity.out"
         def VERSION = 1
         """
