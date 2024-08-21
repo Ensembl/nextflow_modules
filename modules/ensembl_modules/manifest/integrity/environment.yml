@@ -1,7 +1,0 @@
-name: manifest_integrity
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - bioconda
