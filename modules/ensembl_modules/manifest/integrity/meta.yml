@@ -1,55 +1,54 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "manifest_integrity"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: Check the data integrity of a set of genomic files, listed by their manifest.
 keywords:
-  - sort
-  - example
   - genomics
+  - data integrity
+  - ensembl
+  - genomio
 tools:
   - "manifest":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: "Nextflow modules for Ensembl genomio"
+      description: "Nextflow modules for Ensembl genomio manifest"
       homepage: "https://github.com/Ensembl/nextflow_modules"
       # documentation: ""
       # tool_dev_url: ""
       # doi: ""
       # licence: 
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
+        Groovy Map containing meta information
+        e.g. `[ id:'accession1' ]`
   
-  ## TODO nf-core: Delete / customise this example input
-  - bam:
+  - manifest_files:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: Set of genomics files
+      pattern: "*.{gff3,fasta,json}"
 
-## TODO nf-core: Add a description of all of the variables used as output
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
+        Groovy Map containing meta information
+        e.g. `[ id:'accession1' ]`
   
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
+
+  - all_files:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: All files used as entry.
+      pattern: "*.{gff3,fasta,json}"
+
+  - error_log:
+      type: file
+      description: Integrity error log if it failed.
+      pattern: "integrity.out"
 
 authors:
   - "@MatBarba"
