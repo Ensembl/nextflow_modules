@@ -17,8 +17,6 @@ process MANIFEST_INTEGRITY {
         task.ext.when == null || task.ext.when
 
     script:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
         integrity_file = "integrity.out"
         """
         manifest_check_integrity \
