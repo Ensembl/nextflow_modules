@@ -1,2 +1,2 @@
 schema:
-  - "modules/ensembl_modules/schema/**"
+  - "modules/ensembl_modules/schema/json/**"

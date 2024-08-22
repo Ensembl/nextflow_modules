@@ -16,7 +16,7 @@ tools:
       # documentation: ""
       # tool_dev_url: ""
       # doi: ""
-      # licence: 
+      licence: "Apache License 2.0"
 
 ## TODO nf-core: Add a description of all of the variables used as input
 input:
@@ -53,6 +53,6 @@ output:
       pattern: "*.{json}"
 
 authors:
-  - "@ensembl_metazoa"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl_metazoa"
+  - "ensembl-dev@ebi.ac.uk"

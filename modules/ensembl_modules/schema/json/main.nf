@@ -10,7 +10,7 @@ process SCHEMA_JSON {
 
     output:
         tuple val(meta), path(json_file), emit: verified_json
-        path "versions.yml"                , emit: versions
+        path "versions.yml", emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -33,7 +33,7 @@ process SCHEMA_JSON {
         """
         echo "No change, don't create schema error log"
 
-
+        # Get version from genomio please
         VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
