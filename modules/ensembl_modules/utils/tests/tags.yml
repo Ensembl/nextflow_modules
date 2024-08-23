@@ -1,0 +1,2 @@
+utils:
+  - "modules/ensembl_modules/utils/**"
