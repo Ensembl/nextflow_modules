@@ -8,5 +8,17 @@
             "nextflow": "24.04.3"
         },
         "timestamp": "2024-08-27T16:16:05.70473287"
+    },
+    "Test Function read_json": {
+        "content": [
+            {
+                "test": "json"
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-27T16:32:06.29288491"
     }
 }

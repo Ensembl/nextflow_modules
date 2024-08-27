@@ -26,4 +26,25 @@ nextflow_function {
         }
 
     }
+    test("Test Function read_json") {
+
+        function "read_json"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                def temp = File.createTempFile('temp', '.json') 
+                temp.write('{"Key": "value"}')  
+                input[0] = temp.absolutePath
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
 }
