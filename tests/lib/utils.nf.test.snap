@@ -1,0 +1,12 @@
+{
+    "Test Function get_key_list": {
+        "content": [
+            "['Key1','key2']"
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-27T16:16:05.70473287"
+    }
+}
