@@ -47,4 +47,23 @@ nextflow_function {
         }
 
     }
+    test("Test Function parse_list_param") {
+
+        function "parse_list_param"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                input[0] = tuple("test",["test", "lorem"])
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
 }

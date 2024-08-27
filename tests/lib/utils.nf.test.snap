@@ -12,13 +12,23 @@
     "Test Function read_json": {
         "content": [
             {
-                "test": "json"
+                "Key": "value"
             }
         ],
         "meta": {
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-27T16:32:06.29288491"
+        "timestamp": "2024-08-27T16:45:49.485764044"
+    },
+    "Test Function parse_list_param": {
+        "content": [
+            "No value specified "
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-27T16:50:55.256004386"
     }
 }
