@@ -1,0 +1,229 @@
+
+nextflow_function {
+
+    name "Test Functions"
+    script "lib/utils.nf"
+
+	
+
+    test("Test Function get_key_list") {
+
+        function "get_key_list"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function read_json") {
+
+        function "read_json"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function parse_list_param") {
+
+        function "parse_list_param"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function generate_url") {
+
+        function "generate_url"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function extract_url_args") {
+
+        function "extract_url_args"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function pattern = ~/mysql:\/\/(.*?)(:(.*?)?)?@(.*?):(\d+)\/?") {
+
+        function "pattern = ~/mysql:\/\/(.*?)(:(.*?)?)?@(.*?):(\d+)\/?"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function url_parts = url_string.tokenize") {
+
+        function "url_parts = url_string.tokenize"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function user_info = url_parts[1].split") {
+
+        function "user_info = url_parts[1].split"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function (host, port) = url_parts[2].split") {
+
+        function "(host, port) = url_parts[2].split"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+    test("Test Function database = url_parts.size") {
+
+        function "database = url_parts.size"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+
+	
+
+}

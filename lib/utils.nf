@@ -1,3 +1,4 @@
+
 // See the NOTICE file distributed with this work for additional information
 // regarding copyright ownership.
 //
@@ -80,3 +81,4 @@ def extract_url_args(url_string) {
 
     return [user: user, password: password, host: host, port: port, database: database]
 }
+
