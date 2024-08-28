@@ -70,7 +70,7 @@ def extract_url_args(url_string) {
     def pattern = ~/mysql:\/\/(.*?)(:(.*?)?)?@(.*?):(\d+)\/?(.*)?/
 
     if (!(url_string =~ pattern)) {
-      return [error: "Invalid url ${url_string}. A simple Mysql URL is expected."]
+      throw new Exception ("Invalid url ${url_string}. A simple Mysql URL is expected.")
     }
     def url_parts = url_string.tokenize('/@')
     def user_info = url_parts[1].split(":")
@@ -81,4 +81,6 @@ def extract_url_args(url_string) {
 
     return [user: user, password: password, host: host, port: port, database: database]
 }
+
+
 
