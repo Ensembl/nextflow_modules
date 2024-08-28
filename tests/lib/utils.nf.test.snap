@@ -88,6 +88,16 @@
         },
         "timestamp": "2024-08-28T12:01:59.363815572"
     },
+    "Test Function generate_url with password and database": {
+        "content": [
+            "https://ensro:test@mysql:0/test_database"
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-28T16:49:48.297017432"
+    },
     "Failure parse_map_param value not in allowed allowed_values ": {
         "content": null,
         "meta": {
@@ -105,5 +115,13 @@
             "nextflow": "24.04.3"
         },
         "timestamp": "2024-08-28T12:10:54.223286963"
+    },
+    "Failure extract_url_args wrong pattern": {
+        "content": null,
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-28T16:57:36.491445174"
     }
 }

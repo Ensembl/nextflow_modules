@@ -142,6 +142,25 @@ nextflow_function {
         }
 
     }
+    test("Test Function generate_url with password and database") {
+
+        function "generate_url"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                input = tuple("https", "mysql", 000, "ensro", "test", "test_database")
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
     test("Test Function extract_url_args") {
 
         function "extract_url_args"
@@ -161,5 +180,22 @@ nextflow_function {
         }
 
     }
-	
+    test("Failure extract_url_args wrong pattern") {
+
+        function "extract_url_args"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                input[0] = "wrong://ensro@mysql-eg-test-prod:0000/"
+                """
+            }
+        }
+
+        then {
+            assert function.failed
+            assert snapshot(function.result).match()
+        }
+    }
 }
