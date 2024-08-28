@@ -55,8 +55,7 @@ nextflow_function {
             function {
                 """
                 // define inputs of the function here. Example:
-                input[0]= "test"
-                input[1]= ["test", "lorem"]
+                input = tuple("test", ["test", "lorem"])
                 """
             }
         }
@@ -67,6 +66,43 @@ nextflow_function {
         }
 
     }
-    
-    
+    test("Test Function generate_url") {
+
+        function "generate_url"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                input = tuple("https", "mysql", 000, "ensro")
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Test Function extract_url_args") {
+
+        function "extract_url_args"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                // input[0] = 1
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+	
 }
