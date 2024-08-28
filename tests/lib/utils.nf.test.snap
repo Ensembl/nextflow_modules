@@ -1,4 +1,20 @@
 {
+    "Test Function extract_url_args": {
+        "content": [
+            {
+                "user": "ensro",
+                "password": null,
+                "host": "mysql-eg-test-prod",
+                "port": "0000",
+                "database": null
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-28T11:07:26.500484697"
+    },
     "Test Function generate_url": {
         "content": [
             "https://ensro@mysql:0"

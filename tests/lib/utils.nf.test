@@ -93,7 +93,7 @@ nextflow_function {
             function {
                 """
                 // define inputs of the function here. Example:
-                // input[0] = 1
+                input[0] = "mysql://ensro@mysql-eg-test-prod:0000/"
                 """
             }
         }
