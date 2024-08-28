@@ -66,6 +66,63 @@ nextflow_function {
         }
 
     }
+    test("Failure parse_map_param value not in allowed allowed_values ") {
+
+        function  "parse_list_param"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                input = tuple("test", ["No_test", "lorem"])
+                """
+            }
+        }
+
+        then {
+            assert function.failed
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Parse_map_param with no value ") {
+
+        function  "parse_list_param"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                input[1] = ["test", "lorem"]
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Parse_map_param with run all") {
+
+        function  "parse_list_param"
+
+        when {
+            function {
+                """
+                // define inputs of the function here. Example:
+                input = tuple("test", ["test", "lorem"], true)
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
     test("Test Function generate_url") {
 
         function "generate_url"
