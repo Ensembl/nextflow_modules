@@ -38,7 +38,7 @@ def parse_list_param(String multi_value = '', List<String> allowed_values, Boole
         return allowed_values
     }
 
-    if (multi_value.isEmpty()) {
+    if (multi_value == null || multi_value.isEmpty()) {
         return "No value specified $multi_value"
     }
     else {
