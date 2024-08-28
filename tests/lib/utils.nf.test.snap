@@ -7,7 +7,7 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-27T16:16:05.70473287"
+        "timestamp": "2024-08-27T17:33:46.016044367"
     },
     "Test Function read_json": {
         "content": [
@@ -19,16 +19,18 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-27T16:45:49.485764044"
+        "timestamp": "2024-08-27T17:33:55.082623428"
     },
     "Test Function parse_list_param": {
         "content": [
-            "No value specified "
+            [
+                "test"
+            ]
         ],
         "meta": {
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-27T16:50:55.256004386"
+        "timestamp": "2024-08-28T10:35:22.070018212"
     }
 }
