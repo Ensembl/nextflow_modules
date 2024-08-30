@@ -31,26 +31,6 @@ def read_json(json_path) {
     return parsed_json
 }
 
-def parse_list_param(String multi_value = '', List<String> allowed_values, Boolean run_all = false) {
-    //Support parsing of multi-value parameters.
-    if (run_all) {
-        return allowed_values
-    }
-
-    if (multi_value == null || multi_value.isEmpty()) {
-        return "No value specified $multi_value"
-    }
-    else {
-        all_params = multi_value.tokenize(',')
-        all_params.each { value ->
-            if (!allowed_values.contains(value)) {
-                throw new Exception("Invalid param value: $value. Allowed values are: $allowed_values")
-            }
-        }
-    }
-    return all_params
-}
-
 def generate_url(protocol, host, port, user, password=null, database=null) {
     // Generate a URL when all the credentials are provided
     base_url = "${protocol}://${user}@${host}:${port}"
@@ -79,6 +59,3 @@ def extract_url_args(url_string) {
 
     return [user: user, password: password, host: host, port: port, database: database]
 }
-
-
-

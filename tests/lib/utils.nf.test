@@ -24,9 +24,7 @@ nextflow_function {
         when {
             function {
                 """
-                // define inputs of the function here. Example:
-                input[0] = [ "Key1": "value1", "key2": "value2"]
- 
+                input[0] = [ "Key1": "value1", "Key2": "value2"]
                 """
             }
         }
@@ -44,86 +42,9 @@ nextflow_function {
         when {
             function {
                 """
-                // define inputs of the function here. Example:
                 def temp = File.createTempFile('temp', '.json') 
                 temp.write('{"Key": "value"}')  
                 input[0] = temp.absolutePath
-                """
-            }
-        }
-
-        then {
-            assert function.success
-            assert snapshot(function.result).match()
-        }
-
-    }
-    test("Test Function parse_list_param") {
-
-        function "parse_list_param"
-
-        when {
-            function {
-                """
-                // define inputs of the function here. Example:
-                input = tuple("test", ["test", "lorem"])
-                """
-            }
-        }
-
-        then {
-            assert function.success
-            assert snapshot(function.result).match()
-        }
-
-    }
-    test("Failure parse_map_param value not in allowed allowed_values ") {
-
-        function  "parse_list_param"
-
-        when {
-            function {
-                """
-                // define inputs of the function here. Example:
-                input = tuple("test", ["No_test", "lorem"])
-                """
-            }
-        }
-
-        then {
-            assert function.failed
-            assert snapshot(function.result).match()
-        }
-
-    }
-    test("Parse_map_param with no value ") {
-
-        function  "parse_list_param"
-
-        when {
-            function {
-                """
-                // define inputs of the function here. Example:
-                input[1] = ["test", "lorem"]
-                """
-            }
-        }
-
-        then {
-            assert function.success
-            assert snapshot(function.result).match()
-        }
-
-    }
-    test("Parse_map_param with run all") {
-
-        function  "parse_list_param"
-
-        when {
-            function {
-                """
-                // define inputs of the function here. Example:
-                input = tuple("test", ["test", "lorem"], true)
                 """
             }
         }
@@ -141,7 +62,6 @@ nextflow_function {
         when {
             function {
                 """
-                // define inputs of the function here. Example:
                 input = tuple("https", "mysql", 000, "ensro")
                 """
             }
@@ -160,7 +80,6 @@ nextflow_function {
         when {
             function {
                 """
-                // define inputs of the function here. Example:
                 input = tuple("https", "mysql", 000, "ensro", "test", "test_database")
                 """
             }
@@ -179,7 +98,6 @@ nextflow_function {
         when {
             function {
                 """
-                // define inputs of the function here. Example:
                 input[0] = "mysql://ensro@mysql-eg-test-prod:0000/"
                 """
             }
@@ -191,14 +109,13 @@ nextflow_function {
         }
 
     }
-    test("Failure extract_url_args wrong pattern") {
+    test("Failure extract_url_args an incorrect url pattern") {
 
         function "extract_url_args"
 
         when {
             function {
                 """
-                // define inputs of the function here. Example:
                 input[0] = "wrong://ensro@mysql-eg-test-prod:0000/"
                 """
             }

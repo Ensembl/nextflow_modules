@@ -1,17 +1,4 @@
 {
-    "Parse_map_param with run all": {
-        "content": [
-            [
-                "test",
-                "lorem"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.0",
-            "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-08-28T12:28:26.443400428"
-    },
     "Test Function extract_url_args": {
         "content": [
             {
@@ -26,7 +13,7 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-28T11:07:26.500484697"
+        "timestamp": "2024-08-30T15:05:11.474068475"
     },
     "Test Function generate_url": {
         "content": [
@@ -36,17 +23,17 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-28T10:59:52.815350874"
+        "timestamp": "2024-08-30T15:04:56.554157928"
     },
     "Test Function get_key_list": {
         "content": [
-            "['Key1','key2']"
+            "['Key1','Key2']"
         ],
         "meta": {
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-27T17:33:46.016044367"
+        "timestamp": "2024-08-30T15:04:41.360957415"
     },
     "Test Function read_json": {
         "content": [
@@ -58,35 +45,7 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-27T17:33:55.082623428"
-    },
-    "Test Function parse_list_param": {
-        "content": [
-            [
-                "test"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.0",
-            "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-08-28T10:35:22.070018212"
-    },
-    "Failure parse_map_param": {
-        "content": null,
-        "meta": {
-            "nf-test": "0.9.0",
-            "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-08-28T11:41:24.859934595"
-    },
-    "Failure parse_map_param no value ": {
-        "content": null,
-        "meta": {
-            "nf-test": "0.9.0",
-            "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-08-28T12:01:59.363815572"
+        "timestamp": "2024-08-30T15:04:48.993747379"
     },
     "Test Function generate_url with password and database": {
         "content": [
@@ -96,25 +55,7 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-28T16:49:48.297017432"
-    },
-    "Failure parse_map_param value not in allowed allowed_values ": {
-        "content": null,
-        "meta": {
-            "nf-test": "0.9.0",
-            "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-08-28T11:54:20.475570355"
-    },
-    "Parse_map_param with no value ": {
-        "content": [
-            "No value specified null"
-        ],
-        "meta": {
-            "nf-test": "0.9.0",
-            "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-08-28T12:10:54.223286963"
+        "timestamp": "2024-08-30T15:05:04.258757281"
     },
     "Failure extract_url_args wrong pattern": {
         "content": null,
@@ -122,6 +63,6 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-08-28T16:57:36.491445174"
+        "timestamp": "2024-08-30T15:05:23.533309311"
     }
 }
