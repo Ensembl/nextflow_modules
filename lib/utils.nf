@@ -1,4 +1,3 @@
-
 // See the NOTICE file distributed with this work for additional information
 // regarding copyright ownership.
 //
@@ -26,10 +25,10 @@ def read_json(json_path) {
     text = json_file.text
     // unfortunately
     //   return slurp.parseText(text)
-    // doesn't work for a single element list, we suspect lazy eval
-    // symptom: instead of `[a:..., b:...]` we see the same stuff in the curly brackets `{a:..., b:...}`
-    not_a_lazy_val = slurp.parseText(text)
-    return not_a_lazy_val
+    // doesn't work for a single element list due to lazy evaluation
+    // symptom: instead of `[a:..., b:...]` we get the same content but in curly brackets `{a:..., b:...}`
+    parsed_json = slurp.parseText(text)
+    return parsed_json
 }
 
 def parse_list_param(String multi_value = '', List<String> allowed_values, Boolean run_all = false) {
@@ -55,7 +54,6 @@ def parse_list_param(String multi_value = '', List<String> allowed_values, Boole
 def generate_url(protocol, host, port, user, password=null, database=null) {
     // Generate a URL when all the credentials are provided
     base_url = "${protocol}://${user}@${host}:${port}"
-
     if (password) {
         base_url = "${protocol}://${user}:${password}@${host}:${port}"
     }

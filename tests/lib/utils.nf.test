@@ -3,7 +3,6 @@ nextflow_function {
 
     name "Test Functions"
     script "lib/utils.nf"
-
 	
 
     test("Test Function get_key_list") {
