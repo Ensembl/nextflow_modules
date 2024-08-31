@@ -11,7 +11,7 @@ keywords:
 tools:
   - "Schema":
       ## TODO nf-core: Add a description and other details for the software below
-      description: "Nextflow modules for Ensembl genomio"
+      description: "Nextflow modules for Ensembl pipelines"
       homepage: "https://github.com/Ensembl/nextflow_modules"
       # documentation: ""
       # tool_dev_url: ""
@@ -30,7 +30,7 @@ input:
   ## TODO nf-core: Delete / customise this example input
   - json:
       type: file
-      description: json file to validate
+      description: JSON file to validate
       pattern: "*.{json}"
 
 ## TODO nf-core: Add a description of all of the variables used as output
