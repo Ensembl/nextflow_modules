@@ -1,0 +1,68 @@
+{
+    "Test Function extract_url_args": {
+        "content": [
+            {
+                "user": "ensro",
+                "password": null,
+                "host": "mysql-eg-test-prod",
+                "port": "0000",
+                "database": null
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-30T15:05:11.474068475"
+    },
+    "Test Function generate_url": {
+        "content": [
+            "https://ensro@mysql:0"
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-30T15:04:56.554157928"
+    },
+    "Test Function get_key_list": {
+        "content": [
+            "['Key1','Key2']"
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-30T15:04:41.360957415"
+    },
+    "Test Function read_json": {
+        "content": [
+            {
+                "Key": "value"
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-30T15:04:48.993747379"
+    },
+    "Test Function generate_url with password and database": {
+        "content": [
+            "https://ensro:test@mysql:0/test_database"
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-30T15:05:04.258757281"
+    },
+    "Failure extract_url_args wrong pattern": {
+        "content": null,
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-30T15:05:23.533309311"
+    }
+}
