@@ -14,7 +14,7 @@ tools:
       # documentation: ""
       # tool_dev_url: ""
       # doi: ""
-      # licence: 
+      licence: "Apache License 2.0"
 
 input:
   - meta:

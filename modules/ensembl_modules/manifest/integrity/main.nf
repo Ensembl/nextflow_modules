@@ -33,7 +33,6 @@ process MANIFEST_INTEGRITY {
 
         # Get version from genomio please
         VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
-        VERSION=1
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
             Genomio: \$VERSION
@@ -42,7 +41,6 @@ process MANIFEST_INTEGRITY {
 
     stub:
         integrity_file = "integrity.out"
-        def VERSION = 1
         """
         echo "No change, don't create manifest error log"
 
