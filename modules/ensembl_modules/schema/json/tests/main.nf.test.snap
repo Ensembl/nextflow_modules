@@ -1,0 +1,35 @@
+{
+    "Schema check for the JSON file stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "meta.json:md5,62eec34a06788123009463246888d349"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,a64c78004731777f7f8143342217afcf"
+                ],
+                "verified_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "meta.json:md5,62eec34a06788123009463246888d349"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,a64c78004731777f7f8143342217afcf"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-22T14:17:48.70924"
+    }
+}

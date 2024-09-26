@@ -1,0 +1,47 @@
+name: "schema_json"
+description: Validate the schema for JSON files
+keywords:
+  - validate
+  - JSON
+  - schema
+tools:
+  - "Schema":
+      description: "Nextflow modules for Ensembl pipelines"
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      # documentation: ""
+      # tool_dev_url: ""
+      # doi: ""
+      licence: "Apache License 2.0"
+input:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'sample1', single_end:false ]`
+  
+  - json:
+      type: file
+      description: JSON file to validate
+      pattern: "*.{json}"
+
+output:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'sample1', single_end:false ]`
+  - versions:
+      type: file
+      description: File containing ensembl-genomio versions
+      pattern: "versions.yml"
+  - json:
+      type: file
+      description: verified_json file
+      pattern: "*.{json}"
+
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+maintainers:
+  - "ensembl-dev@ebi.ac.uk"

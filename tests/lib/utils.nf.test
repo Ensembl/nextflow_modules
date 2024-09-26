@@ -1,0 +1,129 @@
+// See the NOTICE file distributed with this work for additional information
+// regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+nextflow_function {
+    name "Test Functions"
+    script "lib/utils.nf"
+	
+    test("Test Function get_key_list") {
+
+        function "get_key_list"
+
+        when {
+            function {
+                """
+                input[0] = [ "Key1": "value1", "Key2": "value2"]
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Test Function read_json") {
+
+        function "read_json"
+
+        when {
+            function {
+                """
+                def temp = File.createTempFile('temp', '.json') 
+                temp.write('{"Key": "value"}')  
+                input[0] = temp.absolutePath
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Test Function generate_url") {
+
+        function "generate_url"
+
+        when {
+            function {
+                """
+                input = tuple("https", "mysql", 000, "ensro")
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Test Function generate_url with password and database") {
+
+        function "generate_url"
+
+        when {
+            function {
+                """
+                input = tuple("https", "mysql", 000, "ensro", "test", "test_database")
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Test Function extract_url_args") {
+
+        function "extract_url_args"
+
+        when {
+            function {
+                """
+                input[0] = "mysql://ensro@mysql-eg-test-prod:0000/"
+                """
+            }
+        }
+
+        then {
+            assert function.success
+            assert snapshot(function.result).match()
+        }
+
+    }
+    test("Failure extract_url_args an incorrect url pattern") {
+
+        function "extract_url_args"
+
+        when {
+            function {
+                """
+                input[0] = "wrong://ensro@mysql-eg-test-prod:0000/"
+                """
+            }
+        }
+
+        then {
+            assert function.failed
+            assert snapshot(function.result).match()
+        }
+    }
+}
