@@ -1,0 +1,43 @@
+{
+    "Integrity check stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541",
+                            "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+                        ]
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+                ],
+                "all_files": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541",
+                            "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+                        ]
+                    ]
+                ],
+                "error_log": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+                ]
+            }
+        ],
+        "timestamp": "2024-08-21T09:52:13+0000"
+    }
+}
