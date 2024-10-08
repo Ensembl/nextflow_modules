@@ -1,57 +1,51 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "gff3_validation"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+name: "GFF3_VALIDATION"
+description: Check the validation of the gff3 using gt tools.
 keywords:
-  - sort
-  - example
   - genomics
+  - data integrity
+  - ensembl
+  - genomio
 tools:
   - "gff3":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: 
+      description: "Nextflow modules for gff3 validation"
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      # documentation: ""
+      # tool_dev_url: ""
+      # doi: ""
+      licence: "Apache License 2.0"
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
+        Groovy Map containing meta information
+        e.g. `[ id:'accession1' ]`
   
-  ## TODO nf-core: Delete / customise this example input
-  - bam:
+  - manifest_files:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: gff3 files
+      pattern: "*.{gff3}"
 
-## TODO nf-core: Add a description of all of the variables used as output
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
+        Groovy Map containing meta information
+        e.g. `[ id:'accession1' ]`
   
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
+
+  - gene_models:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: All files used as entry
+      pattern: "*.{gff3}"
 
 authors:
-  - "@ensembl"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl"
+  - "ensembl-dev@ebi.ac.uk"
