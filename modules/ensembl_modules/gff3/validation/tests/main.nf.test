@@ -30,17 +30,12 @@ nextflow_process {
 
             process {
                 """
-
-                input[0] = Channel.of(
-                        '##gff-version 3',
-                        'chr1\tID=gene1'
-                    )
-                    .collectFile(name: 'genes.gff3', newLine: true)
-                    .map { file -> [ [ id:'test' ], file ] }
+                input[0] = [[ id:'test'],
+                file(params.test_data['sarscov2']['genome']['genome_gff3'], checkIfExists: true)
+                ]
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
