@@ -1,0 +1,35 @@
+{
+    "Gff3 validation": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "gene_models.gff3:md5,b8248e228a3d3b5c7e4c57471fdcd97d"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,869e450ac312021d105c5fe1041ee227"
+                ],
+                "gene_models": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "gene_models.gff3:md5,b8248e228a3d3b5c7e4c57471fdcd97d"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,869e450ac312021d105c5fe1041ee227"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-10-08T14:06:59.565410722"
+    }
+}
