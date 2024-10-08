@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "GFF3_VALIDATION"
-description: Check the validation of the gff3 using gt tools.
+description: Check the validation of the GFF3 using gt tools.
 keywords:
   - genomics
   - data integrity
@@ -9,11 +9,9 @@ keywords:
   - genomio
 tools:
   - "gff3":
-      description: "Nextflow modules for gff3 validation"
+      description: "Nextflow modules for GFF3 validation"
       homepage: "https://github.com/Ensembl/nextflow_modules"
       # documentation: ""
-      # tool_dev_url: ""
-      # doi: ""
       licence: "Apache License 2.0"
 
 input:
@@ -25,7 +23,7 @@ input:
   
   - manifest_files:
       type: file
-      description: gff3 files
+      description: GFF3 files
       pattern: "*.{gff3}"
 
 output:

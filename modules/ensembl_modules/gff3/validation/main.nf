@@ -22,7 +22,7 @@ process GFF3_VALIDATION {
         'biocontainers/genometools-genometools:1.6.5--py310h3db02ab_0' }"    
 
     input:
-        tuple val(meta), path (gene_models, stageAs: "incoming.gff3")
+        tuple val(meta), path(gene_models, stageAs: "incoming.gff3")
 
     output:
         tuple val(meta), path("gene_models.gff3"), emit: gene_models
@@ -48,7 +48,7 @@ process GFF3_VALIDATION {
     stub:
         gene_models = "gene_models.gff3"
         """
-        echo "No change, create an emply gff" >> ${gene_models}
+        echo "No change, create an empty GFF3 file" >> ${gene_models}
 
         # Get version from gt tools please
         cat <<-END_VERSIONS > versions.yml
