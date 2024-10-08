@@ -21,6 +21,11 @@ process GFF3_VALIDATION {
         'quay.io/biocontainers/genometools-genometools:1.6.5--py310h3db02ab_0' :
         'biocontainers/genometools-genometools:1.6.5--py310h3db02ab_0' }"
 
+    container "${ (workflow.containerEngine == 'docker') ?
+        'lahcen86/dev_test_genomio:litev3' : '' }"
+
+    
+
     input:
         tuple val(meta), path (gene_models, stageAs: "incoming.gff3")
 
@@ -34,9 +39,9 @@ process GFF3_VALIDATION {
     script:
         out_gff = "gene_models.gff3"
         """
-        cp !{gene_models} temp.gff3
-        gt gff3 -tidy -sort -retainids -force -o !{out_gff} temp.gff3
-        gt gff3validator !{out_gff}
+        cp ${gene_models} temp.gff3
+        gt gff3 -tidy -sort -retainids -force -o ${out_gff} temp.gff3
+        gt gff3validator ${out_gff}
         
         # Get version from genomio please
         VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
