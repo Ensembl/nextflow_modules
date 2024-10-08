@@ -21,7 +21,8 @@ nextflow_process {
 
     tag "modules"
     tag "modules_nfcore"
-    tag "SCHEMA_JSON"
+    tag "schema/json"
+    tag "schema"
 
     test("Schema check for the JSON file stub") {
         when {
