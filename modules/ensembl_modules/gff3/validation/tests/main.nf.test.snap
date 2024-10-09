@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "gene_models.gff3:md5,b8248e228a3d3b5c7e4c57471fdcd97d"
+                        "gene_models.gff3:md5,30e231754b0254b6b7293ca13e30dc6b"
                     ]
                 ],
                 "1": [
@@ -18,7 +18,7 @@
                         {
                             "id": "test"
                         },
-                        "gene_models.gff3:md5,b8248e228a3d3b5c7e4c57471fdcd97d"
+                        "gene_models.gff3:md5,30e231754b0254b6b7293ca13e30dc6b"
                     ]
                 ],
                 "versions": [
@@ -30,6 +30,6 @@
             "nf-test": "0.9.0",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-10-08T14:06:59.565410722"
+        "timestamp": "2024-10-09T14:30:22.143382311"
     }
 }
