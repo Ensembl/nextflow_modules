@@ -13,48 +13,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: "schema_json"
-description: Validate the schema for JSON files
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "GFF3_VALIDATION"
+description: Check the validation of the GFF3 using gt tools.
 keywords:
-  - validate
-  - JSON
-  - schema
+  - genomics
+  - data integrity
+  - ensembl
+  - genomio
 tools:
-  - "Schema":
-      description: "Nextflow modules for Ensembl pipelines"
+  - "gff3":
+      description: "Nextflow modules for GFF3 validation"
       homepage: "https://github.com/Ensembl/nextflow_modules"
       # documentation: ""
-      # tool_dev_url: ""
-      # doi: ""
       licence: "Apache License 2.0"
+
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
+        Groovy Map containing meta information
+        e.g. `[ id:'accession1' ]`
   
-  - json:
+  - manifest_files:
       type: file
-      description: JSON file to validate
-      pattern: "*.{json}"
+      description: GFF3 files
+      pattern: "*.{gff3}"
 
 output:
-  # Only when we have meta
   - meta:
       type: map
       description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
+        Groovy Map containing meta information
+        e.g. `[ id:'accession1' ]`
+  
   - versions:
       type: file
-      description: File containing ensembl-genomio versions
+      description: File containing software versions
       pattern: "versions.yml"
-  - json:
+
+  - gene_models:
       type: file
-      description: verified_json file
-      pattern: "*.{json}"
+      description: All files used as entry
+      pattern: "*.{gff3}"
 
 authors:
   - "ensembl-dev@ebi.ac.uk"

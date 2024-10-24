@@ -15,27 +15,24 @@
 
 nextflow_process {
 
-    name "Test Process SCHEMA_JSON"
+    name "Test Process GFF3_VALIDATION"
     script "../main.nf"
-    process "SCHEMA_JSON"
+    process "GFF3_VALIDATION"
 
     tag "modules"
     tag "modules_nfcore"
-    tag "schema/json"
-    tag "schema"
+    tag "gff3"
+    tag "gff3/validation"
 
-    test("Schema check for the JSON file stub") {
+    test("Gff3 validation") {
         when {
             options "-stub"
 
             process {
                 """
-                input[0] = Channel.of(
-                        '{accession : lorem}',
-                        '{species : lorem}'
-                    )
-                    .collectFile(name: 'meta.json', newLine: true)
-                    .map { file -> [ [ id:'test' ], file ] }
+                input[0] = [[ id:'test'],
+                file(params.test_data['sarscov2']['genome']['genome_gff3'], checkIfExists: true)
+                ]
                 """
             }
         }
