@@ -32,7 +32,6 @@ process DATABASE_DBFACTORY {
         task.ext.when == null || task.ext.when
 
     script:
-        def VERSION = '1.0.0'
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.id}"
 
@@ -62,7 +61,7 @@ process DATABASE_DBFACTORY {
             $db_list \
             > $output_file
         
-        echo -e -n "${task.process}":\n\tdatabase:dbfactory ${VERSION}\n\tensembl-genomio: " > versions.yml
+        echo -e -n "${task.process}":\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
         """
 
@@ -73,7 +72,7 @@ process DATABASE_DBFACTORY {
         """
         echo '[{"species": "apis_melifera", "division": "EnsemblMetazoa", "release": 60}]' > ${output_file}
 
-        echo -e -n "${task.process}":\n\tdatabase:dbfactory ${VERSION}\n\tensembl-genomio: " > versions.yml
+        echo -e -n "${task.process}":\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
         """
 }
