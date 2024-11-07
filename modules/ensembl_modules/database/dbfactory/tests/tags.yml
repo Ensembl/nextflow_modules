@@ -1,0 +1,2 @@
+database/dbfactory:
+  - "modules/ensembl_modules/database/dbfactory/**"
