@@ -1,9 +1,11 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/environment-schema.json
-name: "database_dbfactory"
+name: "database/dbfactory"
 channels:
   - conda-forge
   - bioconda
-  - defaults
 dependencies:
-  - "YOUR-TOOL-HERE"
+  - python=3.10
+  - pip
+  - pip:
+    - ensembl-genomio=1.4.0

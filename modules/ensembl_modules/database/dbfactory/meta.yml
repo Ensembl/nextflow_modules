@@ -1,57 +1,37 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "database_dbfactory"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: Generate a list of one or more databases plus some associated meta table information.
+
 keywords:
-  - sort
-  - example
-  - genomics
+  - core_database
+  - python
+  - ensembl-genomio
+
 tools:
-  - "database":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: 
+  - database:
+      # documentation: ""
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Modules which function to read or write information from core databases."
+      licence: ['Apache License version 2.0']
+      # tool_dev_url: ""
+      # doi: ""
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
+  - server:
+      type: string
+      description: "String containing mysql server host,port,user,password e.g. '--host mysql-ens-hostname-1 --port XXXX --user ensro'"
   
-  ## TODO nf-core: Delete / customise this example input
-  - bam:
+  - filter_map:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: "List of one of more database names to filter all databases using prefix &| dbname_re"
 
-## TODO nf-core: Add a description of all of the variables used as output
 output:
-  #Only when we have meta
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
-  
-  - versions:
+  - dbs_meta_json:
       type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: "JSON file containing database meta data"
 
 authors:
-  - "@ens-LCampbell"
+  - "@ensembl-dev"
 maintainers:
-  - "@ens-LCampbell"
+  - "@ensembl-dev"
