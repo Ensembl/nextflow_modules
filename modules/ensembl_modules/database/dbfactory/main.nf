@@ -52,7 +52,6 @@ process DATABASE_DBFACTORY {
         }
         """
         echo "$db_list_str" > $db_list_file
-        GENOMIO_VERSION=`python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)"`
 
         database_factory --host '${server.host}' \
             --port '${server.port}' \
