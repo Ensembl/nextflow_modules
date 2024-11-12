@@ -69,8 +69,10 @@ process DATABASE_DBFACTORY {
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.id}"
         output_file = "dbs.json"
+        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl_modules/database/dbfactory/"
+        dump_file = "db_factory_dbs.json"
         """
-        echo '[{"species": "apis_melifera", "division": "EnsemblMetazoa", "release": 60}]' > ${output_file}
+        cp $dump_dir/$dump_file $output_file
 
         echo -e -n "${task.process}":\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
