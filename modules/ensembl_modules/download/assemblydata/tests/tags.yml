@@ -1,0 +1,2 @@
+download/assemblydata:
+  - "modules/ensembl_modules/download/assemblydata/**"
