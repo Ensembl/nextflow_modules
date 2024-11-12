@@ -1,55 +1,39 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "download_assemblydata"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: Generate a list of one or more databases plus some associated meta table information.
+
 keywords:
-  - sort
-  - example
-  - genomics
+  - python
+  - ensembl-genomio
+  - INSDC
+  - genome
+  - gzip
+  - download
+  - docker
+  - container
+
 tools:
-  - "download":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: 
+  - download:
+      # documentation: ""
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Modules which function to download data from remote repositories/sources"
+      licence: ['Apache License version 2.0']
+      # tool_dev_url: ""
+      # doi: ""
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
-  
-  ## TODO nf-core: Delete / customise this example input
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+  - accession:
+      type: string
+      description: "A single INSDC GCA or NCBI 'amended' GCF genome assembly accession."
+  - download_dir:
+      type: path
+      description: "Location in which to download genome data files. Defaults to CWD."
 
-## TODO nf-core: Add a description of all of the variables used as output
 output:
-  #Only when we have meta
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'sample1', single_end:false ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+  - stdout:
+      type: stdout
+      description: "Downloads various genome assembly data files (.txt, .fna, .faa, .gbff, .gff) into compressed Gzip archives)."
 
 authors:
   - "@ensembl-dev"
