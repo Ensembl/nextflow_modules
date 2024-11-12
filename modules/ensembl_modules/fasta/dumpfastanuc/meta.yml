@@ -16,7 +16,7 @@ tools:
   - database:
       # documentation: ""
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "Modules which function to read or write information from core databases."
+      description: "Module which function to dump nucleotide sequences directly from a core database."
       licence: ['Apache License version 2.0']
       # tool_dev_url: ""
       # doi: ""
