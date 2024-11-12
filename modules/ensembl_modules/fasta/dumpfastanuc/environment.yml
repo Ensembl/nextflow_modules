@@ -4,6 +4,8 @@ name: "fasta_dumpfastanuc"
 channels:
   - conda-forge
   - bioconda
-  - defaults
 dependencies:
-  - "YOUR-TOOL-HERE"
+  - python=3.10
+  - pip
+  - pip:
+    - ensembl-genomio=1.5.0
