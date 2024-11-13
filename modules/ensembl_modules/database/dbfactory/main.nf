@@ -61,7 +61,7 @@ process DATABASE_DBFACTORY {
             $db_list \
             > $output_file
         
-        echo -e -n "${task.process}":\n\tensembl-genomio: " > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
         """
 
@@ -74,7 +74,7 @@ process DATABASE_DBFACTORY {
         """
         cp $dump_dir/$dump_file $output_file
 
-        echo -e -n "${task.process}":\n\tensembl-genomio: " > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
         """
 }
