@@ -45,7 +45,7 @@ process DOWNLOAD_ASSEMBLYDATA {
         '''
         assembly_download --accession !{meta.accession} --download_dir ./ --verbose
 
-        echo -e -n "${task.process}":\n\tensembl-genomio: " > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
         '''
 
@@ -56,7 +56,7 @@ process DOWNLOAD_ASSEMBLYDATA {
         assembly_download --help
         cp $workflow.projectDir/../../../../tests/modules/ensembl_modules/download/assemblydata/* .
 
-        echo -e -n "${task.process}":\n\tensembl-genomio: " > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
         """
 }
