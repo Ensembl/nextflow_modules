@@ -19,7 +19,7 @@ process DATABASE_DBFACTORY {
     time '5min'
 
     conda "${moduleDir}/environment.yml"
-    container 'ensemblorg/ensembl-genomio:v1.4.0'
+    container 'ensemblorg/ensembl-genomio:v1.5.0'
     
     input:
         val server
