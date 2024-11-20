@@ -69,7 +69,7 @@ process DATABASE_DBFACTORY {
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.id}"
         output_file = "dbs.json"
-        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl_modules/database/dbfactory/"
+        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl/database/dbfactory/"
         dump_file = "db_factory_dbs.json"
         """
         cp $dump_dir/$dump_file $output_file
