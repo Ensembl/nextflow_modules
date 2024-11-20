@@ -1,0 +1,50 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "fasta_dumpfastapeptide"
+## TODO nf-core: Add a description of the module and list keywords
+description: A module for dumping core database gene module peptide fasta seqs
+
+keywords:
+  - core_database
+  - python
+  - ensembl-genomio
+  - ensembl-legacy-scripts
+  - fasta
+  - docker
+  - container
+
+tools:
+  - database:
+      # documentation: ""
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Module which function to dump nucleotide sequences directly from a core database."
+      licence: ['Apache License version 2.0']
+      # tool_dev_url: ""
+      # doi: ""
+
+input:
+  - host:
+      type: string
+      description: "String containing mysql server host e.g. '--host mysql-ens-hostname-1'"
+  - port:
+      type: string
+      description: "String containing mysql server port: '--port 1234'"
+  - user:
+      type: string
+      description: "String containing mysql server user,password e.g. '--user ensro'"
+  - pass:
+      type: string
+      description: "String containing mysql server user,password e.g. '--pass XxYyZz'"
+  - dbname:
+      type: string
+      description: "Target database name to dump fasta sequences."
+
+output:
+  - stdout:
+      type: stdout
+      description: "Fasta file containing nucleotide sequence(s)."
+
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"
