@@ -54,7 +54,7 @@ process DOWNLOAD_ASSEMBLYDATA {
         def prefix = task.ext.prefix ?: "${meta.id}"
         """
         assembly_download --help
-        cp $workflow.projectDir/../../../../tests/modules/ensembl_modules/download/assemblydata/* .
+        cp $workflow.projectDir/../../../../tests/modules/ensembl/download/assemblydata/* .
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
