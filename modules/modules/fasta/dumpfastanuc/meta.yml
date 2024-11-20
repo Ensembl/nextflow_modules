@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fasta_dumpfastanuc"
-description: Generate a list of one or more databases plus some associated meta table information.
+description: A module for dumping core database gene module nucleotide fasta seqs
 
 keywords:
   - core_database
@@ -34,7 +34,9 @@ input:
   - pass:
       type: string
       description: "String containing mysql server user,password e.g. '--pass XxYyZz'"
-
+  - dbname:
+      type: string
+      description: "Target database name to dump fasta sequences."
 output:
   - stdout:
       type: stdout
