@@ -1,0 +1,2 @@
+schema/json:
+  - "modules/ensembl/schema/json/**"

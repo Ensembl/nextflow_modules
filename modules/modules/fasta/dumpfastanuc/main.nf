@@ -37,7 +37,6 @@ process FASTA_DUMPFASTANUC {
         output = "${db.species}_fasta_dna.fasta"
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
 
-
         """
         dump_fasta_dna.pl \
             --host $db.server.host \
@@ -55,7 +54,7 @@ process FASTA_DUMPFASTANUC {
         def version = "0.4" // No way to get the version from installed repos
 
         output_file = "dna.fasta"
-        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl_modules/fasta/"
+        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl/fasta/"
         dump_file = "dumped_dna.fasta"
         """
         cp $dump_dir/$dump_file $output_file
