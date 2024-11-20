@@ -1,2 +1,0 @@
-gff3/validation:
-  - "modules/ensembl_modules/gff3/validation/**"
