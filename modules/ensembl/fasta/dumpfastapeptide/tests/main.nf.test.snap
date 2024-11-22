@@ -1,0 +1,27 @@
+{
+    "Fasta Dump Peptide [stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        "pep.fasta:md5,ec8f3daddcff84478c0e5519ea830b37",
+                        "fasta_pep",
+                        "pep.fasta:md5,5e8e0b7c1da13d4ce630f471d08e7dfa"
+                    ]
+                ],
+                "nucleotide_fasta": [
+                    [
+                        "pep.fasta:md5,ec8f3daddcff84478c0e5519ea830b37",
+                        "fasta_pep",
+                        "pep.fasta:md5,5e8e0b7c1da13d4ce630f471d08e7dfa"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-11-22T16:06:25.379869514"
+    }
+}
