@@ -25,7 +25,6 @@ nextflow_process {
     tag "fasta"
     tag "fasta/dumpfastapeptide"
 
-    // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
     test("Fasta Dump Peptide [stub]") {
             when {
 
