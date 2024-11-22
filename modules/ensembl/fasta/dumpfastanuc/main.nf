@@ -16,15 +16,14 @@
 process FASTA_DUMPFASTANUC {
     tag "$meta.id"
     label 'process_low'
-
-    conda "${moduleDir}/environment.yml"
+    // conda "${moduleDir}/environment.yml" // this is not a genomio process
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
-        val db
+        tuple val(meta), val(db)
 
     output:
-        tuple val(db), val("fasta_dna"), path("*.fasta")
+        tuple val(db), val("fasta_dna"), path("*.fasta"), optional:false, emit: nucleotide_fasta
 
     when:
     task.ext.when == null || task.ext.when
@@ -54,11 +53,8 @@ process FASTA_DUMPFASTANUC {
         def version = "0.4" // No way to get the version from installed repos
 
         output_file = "dna.fasta"
-        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl/fasta/"
-        dump_file = "dumped_dna.fasta"
         """
-        cp $dump_dir/$dump_file $output_file
-
-        echo -e -n "${task.process}":\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n ">SEQ1\nCGTA" > ${output_file}
+        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
 }
