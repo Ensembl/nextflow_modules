@@ -44,7 +44,7 @@ process FASTA_DUMPFASTANUC {
             $password_arg \
             --dbname $db.server.database > $output
         
-        echo -e -n "${task.process}":\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
 
     stub:
