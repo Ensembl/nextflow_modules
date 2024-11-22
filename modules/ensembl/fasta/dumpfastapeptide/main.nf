@@ -16,15 +16,14 @@
 process FASTA_DUMPFASTAPEPTIDE {
     tag "$meta.id"
     label 'process_low'
-
-    conda "${moduleDir}/environment.yml"
+    // conda "${moduleDir}/environment.yml"
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
-        val db
+        tuple val(meta), val(db)
 
     output:
-        tuple val(db), val("fasta_pep"), path("*.fasta")
+        tuple val(db), val("fasta_pep"), path("*.fasta"), optional:false, emit: nucleotide_fasta
 
     when:
     task.ext.when == null || task.ext.when
@@ -42,7 +41,7 @@ process FASTA_DUMPFASTAPEPTIDE {
             $password_arg \
             --dbname $db.server.database > $output
 
-        echo -e -n "${task.process}":\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
 
     stub:
@@ -51,10 +50,8 @@ process FASTA_DUMPFASTAPEPTIDE {
         def version = "0.4" // No way to get the version from installed repos
         
         output_file = "pep.fasta"
-        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl/fasta/
-        dump_file = "dumped_pep.fasta"
         """
-
-        echo -e -n "${task.process}":\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n ">PEP1\nLAHC" > ${output_file}
+        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
 }
