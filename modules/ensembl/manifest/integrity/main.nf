@@ -1,9 +1,7 @@
 process MANIFEST_INTEGRITY {
     tag "$meta.id"
     label 'process_low'
-
-    container "${ (workflow.containerEngine == 'docker') ?
-        'lahcen86/dev_test_genomio:litev3' : '' }"
+    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
 
     input:
         tuple val(meta), path(manifest_files)
