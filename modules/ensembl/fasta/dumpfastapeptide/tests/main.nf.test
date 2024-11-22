@@ -27,29 +27,28 @@ nextflow_process {
 
     // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
     test("Fasta Dump Peptide [stub]") {
-        when {
+            when {
 
-            options "-stub"
+                options "-stub"
 
-            process {
-            process {
-                """
-                input[0] = Channel.of(
-                    '>PEP1',
-                    'LAHC'
-                    )
-                    .collectFile(name: 'pep.fasta', newLine: true)
-                    .map { file -> [ [ id:'test dump peptide' ], file ] }
-                """
+
+                process {
+                    """
+                    input[0] = Channel.of(
+                        '>PEP1',
+                        'LAHC'
+                        )
+                        .collectFile(name: 'pep.fasta', newLine: true)
+                        .map { file -> [ [ id:'test dump peptide' ], file ] }
+                    """
+                }
+            }
+
+            then {
+                assertAll(
+                    { assert process.success },
+                    { assert snapshot(process.out).match() }
+                )
             }
         }
-
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(process.out).match() }
-            )
-        }
-
-    }
 }
