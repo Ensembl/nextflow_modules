@@ -1,8 +1,9 @@
 nextflow_process {
 
     name "Test Process MANIFEST_INTEGRITY"
-    script "modules/ensembl_modules/manifest/integrity/main.nf"
+    script "modules/ensembl/manifest/integrity/main.nf"
     process "MANIFEST_INTEGRITY"
+
     tag "modules"
     tag "modules_nfcore"
     tag "manifest/integrity"

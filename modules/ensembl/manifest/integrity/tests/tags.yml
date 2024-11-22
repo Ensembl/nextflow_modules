@@ -1,2 +1,2 @@
 manifest/integrity:
-  - modules/ensembl_modules/manifest/integrity/**
+  - modules/ensembl/manifest/integrity/**
