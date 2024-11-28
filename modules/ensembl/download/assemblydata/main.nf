@@ -14,11 +14,11 @@
 // limitations under the License.
 
 process DOWNLOAD_ASSEMBLYDATA {
-    tag "$meta.id"
+    tag "${meta.id}"
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container 'ensemblorg/ensembl-genomio:v1.5.0'
+    container 'ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a'
     
     input:
         tuple val(meta)
@@ -52,9 +52,9 @@ process DOWNLOAD_ASSEMBLYDATA {
     stub:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.id}"
+        // assembly_download --help
         """
-        assembly_download --help
-        cp $workflow.projectDir/../../../../tests/modules/ensembl/download/assemblydata/* .
+        cp ${workflow.projectDir}/tests/modules/ensembl/download/assemblydata/* .
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
