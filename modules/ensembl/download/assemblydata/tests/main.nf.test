@@ -45,13 +45,7 @@ nextflow_process {
                 { assert process.out.opt_set.size() == 1 },
                 { assert process.out.min_set != null },
                 { assert process.out.opt_set != null },
-                // { assert process.out.min_set.get(0).contains('GCA_017607445.1_ASM1760744v1_assembly_report.txt') }
             )
         }
     }
 }
-                    // [
-                    // file(params.download_asmdata_test['min_set']['asm_report']['file'], checkIfExists: true),
-                    // file(params.download_asmdata_test['min_set']['asm_report']['file'], checkIfExists: true),
-                    // file(params.download_asmdata_test['min_set']['asm_report']['file'], checkIfExists: true),
-                    // ]
