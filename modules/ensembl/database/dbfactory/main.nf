@@ -14,16 +14,15 @@
 // limitations under the License.
 
 process DATABASE_DBFACTORY {
-    tag "$meta.id"
+    tag "$server.host"
     label 'process_low'
     time '5min'
 
     conda "${moduleDir}/environment.yml"
-    container 'ensemblorg/ensembl-genomio:v1.5.0'
+    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
     
     input:
-        val server
-        val filter_map
+        tuple val(server), val(filter_map)
 
     output:
         path "dbs.json", emit: dbs_meta_json
@@ -33,7 +32,7 @@ process DATABASE_DBFACTORY {
 
     script:
         def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
+        def prefix = task.ext.prefix ?: "$server.host"
 
         // Module specific vars:
         output_file = "dbs.json"
@@ -67,12 +66,10 @@ process DATABASE_DBFACTORY {
 
     stub:
         def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
+        def prefix = task.ext.prefix ?: "$server.host"
         output_file = "dbs.json"
-        dump_dir = "$workflow.projectDir/../../../../tests/modules/ensembl/database/dbfactory/"
-        dump_file = "db_factory_dbs.json"
         """
-        cp $dump_dir/$dump_file $output_file
+        echo "{"species": "aaegL5", "division": "VectorBase", "release": 60}" > ${output_file}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
