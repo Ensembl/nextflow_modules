@@ -53,8 +53,10 @@ process FASTA_DUMPFASTANUC {
         def version = "0.4" // No way to get the version from installed repos
 
         output_file = "dna.fasta"
+        dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_nucleotide/"
+        dump_file = "dumped_dna.fasta"
         """
-        echo -e -n ">SEQ1\nCGTA" > ${output_file}
+        cp ${dump_dir}/${dump_file} ${output_file}
         echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
 }

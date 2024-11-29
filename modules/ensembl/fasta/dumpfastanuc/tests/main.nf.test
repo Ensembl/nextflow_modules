@@ -30,23 +30,39 @@ nextflow_process {
 
             options "-stub"
 
-            process {
-                """
-                input[0] = Channel.of(
-                    '>SEQ1',
-                    'CGTA'
-                    )
-                    .collectFile(name: 'dna.fasta', newLine: true)
-                    .map { file -> [ [ id:'test dump dna' ], file ] }
-                """
+                process {
+                    """
+                    input[0] = [[ id:'test_dump_fasta_nuc'], "dummy_core_db_core_110_1"]
+                    """
+                }
             }
-        }
 
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(process.out).match() }
-            )
-        }
+            then {
+
+                assert snapshot(
+                    process.out.nucleotide_fasta.collect {
+                        it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
+                        }
+                    ).match("nucleotide_fasta")
+
+                def testData = process.out.nucleotide_fasta.collect { core_db, pipeline_tag, fastaPath -> [[ core_db, pipeline_tag, path(fastaPath).fasta]] }
+                assert testData.contains([
+                    ['dummy_core_db_core_110_1', 
+                        'fasta_dna', [
+                            'NUC1':'GCACTAGTATGAAATTCTTGGTCAACGTTGCCCTTGTTTTTATGG', 
+                            'NUC2':'TCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAACCGG', 
+                            'NUC3':'ATGGTCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAA'
+                            ]
+                        ]
+                    ]
+                )
+
+                assertAll(
+                    { assert process.success },
+                    { assert snapshot(process.out).match() },
+                    { assert process.out.nucleotide_fasta.size() == 1 },
+                    { assert process.out.nucleotide_fasta != null },
+                )
+            }
     }
 }
