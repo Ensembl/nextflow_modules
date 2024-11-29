@@ -1,0 +1,43 @@
+{
+    "Fasta Dump Nucleotide [stub]": {
+        "content": [
+            {
+                "0": [
+                    [
+                        "dummy_core_db_core_110_1",
+                        "fasta_dna",
+                        "dna.fasta:md5,22af65c79ff5f3d36e7ff1c6d6dcdd6b"
+                    ]
+                ],
+                "nucleotide_fasta": [
+                    [
+                        "dummy_core_db_core_110_1",
+                        "fasta_dna",
+                        "dna.fasta:md5,22af65c79ff5f3d36e7ff1c6d6dcdd6b"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-11-29T14:35:44.892449722"
+    },
+    "nucleotide_fasta": {
+        "content": [
+            [
+                [
+                    "dummy_core_db_core_110_1",
+                    "fasta_dna",
+                    "dna.fasta"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-11-29T14:35:44.835653261"
+    }
+}
