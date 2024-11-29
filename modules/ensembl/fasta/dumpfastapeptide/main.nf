@@ -23,7 +23,7 @@ process FASTA_DUMPFASTAPEPTIDE {
         tuple val(meta), val(db)
 
     output:
-        tuple val(db), val("fasta_pep"), path("*.fasta"), optional:false, emit: nucleotide_fasta
+        tuple val(db), val("fasta_pep"), path("*.fasta"), optional:false, emit: peptide_fasta
 
     when:
     task.ext.when == null || task.ext.when
@@ -50,8 +50,10 @@ process FASTA_DUMPFASTAPEPTIDE {
         def version = "0.4" // No way to get the version from installed repos
         
         output_file = "pep.fasta"
+        dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_peptide/"
+        dump_file = "dumped_pep.fasta"
         """
-        echo -e -n ">PEP1\nLAHC" > ${output_file}
+        cp ${dump_dir}/${dump_file} ${output_file}
         echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
 }
