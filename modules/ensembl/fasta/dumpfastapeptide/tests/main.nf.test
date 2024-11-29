@@ -13,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// nf-core modules test fasta/dumpfastanuc
+// nf-core modules test fasta/dumpfastapep
 nextflow_process {
 
     name "Test Process FASTA_DUMPFASTAPEPTIDE"
@@ -26,7 +26,7 @@ nextflow_process {
     tag "fasta/dumpfastapeptide"
 
     test("Fasta Dump Peptide [stub]") {
-            when {
+        when {
 
                 options "-stub"
 
@@ -36,7 +36,6 @@ nextflow_process {
                     """
                 }
             }
-
 
             then {
 
@@ -65,5 +64,5 @@ nextflow_process {
                     { assert process.out.peptide_fasta != null },
                 )
             }
-        }
+    }
 }
