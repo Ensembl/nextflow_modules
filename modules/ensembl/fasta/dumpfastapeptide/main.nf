@@ -33,14 +33,16 @@ process FASTA_DUMPFASTAPEPTIDE {
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${db.server.database}"
         def version = "0.4" // No way to get the version from installed repos
-    
+        output = "${db.species}_fasta_pep.fasta"
+
         """
         dump_fasta_peptide.pl \
             --host ${db.server.host} \
             --port ${db.server.port} \
             --user ${db.server.user} \
             ${password_arg} \
-            --dbname ${db.server.database} > $output
+            --dbname ${db.server.database} \
+            > ${output}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
