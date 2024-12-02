@@ -1,0 +1,58 @@
+{
+    "Download genbank [stub]": {
+        "content": [
+            {
+                "0": [
+                    [
+                        [
+                            {
+                                "accession": "outfile_test"
+                            }
+                        ],
+                        "output.gb:md5,7aad1ec58b439ead323ea7b5ab7eaddb"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,c50b028d8c60ca152081c5a1bfe2a459"
+                ],
+                "gb_sequence": [
+                    [
+                        [
+                            {
+                                "accession": "outfile_test"
+                            }
+                        ],
+                        "output.gb:md5,7aad1ec58b439ead323ea7b5ab7eaddb"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,c50b028d8c60ca152081c5a1bfe2a459"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-12-02T15:31:47.229818573"
+    },
+    "genabank_seq_record": {
+        "content": [
+            [
+                [
+                    [
+                        {
+                            "accession": "outfile_test"
+                        }
+                    ],
+                    "output.gb"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-12-02T15:31:47.170791005"
+    }
+}
