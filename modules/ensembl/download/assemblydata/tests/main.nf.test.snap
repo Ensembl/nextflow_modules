@@ -4,7 +4,7 @@
             [
                 [
                     {
-                        "id": "test"
+                        "accession": "test"
                     },
                     "GCA_017607445.1_ASM1760744v1_genomic.gff.gz",
                     "GCA_017607445.1_ASM1760744v1_protein.faa.gz",
@@ -16,7 +16,7 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-29T11:16:58.734428964"
+        "timestamp": "2024-12-02T15:06:21.379002279"
     },
     "Download assemblydata [stub]": {
         "content": [
@@ -24,7 +24,7 @@
                 "0": [
                     [
                         {
-                            "id": "test"
+                            "accession": "test"
                         },
                         "GCA_017607445.1_ASM1760744v1_assembly_report.txt:md5,4b1bc7091004b82da5c28e484a3ebecc",
                         "GCA_017607445.1_ASM1760744v1_genomic.fna.gz:md5,af772cfb14e26609b7c215690baf2c3d",
@@ -34,17 +34,20 @@
                 "1": [
                     [
                         {
-                            "id": "test"
+                            "accession": "test"
                         },
                         "GCA_017607445.1_ASM1760744v1_genomic.gff.gz:md5,6c58a33f10fcb1d502e4ade1eae87c4d",
                         "GCA_017607445.1_ASM1760744v1_protein.faa.gz:md5,af08975898232e57b75cc5f2617dbb16",
                         "GCA_017607445.1_ASM1760744v1_genomic.gbff.gz:md5,f4dac2b4d4e10cb3d247640350112f82"
                     ]
                 ],
+                "2": [
+                    "versions.yml:md5,4841995a06bb89febba4b33a07176231"
+                ],
                 "min_set": [
                     [
                         {
-                            "id": "test"
+                            "accession": "test"
                         },
                         "GCA_017607445.1_ASM1760744v1_assembly_report.txt:md5,4b1bc7091004b82da5c28e484a3ebecc",
                         "GCA_017607445.1_ASM1760744v1_genomic.fna.gz:md5,af772cfb14e26609b7c215690baf2c3d",
@@ -54,12 +57,15 @@
                 "opt_set": [
                     [
                         {
-                            "id": "test"
+                            "accession": "test"
                         },
                         "GCA_017607445.1_ASM1760744v1_genomic.gff.gz:md5,6c58a33f10fcb1d502e4ade1eae87c4d",
                         "GCA_017607445.1_ASM1760744v1_protein.faa.gz:md5,af08975898232e57b75cc5f2617dbb16",
                         "GCA_017607445.1_ASM1760744v1_genomic.gbff.gz:md5,f4dac2b4d4e10cb3d247640350112f82"
                     ]
+                ],
+                "versions": [
+                    "versions.yml:md5,4841995a06bb89febba4b33a07176231"
                 ]
             }
         ],
@@ -67,14 +73,14 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-29T11:19:10.490808358"
+        "timestamp": "2024-12-02T15:06:21.523441303"
     },
     "Minimal_file_set": {
         "content": [
             [
                 [
                     {
-                        "id": "test"
+                        "accession": "test"
                     },
                     "GCA_017607445.1_ASM1760744v1_assembly_report.txt",
                     "GCA_017607445.1_ASM1760744v1_genomic.fna.gz",
@@ -86,6 +92,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-29T11:16:58.686440943"
+        "timestamp": "2024-12-02T15:06:21.330850291"
     }
 }

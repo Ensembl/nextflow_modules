@@ -34,13 +34,14 @@ process DOWNLOAD_ASSEMBLYDATA {
             path("*_protein.faa.gz"),
             path("*_genomic.gbff.gz"),
             emit: opt_set, optional: true
+        path "versions.yml" , emit: versions
 
     when:
         task.ext.when == null || task.ext.when
 
     shell:
         def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
+        def prefix = task.ext.prefix ?: "${meta.accession}"
 
         '''
         assembly_download --accession !{meta.accession} --download_dir ./ --verbose
@@ -51,7 +52,7 @@ process DOWNLOAD_ASSEMBLYDATA {
 
     stub:
         def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
+        def prefix = task.ext.prefix ?: "${meta.accession}"
         """
         cp ${workflow.projectDir}/tests/modules/ensembl/download/assemblydata/* .
 

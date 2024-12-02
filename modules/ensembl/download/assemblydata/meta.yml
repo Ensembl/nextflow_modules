@@ -16,7 +16,7 @@ keywords:
 tools:
   - download:
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "Modules which function to download data from remote repositories/sources"
+      description: "Modules which function to download information or various data from externally hosted resources."
       licence: ['Apache License version 2.0']
 
 input:
