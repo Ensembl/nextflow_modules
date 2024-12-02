@@ -16,6 +16,7 @@
 process FASTA_DUMPFASTAPEPTIDE {
     tag "${db.species}"
     label 'process_low'
+
     conda "${moduleDir}/environment.yml"
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
@@ -51,7 +52,6 @@ process FASTA_DUMPFASTAPEPTIDE {
     stub:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${db.test_id}"
-        def version = "0.4" // No way to get the version from installed repos
         
         output_file = "pep.fasta"
         dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_peptide/"
