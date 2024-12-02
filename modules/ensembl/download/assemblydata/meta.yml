@@ -15,12 +15,9 @@ keywords:
 
 tools:
   - download:
-      # documentation: ""
       homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Modules which function to download data from remote repositories/sources"
       licence: ['Apache License version 2.0']
-      # tool_dev_url: ""
-      # doi: ""
 
 input:
   - accession:
@@ -33,7 +30,7 @@ input:
 output:
   - stdout:
       type: stdout
-      description: "Downloads various genome assembly data files (.txt, .fna, .faa, .gbff, .gff) into compressed Gzip archives)."
+      description: "Downloads various genome assembly data files (.txt, .fna, .faa, .gbff, .gff) into compressed Gzip archives."
 
 authors:
   - "@ensembl-dev"

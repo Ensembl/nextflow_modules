@@ -52,7 +52,6 @@ process DOWNLOAD_ASSEMBLYDATA {
     stub:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.id}"
-        // assembly_download --help
         """
         cp ${workflow.projectDir}/tests/modules/ensembl/download/assemblydata/* .
 
