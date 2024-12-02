@@ -27,6 +27,11 @@ output:
   - dbs_meta_json:
       type: file
       description: "JSON file containing database meta data"
+    
+  - versions:
+      type: file
+      description: File containing information on module software version
+      pattern: "versions.yml"
 
 authors:
   - "@ensembl-dev"

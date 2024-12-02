@@ -31,8 +31,6 @@ nextflow_process {
                 options "-stub"
 
                 process {
-                    // input[0] = Channel.of("mysql-host-test-prod")
-                    //     .map { it -> [ host: it ] }
                     """
                     input[0] = Channel.of(
                         '{species: "aaegL5"}',

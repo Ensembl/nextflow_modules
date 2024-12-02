@@ -26,13 +26,14 @@ process DATABASE_DBFACTORY {
 
     output:
         path "dbs.json", emit: dbs_meta_json
+        path "versions.yml" , emit: versions
 
     when:
         task.ext.when == null || task.ext.when
 
     script:
-        args = task.ext.args ?: ''
-        prefix = task.ext.prefix ?: "$server.host"
+        def args = task.ext.args ?: ''
+        def prefix = task.ext.prefix ?: "$server.host"
 
         // Module specific vars:
         output_file = "dbs.json"
@@ -65,8 +66,8 @@ process DATABASE_DBFACTORY {
         """
 
     stub:
-        args = task.ext.args ?: ''
-        prefix = task.ext.prefix ?: "$server.host"
+        def args = task.ext.args ?: ''
+        def prefix = task.ext.prefix ?: "$server.host"
         output_file = "dbs.json"
         """
         echo "{"species": "aaegL5", "division": "VectorBase", "release": 60}" > ${output_file}

@@ -5,8 +5,14 @@
                 "0": [
                     "dbs.json:md5,476af329a36f4e5754d116a9f68b45f1"
                 ],
+                "1": [
+                    "versions.yml:md5,f2b122b727a3ef8485bf38df76195c77"
+                ],
                 "dbs_meta_json": [
                     "dbs.json:md5,476af329a36f4e5754d116a9f68b45f1"
+                ],
+                "versions": [
+                    "versions.yml:md5,f2b122b727a3ef8485bf38df76195c77"
                 ]
             }
         ],
@@ -14,6 +20,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-28T16:11:15.726130363"
+        "timestamp": "2024-12-02T16:01:40.821728723"
     }
 }
