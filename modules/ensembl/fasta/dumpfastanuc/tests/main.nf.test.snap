@@ -4,17 +4,33 @@
             {
                 "0": [
                     [
-                        "dummy_core_db_core_110_1",
+                        [
+                            {
+                                "test_id": "dummy_core_db_core_110_1",
+                                "species": "Genus species"
+                            }
+                        ],
                         "fasta_dna",
                         "dna.fasta:md5,22af65c79ff5f3d36e7ff1c6d6dcdd6b"
                     ]
                 ],
+                "1": [
+                    "versions.yml:md5,2865155135ccf724bc9ce672dae6b63c"
+                ],
                 "nucleotide_fasta": [
                     [
-                        "dummy_core_db_core_110_1",
+                        [
+                            {
+                                "test_id": "dummy_core_db_core_110_1",
+                                "species": "Genus species"
+                            }
+                        ],
                         "fasta_dna",
                         "dna.fasta:md5,22af65c79ff5f3d36e7ff1c6d6dcdd6b"
                     ]
+                ],
+                "versions": [
+                    "versions.yml:md5,2865155135ccf724bc9ce672dae6b63c"
                 ]
             }
         ],
@@ -22,13 +38,18 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-29T14:35:44.892449722"
+        "timestamp": "2024-12-02T18:06:25.781135051"
     },
     "nucleotide_fasta": {
         "content": [
             [
                 [
-                    "dummy_core_db_core_110_1",
+                    [
+                        {
+                            "test_id": "dummy_core_db_core_110_1",
+                            "species": "Genus species"
+                        }
+                    ],
                     "fasta_dna",
                     "dna.fasta"
                 ]
@@ -38,6 +59,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-29T14:35:44.835653261"
+        "timestamp": "2024-12-02T18:06:25.700118834"
     }
 }

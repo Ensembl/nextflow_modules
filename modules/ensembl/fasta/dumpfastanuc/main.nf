@@ -14,42 +14,43 @@
 // limitations under the License.
 
 process FASTA_DUMPFASTANUC {
-    tag "$meta.id"
+    tag "${db.species}"
     label 'process_low'
-    conda "${moduleDir}/environment.yml" // this is not a genomio process
+    conda "${moduleDir}/environment.yml"
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
-        tuple val(meta), val(db)
+        val(db)
 
     output:
         tuple val(db), val("fasta_dna"), path("*.fasta"), optional:false, emit: nucleotide_fasta
+        path "versions.yml", emit: versions
 
     when:
-    task.ext.when == null || task.ext.when
+        task.ext.when == null || task.ext.when
 
     script:
         def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
+        def prefix = task.ext.prefix ?: "${db.server.database}"
         def version = "0.4" // No way to get the version from installed repos
-
         output = "${db.species}_fasta_dna.fasta"
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
 
         """
         dump_fasta_dna.pl \
-            --host $db.server.host \
-            --port $db.server.port \
-            --user $db.server.user \
-            $password_arg \
-            --dbname $db.server.database > $output
+            --host ${db.server.host} \
+            --port ${db.server.port} \
+            --user ${db.server.user} \
+            ${password_arg} \
+            --dbname ${db.server.database} \
+            > ${output}
         
         echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
         """
 
     stub:
         def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${meta.id}"
+        def prefix = task.ext.prefix ?: "${db.test_id}"
         def version = "0.4" // No way to get the version from installed repos
 
         output_file = "dna.fasta"

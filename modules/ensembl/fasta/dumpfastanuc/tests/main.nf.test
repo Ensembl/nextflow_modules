@@ -32,7 +32,7 @@ nextflow_process {
 
                 process {
                     """
-                    input[0] = [[ id:'test_dump_fasta_nuc'], "dummy_core_db_core_110_1"]
+                    input[0] = [[ test_id:'dummy_core_db_core_110_1', species:'Genus species']]
                     """
                 }
             }
@@ -47,11 +47,12 @@ nextflow_process {
 
                 def testData = process.out.nucleotide_fasta.collect { core_db, pipeline_tag, fastaPath -> [[ core_db, pipeline_tag, path(fastaPath).fasta]] }
                 assert testData.contains([
-                    ['dummy_core_db_core_110_1', 
-                        'fasta_dna', [
-                            'NUC1':'GCACTAGTATGAAATTCTTGGTCAACGTTGCCCTTGTTTTTATGG', 
-                            'NUC2':'TCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAACCGG', 
-                            'NUC3':'ATGGTCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAA'
+                    [
+                        [['test_id':'dummy_core_db_core_110_1','species':'Genus species']],
+                            'fasta_dna', [
+                                'NUC1':'GCACTAGTATGAAATTCTTGGTCAACGTTGCCCTTGTTTTTATGG',
+                                'NUC2':'TCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAACCGG',
+                                'NUC3':'ATGGTCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAA'
                             ]
                         ]
                     ]
