@@ -1,0 +1,37 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "download_genbank"
+description: Download a single sequence from NCBI GenBank.
+
+keywords:
+  - core_database
+  - python
+  - ensembl-genomio
+  - genomics
+
+tools:
+  - download:
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Modules which function to download information or various data from externally hosted resources."
+      licence: ['Apache License version 2.0']
+
+input:
+  - accession: Sequence accession. 
+    type: string
+    description: Sequence record associated with 
+      input NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
+
+output:
+  - output_file:
+    type: file
+    description: A sequence record outfile in genbank format.
+
+  - versions:
+      type: file
+      description: File containing information on module software version
+      pattern: "versions.yml"
+
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"
