@@ -10,21 +10,18 @@ keywords:
 
 tools:
   - database:
-      # documentation: ""
       homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Modules which function to read or write information from core databases."
       licence: ['Apache License version 2.0']
-      # tool_dev_url: ""
-      # doi: ""
 
 input:
   - server:
       type: string
-      description: "String containing mysql server host,port,user,password e.g. '--host mysql-ens-hostname-1 --port XXXX --user ensro'"
+      description: "String containing mysql server host, port, user and password e.g. '--host mysql-ens-hostname-1 --port XXXX --user ensro'"
   
   - filter_map:
       type: file
-      description: "List of one of more database names to filter all databases using prefix &| dbname_re"
+      description: "File with list of one of more database names to filter all databases using prefix and/or dbname_re"
 
 output:
   - dbs_meta_json:

@@ -31,8 +31,8 @@ process DATABASE_DBFACTORY {
         task.ext.when == null || task.ext.when
 
     script:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "$server.host"
+        args = task.ext.args ?: ''
+        prefix = task.ext.prefix ?: "$server.host"
 
         // Module specific vars:
         output_file = "dbs.json"
@@ -65,8 +65,8 @@ process DATABASE_DBFACTORY {
         """
 
     stub:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "$server.host"
+        args = task.ext.args ?: ''
+        prefix = task.ext.prefix ?: "$server.host"
         output_file = "dbs.json"
         """
         echo "{"species": "aaegL5", "division": "VectorBase", "release": 60}" > ${output_file}
