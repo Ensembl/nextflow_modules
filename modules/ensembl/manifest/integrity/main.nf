@@ -1,6 +1,7 @@
 process MANIFEST_INTEGRITY {
     tag "$meta.id"
     label 'process_low'
+
     container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
 
     input:
