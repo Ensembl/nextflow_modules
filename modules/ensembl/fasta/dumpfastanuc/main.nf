@@ -23,7 +23,7 @@ process FASTA_DUMPFASTANUC {
         val(db)
 
     output:
-        tuple val(db), val("fasta_dna"), path("*.fasta"), optional:false, emit: nucleotide_fasta
+        tuple val(db), val("fasta_dna"), path("*.fasta"), emit: nucleotide_fasta
         path "versions.yml", emit: versions
 
     when:
@@ -32,7 +32,7 @@ process FASTA_DUMPFASTANUC {
     script:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${db.server.database}"
-        def version = "0.4" // No way to get the version from installed repos
+        def version = "0.4"
         output = "${db.species}_fasta_dna.fasta"
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
 
@@ -51,7 +51,7 @@ process FASTA_DUMPFASTANUC {
     stub:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${db.test_id}"
-        def version = "0.4" // No way to get the version from installed repos
+        def version = "0.4"
 
         output_file = "dna.fasta"
         dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_nucleotide/"
