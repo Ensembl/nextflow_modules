@@ -33,6 +33,7 @@ process FASTA_DUMPFASTAPEPTIDE {
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${db.server.database}"
         def version = "0.4" // No way to get the version from installed repos
+        password_arg = db.server.password ? "--pass ${db.server.password}" : ""
         output = "${db.species}_fasta_pep.fasta"
 
         """
