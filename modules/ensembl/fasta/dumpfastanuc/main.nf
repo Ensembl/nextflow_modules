@@ -16,7 +16,7 @@
 process FASTA_DUMPFASTANUC {
     tag "$meta.id"
     label 'process_low'
-    // conda "${moduleDir}/environment.yml" // this is not a genomio process
+    conda "${moduleDir}/environment.yml" // this is not a genomio process
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
