@@ -1,0 +1,38 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "download_assemblydata"
+description: Generate a list of one or more databases plus some associated meta table information.
+
+keywords:
+  - python
+  - ensembl-genomio
+  - INSDC
+  - genome
+  - gzip
+  - download
+  - docker
+  - container
+
+tools:
+  - download:
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Modules which function to download data from remote repositories/sources"
+      licence: ['Apache License version 2.0']
+
+input:
+  - accession:
+      type: string
+      description: "A single INSDC GCA or NCBI 'amended' GCF genome assembly accession."
+  - download_dir:
+      type: path
+      description: "Location in which to download genome data files. Defaults to CWD."
+
+output:
+  - stdout:
+      type: stdout
+      description: "Downloads various genome assembly data files (.txt, .fna, .faa, .gbff, .gff) into compressed Gzip archives."
+
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"
