@@ -32,7 +32,7 @@ nextflow_process {
 
                 process {
                     """
-                    input[0] = [[ id:'test_dump_fasta_pep'], "dummy_core_db_core_110_1"]
+                    input[0] = [[ test_id:'dummy_core_db_core_110_1']]
                     """
                 }
             }
@@ -47,11 +47,12 @@ nextflow_process {
 
                 def testData = process.out.peptide_fasta.collect { core_db, pipeline_tag, fastaPath -> [[ core_db, pipeline_tag, path(fastaPath).fasta]] }
                 assert testData.contains([
-                    ['dummy_core_db_core_110_1', 
-                        'fasta_pep', [
-                            'PEP2':'MKFLVNVALVFMVVYISYIYAAPEPEPAPEPEAEADAEADPEAGIGAVLK', 
-                            'PEP1':'APLCOACOIJSOOFAAPOAPKAEWCWCMWCMPWOPSKQPSKQPKSPQKSQ', 
-                            'PEP3':'AMCAMPACPAPCMPAMPADAPCMPAMCPMAPCPMAPPAMCPMAPMCPAMP'
+                    [
+                        [['test_id':'dummy_core_db_core_110_1']], 
+                            'fasta_pep', [
+                                'PEP2':'MKFLVNVALVFMVVYISYIYAAPEPEPAPEPEAEADAEADPEAGIGAVLK',
+                                'PEP1':'APLCOACOIJSOOFAAPOAPKAEWCWCMWCMPWOPSKQPSKQPKSPQKSQ',
+                                'PEP3':'AMCAMPACPAPCMPAMPADAPCMPAMCPMAPCPMAPPAMCPMAPMCPAMP'
                             ]
                         ]
                     ]

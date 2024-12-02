@@ -3,7 +3,11 @@
         "content": [
             [
                 [
-                    "dummy_core_db_core_110_1",
+                    [
+                        {
+                            "test_id": "dummy_core_db_core_110_1"
+                        }
+                    ],
                     "fasta_pep",
                     "pep.fasta"
                 ]
@@ -13,21 +17,29 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-29T13:26:38.565266695"
+        "timestamp": "2024-12-02T16:44:49.579478655"
     },
     "Fasta Dump Peptide [stub]": {
         "content": [
             {
                 "0": [
                     [
-                        "dummy_core_db_core_110_1",
+                        [
+                            {
+                                "test_id": "dummy_core_db_core_110_1"
+                            }
+                        ],
                         "fasta_pep",
                         "pep.fasta:md5,51b32025c7cb77ad3437b6ac129dd0df"
                     ]
                 ],
                 "peptide_fasta": [
                     [
-                        "dummy_core_db_core_110_1",
+                        [
+                            {
+                                "test_id": "dummy_core_db_core_110_1"
+                            }
+                        ],
                         "fasta_pep",
                         "pep.fasta:md5,51b32025c7cb77ad3437b6ac129dd0df"
                     ]
@@ -38,6 +50,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-11-29T13:26:38.643057572"
+        "timestamp": "2024-12-02T16:44:49.711431571"
     }
 }
