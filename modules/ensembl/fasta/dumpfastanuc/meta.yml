@@ -14,12 +14,9 @@ keywords:
 
 tools:
   - fasta:
-      # documentation: ""
       homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Module which function to dump fasta sequences directly from a core database."
       licence: ['Apache License version 2.0']
-      # tool_dev_url: ""
-      # doi: ""
 
 input:
   - host:
