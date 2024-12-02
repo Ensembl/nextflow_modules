@@ -24,6 +24,7 @@ process FASTA_DUMPFASTAPEPTIDE {
 
     output:
         tuple val(db), val("fasta_pep"), path("*.fasta"), optional:false, emit: peptide_fasta
+        path "versions.yml", emit: versions
 
     when:
     task.ext.when == null || task.ext.when
