@@ -1,4 +1,3 @@
----
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fasta_dumpfastapeptide"
 description: A module for dumping peptide FASTA sequences from core databases
