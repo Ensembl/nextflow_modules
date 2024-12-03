@@ -27,7 +27,6 @@ nextflow_process {
 
     test("Fasta Dump Peptide [stub]") {
         when {
-
                 options "-stub"
 
                 process {
@@ -38,7 +37,6 @@ nextflow_process {
             }
 
             then {
-
                 assert snapshot(
                     process.out.peptide_fasta.collect {
                         it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
