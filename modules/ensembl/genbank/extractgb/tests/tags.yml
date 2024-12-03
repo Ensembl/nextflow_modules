@@ -1,0 +1,2 @@
+genbank/extractgb:
+  - "modules/ensembl/genbank/extractgb/**"

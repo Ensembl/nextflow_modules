@@ -1,0 +1,99 @@
+{
+    "Genbank extract gb [stub]": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "genome.json:md5,d453eccd0182cf9fd072daf4170ca743"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "seq_region.json:md5,238b822b713730b11f790ef8fa6372ed"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "dna.fasta:md5,7bf591c1a378a9bc6779aa8efd4b94d0"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "valida.gff:md5,9fecaee47b109cd504f7a5a217132974"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "pep.fasta:md5,71f0789bc9da7799197739226d951d23"
+                    ]
+                ],
+                "5": [
+                    "versions.yml:md5,ba3e899cadadac16644a09c1ef652029"
+                ],
+                "dna_fasta": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "dna.fasta:md5,7bf591c1a378a9bc6779aa8efd4b94d0"
+                    ]
+                ],
+                "gene_gff": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "valida.gff:md5,9fecaee47b109cd504f7a5a217132974"
+                    ]
+                ],
+                "genome": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "genome.json:md5,d453eccd0182cf9fd072daf4170ca743"
+                    ]
+                ],
+                "pep_fasta": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "pep.fasta:md5,71f0789bc9da7799197739226d951d23"
+                    ]
+                ],
+                "seq_regions": [
+                    [
+                        {
+                            "accession": "test_genbank"
+                        },
+                        "seq_region.json:md5,238b822b713730b11f790ef8fa6372ed"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,ba3e899cadadac16644a09c1ef652029"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-12-03T14:05:39.914000467"
+    }
+}
