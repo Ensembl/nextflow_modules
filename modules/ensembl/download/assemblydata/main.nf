@@ -21,7 +21,7 @@ process DOWNLOAD_ASSEMBLYDATA {
     container 'ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a'
     
     input:
-        tuple val(meta)
+        val(meta)
 
     output:
         tuple val(meta),

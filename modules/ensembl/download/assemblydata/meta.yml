@@ -20,17 +20,27 @@ tools:
       licence: ['Apache License version 2.0']
 
 input:
-  - accession:
-      type: string
-      description: "A single INSDC GCA or NCBI 'amended' GCF genome assembly accession."
-  - download_dir:
-      type: path
-      description: "Location in which to download genome data files. Defaults to CWD."
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing A single INSDC GCA or NCBI 'amended' GCF genome assembly accession meta information.
+        e.g. `[ accession:'GCA_000000000.1' ]`
 
 output:
-  - stdout:
-      type: stdout
-      description: "Downloads various genome assembly data files (.txt, .fna, .faa, .gbff, .gff) into compressed Gzip archives."
+  - min_set:
+      type: map
+      description: "Groovy Map including various genome assembly data files (.txt, .fna, .gbff) into compressed Gzip archives."
+        e.g. [ accession:'GCA_000000000.1', file("*_assembly_report.txt"), file("*_genomic.fna.gz"), file("*_genomic.gbff.gz") ]
+      pattern: (*.txt, *.fna.gz, *.gbff.gz)
+  - opt_set:
+      type: map
+      description: "Groovy Map including various genome assembly data files (.txt, .faa, .gff) into compressed Gzip archives."
+        e.g. [ accession:'GCA_000000000.1', file("*_assembly_report.txt"), file("*_genomic.gff.gz"), file("*_genomic.gbff.gz") ]
+      pattern: (*.txt, *.fna.gz, *.gbff.gz)
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@ensembl-dev"
