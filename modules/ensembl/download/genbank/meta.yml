@@ -16,15 +16,17 @@ tools:
       licence: ['Apache License version 2.0']
 
 input:
-  - accession: Sequence accession. 
-    type: string
-    description: Sequence record associated with 
-      input NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
+  - accession:
+      type: map
+      description: Meta map including sequence accession. Sequence record associated with 
+        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
+        e.g. [[ accession:'NC_12341']]
 
 output:
-  - output_file:
-    type: file
-    description: A sequence record outfile in genbank format.
+  - gb_sequence:
+      type: file
+      description: A sequence record outfile in genbank format.
+      pattern: "output.gb"
 
   - versions:
       type: file

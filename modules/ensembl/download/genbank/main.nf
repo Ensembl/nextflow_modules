@@ -14,7 +14,7 @@
 // limitations under the License.
 
 process DOWNLOAD_GENBANK {
-    tag '$bam'
+    tag "${meta.production_name}"
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
@@ -33,6 +33,7 @@ process DOWNLOAD_GENBANK {
     shell:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.accession}"
+        output_file = "output.gb"
 
         '''
         genbank_download --accession !{meta.accession} --output_file !{output_file} --debug
