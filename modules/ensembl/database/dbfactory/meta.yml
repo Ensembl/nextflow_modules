@@ -7,6 +7,8 @@ keywords:
   - core_database
   - python
   - ensembl-genomio
+  - docker
+  - container
 
 tools:
   - database:
@@ -16,17 +18,16 @@ tools:
 
 input:
   - server:
-      type: string
-      description: "String containing mysql server host, port, user and password e.g. '--host mysql-ens-hostname-1 --port XXXX --user ensro'"
-  
-  - filter_map:
-      type: file
-      description: "File with list of one of more database names to filter all databases using prefix and/or dbname_re"
+      type: map
+      description: "Groovy Map containing mysql server host, port, user and password 
+        meta and file of JSON database filter information."
+        e.g. [[ host:"mysql-host-test-prod" ], [ filter_map:"dbrename_re" ]]
 
 output:
   - dbs_meta_json:
       type: file
-      description: "JSON file containing database meta data"
+      description: "JSON file containing database meta data."
+      pattern: "dbs.json"
     
   - versions:
       type: file
