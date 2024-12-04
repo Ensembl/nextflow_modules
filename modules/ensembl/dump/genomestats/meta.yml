@@ -17,27 +17,22 @@ tools:
       licence: ['Apache License version 2.0']
 
 input:
-  - host:
-      type: string
-      description: "String containing mysql server host e.g. '--host mysql-ens-hostname-1'"
-  - port:
-      type: string
-      description: "String containing mysql server port: '--port 1234'"
-  - user:
-      type: string
-      description: "String containing mysql server user,password e.g. '--user ensro'"
-  - pass:
-      type: string
-      description: "String containing mysql server user,password e.g. '--pass XxYyZz'"
-  - dbname:
-      type: string
-      description: "Target database name to dump fasta sequences."
+  - db:
+      type: map
+      description: "A meta map including 'core database name'."
+        e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
+      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
 
 output:
-  - stdout:
-      type: stdout
+  - core_stats:
+      type: map
       description: "JSON file containing core database statistics (assembly and annotation)."
-
+        e.g [ db:"database name", file("core_stats.json") ]
+      pattern: "core_stats.json"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 authors:
   - "@ensembl-dev"
 maintainers:

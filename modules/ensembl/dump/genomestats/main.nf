@@ -23,7 +23,7 @@ process DUMP_GENOMESTATS {
         val(db)
 
     output:
-        tuple val(db), path("core_stats.json"), optional:false, emit: core_stats
+        tuple val(db), path("core_stats.json"), emit: core_stats
         path "versions.yml", emit: versions
 
     when:
