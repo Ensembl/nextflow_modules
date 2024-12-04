@@ -27,9 +27,9 @@ input:
 output:
   - peptide_fasta:
       type: map
-      description: "Fasta file containing nucleotide sequence(s)."
-        e.g [ db:'database name', file("core_stats.json") ]
-      pattern: "core_stats.json"
+      description: "Fasta file containing peptide sequence(s)."
+        e.g [ db:'database name', file("*_fasta_pep.fasta") ]
+      pattern: "*_fasta_pep.fasta"
 
 authors:
   - "@ensembl-dev"
