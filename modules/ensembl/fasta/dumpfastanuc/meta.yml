@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fasta_dumpfastanuc"
-description: A module for dumping nucleotide FASTA sequences from a core database.
+description: A module for dumping core database gene module nucleotide fasta seqs
 
 keywords:
   - core_database
@@ -19,25 +19,18 @@ tools:
       licence: ['Apache License version 2.0']
 
 input:
-  - host:
-      type: string
-      description: "String containing mysql server host e.g. '--host mysql-ens-hostname-1'"
-  - port:
-      type: string
-      description: "String containing mysql server port: '--port 1234'"
-  - user:
-      type: string
-      description: "String containing mysql server user e.g. '--user ensro'"
-  - pass:
-      type: string
-      description: "String containing mysql server password e.g. '--pass XxYyZz'"
-  - dbname:
-      type: string
-      description: "Target database name to dump fasta sequences."
+  - db:
+      type: map
+      description: "A meta map including 'core database name'."
+        e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
+      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+
 output:
-  - stdout:
-      type: stdout
+  - nucleotide_fasta:
+      type: map
       description: "Fasta file containing nucleotide sequence(s)."
+        e.g [ db:'database name', file("*_fasta_dna.fasta") ]
+      pattern: "*_fasta_dna.fasta"
 
 authors:
   - "@ensembl-dev"
