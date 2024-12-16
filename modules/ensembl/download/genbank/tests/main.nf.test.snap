@@ -6,7 +6,7 @@
                     [
                         [
                             {
-                                "accession": "outfile_test"
+                                "accession": "test"
                             }
                         ],
                         "output.gb:md5,7aad1ec58b439ead323ea7b5ab7eaddb"
@@ -19,7 +19,7 @@
                     [
                         [
                             {
-                                "accession": "outfile_test"
+                                "accession": "test"
                             }
                         ],
                         "output.gb:md5,7aad1ec58b439ead323ea7b5ab7eaddb"
@@ -42,7 +42,7 @@
                 [
                     [
                         {
-                            "accession": "outfile_test"
+                            "accession": "test"
                         }
                     ],
                     "output.gb"

@@ -30,20 +30,18 @@ process DOWNLOAD_GENBANK {
     when:
         task.ext.when == null || task.ext.when
 
-    shell:
-        def args = task.ext.args ?: ''
+    script:
         def prefix = task.ext.prefix ?: "${meta.accession}"
         output_file = "output.gb"
 
-        '''
-        genbank_download --accession !{meta.accession} --output_file !{output_file} --debug
+        """
+        genbank_download --accession ${meta.accession} --output_file ${output_file} --debug
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
-        '''
+        """
 
     stub:
-        def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.accession}"
         output_file = "output.gb"
         """
