@@ -14,7 +14,7 @@
 // limitations under the License.
 
 process DATABASE_DBFACTORY {
-    tag "$server.host"
+    tag "${server.host}"
     label 'process_low'
     time '5min'
 
@@ -32,9 +32,6 @@ process DATABASE_DBFACTORY {
         task.ext.when == null || task.ext.when
 
     script:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "$server.host"
-
         // Module specific vars:
         output_file = "dbs.json"
         dbname_re = filter_map.dbname_re ? "--db_regex ${filter_map}.dbname_re" : ''
@@ -50,24 +47,22 @@ process DATABASE_DBFACTORY {
             db_list = "--db_list ${db_list_file}"
         }
         """
-        echo "$db_list_str" > $db_list_file
+        echo "${db_list_str}" > ${db_list_file}
 
         database_factory --host '${server.host}' \
             --port '${server.port}' \
             --user '${server.user}' \
-            $password_arg \
+            ${password_arg} \
             --prefix '${filter_map.prefix}' \
-            $dbname_re \
-            $db_list \
-            > $output_file
+            ${dbname_re} \
+            ${db_list} \
+            > ${output_file}
         
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
         """
 
     stub:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "$server.host"
         output_file = "dbs.json"
         """
         echo "{"species": "aaegL5", "division": "VectorBase", "release": 60}" > ${output_file}
