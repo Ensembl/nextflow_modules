@@ -39,19 +39,16 @@ process DOWNLOAD_ASSEMBLYDATA {
     when:
         task.ext.when == null || task.ext.when
 
-    shell:
-        def args = task.ext.args ?: ''
+    script:
         def prefix = task.ext.prefix ?: "${meta.accession}"
-
-        '''
-        assembly_download --accession !{meta.accession} --download_dir ./ --verbose
+        """
+        assembly_download --accession ${meta.accession} --download_dir ./ --verbose
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
-        '''
+        """
 
     stub:
-        def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${meta.accession}"
         """
         cp ${workflow.projectDir}/tests/modules/ensembl/download/assemblydata/* .
