@@ -35,23 +35,21 @@ process GENBANK_EXTRACTGB {
         task.ext.when == null || task.ext.when
 
 
-    shell:
-        def args = task.ext.args ?: ''
+    script:
         def prefix = task.ext.prefix ?: "${gb_file}"
 
-        '''
+        """
         genbank_extract_data \
-            --prefix !{meta.prefix} \
-            --prod_name !{meta.production_name} \
-            --gb_file !{gb_file} \
+            --prefix ${meta.prefix} \
+            --prod_name ${meta.production_name} \
+            --gb_file ${gb_file} \
             --debug
 
         schemas_json_validate --json_file "genome.json" --json_schema "genome"
         schemas_json_validate --json_file "seq_region.json" --json_schema "seq_region"
-        '''
+        """
 
     stub:
-        def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${gb_file}"
         out_genome_json = "genome.json"
         out_seq_json = "seq_region.json"

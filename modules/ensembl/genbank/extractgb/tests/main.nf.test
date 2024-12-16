@@ -38,31 +38,6 @@ test("Genbank extract gb [stub]") {
         }
 
         then {
-            // assert snapshot(
-            //         process.out.genome.collect {
-            //             it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
-            //             }
-            //         ).match("genomejson_file")
-            // assert snapshot(
-            //         process.out.seq_regions.collect {
-            //             it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
-            //             }
-            //         ).match("seq_region_file")
-            // assert snapshot(
-            //         process.out.dna_fasta.collect {
-            //             it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
-            //             }
-            //         ).match("dna_fasta")
-            // assert snapshot(
-            //         process.out.gene_gff.collect {
-            //             it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
-            //             }
-            //         ).match("gff_file")
-            // assert snapshot(
-            //         process.out.pep_fasta.collect {
-            //             it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
-            //             }
-            //         ).match("peptide_fasta")
             
             assertAll(
                 { assert process.success },
