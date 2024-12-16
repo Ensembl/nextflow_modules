@@ -30,7 +30,6 @@ process FASTA_DUMPFASTANUC {
         task.ext.when == null || task.ext.when
 
     script:
-        def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${db.server.database}"
         def version = "0.4"
         output = "${db.species}_fasta_dna.fasta"
