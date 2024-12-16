@@ -13,7 +13,7 @@ keywords:
   - container
 
 tools:
-  - fasta:
+  - "fasta":
       homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Module which function to dump fasta sequences directly from a core database."
       licence: ['Apache License version 2.0']
@@ -31,6 +31,10 @@ output:
       description: "Fasta file containing nucleotide sequence(s)."
         e.g [ db:'database name', file("*_fasta_dna.fasta") ]
       pattern: "*_fasta_dna.fasta"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@ensembl-dev"
