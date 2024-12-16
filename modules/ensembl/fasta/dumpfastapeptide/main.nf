@@ -51,9 +51,7 @@ process FASTA_DUMPFASTAPEPTIDE {
         """
 
     stub:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${db.test_id}"
-        
+        def version = "0.4"
         output_file = "pep.fasta"
         dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_peptide/"
         dump_file = "dumped_pep.fasta"
