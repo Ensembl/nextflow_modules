@@ -1,6 +1,6 @@
 # nextflow_modules
 
-**`nextflow_modules`** is a centralized repository for reusable Nextflow modules, designed to be shared across multiple pipelines. This approach simplifies maintenance and updates by consolidating modules in one location. The repository adheres to the **nf-core structure** and follows Nextflow's coding conventions, ensuring consistency and compatibility with established standards.
+**`nextflow_modules`** is a centralized repository for reusable Nextflow modules, designed to be shared across multiple pipelines. This approach simplifies maintenance and updates by consolidating modules in one location. The repository adheres to the [nf-core structure](https://nf-co.re/docs/contributing/pipelines/pipeline_file_structure) and follows Nextflow's coding conventions, ensuring consistency and compatibility with established standards.
 
 ---
 
@@ -18,7 +18,7 @@ nf-core subworkflows --git-remote git@github.com:Ensembl/nextflow_modules.git in
 ```
 
 ### Initial Setup
-The repository contains a pre-defined structure with some example modules to serve as templates.
+The repository contains a *pre-defined structure (see above)* with some example modules to serve as templates.
 
 ### Steps for Adding New Modules
 1. Check Existing Modules
@@ -37,7 +37,7 @@ The repository contains a pre-defined structure with some example modules to ser
 
 3. Add Module Testing
    
-	Install **`nf-test`** and create nf-test for testing using stub data. If required utilize data from [test-datasets](https://github.com/nf-core/test-datasets/tree/modules/data) and update the path in the test_config.
+	Install **`nf-test`** and create nf-test for testing using stub data. If required utilize data from [test-datasets](https://github.com/nf-core/test-datasets/tree/modules/data) and update the path in the [test_config](https://github.com/Ensembl/nextflow_modules/blob/main/tests/config/test_data.config).
 
 	Note: We have only added minimum tests. You should add more tests as per your module's functionality.
 
@@ -60,4 +60,4 @@ Modules in the repository should:
  	   ...
 	}
 	```
-	Refer to the Meta Map Documentation for additional details.
+	Refer to the [Meta Map Documentation](https://nf-co.re/docs/contributing/components/meta_map) for additional details.
