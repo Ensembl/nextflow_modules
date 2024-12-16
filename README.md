@@ -8,8 +8,8 @@
 
 A collection of shared Nextflow modules for EBI teams:  
 - **Facilitates collaboration** by providing reusable components across teams.  
-- **Avoid Duplication** of effort by sharing modules.
 - **Simplifies module usage** with tools like `nf-core modules` and `nf-core subworkflows`.  
+- **Avoid Duplication** of effort by sharing modules.
 
 ### Example Usage
 ```bash
@@ -25,21 +25,23 @@ The repository contains a pre-defined structure with some example modules to ser
    
 	Verify if the required module is already available in nf-core modules and can be directly used.
 
-1. Create a New Module```bash
-Use nf-core modules create to generate a module template.
+1. Create a New Module 
+   
+	Use nf-core modules create to generate a module template.
 
 	```bash
 	nf-core modules create tool/subtool --author '@ensembl-dev' --label process_low --meta
 	```
 
-	Note: Module names must only contain lowercase letters. Names with non-lowercase letters (e.g., database/db-factory) will automatically be converted (e.g., database/dbfactory).
+	Note: Module names must only contain lowercase letters and not duplicated. Names with non-lowercase letters (e.g., database/db-factory) will automatically be converted (e.g., database/dbfactory).
 
 1. Add Module Testing
    
-	Install **`nf-test`** and create nf-test for testing using stub data.
-Utilize data from test-datasets and update the path in the test_config.
+	Install **`nf-test`** and create nf-test for testing using stub data. If required utilize data from [test-datasets](https://github.com/nf-core/test-datasets/tree/modules/data) and update the path in the test_config.
 
-1. Update Metadata
+	Note: We have only added minimum tests. You should add more tests as per your module's functionality.
+
+2. Update Metadata
    
 	Add relevant information in the meta.yml file.
 
