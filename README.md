@@ -49,6 +49,7 @@ The repository contains a *pre-defined structure (see above)* with some example 
 Modules in the repository should:
 
 - Be sensible and scoped to a specific purpose.
+- Be scoped to run only a single tool or functionality.
 - Avoid sharing private information.
 - Be self-contained, with distinct input and output.
 - Have clear and descriptive names that reflect their functionality.
