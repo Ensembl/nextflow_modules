@@ -1,4 +1,4 @@
-# nextflow_modules
+# EBI Nextflow modules
 
 **`nextflow_modules`** is a centralized repository for reusable Nextflow modules, designed to be shared across multiple pipelines. This approach simplifies maintenance and updates by consolidating modules in one location. The repository adheres to the [nf-core structure](https://nf-co.re/docs/contributing/pipelines/pipeline_file_structure) and follows Nextflow's coding conventions, ensuring consistency and compatibility with established standards.
 
