@@ -19,14 +19,14 @@ process DATABASE_DBFACTORY {
     time '5min'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
+    container "ensemblorg/ensembl-genomio:v1.6.0"
     
     input:
         tuple val(server), val(filter_map)
 
     output:
         path "dbs.json", emit: dbs_meta_json
-        path "versions.yml" , emit: versions
+        path "versions.yml", emit: versions
 
     when:
         task.ext.when == null || task.ext.when
@@ -59,7 +59,7 @@ process DATABASE_DBFACTORY {
             > ${output_file}
         
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        database_factory --version >> versions.yml
         """
 
     stub:
@@ -68,6 +68,6 @@ process DATABASE_DBFACTORY {
         echo "{"species": "aaegL5", "division": "VectorBase", "release": 60}" > ${output_file}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        database_factory --version >> versions.yml
         """
 }
