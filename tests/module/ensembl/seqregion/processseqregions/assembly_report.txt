@@ -1,0 +1,29 @@
+# Assembly name:  ASM77530v1
+# Organism name:  Belgica antarctica (flies)
+# Isolate:  Palmer_Station_2011
+# Taxid:          315563
+# Submitter:      Stanford University
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JPYR01
+# Assembly method: Velvet v. 1.1.05; ERANGE v. June 7, 2011; PBJelly v. Jelly 14.1.14
+# Expected final version: yes
+# Genome coverage: 150.0x
+# Sequencing technology: Illumina; PacBio
+# RefSeq category: Reference Genome
+# GenBank assembly accession: GCA_000775305.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000775315.1		Primary Assembly
+## GCA_000775325.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Ban.contig0001	unplaced-scaffold	na	na	JPYR01000001.1	<>	na	Primary Assembly	622763	na
