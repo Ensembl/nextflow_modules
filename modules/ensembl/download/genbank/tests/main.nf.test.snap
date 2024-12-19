@@ -13,7 +13,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,c50b028d8c60ca152081c5a1bfe2a459"
+                    "versions.yml:md5,47ac8e6a4decc2bdfb4550b2b44e96c7"
                 ],
                 "gb_sequence": [
                     [
@@ -26,7 +26,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,c50b028d8c60ca152081c5a1bfe2a459"
+                    "versions.yml:md5,47ac8e6a4decc2bdfb4550b2b44e96c7"
                 ]
             }
         ],
@@ -34,7 +34,7 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-12-02T15:31:47.229818573"
+        "timestamp": "2024-12-19T16:23:43.300514591"
     },
     "genabank_seq_record": {
         "content": [

@@ -18,14 +18,14 @@ process DOWNLOAD_GENBANK {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
+    container "ensemblorg/ensembl-genomio:v1.6.0"
 
     input:
         val(meta)
 
     output:
         tuple val(meta), path("output.gb"), emit: gb_sequence
-        path "versions.yml" , emit: versions // need to add versions output to other ported modules!
+        path "versions.yml" , emit: versions
 
     when:
         task.ext.when == null || task.ext.when
@@ -38,7 +38,7 @@ process DOWNLOAD_GENBANK {
         genbank_download --accession ${meta.accession} --output_file ${output_file} --debug
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        genbank_download --version >> versions.yml
         """
 
     stub:
@@ -48,6 +48,6 @@ process DOWNLOAD_GENBANK {
         cp ${workflow.projectDir}/tests/modules/ensembl/download/genbank/${output_file} ./${output_file}
         
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        genbank_download --version >> versions.yml
         """
 }
