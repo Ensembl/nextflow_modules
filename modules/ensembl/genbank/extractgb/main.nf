@@ -18,7 +18,7 @@ process GENBANK_EXTRACTGB {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
+    container "ensemblorg/ensembl-genomio:v1.6.0"
 
     input:
         tuple val(meta), path(gb_file)
@@ -47,6 +47,9 @@ process GENBANK_EXTRACTGB {
 
         schemas_json_validate --json_file "genome.json" --json_schema "genome"
         schemas_json_validate --json_file "seq_region.json" --json_schema "seq_region"
+
+        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
+        genbank_extract_data --version >> versions.yml
         """
 
     stub:
@@ -65,6 +68,6 @@ process GENBANK_EXTRACTGB {
         echo ">Peptide_1a\nMPLEGM" > ${out_pep_fa}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        genbank_extract_data --version >> versions.yml
         """
 }

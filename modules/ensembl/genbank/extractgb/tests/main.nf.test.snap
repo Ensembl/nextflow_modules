@@ -43,7 +43,7 @@
                     ]
                 ],
                 "5": [
-                    "versions.yml:md5,ba3e899cadadac16644a09c1ef652029"
+                    "versions.yml:md5,4b0af6aac956a5b0c26acd921a939796"
                 ],
                 "dna_fasta": [
                     [
@@ -86,7 +86,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,ba3e899cadadac16644a09c1ef652029"
+                    "versions.yml:md5,4b0af6aac956a5b0c26acd921a939796"
                 ]
             }
         ],
@@ -94,6 +94,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-12-03T14:05:39.914000467"
+        "timestamp": "2024-12-19T16:14:50.053484519"
     }
 }
