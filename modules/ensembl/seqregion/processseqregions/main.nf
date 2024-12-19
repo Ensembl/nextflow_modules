@@ -18,7 +18,7 @@ process SEQREGION_PROCESSSEQREGIONS {
     label 'process_low'
     
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
+    container "ensemblorg/ensembl-genomio:v1.6.0"
 
     input:
         tuple val (meta),
@@ -45,7 +45,7 @@ process SEQREGION_PROCESSSEQREGIONS {
         schemas_json_validate --json_file ${output} --json_schema seq_region
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        seq_region_prepare --version >> versions.yml
         """
 
     stub:
@@ -59,6 +59,6 @@ process SEQREGION_PROCESSSEQREGIONS {
             --mock_run
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        seq_region_prepare --version >> versions.yml
         """
 }
