@@ -18,7 +18,7 @@ process DOWNLOAD_ASSEMBLYDATA {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container 'ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a'
+    container "ensemblorg/ensembl-genomio:v1.6.0"
     
     input:
         val(meta)
@@ -45,7 +45,7 @@ process DOWNLOAD_ASSEMBLYDATA {
         assembly_download --accession ${meta.accession} --download_dir ./ --verbose
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        assembly_download --version >> versions.yml
         """
 
     stub:
@@ -54,6 +54,6 @@ process DOWNLOAD_ASSEMBLYDATA {
         cp ${workflow.projectDir}/tests/modules/ensembl/download/assemblydata/* .
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        assembly_download --version >> versions.yml
         """
 }
