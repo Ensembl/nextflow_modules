@@ -33,7 +33,7 @@ The repository contains a *pre-defined structure (see above)* with some example 
 	nf-core modules create tool/subtool --author '@ensembl-dev' --label process_low --meta
 	```
 
-	> _Note:_ Module names must only contain lowercase letters and not duplicated. Names with non-lowercase letters (e.g., database/db-factory) will automatically be converted (e.g., database/dbfactory).
+	> _Note:_ Module names must only contain lowercase letters and we must not use the same name for another module. Names with non-lowercase letters (e.g., database/db-factory) will automatically be converted (e.g., database/dbfactory).
 
 3. Add Module Testing
    
