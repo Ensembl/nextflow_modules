@@ -1,4 +1,4 @@
-# EBI Nextflow modules
+# Ensembl Nextflow modules
 
 **`nextflow_modules`** is a centralized repository for reusable Nextflow modules, designed to be shared across multiple pipelines. This approach simplifies maintenance and updates by consolidating modules in one location. The repository adheres to the [nf-core structure](https://nf-co.re/docs/contributing/pipelines/pipeline_file_structure) and follows Nextflow's coding conventions, ensuring consistency and compatibility with established standards.
 
@@ -6,7 +6,7 @@
 
 ## Purpose
 
-A collection of shared Nextflow modules for EBI teams:  
+A collection of shared Nextflow modules for Ensembl teams:  
 - **Facilitates collaboration** by providing reusable components across teams.  
 - **Simplifies module usage** with tools like `nf-core modules` and `nf-core subworkflows`.  
 - **Avoid Duplication** of effort by sharing modules.
@@ -27,23 +27,23 @@ The repository contains a *pre-defined structure (see above)* with some example 
 
 2. Create a New Module
    
-	Use nf-core modules create to generate a module template.
+	Use `nf-core modules create` to generate a module template.
 
 	```bash
 	nf-core modules create tool/subtool --author '@ensembl-dev' --label process_low --meta
 	```
 
-	Note: Module names must only contain lowercase letters and not duplicated. Names with non-lowercase letters (e.g., database/db-factory) will automatically be converted (e.g., database/dbfactory).
+	> _Note:_ Module names must only contain lowercase letters and not duplicated. Names with non-lowercase letters (e.g., database/db-factory) will automatically be converted (e.g., database/dbfactory).
 
 3. Add Module Testing
    
 	Install **`nf-test`** and create nf-test for testing using stub data. If required utilize data from [test-datasets](https://github.com/nf-core/test-datasets/tree/modules/data) and update the path in the [test_config](https://github.com/Ensembl/nextflow_modules/blob/main/tests/config/test_data.config).
 
-	Note: We have only added minimum tests. You should add more tests as per your module's functionality.
+	> _Note:_ We have only added minimum tests. You should add more tests as per your module's functionality.
 
 4. Update Metadata
    
-	Add relevant information in the meta.yml file.
+	Add relevant information in the `meta.yml` file.
 
 ### Module Guidelines
 Modules in the repository should:
@@ -57,7 +57,7 @@ Modules in the repository should:
 
 	```bash
 	process SOME_MODULE {
-    	tag "$meta.id"
+    	    tag "$meta.id"
  	   ...
 	}
 	```
