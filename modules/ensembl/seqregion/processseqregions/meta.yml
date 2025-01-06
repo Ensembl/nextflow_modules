@@ -9,6 +9,7 @@ keywords:
   - container
   - sequence regions
   - validation
+
 tools:
   - "seqregion":
       description: "Nextflow modules for GFF3 validation"
