@@ -13,7 +13,6 @@ tools:
   - "seqregion":
       description: "Nextflow modules for GFF3 validation"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      # documentation: ""
       licence: "Apache License 2.0"
 
 input:
