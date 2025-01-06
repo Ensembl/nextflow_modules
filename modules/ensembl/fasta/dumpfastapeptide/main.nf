@@ -18,7 +18,6 @@ process FASTA_DUMPFASTAPEPTIDE {
     label 'process_low'
     maxForks "${params.max_database_forks}"
 
-    conda "${moduleDir}/environment.yml"
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
