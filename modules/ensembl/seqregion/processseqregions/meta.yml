@@ -17,7 +17,6 @@ tools:
       licence: "Apache License 2.0"
 
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
