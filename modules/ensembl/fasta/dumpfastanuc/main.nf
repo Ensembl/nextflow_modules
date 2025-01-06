@@ -18,7 +18,6 @@ process FASTA_DUMPFASTANUC {
     label 'process_low'
     // maxForks "${params.max_database_forks}"
 
-    conda "${moduleDir}/environment.yml"
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
@@ -32,7 +31,7 @@ process FASTA_DUMPFASTANUC {
         task.ext.when == null || task.ext.when
 
     script:
-        def version = "0.4"
+        version = "0.4"
         output = "${db.species}_fasta_dna.fasta"
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
 
@@ -49,7 +48,7 @@ process FASTA_DUMPFASTANUC {
         """
 
     stub:
-        def version = "0.4"
+        version = "0.4"
         output_file = "dna.fasta"
         dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_nucleotide/"
         dump_file = "dumped_dna.fasta"
