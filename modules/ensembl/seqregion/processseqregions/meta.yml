@@ -40,7 +40,6 @@ input:
       pattern: "*.gbff.gz|*.gbff"
 
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
