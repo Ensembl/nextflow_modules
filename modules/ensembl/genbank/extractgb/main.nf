@@ -36,7 +36,7 @@ process GENBANK_EXTRACTGB {
 
 
     script:
-        def prefix = task.ext.prefix ?: "${gb_file}"
+        prefix = task.ext.prefix ?: "${gb_file}"
 
         """
         genbank_extract_data \
@@ -53,11 +53,11 @@ process GENBANK_EXTRACTGB {
         """
 
     stub:
-        def prefix = task.ext.prefix ?: "${gb_file}"
+        prefix = task.ext.prefix ?: "${gb_file}"
         out_genome_json = "genome.json"
         out_seq_json = "seq_region.json"
         out_dna_fa = "dna.fasta"
-        out_gene_gff = "valida.gff"
+        out_gene_gff = "valid.gff"
         out_pep_fa = "pep.fasta"
 
         """

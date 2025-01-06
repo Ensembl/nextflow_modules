@@ -31,7 +31,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "valida.gff:md5,9fecaee47b109cd504f7a5a217132974"
+                        "valid.gff:md5,9fecaee47b109cd504f7a5a217132974"
                     ]
                 ],
                 "4": [
@@ -58,7 +58,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "valida.gff:md5,9fecaee47b109cd504f7a5a217132974"
+                        "valid.gff:md5,9fecaee47b109cd504f7a5a217132974"
                     ]
                 ],
                 "genome": [
@@ -94,6 +94,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-12-19T16:14:50.053484519"
+        "timestamp": "2025-01-06T12:08:14.543064333"
     }
 }
