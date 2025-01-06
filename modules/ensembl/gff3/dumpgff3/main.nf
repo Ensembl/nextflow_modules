@@ -18,7 +18,6 @@ process GFF3_DUMPGFF3 {
     label 'process_low'
     // maxForks "${params.max_database_forks}"
     
-    conda "${moduleDir}/environment.yml"
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
@@ -32,7 +31,7 @@ process GFF3_DUMPGFF3 {
         task.ext.when == null || task.ext.when
 
     script:
-        def version = "0.4"
+        version = "0.4"
         output = "${db.species}.gff3"
         temp_gff = "temp.gff3"
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
@@ -54,9 +53,9 @@ process GFF3_DUMPGFF3 {
         """
 
     stub:
-        def version = "0.4"
-        def output_stub = "gff_outfile.gff3"
-        def input_gff3 = "${projectDir}/tests/module/ensembl/gff3/dumpgff3/test_dump.gff3"
+        version = "0.4"
+        output_stub = "gff_outfile.gff3"
+        input_gff3 = "${projectDir}/tests/module/ensembl/gff3/dumpgff3/test_dump.gff3"
         """
         cp ${input_gff3} ${output_stub}
 
