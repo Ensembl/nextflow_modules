@@ -41,7 +41,7 @@ process DUMP_GENOMESTATS {
             --user '${db.server.user}' \
             ${password_arg} \
             --database '${db.server.database}' \
-            > ${output}
+            > ${output_file}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genome_stats_dump --version >> versions.yml
