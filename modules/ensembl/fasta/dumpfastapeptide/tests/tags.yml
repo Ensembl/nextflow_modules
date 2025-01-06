@@ -1,0 +1,2 @@
+fasta/dumpfastapeptide:
+  - "modules/ensembl_modules/fasta/dumpfastapeptide/**"
