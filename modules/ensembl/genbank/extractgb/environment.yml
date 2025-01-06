@@ -4,9 +4,8 @@ name: "genbank_extractgb"
 channels:
   - conda-forge
   - bioconda
-  - defaults
 dependencies:
   - python=3.10
   - pip
   - pip:
-    - ensembl-genomio>1.5.0
+    - ensembl-genomio=1.6.0

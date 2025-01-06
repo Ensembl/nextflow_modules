@@ -37,7 +37,7 @@ output:
       pattern: "genome.json"
   - seq_regions:
       type: file
-      description: Seq region(s) meta (JSON)
+      description: Sequence region(s) meta (JSON)
       pattern: "seq_region.json"
   - dna_fasta:
       type: file
@@ -49,7 +49,7 @@ output:
       pattern: "*.gff"
   - pep_fasta:
       type: file
-      description: Genome PCG amino acid sequence(s) (FASTA)
+      description: Genome protein-coding gene amino acid sequence(s) (FASTA)
       pattern: "pep.fasta"
   - versions:
       type: file
