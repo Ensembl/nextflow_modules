@@ -1,0 +1,11 @@
+##gff-version 3
+#!gff-spec-version 1.21
+##sequence-region NC_012345.1 1 27754200
+NC_012345.1	RefSeq	region	1	27754200	.	+	.	ID=NC_012345.1:1..27754200;Dbxref=taxon:43211234;Name=LG1;collection-date=2003;country=USA;gbkey=Src;genome=chromosome;isolation-source=field;linkage-group=LG123;mol_type=genomic DNA;sex=male;strain=ABCD;tissue-type=whole body
+NC_012345.1	Gnomon	gene	9273	12174	.	-	.	ID=gene-LOC123FAKE;Dbxref=BEEBASE:GB42195,GeneID:551234;Name=LOC123FAKE;gbkey=Gene;gene=LOC123FAKE;gene_biotype=protein_coding
+NC_012345.1	Gnomon	transcript	9274	12174	.	-	.	ID=rna-XR_000012345.2;Parent=gene-LOC123FAKE;Dbxref=GeneID:551234,Genbank:XR_000012345.2,BEEBASE:GB42195;Name=XR_000012345.2;gbkey=misc_RNA;gene=LOC123FAKE;model_evidence=Supporting evidence includes similarity to RNAseq alignments
+NC_012345.1	Gnomon	exon	11812	12174	.	-	.	ID=exon-XR_000012345.2-1;Parent=rna-XR_000012345.2;Dbxref=GeneID:551234,Genbank:XR_000012345.2,BEEBASE:GB42195;gbkey=misc_RNA;gene=LOC123FAKE;product=ubiquitin-related modifier 1%2C transcript variant X3;transcript_id=XR_000012345.2
+NC_012345.1	Gnomon	exon	11054	11121	.	-	.	ID=exon-XR_000012345.2-2;Parent=rna-XR_000012345.2;Dbxref=GeneID:551234,Genbank:XR_000012345.2,BEEBASE:GB42195;gbkey=misc_RNA;gene=LOC123FAKE;product=ubiquitin-related modifier 1%2C transcript variant X3;transcript_id=XR_000012345.2
+NC_012345.1	Gnomon	exon	10913	10994	.	-	.	ID=exon-XR_000012345.2-3;Parent=rna-XR_000012345.2;Dbxref=GeneID:551234,Genbank:XR_000012345.2,BEEBASE:GB42195;gbkey=misc_RNA;gene=LOC123FAKE;product=ubiquitin-related modifier 1%2C transcript variant X3;transcript_id=XR_000012345.2
+NC_012345.1	Gnomon	exon	9779	9827	.	-	.	ID=exon-XR_000012345.2-4;Parent=rna-XR_000012345.2;Dbxref=GeneID:551234,Genbank:XR_000012345.2,BEEBASE:GB42195;gbkey=misc_RNA;gene=LOC123FAKE;product=ubiquitin-related modifier 1%2C transcript variant X3;transcript_id=XR_000012345.2
+NC_012345.1	Gnomon	exon	9274	9546	.	-	.	ID=exon-XR_000012345.2-5;Parent=rna-XR_000012345.2;Dbxref=GeneID:551234,Genbank:XR_000012345.2,BEEBASE:GB42195;gbkey=misc_RNA;gene=LOC123FAKE;product=ubiquitin-related modifier 1%2C transcript variant X3;transcript_id=XR_000012345.2

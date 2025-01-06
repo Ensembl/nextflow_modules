@@ -1,0 +1,2 @@
+gff3/dumpgff3:
+  - "modules/ensembl/gff3/dumpgff3/**"
