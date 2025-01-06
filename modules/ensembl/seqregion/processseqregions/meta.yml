@@ -30,7 +30,7 @@ input:
 
   - assembly_report:
       type: file
-      description: Genome assembly report file assoicated with INSDC deposited assembly. 
+      description: Genome assembly report file assoicated with INSDC deposited assembly
       pattern: "*_assembly_report.txt"
 
   - genomic_gbff:
