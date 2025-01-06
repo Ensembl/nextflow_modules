@@ -17,7 +17,7 @@ process DUMP_GENOMESTATS {
     tag "${db.species}"
     label 'process_low'
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
+    container "ensemblorg/ensembl-genomio:v1.6.0"
 
     input:
         val(db)
@@ -44,7 +44,7 @@ process DUMP_GENOMESTATS {
             > ${output}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        genome_stats_dump --version >> versions.yml
         """
 
     stub:
@@ -56,6 +56,6 @@ process DUMP_GENOMESTATS {
         """
         cp ${dump_dir}/${dump_file} ${output_file}
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)" >> versions.yml
+        genome_stats_dump --version >> versions.yml
         """
 }
