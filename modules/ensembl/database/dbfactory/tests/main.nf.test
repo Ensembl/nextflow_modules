@@ -1,0 +1,58 @@
+// See the NOTICE file distributed with this work for additional information
+// regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// nf-core modules test database/dbfactory
+nextflow_process {
+
+    name "Test Process DATABASE_DBFACTORY"
+    script "../main.nf"
+    process "DATABASE_DBFACTORY"
+
+    tag "modules"
+    tag "modules_nfcore"
+    tag "database"
+    tag "database/dbfactory"
+
+    test("Database dbfactory [stub]") {
+            when {
+
+                options "-stub"
+
+                process {
+                    """
+                    input[0] = Channel.of(
+                        '{species: "aaegL5"}',
+                        '{"division": "VectorBase"}',
+                        '{"release": 60}'
+                        )
+                        .collectFile(name: 'dbs.json', newLine: true)
+                        .map { server -> [ [ host: "mysql-host-test-prod" ], server ] }
+                    """
+                }
+            }
+
+            then {
+                assert process.success
+                assert process.trace.tasks().size() == 1
+
+                assertAll(
+                    { assert process.out.dbs_meta_json != null },
+                    { assert snapshot(process.out).match() },
+                    { assert process.out.dbs_meta_json.size() == 1 },
+                    { assert process.out.dbs_meta_json.get(0).contains('dbs.json') }
+                )
+            }
+        }
+}
