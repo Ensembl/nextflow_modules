@@ -1,0 +1,2 @@
+fasta/dumpfastanuc:
+  - "modules/ensembl/fasta/dumpfastanuc/**"
