@@ -5,8 +5,6 @@ description: write your description here
 
 keywords:
   - core_database
-  - python
-  - ensembl-genomio
   - ensembl-legacy-scripts
   - fasta
   - docker

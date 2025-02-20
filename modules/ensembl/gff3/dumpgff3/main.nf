@@ -16,7 +16,7 @@
 process GFF3_DUMPGFF3 {
     tag "${db.species}"
     label 'process_low'
-    // maxForks "${params.max_database_forks}"
+    maxForks 10
     
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
@@ -49,7 +49,9 @@ process GFF3_DUMPGFF3 {
         gt gff3validator ${output}
         rm ${temp_gff}
 
-        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tgt gff3validator: " > versions.yml
+        gt gff3validator -version | head -n 1 | cut -f4 -d ' ' >> versions.yml
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}\n" >> versions.yml
         """
 
     stub:
@@ -59,6 +61,8 @@ process GFF3_DUMPGFF3 {
         """
         cp ${input_gff3} ${output_stub}
 
-        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tgt gff3validator: " > versions.yml
+        gt gff3validator -version | head -n 1 | cut -f4 -d ' ' >> versions.yml
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}\n" >> versions.yml
         """
 }
