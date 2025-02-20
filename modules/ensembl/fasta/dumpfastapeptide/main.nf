@@ -16,7 +16,7 @@
 process FASTA_DUMPFASTAPEPTIDE {
     tag "${db.species}"
     label 'process_low'
-    maxForks "${params.max_database_forks}"
+    maxForks 10
 
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
@@ -31,9 +31,9 @@ process FASTA_DUMPFASTAPEPTIDE {
         task.ext.when == null || task.ext.when
 
     script:
-        def args = task.ext.args ?: ''
-        def prefix = task.ext.prefix ?: "${db.server.database}"
-        def version = "0.4" // No way to get the version from installed repos
+        args = task.ext.args ?: ''
+        prefix = task.ext.prefix ?: "${db.server.database}"
+        version = "0.4" // No way to get the version from installed repos
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
         output = "${db.species}_fasta_pep.fasta"
 
@@ -50,7 +50,7 @@ process FASTA_DUMPFASTAPEPTIDE {
         """
 
     stub:
-        def version = "0.4"
+        version = "0.4"
         output_file = "pep.fasta"
         dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_peptide/"
         dump_file = "dumped_pep.fasta"
