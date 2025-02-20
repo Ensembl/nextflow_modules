@@ -1,5 +1,4 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "database_dbfactory"
 description: Generate a list of one or more databases plus some associated meta table information.
 
