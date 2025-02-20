@@ -20,8 +20,6 @@ nextflow_process {
     script "../main.nf"
     process "GFF3_DUMPGFF3"
 
-    tag "modules"
-    tag "modules_local"
     tag "gff3"
     tag "gff3/dumpgff3"
 
