@@ -4,6 +4,7 @@ process MANIFEST_INTEGRITY {
 
     container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
 
+
     input:
         tuple val(meta), path(manifest_files)
     
