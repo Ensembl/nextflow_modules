@@ -26,7 +26,7 @@ input:
 output:
   - dbs_meta_json:
       type: file
-      description: "JSON file containing database meta data."
+      description: "JSON file containing database metadata."
       pattern: "dbs.json"
     
   - versions:
