@@ -1,0 +1,53 @@
+// See the NOTICE file distributed with this work for additional information
+// regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// nf-core modules test gff3/dumpgff3
+nextflow_process {
+
+    name "Test Process GFF3_DUMPGFF3"
+    script "../main.nf"
+    process "GFF3_DUMPGFF3"
+
+    tag "gff3"
+    tag "gff3/dumpgff3"
+
+    test("GFF3 Dump gene models [stub]") {
+
+        when {
+            options "-stub"
+
+                process {
+                    """
+                    input[0] = [[ test_id:'dummy_core_db_core_110_1', species:'Genus species']]
+                    """
+                }
+            }
+
+            then {
+                assert snapshot(
+                    process.out.gff3.collect {
+                        it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
+                        }
+                    ).match("gff3")
+
+            assertAll(
+                    { assert process.success },
+                    { assert snapshot(process.out).match() },
+                    { assert process.out.gff3.size() == 1 },
+                    { assert process.out.gff3 != null }
+            )
+        }
+    }
+}

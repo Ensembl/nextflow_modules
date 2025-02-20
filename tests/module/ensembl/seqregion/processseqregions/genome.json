@@ -1,0 +1,24 @@
+{
+    "BRC4": {
+        "component": "Arthropod",
+        "organism_abbrev": "Batlan"
+    },
+    "annotation": {
+        "provider_name": "GenBank",
+        "provider_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000775305.1"
+    },
+    "assembly": {
+        "accession": "GCA_000775305.1",
+        "provider_name": "GenBank",
+        "provider_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000775305.1",
+        "version": 1
+    },
+    "genebuild": {
+        "start_date": "2024-01-01",
+        "version": "2024-01-01"
+    },
+    "species": {
+        "scientific_name": "Belgica antarctica",
+        "taxonomy_id": 315563
+    }
+}

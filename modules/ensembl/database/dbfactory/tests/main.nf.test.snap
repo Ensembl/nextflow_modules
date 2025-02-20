@@ -1,0 +1,25 @@
+{
+    "Database dbfactory [stub]": {
+        "content": [
+            {
+                "0": [
+                    "dbs.json:md5,476af329a36f4e5754d116a9f68b45f1"
+                ],
+                "1": [
+                    "versions.yml:md5,4263356faf21f07aeb4f540175e50a18"
+                ],
+                "dbs_meta_json": [
+                    "dbs.json:md5,476af329a36f4e5754d116a9f68b45f1"
+                ],
+                "versions": [
+                    "versions.yml:md5,4263356faf21f07aeb4f540175e50a18"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-12-19T16:27:22.960883812"
+    }
+}

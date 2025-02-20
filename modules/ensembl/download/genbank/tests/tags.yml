@@ -1,0 +1,2 @@
+download/genbank:
+  - "modules/ensembl/download/genbank/**"
