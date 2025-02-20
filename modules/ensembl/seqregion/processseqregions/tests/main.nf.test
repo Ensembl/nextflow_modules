@@ -20,8 +20,6 @@ nextflow_process {
     script "../main.nf"
     process "SEQREGION_PROCESSSEQREGIONS"
 
-    tag "modules"
-    tag "modules_nfcore"
     tag "seqregion"
     tag "seqregion/processseqregions"
 

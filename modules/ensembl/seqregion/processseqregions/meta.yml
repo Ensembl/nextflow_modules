@@ -1,5 +1,3 @@
----
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "seqregion_processseqregions"
 description: Construct a sequence region metadata file from INSDC files.
 keywords:
