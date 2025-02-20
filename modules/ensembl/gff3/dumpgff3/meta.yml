@@ -1,0 +1,39 @@
+---
+name: "gff3_dumpgff3"
+description: write your description here
+
+keywords:
+  - core_database
+  - ensembl-legacy-scripts
+  - fasta
+  - docker
+  - container
+
+tools:
+  - "gff3":
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Module which function to dump fasta sequences directly from a core database."
+      licence: ['Apache License version 2.0']
+
+input:
+  - db:
+      type: map
+      description: "A meta map including 'core database name'."
+        e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
+      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+
+output:
+  - gff3:
+      type: map
+      description: "GFF3 file containing gene model(s)."
+        e.g [ db:'database name', file("*.gff3") ]
+      pattern: "*.gff3"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"
