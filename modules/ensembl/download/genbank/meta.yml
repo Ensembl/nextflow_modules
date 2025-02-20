@@ -1,0 +1,38 @@
+---
+name: "download_genbank"
+description: Download a single sequence from NCBI GenBank.
+
+keywords:
+  - core_database
+  - python
+  - ensembl-genomio
+  - genomics
+
+tools:
+  - download:
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Modules which function to download information or various data from externally hosted resources."
+      licence: ['Apache License version 2.0']
+
+input:
+  - accession:
+      type: map
+      description: Meta map including sequence accession. Sequence record associated with 
+        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
+        e.g. [[ accession:'NC_12341']]
+
+output:
+  - gb_sequence:
+      type: file
+      description: A sequence record outfile in genbank format.
+      pattern: "output.gb"
+
+  - versions:
+      type: file
+      description: File containing information on module software version
+      pattern: "versions.yml"
+
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"

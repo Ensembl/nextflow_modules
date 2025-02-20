@@ -1,0 +1,10 @@
+---
+name: "download_genbank"
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - ensembl-genomio=1.6.0
