@@ -4,7 +4,6 @@ name: "dump_genomestats"
 description: A module for dumping a core database
 keywords:
   - core_database
-  - python
   - ensembl-genomio
   - json
   - docker
