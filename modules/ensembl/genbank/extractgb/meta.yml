@@ -5,7 +5,6 @@ description: Parse a GenBank file and create cleaned up files and validate gener
 
 keywords:
   - core_database
-  - python
   - ensembl-genomio
   - genomics
   - genbank
