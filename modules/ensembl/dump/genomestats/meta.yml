@@ -1,0 +1,37 @@
+---
+name: "dump_genomestats"
+description: A module for dumping a core database
+keywords:
+  - core_database
+  - ensembl-genomio
+  - json
+  - docker
+  - container
+
+tools:
+  - dump:
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Modules which function to dump various forms of data from a core database."
+      licence: ['Apache License version 2.0']
+
+input:
+  - db:
+      type: map
+      description: "A meta map including 'core database name'."
+        e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
+      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+
+output:
+  - core_stats:
+      type: map
+      description: "JSON file containing core database statistics (assembly and annotation)."
+        e.g [ db:"database name", file("core_stats.json") ]
+      pattern: "core_stats.json"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"
