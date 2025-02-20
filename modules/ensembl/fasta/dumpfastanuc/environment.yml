@@ -5,4 +5,4 @@ dependencies:
   - python=3.10
   - pip
   - pip:
-    - ensembl-genomio>1.6.0
+    - ensembl-genomio=1.6.0

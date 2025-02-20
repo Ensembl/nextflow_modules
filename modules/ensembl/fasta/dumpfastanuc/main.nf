@@ -16,7 +16,7 @@
 process FASTA_DUMPFASTANUC {
     tag "${db.species}"
     label 'process_low'
-    // maxForks "${params.max_database_forks}"
+    maxForks 10
 
     container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
