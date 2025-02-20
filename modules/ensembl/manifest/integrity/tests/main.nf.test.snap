@@ -9,7 +9,7 @@
                         },
                         [
                             "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541",
-                            "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+                            "versions.yml:md5,edb15363156d984b2e23070b4e620ff4"
                         ]
                     ]
                 ],
@@ -17,7 +17,7 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+                    "versions.yml:md5,edb15363156d984b2e23070b4e620ff4"
                 ],
                 "all_files": [
                     [
@@ -26,7 +26,8 @@
                         },
                         [
                             "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541",
-                            "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+
+                            "versions.yml:md5,edb15363156d984b2e23070b4e620ff4"
                         ]
                     ]
                 ],
@@ -34,10 +35,14 @@
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,e646dbbb63a6071c58bd4919251cd3a7"
+                    "versions.yml:md5,edb15363156d984b2e23070b4e620ff4"
                 ]
             }
         ],
-        "timestamp": "2024-08-21T09:52:13+0000"
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-11-22T15:40:16.798931127"
     }
 }
