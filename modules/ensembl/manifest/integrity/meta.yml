@@ -25,9 +25,6 @@ tools:
   - "manifest":
       description: "Nextflow modules for Ensembl genomio manifest"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      # documentation: ""
-      # tool_dev_url: ""
-      # doi: ""
       licence: "Apache License 2.0"
 
 input:

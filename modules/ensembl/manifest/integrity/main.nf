@@ -1,8 +1,8 @@
 process MANIFEST_INTEGRITY {
     tag "$meta.id"
     label 'process_low'
-    container "ensemblorg/ensembl-genomio:GenomioDockerRebuild_v1.5.0a"
-    
+    container "ensemblorg/ensembl-genomio:v1.6.0"
+
     input:
         tuple val(meta), path(manifest_files)
     
@@ -20,7 +20,6 @@ process MANIFEST_INTEGRITY {
         manifest_check_integrity \
             --manifest_file ./manifest.json \
             --no_fail \
-            $brc_mode \
             > $integrity_file
         
         # Only keep integrity file if there are errors to report
