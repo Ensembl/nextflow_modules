@@ -20,8 +20,6 @@ nextflow_process {
     script "../main.nf"
     process "GENBANK_EXTRACTGB"
 
-    tag "modules"
-    tag "modules_nfcore"
     tag "genbank"
     tag "genbank/extractgb"
 
