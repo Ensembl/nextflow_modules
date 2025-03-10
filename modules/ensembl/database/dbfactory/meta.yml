@@ -3,17 +3,17 @@ name: "database_dbfactory"
 description: Generate a list of one or more databases plus some associated meta table information.
 
 keywords:
-  - core_database
-  - python
-  - ensembl-genomio
-  - docker
   - container
+  - core_database
+  - docker
+  - database
+  - ensembl-genomio
 
 tools:
   - database:
-      homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Modules which function to read or write information from core databases."
-      licence: ['Apache License version 2.0']
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      license: "Apache License version 2.0"
 
 input:
   - server:
@@ -21,19 +21,21 @@ input:
       description: "Groovy Map containing mysql server host, port, user and password 
         meta and file of JSON database filter information."
         e.g. [[ host:"mysql-host-test-prod" ], [ filter_map:"dbrename_re" ]]
+  - filtermap:
+      type: map
+      description: "Prefix to filter core databases. [default: none]"
 
 output:
   - dbs_meta_json:
       type: file
       description: "JSON file containing database metadata."
-      pattern: "dbs.json"
-    
+      pattern: "dbs.json"  
   - versions:
       type: file
       description: File containing information on module software version
       pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"

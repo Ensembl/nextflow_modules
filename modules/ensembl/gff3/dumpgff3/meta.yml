@@ -3,17 +3,17 @@ name: "gff3_dumpgff3"
 description: write your description here
 
 keywords:
-  - core_database
-  - ensembl-legacy-scripts
-  - fasta
-  - docker
   - container
+  - database
+  - docker
+  - ensembl-legacy-scripts
+  - gff3
 
 tools:
   - "gff3":
+      description: "Modules for GFF3 validation, data deposition and retrieval from/into GFF3 file format"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "Module which function to dump fasta sequences directly from a core database."
-      licence: ['Apache License version 2.0']
+      license: "Apache License version 2.0"
 
 input:
   - db:
@@ -30,10 +30,10 @@ output:
       pattern: "*.gff3"
   - versions:
       type: file
-      description: File containing software versions
+      description: File containing information on module software version
       pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"

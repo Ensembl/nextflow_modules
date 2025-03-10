@@ -1,31 +1,18 @@
-# See the NOTICE file distributed with this work for additional information
-# regarding copyright ownership.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+---
 name: "manifest_integrity"
 description: Check the data integrity of a set of genomic files, listed by their manifest.
 keywords:
-  - genomics
-  - data integrity
   - ensembl
+  - genomics
   - genomio
+  - integrity
+  - validation
+
 tools:
   - "manifest":
-      description: "Nextflow modules for Ensembl genomio manifest"
+      description: "Nextflow modules for genomic data file manifest comparison/checking"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      licence: "Apache License 2.0"
+      license: "Apache License version 2.0"
 
 input:
   - meta:
@@ -36,7 +23,7 @@ input:
   
   - manifest_files:
       type: file
-      description: Set of genomics files
+      description: Set of genomic data files
       pattern: "*.{gff3,fasta,json}"
 
 output:
@@ -45,21 +32,19 @@ output:
       description: |
         Groovy Map containing meta information
         e.g. `[ id:'accession1' ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
 
   - all_files:
       type: file
       description: All files used as entry
       pattern: "*.{gff3,fasta,json}"
-
   - error_log:
       type: file
       description: Integrity error log if it failed
       pattern: "integrity.out"
+  - versions:
+      type: file
+      description: File containing information on module software version
+      pattern: "versions.yml"
 
 authors:
   - "ensembl-dev@ebi.ac.uk"

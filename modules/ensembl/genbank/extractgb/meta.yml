@@ -1,21 +1,20 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "genbank_extractgb"
 description: Parse a GenBank file and create cleaned up files and validate generated JSON files. 
 
 keywords:
-  - core_database
-  - ensembl-genomio
-  - genomics
-  - genbank
-  - docker
   - container
+  - database
+  - docker
+  - ensembl-genomio
+  - genbank
+  - genomics
 
 tools:
   - "genbank":
+      description: "Modules with functions related to work with Genbank related data files."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "Modules which work with Genbank related data files"
-      licence: ['Apache License version 2.0']
+      license: "Apache License version 2.0"
 
 input:
   - meta:
@@ -52,10 +51,10 @@ output:
       pattern: "pep.fasta"
   - versions:
       type: file
-      description: File containing software versions
+      description: File containing information on module software version
       pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"

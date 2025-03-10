@@ -1,23 +1,21 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "download_assemblydata"
 description: Generate a list of one or more databases plus some associated meta table information.
 
 keywords:
-  - python
   - ensembl-genomio
-  - INSDC
+  - container
+  - docker
+  - download
   - genome
   - gzip
-  - download
-  - docker
-  - container
+  - INSDC
 
 tools:
   - download:
-      homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Modules which function to download information or various data from externally hosted resources."
-      licence: ['Apache License version 2.0']
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      license: "Apache License version 2.0"
 
 input:
   - meta:
@@ -39,10 +37,10 @@ output:
       pattern: (*.txt, *.fna.gz, *.gbff.gz)
   - versions:
       type: file
-      description: File containing software versions
+      description: File containing information on module software version
       pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
