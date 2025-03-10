@@ -1,7 +1,5 @@
+---
 name: "gff3_dumpgff3"
-channels:
-  - conda-forge
-  - bioconda
 dependencies:
   - python=3.10
   - pip

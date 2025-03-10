@@ -1,3 +1,4 @@
+---
 name: "manifest_integrity"
 channels:
   - conda-forge
