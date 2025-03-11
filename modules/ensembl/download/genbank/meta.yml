@@ -4,6 +4,8 @@ description: Download a single sequence from NCBI GenBank.
 
 keywords:
   - core_database
+  - container
+  - docker
   - ensembl-genomio
   - genbank
   - genomics
