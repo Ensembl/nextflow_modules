@@ -16,18 +16,22 @@
 process ANNOTATION_DUMPANNO {
     tag "${db.species}"
     label 'process_low'
-    container "ensemblorg/ensembl-legacy-scripts:e112_APIv0.4"
+    
+    container 'ensemblorg/ensembl-legacy-scripts:e112_APIv0.4'
 
     input:
         val(db)
 
     output:
-        tuple val(db), val("functional_annotation"), path("*.json")
+        tuple val(db), val("functional_annotation"), path("*.json"), emit: functional_annotation
+        path "versions.yml", emit: versions
 
     when:
         task.ext.when == null || task.ext.when
 
     script:
+        //defining version as we cannot retreive the container version here 
+        def version = "0.4"
         output = "${db.species}_functional_annotation.json"
         schema = "functional_annotation"
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
@@ -39,18 +43,16 @@ process ANNOTATION_DUMPANNO {
             $password_arg \
             --dbname $db.server.database > $output
 
-        schemas_json_validate --json_file $output --json_schema $schema
-
-        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        schemas_json_validate --version >> versions.yml
+        # Get version from container please
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts:e112_APIv0.4 : $version " > versions.yml
         """
 
     stub:
+        def version = "0.4"
         """
         echo "No change, don't create a json file" > functional_annotation.json
 
         # Get version from genomio please
-        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
-        cat <<-END_VERSIONS > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts:e112_APIv0.4 : $version" > versions.yml
         """
 }

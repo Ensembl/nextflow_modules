@@ -16,6 +16,27 @@
                         "functional_annotation",
                         "functional_annotation.json:md5,55d1982dcc9558c6290233151e103d13"
                     ]
+                ],
+                "1": [
+                    "versions.yml:md5,8feb7b7ff14b6458c406c259f5619ea5"
+                ],
+                "functional_annotation": [
+                    [
+                        {
+                            "production_name": "test_db",
+                            "server": {
+                                "host": "test_host",
+                                "port": "1111",
+                                "user": "ensro"
+                            },
+                            "species": "test_species"
+                        },
+                        "functional_annotation",
+                        "functional_annotation.json:md5,55d1982dcc9558c6290233151e103d13"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,8feb7b7ff14b6458c406c259f5619ea5"
                 ]
             }
         ],
@@ -23,6 +44,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.10.3"
         },
-        "timestamp": "2025-03-10T21:32:05.999072669"
+        "timestamp": "2025-03-11T15:02:31.422314161"
     }
 }
