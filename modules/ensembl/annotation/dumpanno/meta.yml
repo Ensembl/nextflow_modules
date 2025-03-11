@@ -14,7 +14,7 @@ tools:
   - "annotation":
       homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Module which function to dump annotation directly from a core database."
-      licence: ['Apache License version 2.0']
+      license: "Apache License version 2.0"
 
 input:
   # Only when we have meta
@@ -27,13 +27,13 @@ input:
 output:
   - meta:
       type: map
-      description: "db containing database meta."
+      description: "Database containing meta information."
         e.g. `[ id:'db_name', server_details:[host : 'db'] ]`
         pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
 
   - functional_annotation.json:
       type: map
-      description: "functional annotation file containing biotypes."
+      description: "Functional annotation file containing biotypes."
         e.g [ db:'database name', file("*.json") ]
         pattern: ".json"
 
