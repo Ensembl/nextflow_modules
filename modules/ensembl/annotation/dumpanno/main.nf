@@ -16,7 +16,7 @@
 process ANNOTATION_DUMPANNO {
     tag "${db.species}"
     label 'process_low'
-    container "ensemblorg/ensembl-genomio:v1.6.0"
+    container "ensemblorg/ensembl-legacy-scripts:e112_APIv0.4"
 
     input:
         val(db)
