@@ -44,7 +44,7 @@ process FASTA_DUMPFASTANUC {
             --dbname ${db.server.database} \
             > ${output}
         
-        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}" > versions.yml
         """
 
     stub:
@@ -54,6 +54,6 @@ process FASTA_DUMPFASTANUC {
         dump_file = "dumped_dna.fasta"
         """
         cp ${dump_dir}/${dump_file} ${output_file}
-        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}" > versions.yml
         """
 }

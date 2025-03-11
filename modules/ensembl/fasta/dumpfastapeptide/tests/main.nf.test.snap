@@ -36,7 +36,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,a92bd85b69b72dca7635f3da28b22890"
+                    "versions.yml:md5,006c65880c710efaa9b684bcb4d6a7a8"
                 ],
                 "peptide_fasta": [
                     [
@@ -51,14 +51,14 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,a92bd85b69b72dca7635f3da28b22890"
+                    "versions.yml:md5,006c65880c710efaa9b684bcb4d6a7a8"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.04.3"
+            "nextflow": "24.10.3"
         },
-        "timestamp": "2024-12-02T18:04:28.765315316"
+        "timestamp": "2025-03-11T14:13:33.965197459"
     }
 }
