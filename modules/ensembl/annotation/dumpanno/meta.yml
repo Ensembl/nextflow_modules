@@ -1,67 +1,46 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "annotation_dumpanno"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+
+description: This module is used to dump the functional annotation of a genome.
+
 keywords:
-  - sort
-  - example
-  - genomics
+  - core_database
+  - ensembl-legacy-scripts
+  - fasta
+  - docker
+  - container
+  
 tools:
   - "annotation":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: 
-      identifier: 
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      description: "Module which function to dump annotation directly from a core database."
+      licence: ['Apache License version 2.0']
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
   # Only when we have meta
   - - meta:
         type: map
-        description: |
-          Groovy Map containing sample information
-          e.g. `[ id:'sample1', single_end:false ]`
-  
-  ## TODO nf-core: Delete / customise this example input
-    - bam:
-        type: file
-        description: Sorted BAM/CRAM/SAM file
-        pattern: "*.{bam,cram,sam}"
-        ontologies:
-          - edam: "http://edamontology.org/format_25722"
-          - edam: "http://edamontology.org/format_2573"
-          - edam: "http://edamontology.org/format_3462"
-          
+        description: "A meta map including 'core database information'."
+          e.g. `[ id:'db_name', server_details:[host : 'db'] ]`
+          pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
 
-## TODO nf-core: Add a description of all of the variables used as output
 output:
-  - bam:
-  #Only when we have meta
-    - meta:
-        type: map
-        description: |
-          Groovy Map containing sample information
-          e.g. `[ id:'sample1', single_end:false ]`
-  ## TODO nf-core: Delete / customise this example output
-    - "*.bam":
-        type: file
-        description: Sorted BAM/CRAM/SAM file
-        pattern: "*.{bam,cram,sam}"
-        ontologies:
-          - edam: "http://edamontology.org/format_25722"
-          - edam: "http://edamontology.org/format_2573"
-          - edam: "http://edamontology.org/format_3462"
-          
+  - meta:
+      type: map
+      description: "db containing database meta."
+        e.g. `[ id:'db_name', server_details:[host : 'db'] ]`
+        pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+
+  - functional_annotation.json:
+      type: map
+      description: "functional annotation file containing biotypes."
+        e.g [ db:'database name', file("*.json") ]
+        pattern: ".json"
+
   - versions:
-    - "versions.yml":
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@ensembl-dev"
