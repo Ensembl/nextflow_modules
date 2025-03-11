@@ -17,7 +17,7 @@ process SCHEMA_JSON {
     tag "$meta.id"
     label 'process_low'
 
-    container "ensemblorg/ensembl-genomio:v1.6.0"
+    container "ensemblorg/ensembl-genomio:v1.6.1"
 
     input:
         tuple val(meta), path(json_file)
