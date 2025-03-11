@@ -20,7 +20,6 @@ input:
       description: |
         Groovy Map containing meta information
         e.g. `[ id:'accession1' ]`
-  
   - manifest_files:
       type: file
       description: Set of genomic data files

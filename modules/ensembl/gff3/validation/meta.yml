@@ -1,6 +1,6 @@
 ---
 name: "gff3_validation"
-description: Check for proper validation of the GFF3 using gt tools.
+description: Check for proper validation of the GFF3 using GenomeTools.
 
 keywords:
   - ensembl
