@@ -38,7 +38,8 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                {assert process.out.functional_annotation.find { it[1] == "functional_annotation" } != null},
+                { assert process.out.functional_annotation.find { it[1] == "functional_annotation" } != null },
+                { assert process.out.functional_annotation.flatten().find { it =~ /\.json$/ } != null },
                 { assert snapshot(process.out).match() },
             )
         }
