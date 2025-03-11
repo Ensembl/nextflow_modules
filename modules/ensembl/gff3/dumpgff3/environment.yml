@@ -1,7 +1,0 @@
----
-name: "gff3_dumpgff3"
-dependencies:
-  - python=3.10
-  - pip
-  - pip:
-    - ensembl-genomio=1.6.0
