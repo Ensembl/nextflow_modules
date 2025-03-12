@@ -50,7 +50,7 @@ process ANNOTATION_DUMPANNO {
     stub:
         version = "0.4"
         """
-        echo "No change, don't create a json file" > functional_annotation.json
+        echo "No change, create an empty json file" > functional_annotation.json
 
         # Get version from genomio please
         echo -e -n "${task.process}:\n\tensembl-legacy-scripts:e112_APIv0.4 : $version" > versions.yml
