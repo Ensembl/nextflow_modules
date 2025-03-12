@@ -30,7 +30,7 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [production_name:"test_db", server:[host:"test_host", port:"1111", user:"ensro"],species:"test_species"]
+                input[0] = [production_name:"test_db", server:[host:"test_host", port:"1111", user:"ensro"], species:"test_species"]
                 """
             }
         }

@@ -30,8 +30,8 @@ process ANNOTATION_DUMPANNO {
         task.ext.when == null || task.ext.when
 
     script:
-        //defining version as we cannot retreive the container version here 
-        def version = "0.4"
+        // Defining version as we cannot retrieve the container version here 
+        version = "0.4"
         output = "${db.species}_functional_annotation.json"
         schema = "functional_annotation"
         password_arg = db.server.password ? "--pass ${db.server.password}" : ""
@@ -48,7 +48,7 @@ process ANNOTATION_DUMPANNO {
         """
 
     stub:
-        def version = "0.4"
+        version = "0.4"
         """
         echo "No change, don't create a json file" > functional_annotation.json
 

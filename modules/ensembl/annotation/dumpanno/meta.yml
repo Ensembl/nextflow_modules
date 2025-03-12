@@ -18,28 +18,31 @@ tools:
 
 input:
   # Only when we have meta
-  - - meta:
+  - meta:
         type: map
-        description: "A meta map including 'core database information'."
-          e.g. `[ id:'db_name', server_details:[host : 'db'] ]`
-          pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+        description: |
+          A meta map including 'core database information'.
+          e.g. [ id:'db_name', server_details:[ host:'db' ] ]
+        pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
 
 output:
   - meta:
       type: map
-      description: "Database containing meta information."
-        e.g. `[ id:'db_name', server_details:[host : 'db'] ]`
-        pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+      description: |
+        Database containing meta information.
+        e.g. [ id:'db_name', server_details:[ host:'db' ] ]
+      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
 
   - functional_annotation.json:
       type: map
-      description: "Functional annotation file containing biotypes."
+      description: |
+        Functional annotation file containing biotypes.
         e.g [ db:'database name', file("*.json") ]
-        pattern: ".json"
+      pattern: ".json"
 
   - versions:
       type: file
-      description: File containing software versions
+      description: File containing software versions.
       pattern: "versions.yml"
 
 authors:
