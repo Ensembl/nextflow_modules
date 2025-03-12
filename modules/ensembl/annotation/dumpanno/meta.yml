@@ -1,19 +1,19 @@
 ---
 name: "annotation_dumpanno"
 
-description: This module is used to dump the functional annotation of a genome.
+description: This module is used to dump the functional annotation of a genome from core databases.
 
 keywords:
+  - container
   - core_database
+  - docker
   - ensembl-legacy-scripts
   - fasta
-  - docker
-  - container
   
 tools:
   - "annotation":
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "Module which function to dump annotation directly from a core database."
+      description: "This module handles all annotation-related interactions with the core database, including annotation dumping and processing"
       license: "Apache License version 2.0"
 
 input:
