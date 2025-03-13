@@ -14,7 +14,7 @@ tools:
   - "annotation":
       homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "This module handles all annotation-related interactions with the core database, including annotation dumping and processing"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   # Only when we have meta
