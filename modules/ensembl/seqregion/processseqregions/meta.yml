@@ -1,18 +1,18 @@
+---
 name: "seqregion_processseqregions"
 description: Construct a sequence region metadata file from INSDC files.
 keywords:
-  - python
+  - container
   - ensembl-genomio
   - genomics
-  - container
-  - sequence regions
+  - sequence_regions
   - validation
 
 tools:
   - "seqregion":
-      description: "Nextflow modules for GFF3 validation"
+      description: "Nextflow modules for sequence region validation"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      licence: "Apache License 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - meta:
@@ -20,17 +20,14 @@ input:
       description: |
         Groovy Map containing meta information
         e.g. `[ db: 'dummy_core_110_1', species:'homo_sapiens' ]`
-  
   - genome_json:
       type: file
       description: JSON file containing assembly, annotation and taxonomy meta info
       pattern: "genome.json"
-
   - assembly_report:
       type: file
       description: Genome assembly report file assoicated with INSDC deposited assembly
       pattern: "*_assembly_report.txt"
-
   - genomic_gbff:
       type: file
       description: Assoicated GBFF file with DDBJ/ENA/GenBank feature table linked 
@@ -43,18 +40,16 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ db: 'dummy_core_110_1', species:'homo_sapiens' ]`
-
   - seq_region:
       type: file
       description: Sole output file of sequence region metadata, validated with JSON 'seq_region' schema
       pattern: "seq_region.json"
-
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"

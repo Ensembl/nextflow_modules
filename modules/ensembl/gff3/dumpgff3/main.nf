@@ -57,7 +57,7 @@ process GFF3_DUMPGFF3 {
     stub:
         version = "0.4"
         output_stub = "gff_outfile.gff3"
-        input_gff3 = "${projectDir}/tests/module/ensembl/gff3/dumpgff3/test_dump.gff3"
+        input_gff3 = "${projectDir}/tests/modules/ensembl/gff3/dumpgff3/test_dump.gff3"
         """
         cp ${input_gff3} ${output_stub}
 

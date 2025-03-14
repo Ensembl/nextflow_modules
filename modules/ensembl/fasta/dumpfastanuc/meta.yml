@@ -1,22 +1,20 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fasta_dumpfastanuc"
 description: A module for dumping core database gene module nucleotide fasta seqs
 
 keywords:
-  - core_database
-  - python
+  - container
+  - database
+  - docker
   - ensembl-genomio
   - ensembl-legacy-scripts
   - fasta
-  - docker
-  - container
 
 tools:
   - "fasta":
+      description: "Modules which function to facilitate data deposition/retrieval of fasta sequences."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "Module which function to dump fasta sequences directly from a core database."
-      licence: ['Apache License version 2.0']
+      license: ['Apache License version 2.0']
 
 input:
   - db:
@@ -33,10 +31,10 @@ output:
       pattern: "*_fasta_dna.fasta"
   - versions:
       type: file
-      description: File containing software versions
+      description: File containing information on module software version
       pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"

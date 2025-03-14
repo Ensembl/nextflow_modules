@@ -1,5 +1,5 @@
 ---
-name: "download_genbank"
+name: "manifest_integrity"
 channels:
   - conda-forge
   - bioconda

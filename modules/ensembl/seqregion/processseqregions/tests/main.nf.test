@@ -32,9 +32,9 @@ nextflow_process {
                 process {
                     """
                     input[0] = [[ test_id:'dummy_core_db_core_110_1', species:'Genus species'],
-                    file("${projectDir}/tests/module/ensembl/seqregion/processseqregions/genome.json", checkIfExists: true),
-                    file("${projectDir}/tests/module/ensembl/seqregion/processseqregions/assembly_report.txt", checkIfExists: true),
-                    file("${projectDir}/tests/module/ensembl/seqregion/processseqregions/genome.gbff", checkIfExists: true)]
+                    file("${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.json", checkIfExists: true),
+                    file("${projectDir}/tests/modules/ensembl/seqregion/processseqregions/assembly_report.txt", checkIfExists: true),
+                    file("${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.gbff", checkIfExists: true)]
                     """
                 }
             }

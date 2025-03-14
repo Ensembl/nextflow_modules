@@ -1,7 +1,8 @@
 process MANIFEST_INTEGRITY {
     tag "$meta.id"
     label 'process_low'
-    container "ensemblorg/ensembl-genomio:v1.6.0"
+
+    container "ensemblorg/ensembl-genomio:v1.6.1"
 
     input:
         tuple val(meta), path(manifest_files)
@@ -27,13 +28,8 @@ process MANIFEST_INTEGRITY {
             then rm $integrity_file
         fi
 
-
-        # Get version from genomio please
-        VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
-        cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            Genomio: \$VERSION
-        END_VERSIONS
+        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
+        manifest_check_integrity --version >> versions.yml
         """
 
     stub:
@@ -41,10 +37,7 @@ process MANIFEST_INTEGRITY {
         """
         echo "No change, don't create manifest error log"
 
-        VERSION=\$(python -c "import ensembl.io.genomio; print(ensembl.io.genomio.__version__)")
-        cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            Genomio: \$VERSION
-        END_VERSIONS
+        echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
+        manifest_check_integrity --version >> versions.yml
         """
 }

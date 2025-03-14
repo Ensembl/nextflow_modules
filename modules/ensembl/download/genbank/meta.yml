@@ -4,15 +4,17 @@ description: Download a single sequence from NCBI GenBank.
 
 keywords:
   - core_database
-  - python
+  - container
+  - docker
   - ensembl-genomio
+  - genbank
   - genomics
 
 tools:
   - download:
-      homepage: "https://github.com/Ensembl/nextflow_modules"
       description: "Modules which function to download information or various data from externally hosted resources."
-      licence: ['Apache License version 2.0']
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      license: ['Apache License version 2.0']
 
 input:
   - accession:
@@ -26,13 +28,12 @@ output:
       type: file
       description: A sequence record outfile in genbank format.
       pattern: "output.gb"
-
   - versions:
       type: file
       description: File containing information on module software version
       pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"

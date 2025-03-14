@@ -1,0 +1,5 @@
+---
+name: "gff3_validation"
+channels:
+  - conda-forge
+  - bioconda

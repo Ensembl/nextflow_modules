@@ -15,7 +15,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,2865155135ccf724bc9ce672dae6b63c"
+                    "versions.yml:md5,697fba89525567272a3e57ee48bba827"
                 ],
                 "nucleotide_fasta": [
                     [
@@ -30,15 +30,15 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,2865155135ccf724bc9ce672dae6b63c"
+                    "versions.yml:md5,697fba89525567272a3e57ee48bba827"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.04.3"
+            "nextflow": "24.10.3"
         },
-        "timestamp": "2024-12-02T18:06:25.781135051"
+        "timestamp": "2025-03-11T14:13:11.264072051"
     },
     "nucleotide_fasta": {
         "content": [

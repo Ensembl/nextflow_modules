@@ -46,7 +46,7 @@ process FASTA_DUMPFASTAPEPTIDE {
             --dbname ${db.server.database} \
             > ${output}
 
-        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}" > versions.yml
         """
 
     stub:
@@ -56,6 +56,6 @@ process FASTA_DUMPFASTAPEPTIDE {
         dump_file = "dumped_pep.fasta"
         """
         cp ${dump_dir}/${dump_file} ${output_file}
-        echo -e -n "${task.process}:\n\tensembl-genomio: ${version}" > versions.yml
+        echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}" > versions.yml
         """
 }
