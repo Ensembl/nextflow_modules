@@ -14,7 +14,7 @@ tools:
   - "gff3":
       description: "Modules for GFF3 validation, data deposition and retrieval from/into GFF3 file format"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - meta:

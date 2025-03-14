@@ -12,7 +12,7 @@ tools:
   - dump:
       description: "Modules which function to dump various forms of data from a core database."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - db:

@@ -14,7 +14,7 @@ tools:
   - "genbank":
       description: "Modules with functions related to work with Genbank related data files."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - meta:

@@ -14,7 +14,7 @@ tools:
   - "fasta":
       description: "Modules which function to facilitate data deposition/retrieval of fasta sequences."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - db:

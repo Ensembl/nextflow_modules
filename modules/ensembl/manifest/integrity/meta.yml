@@ -12,7 +12,7 @@ tools:
   - "manifest":
       description: "Nextflow modules for genomic data file manifest comparison/checking"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - meta:

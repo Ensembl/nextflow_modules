@@ -15,7 +15,7 @@ tools:
   - download:
       description: "Modules which function to download information or various data from externally hosted resources."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - meta:

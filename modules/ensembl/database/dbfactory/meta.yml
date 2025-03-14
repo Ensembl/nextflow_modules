@@ -13,7 +13,7 @@ tools:
   - database:
       description: "Modules which function to read or write information from core databases."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: "Apache License version 2.0"
+      license: ['Apache License version 2.0']
 
 input:
   - server:
