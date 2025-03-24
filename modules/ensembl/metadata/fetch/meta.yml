@@ -1,0 +1,55 @@
+---
+name: "metadata_fetch"
+description: write your description here
+keywords:
+  - container
+  - docker
+  - datasets
+  - ensembl-genomio
+  - genome
+  - metadata
+tools:
+  - "metadata":
+      description: "Modules which function to generate,fetch or otherwise work \
+        with metadata curation or preparation."
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      license: ['Apache License version 2.0']
+
+input:
+  - accession:
+      type: map
+      description: Meta map including sequence accession. Sequence record associated with 
+        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
+        e.g. [[ accession:'NC_12341']]
+  - input_query:
+      type: file
+      description: Input query to parse an NCBI genome summary JSON 
+      pattern: "*-query.json"
+  - genome_summary_json:
+      type: file
+      description: A genome summary JSON file downloaded via datasets-cli (NCBI) \
+        containing 1> genome summaries '{reports: {}}'
+      pattern: "*.json"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Meta map including sequence accession. Sequence record associated with 
+        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
+        e.g. [[ accession:'NC_12341']]
+  - meta_json:
+    - "genome-meta.json":
+      type: file
+      description: Genome metadata queried from complete NCBI datasets genome summary JSON.
+      pattern: "*-meta.json"
+  - versions:
+    - "versions.yml":
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+maintainers:
+  - "ensembl-dev@ebi.ac.uk"

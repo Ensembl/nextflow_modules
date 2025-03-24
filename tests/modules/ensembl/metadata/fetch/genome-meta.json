@@ -1,0 +1,20 @@
+{
+  "annotation": {
+    "provider_name": "GenBank",
+    "provider_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4"
+  },
+  "assembly": {
+    "accession": "GCA_000001215.4",
+    "provider_name": "GenBank",
+    "provider_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4",
+    "version": 4
+  },
+  "genebuild": {
+    "start_date": "2025-03-24",
+    "version": "2025-03-24"
+  },
+  "species": {
+    "scientific_name": "Drosophila melanogaster",
+    "taxonomy_id": 7227
+  }
+}

@@ -1,0 +1,88 @@
+// See the NOTICE file distributed with this work for additional information
+// regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// nf-core modules test metadata/fetch
+nextflow_process {
+
+    name "Test Process METADATA_FETCH"
+    script "../main.nf"
+    process "METADATA_FETCH"
+
+    tag "metadata"
+    tag "metadata/fetch"
+
+    test("Metadata fetch test [real test]") {
+        
+        when {
+            process {
+                """
+                input[0] = [ 
+                    [accession: 'GCA_000001215.4'], 
+                    file("${projectDir}/tests/modules/ensembl/metadata/fetch/meta-query.json", checkIfExists: true),
+                    file("${projectDir}/tests/modules/ensembl/metadata/fetch/ncbi_genome-summary.json", checkIfExists: true)
+                    ]
+                """
+            }
+        }
+
+            then {
+                assert snapshot(
+                    process.out.meta_json.collect {
+                        it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
+                        }
+                    ).match("GCA_000001215.4-genome-meta.json")
+
+            assertAll(
+                    { assert process.success },
+                    { assert snapshot(process.out).match() },
+                    { assert process.out.meta_json.size() == 1 },
+                    { assert process.out.versions != null }
+            )
+        }
+    }
+
+    test("Metadata fetch test [stub]") {
+        
+        when {
+            options "-stub"
+            process {
+                """
+                input[0] = [ 
+                    [accession: 'GCA_000111222.3'], 
+                    file("query.json"),
+                    file("ncbi-genome.json")
+                    ]
+                """
+                    // file("${projectDir}/tests/modules/ensembl/metadata/fetch/meta-query.json", checkIfExists: true),
+                    // file("${projectDir}/tests/modules/ensembl/metadata/fetch/ncbi_genome-summary.json", checkIfExists: true)
+            }
+        }
+
+            then {
+                assert snapshot(
+                    process.out.meta_json.collect {
+                        it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
+                        }
+                    ).match("GCA_000111222.3-genome-meta.json")
+
+            assertAll(
+                    { assert process.success },
+                    { assert snapshot(process.out).match() },
+                    { assert process.out.meta_json.size() == 1 },
+                    { assert process.out.versions != null }
+            )
+        }
+    }
+}
