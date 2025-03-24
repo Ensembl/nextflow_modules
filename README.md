@@ -13,8 +13,22 @@ A collection of shared Nextflow modules for Ensembl teams:
 
 ### Example Usage
 ```bash
-nf-core modules --git-remote git@github.com:Ensembl/nextflow_modules.git install tool/subtool
+# list available modules
+nf-core modules --git-remote https://github.com/Ensembl/nextflow_modules.git list remote
+# list available subworkflows (none yet)
+nf-core subworkflows --git-remote https://github.com/Ensembl/nextflow_modules.git list remote
+
+# get modules / subworkflows
+#   get / clone / create a pipeline folder
+mkdir -p my_pipeline # or git clone ...
+cd my_pipeline # or use `-d my_pipeline` option
+nf-core modules --git-remote git@github.com:Ensembl/nextflow_modules.git install download/assemblydata
+
 nf-core subworkflows --git-remote git@github.com:Ensembl/nextflow_modules.git install tool/subtool
+
+# help
+nf-core modules list -h
+nf-core modules install -h
 ```
 
 ### Initial Setup
