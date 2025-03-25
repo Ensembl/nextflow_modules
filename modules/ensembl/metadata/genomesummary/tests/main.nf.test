@@ -30,8 +30,8 @@ nextflow_process {
                 """
                 input[0] = [ 
                     [accession: 'GCA_000001215.4'], 
-                    file("${projectDir}/tests/modules/ensembl/metadata/fetch/meta-query.json", checkIfExists: true),
-                    file("${projectDir}/tests/modules/ensembl/metadata/fetch/ncbi_genome-summary.json", checkIfExists: true)
+                    file("${projectDir}/tests/modules/ensembl/metadata/genomesummary/meta-query.json", checkIfExists: true),
+                    file("${projectDir}/tests/modules/ensembl/metadata/genomesummary/ncbi_genome-summary.json", checkIfExists: true)
                     ]
                 """
             }
