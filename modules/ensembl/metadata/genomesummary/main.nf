@@ -24,7 +24,7 @@ process METADATA_GENOMESUMMARY {
         tuple val(meta), path(input_query), path(genome_summary_json)
 
     output:
-        tuple val(meta), path("*-genome-meta.json"), emit: meta_json
+        tuple val(meta), path("genome.json"), emit: meta_json
         path "versions.yml", emit: versions
 
     when:
@@ -32,7 +32,7 @@ process METADATA_GENOMESUMMARY {
 
     script:
         def prefix = task.ext.prefix ?: "${meta.accession}"
-        def output_json = "${meta.accession}-genome-meta.json"
+        def output_json = "genome.json"
 
         """
         genome_metadata_prepare --input_file ${input_query} --output_file ${output_json} --ncbi_meta ${genome_summary_json}
@@ -43,10 +43,11 @@ process METADATA_GENOMESUMMARY {
 
     stub:
         def prefix = task.ext.prefix ?: "${meta.accession}"
-        def output_json = "genome-meta.json"
+        def testout_json = "genome-meta.json"
+        def output_json = "genome.json"
 
         """
-        cp ${workflow.projectDir}/tests/modules/ensembl/metadata/fetch/${output_json} ./${meta.accession}-${output_json}
+        cp ${workflow.projectDir}/tests/modules/ensembl/metadata/genomesummary/${testout_json} ./${output_json}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genome_metadata_prepare --version >> versions.yml
