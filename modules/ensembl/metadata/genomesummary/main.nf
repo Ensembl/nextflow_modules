@@ -25,7 +25,7 @@ process METADATA_GENOMESUMMARY {
 
     output:
         tuple val(meta), path("*-genome-meta.json"), emit: meta_json
-        path "versions.yml", emit: versions, optional: true
+        path "versions.yml", emit: versions
 
     when:
     task.ext.when == null || task.ext.when
