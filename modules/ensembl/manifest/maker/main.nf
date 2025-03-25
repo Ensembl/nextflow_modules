@@ -14,7 +14,7 @@
 // limitations under the License.
 
 
-process MANIFEST {
+process MANIFEST_MAKER {
     tag "$meta.accesion"
     label 'adaptive'
 
@@ -25,7 +25,7 @@ process MANIFEST {
         tuple val(meta), path(file_name)
 
     output:
-        tuple val (meta), path("*.{gff3,fasta,json}", includeInputs: true)
+        tuple val(meta), path("*.{gff3,fasta,json}", includeInputs: true)
         path "versions.yml", emit: versions
     
     when:
@@ -52,6 +52,3 @@ process MANIFEST {
         manifest_generate --version >> versions.yml 
         """
 }
-
-    
-

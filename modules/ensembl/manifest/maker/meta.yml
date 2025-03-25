@@ -18,7 +18,7 @@ input:
       type: map
       description: |
         Groovy Map containing meta information
-        e.g. `[ id:'accession1' ]`
+        e.g. `[ accession:'accession01' ]`
   - manifest_files:
       type: file
       description: Set of genomic data files
@@ -29,7 +29,7 @@ output:
       type: map
       description: |
         Groovy Map containing meta information
-        e.g. `[ id:'accession1' ]`
+        e.g. `[ accession:'accession1' ]`
 
   - all_files:
       type: file
