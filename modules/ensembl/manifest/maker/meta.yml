@@ -1,0 +1,50 @@
+---
+name: "manifest_maker"
+description: Generate a manifest and validate its JSON schema using provided input files and metadata.
+keywords:
+  - ensembl
+  - genomics
+  - genomio
+  - integrity
+  - validation
+tools:
+  - "manifest_maker":
+      description: "Nextflow modules for genomic data file manifest comparison/checking."
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      license: ['Apache License version 2.0']
+      
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing meta information
+        e.g. `[ accession:'accession01' ]`
+  - manifest_files:
+      type: file
+      description: Set of genomic data files
+      pattern: "*.{gff3,fasta,json}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing meta information
+        e.g. `[ accession:'accession1' ]`
+
+  - all_files:
+      type: file
+      description: All files used as entry
+      pattern: "*.{gff3,fasta,json}"
+  - error_log:
+      type: file
+      description: Integrity error log if it failed
+      pattern: "integrity.out"
+  - versions:
+      type: file
+      description: File containing information on module software version
+      pattern: "versions.yml"
+
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+maintainers:
+  - "ensembl-dev@ebi.ac.uk"
