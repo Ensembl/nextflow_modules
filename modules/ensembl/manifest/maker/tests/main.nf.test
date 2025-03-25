@@ -10,7 +10,7 @@ nextflow_process {
     tag "manifest"
     tag "manifest/maker"
 
-    test(" Maker check stub") {
+    test("Maker check stub") {
 
         when {
             options "-stub"
