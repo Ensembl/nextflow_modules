@@ -1,7 +1,0 @@
----
-name: "metadata_fetch"
-channels:
-  - conda-forge
-  - bioconda
-dependencies:
-  - ensembl-genomio=1.6.1
