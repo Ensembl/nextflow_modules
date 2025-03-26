@@ -28,7 +28,7 @@ process METADATA_GENOMESUMMARY {
         path "versions.yml", emit: versions
 
     when:
-    task.ext.when == null || task.ext.when
+        task.ext.when == null || task.ext.when
 
     script:
         def prefix = task.ext.prefix ?: "${meta.accession}"
