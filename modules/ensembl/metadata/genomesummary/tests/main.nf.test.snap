@@ -1,0 +1,85 @@
+{
+    "Metadata 'genome summary' test-B [stub]": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "accession": "GCA_000111222.3"
+                        },
+                        "genome.json:md5,35290e51b83617b0deb85f4da6fd0b51"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,f2b370b16189c705b60651d56a20c96c"
+                ],
+                "meta_json": [
+                    [
+                        {
+                            "accession": "GCA_000111222.3"
+                        },
+                        "genome.json:md5,35290e51b83617b0deb85f4da6fd0b51"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,f2b370b16189c705b60651d56a20c96c"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.3"
+        },
+        "timestamp": "2025-03-25T16:42:09.027167253"
+    },
+    "Metadata 'genome summary' test-A [real test]": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "accession": "GCA_000001215.4"
+                        },
+                        "genome.json:md5,08e14981b0bedf21a195c85cb9b83d4c"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,f2b370b16189c705b60651d56a20c96c"
+                ],
+                "meta_json": [
+                    [
+                        {
+                            "accession": "GCA_000001215.4"
+                        },
+                        "genome.json:md5,08e14981b0bedf21a195c85cb9b83d4c"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,f2b370b16189c705b60651d56a20c96c"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.3"
+        },
+        "timestamp": "2025-03-25T16:38:10.539087257"
+    },
+    "genome.json": {
+        "content": [
+            [
+                [
+                    {
+                        "accession": "GCA_000001215.4"
+                    },
+                    "genome.json"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.3"
+        },
+        "timestamp": "2025-03-25T16:38:10.474728474"
+    }
+}
