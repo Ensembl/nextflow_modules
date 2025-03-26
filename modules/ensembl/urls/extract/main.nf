@@ -12,9 +12,6 @@ process URLS_EXTRACT {
     path "versions.yml", emit: versions
 
     script:
-    def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
-
     """
     # Extract and parse the MySQL URL
     url_string="${url_string}"
