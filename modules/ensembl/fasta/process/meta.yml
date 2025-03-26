@@ -1,0 +1,60 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "fasta_process"
+description: Clean-up a given FASTA file to remove unwanted elements
+keywords:
+  - container
+  - database
+  - docker
+  - ensembl-genomio
+  - genbank
+  - genomics
+tools:
+  - "fasta_process":
+      ## TODO nf-core: Add a description and other details for the software below
+      description: "Ensembl GenomIO - tools to convert basic genomic data into Ensembl cores and back to flatfile"
+      homepage: "https://ensembl.github.io/ensembl-genomio/"
+      documentation: "https://ensembl.github.io/ensembl-genomio/"
+      tool_dev_url: "https://github.com/Ensembl/ensembl-genomio"
+      licence: ['Apache-2.0']
+
+## TODO nf-core: Add a description of all of the variables used as input
+input:
+  # Only when we have meta
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing genome database meta information
+          e.g. `[ accession: 'NC_XXXX.X' ]`
+    - compressed_gff:
+        type: file
+        description: |
+          Input GenBank GBFF file, should be gzip compressed
+          e.g. ``
+    - fasta_file:
+        type: file
+        description: |
+          Input FASTA file - DNA / Protein
+          
+output:
+  - processed_fasta:
+    - meta:
+        type: map
+        description: |
+          Groovy Map containing genome database meta information
+          e.g. `[ accession: 'NC_XXXX.X' ]`
+    - fasta_file:
+        type: file
+        description: Output FASTA file - DNA / Protein
+        pattern: "*_(pep|dna).fa"
+          
+  - versions:
+    - "versions.yml":
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+
+authors:
+  - "@project-defiant"
+maintainers:
+  - "@project-defiant"
