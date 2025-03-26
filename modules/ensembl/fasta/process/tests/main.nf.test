@@ -31,9 +31,9 @@ nextflow_process {
             process {
                 """                
                 input[0] = [
-                    [ accession:'GCF_000002765.3'], // meta map
+                    [ id:'GCF_000002765.3'], // meta map
                     file( '${projectDir}' + '/tests/modules/ensembl/fasta/process/input.fna.gz', checkIfExists: true),
-                    file( '${projectDir}' + '/tests/modules/ensembl/fasta/process/input.bgff.gz', checkIfExists: true),
+                    file( '${projectDir}' + '/tests/modules/ensembl/fasta/process/input.gbff.gz', checkIfExists: true),
                 ]
                 """
             }
@@ -54,9 +54,9 @@ nextflow_process {
             process {
                 """
                 input[0] = [
-                    [ accession:'GCF_000002765.3'], // meta map
+                    [ id:'GCF_000002765.3'], // meta map
                     file( '${projectDir}' + '/tests/modules/ensembl/fasta/process/input.faa.gz', checkIfExists: true),
-                    file( '${projectDir}' + '/tests/modules/ensembl/fasta/process/input.bgff.gz', checkIfExists: true),
+                    file( '${projectDir}' + '/tests/modules/ensembl/fasta/process/input.gbff.gz', checkIfExists: true),
                 ]
                 """
             }

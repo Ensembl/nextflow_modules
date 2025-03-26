@@ -14,7 +14,7 @@
 // limitations under the License.
 
 process FASTA_PROCESS {
-    tag "${meta.accession}"
+    tag "${meta.id}"
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
@@ -31,32 +31,33 @@ process FASTA_PROCESS {
     task.ext.when == null || task.ext.when
 
     script:
-    def prefix = task.ext.prefix ?: "${meta.accession}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     def args = task.ext.args ?: ''
     // --peptide_mode is treated as a optional extra parameter.
     // By default it's set to false
-    def pep_mode = task.ext.args.contains("--peptide_mode")
+    def pep_mode = task.ext.args && task.ext.args.contains("--peptide_mode")
     def output_fasta = pep_mode ? "${prefix}.faa" : "${prefix}.fna"
     """
     fasta_process --fasta_infile ${compressed_fasta} \
         --genbank_infile ${compressed_gbff} \
-        --fasta_outfile ${output_fasta}" \
+        --fasta_outfile ${output_fasta} \
         ${args}
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        fasta_process: fasta_process --version)
+    '${task.process}':
+        fasta_process: fasta_process --version
     END_VERSIONS
     """
 
     stub:
-    def pep_mode = task.ext.args.contains("--pep-mode")
-    def output_fasta = pep_mode ? "fasta_pep.fa" : "fasta_dna.fa"
+    def prefix = task.ext.prefix ?: "${meta.id}"
+    def pep_mode = task.ext.args && task.ext.args.contains("--pep-mode")
+    def output_fasta = pep_mode ? "${prefix}.faa" : "${prefix}.fna"
     """
     touch ${output_fasta}
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        fasta_process: fasta_process --version)
+    '${task.process}':
+        fasta_process: fasta_process --version
     END_VERSIONS
     """
 }
