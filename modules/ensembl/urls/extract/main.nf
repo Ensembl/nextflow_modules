@@ -6,9 +6,7 @@ process URLS_EXTRACT {
     tuple val(meta), val(url_string)
 
     output:
-    tuple val(meta), env(user), env(host), env(port), emit: connection_info
-    tuple val(meta), env(password), emit: optional_password, optional: true
-    tuple val(meta), env(database), emit: optional_database, optional: true
+    tuple val(meta), env(user), env(host), env(port), env(password), env(database), emit: connection_info
     path "versions.yml", emit: versions
 
     script:

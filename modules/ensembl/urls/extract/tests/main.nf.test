@@ -9,76 +9,94 @@ nextflow_process {
     tag "urls"
     tag "urls/extract"
 
-    test("Should extract connection info from URL with all components") {
+    test("Should extract MySQL URL components") {
+
         when {
             process {
                 """
                 input[0] = [
-                    [ id:'test1' ], 
-                    "mysql://user:password@host.com:3306/database"
+                    [ id:'test' ],
+                    'mysql://user:password@host.com:3306/database'
                 ]
                 """
             }
         }
 
         then {
-            assert process.success
-            assert snapshot(process.out).match()
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info != null },
+                { assert process.out.versions != null },
+                { assert snapshot(process.out.connection_info).match("connection_info") },
+                { assert snapshot(process.out.versions).match("versions") }
+            )
         }
     }
 
-    test("Should extract connection info from URL without password") {
+    test("Should handle URL without password") {
+
         when {
             process {
                 """
                 input[0] = [
-                    [ id:'test2' ],
-                    "mysql://user@host.com:3306/database"
+                    [ id:'test_no_password' ],
+                    'mysql://user@host.com:3306/database'
                 ]
                 """
             }
         }
 
         then {
-            assert process.success
-            assert snapshot(process.out).match()
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info != null },
+                { assert process.out.versions != null },
+                { assert snapshot(process.out.connection_info).match("connection_info_no_password") },
+                { assert snapshot(process.out.versions).match("versions_no_password") }
+            )
         }
     }
 
-    test("Should extract connection info from URL without database") {
+    test("Should handle URL without database") {
+
         when {
             process {
                 """
                 input[0] = [
-                    [ id:'test3' ],
-                    "mysql://user:password@host.com:3306"
+                    [ id:'test_no_database' ],
+                    'mysql://user:password@host.com:3306'
                 ]
                 """
             }
         }
 
         then {
-            assert process.success
-            assert snapshot(process.out).match()
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info != null },
+                { assert process.out.versions != null },
+                { assert snapshot(process.out.connection_info).match("connection_info_no_database") },
+                { assert snapshot(process.out.versions).match("versions_no_database") }
+            )
         }
     }
 
     test("Should fail with invalid URL format") {
+
         when {
             process {
                 """
                 input[0] = [
-                    [ id:'test4' ],
-                    "invalid_url"
+                    [ id:'test_invalid' ],
+                    'invalid_url_format'
                 ]
                 """
             }
         }
 
-        then {
+         then {
             assert process.failed
             assert snapshot(process.stderr).match()
         }
     }
 }
-
