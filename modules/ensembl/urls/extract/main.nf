@@ -16,8 +16,6 @@ process URLS_EXTRACT {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    #!/bin/bash
-    
     # Extract and parse the MySQL URL
     url_string="${url_string}"
 
