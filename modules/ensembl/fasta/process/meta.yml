@@ -25,7 +25,8 @@ input:
         type: map
         description: |
           Groovy Map containing genome database meta information
-          e.g. `[ accession: 'NC_XXXX.X' ]`
+          e.g. `[ accession: 'NC_XXXX.X' ]` 
+          The accession key refers to the Genome sequence accession id
     - compressed_gff:
         type: file
         description: |
