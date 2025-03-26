@@ -68,10 +68,10 @@ workflow PREPARE_GENOME_METADATA {
             .verified_json
             .set { verified_genome_json }
 
-        channel_versions.mix(METADATA_GENOMESUMMARY.versions, SCHEMA_JSON.versions)
+        combined_versions = channel_versions.mix(METADATA_GENOMESUMMARY.out.versions, SCHEMA_JSON.out.versions)
 
     emit:
         prepared_metadata = verified_genome_json // channel: [ val(meta), path(json) ]
-        versions = channel_versions      // channel: [ path(versions.yml), path(versions.yml) ]
+        versions = combined_versions      // channel: [ path(versions.yml), path(versions.yml) ]
 }
 
