@@ -9,12 +9,12 @@ nextflow_process {
     tag "urls"
     tag "urls/extract"
 
-    test("Should correctly parse a complete MySQL URL") {
+    test("Should extract connection info from URL with all components") {
         when {
             process {
                 """
                 input[0] = [
-                    [ id:'test1' ],
+                    [ id:'test1' ], 
                     "mysql://user:password@host.com:3306/database"
                 ]
                 """
@@ -22,19 +22,12 @@ nextflow_process {
         }
 
         then {
-            assertAll(
-                { assert process.success },
-                { assert process.out.connection_info.size() == 1 },
-                { assert process.out.optional_password.size() == 1 },
-                { assert process.out.optional_database.size() == 1 },
-                { assert snapshot(process.out.connection_info).match("connection_info") },
-                { assert snapshot(process.out.optional_password).match("optional_password") },
-                { assert snapshot(process.out.optional_database).match("optional_database") }
-            )
+            assert process.success
+            assert snapshot(process.out).match()
         }
     }
 
-    test("Should handle MySQL URL without password") {
+    test("Should extract connection info from URL without password") {
         when {
             process {
                 """
@@ -47,19 +40,12 @@ nextflow_process {
         }
 
         then {
-            assertAll(
-                { assert process.success },
-                { assert process.out.connection_info.size() == 1 },
-                { assert process.out.optional_password.size() == 1 },
-                { assert process.out.optional_database.size() == 1 },
-                { assert snapshot(process.out.connection_info).match("connection_info_no_password") },
-                { assert snapshot(process.out.optional_password).match("optional_password_no_password") },
-                { assert snapshot(process.out.optional_database).match("optional_database_no_password") }
-            )
+            assert process.success
+            assert snapshot(process.out).match()
         }
     }
 
-    test("Should handle MySQL URL without database") {
+    test("Should extract connection info from URL without database") {
         when {
             process {
                 """
@@ -72,24 +58,17 @@ nextflow_process {
         }
 
         then {
-            assertAll(
-                { assert process.success },
-                { assert process.out.connection_info.size() == 1 },
-                { assert process.out.optional_password.size() == 1 },
-                { assert process.out.optional_database.size() == 1 },
-                { assert snapshot(process.out.connection_info).match("connection_info_no_database") },
-                { assert snapshot(process.out.optional_password).match("optional_password_no_database") },
-                { assert snapshot(process.out.optional_database).match("optional_database_no_database") }
-            )
+            assert process.success
+            assert snapshot(process.out).match()
         }
     }
 
-    test("Should handle invalid MySQL URL") {
+    test("Should fail with invalid URL format") {
         when {
             process {
                 """
                 input[0] = [
-                    [ id:'test5' ],
+                    [ id:'test4' ],
                     "invalid_url"
                 ]
                 """
@@ -97,11 +76,8 @@ nextflow_process {
         }
 
         then {
-            assertAll(
-                { assert process.exitStatus == 1 },
-                { assert process.errorReport.contains("Command error:") },
-                { assert process.errorReport.contains("Invalid MySQL URL format: invalid_url") }
-            )
+            assert process.failed
+            assert snapshot(process.stderr).match()
         }
     }
 }

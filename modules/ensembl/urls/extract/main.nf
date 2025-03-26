@@ -12,6 +12,7 @@ process URLS_EXTRACT {
     path "versions.yml", emit: versions
 
     script:
+
     """
     # Extract and parse the MySQL URL
     url_string="${url_string}"
@@ -24,10 +25,9 @@ process URLS_EXTRACT {
         port="\${BASH_REMATCH[5]}"
         database="\${BASH_REMATCH[7]}"
 
-        # Handle missing values
-        [ -z "\$password" ] && password="null"
-        [ -z "\$database" ] && database="null"
-
+        # Handle missing password or database
+        [ -z "\$password" ] && password=""
+        [ -z "\$database" ] && database=""
         export user host port password database
     else
         echo "Invalid MySQL URL format: \$url_string" >&2
@@ -39,9 +39,9 @@ process URLS_EXTRACT {
 
     stub:
     """
-    host = user_name
-    user = host.com
-    port = 3886
+    host = host.com
+    user = user
+    port = 3306
 
     echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
     """
