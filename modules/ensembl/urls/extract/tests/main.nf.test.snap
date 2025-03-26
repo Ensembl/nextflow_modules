@@ -1,0 +1,161 @@
+{
+    "connection_info": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test1"
+                    },
+                    "user",
+                    "host.com",
+                    "3306"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:46.9039"
+    },
+    "optional_database": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test1"
+                    },
+                    "database"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:46.911446"
+    },
+    "optional_password": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test1"
+                    },
+                    "password"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:46.909742"
+    },
+    "optional_database_no_database": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test3"
+                    },
+                    "null"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:51.087938"
+    },
+    "optional_database_no_password": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test2"
+                    },
+                    "database"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:49.067826"
+    },
+    "connection_info_no_password": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test2"
+                    },
+                    "user",
+                    "host.com",
+                    "3306"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:49.062974"
+    },
+    "connection_info_no_database": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test3"
+                    },
+                    "user",
+                    "host.com",
+                    "3306"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:51.083091"
+    },
+    "optional_password_no_database": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test3"
+                    },
+                    "password"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:51.085612"
+    },
+    "optional_password_no_password": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test2"
+                    },
+                    "null"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T12:22:49.065466"
+    }
+}

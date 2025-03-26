@@ -1,0 +1,108 @@
+nextflow_process {
+
+    name "Test Process URLS_EXTRACT"
+    script "../main.nf"
+    process "URLS_EXTRACT"
+
+    tag "modules"
+    tag "modules_ensembl"
+    tag "urls"
+    tag "urls/extract"
+
+    test("Should correctly parse a complete MySQL URL") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test1' ],
+                    "mysql://user:password@host.com:3306/database"
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info.size() == 1 },
+                { assert process.out.optional_password.size() == 1 },
+                { assert process.out.optional_database.size() == 1 },
+                { assert snapshot(process.out.connection_info).match("connection_info") },
+                { assert snapshot(process.out.optional_password).match("optional_password") },
+                { assert snapshot(process.out.optional_database).match("optional_database") }
+            )
+        }
+    }
+
+    test("Should handle MySQL URL without password") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test2' ],
+                    "mysql://user@host.com:3306/database"
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info.size() == 1 },
+                { assert process.out.optional_password.size() == 1 },
+                { assert process.out.optional_database.size() == 1 },
+                { assert snapshot(process.out.connection_info).match("connection_info_no_password") },
+                { assert snapshot(process.out.optional_password).match("optional_password_no_password") },
+                { assert snapshot(process.out.optional_database).match("optional_database_no_password") }
+            )
+        }
+    }
+
+    test("Should handle MySQL URL without database") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test3' ],
+                    "mysql://user:password@host.com:3306"
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info.size() == 1 },
+                { assert process.out.optional_password.size() == 1 },
+                { assert process.out.optional_database.size() == 1 },
+                { assert snapshot(process.out.connection_info).match("connection_info_no_database") },
+                { assert snapshot(process.out.optional_password).match("optional_password_no_database") },
+                { assert snapshot(process.out.optional_database).match("optional_database_no_database") }
+            )
+        }
+    }
+
+    test("Should handle invalid MySQL URL") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test5' ],
+                    "invalid_url"
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.exitStatus == 1 },
+                { assert process.errorReport.contains("Command error:") },
+                { assert process.errorReport.contains("Invalid MySQL URL format: invalid_url") }
+            )
+        }
+    }
+}
+
