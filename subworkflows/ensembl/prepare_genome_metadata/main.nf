@@ -13,11 +13,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-include { METADATA_GENOMESUMMARY } from '../../../modules/ensembl/metadata/genomesummary/main'
-include { SCHEMA_JSON } from '../../../modules/ensembl/schema/json/main'
+include { METADATA_GENOMESUMMARY } from '../../../modules/ensembl/metadata/genomesummary'
+include { SCHEMA_JSON } from '../../../modules/ensembl/schema/json'
 
 import groovy.json.JsonSlurper
-
 def readJson(json_path) {
     def slurp = new JsonSlurper()
     def json_file = file(json_path)
