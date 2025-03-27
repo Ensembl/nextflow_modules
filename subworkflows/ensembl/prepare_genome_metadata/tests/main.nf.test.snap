@@ -1,0 +1,85 @@
+{
+    "genomesummary workflow test (with stub)": {
+        "content": [
+            {
+                "stderr": [
+                    "\u001b[33mNextflow 24.10.5 is available - Please consider updating your version to it\u001b(B\u001b[m"
+                ],
+                "errorReport": null,
+                "exitStatus": 0,
+                "out": {
+                    "0": [
+                        [
+                            {
+                                "accession": "GCA_000001215.4",
+                                "production_name": "GCA_000001215.4",
+                                "publish_dir": "GCA_000001215.4",
+                                "prefix": "",
+                                "has_annotation": true
+                            },
+                            "genome.json:md5,35290e51b83617b0deb85f4da6fd0b51"
+                        ]
+                    ],
+                    "1": [
+                        "versions.yml:md5,889507ae0439c4584d12cf10d79e9202",
+                        "versions.yml:md5,9ce2ad4d825e8f06623e4d566fa7c6bc"
+                    ],
+                    "prepared_metadata": [
+                        [
+                            {
+                                "accession": "GCA_000001215.4",
+                                "production_name": "GCA_000001215.4",
+                                "publish_dir": "GCA_000001215.4",
+                                "prefix": "",
+                                "has_annotation": true
+                            },
+                            "genome.json:md5,35290e51b83617b0deb85f4da6fd0b51"
+                        ]
+                    ],
+                    "versions": [
+                        "versions.yml:md5,889507ae0439c4584d12cf10d79e9202",
+                        "versions.yml:md5,9ce2ad4d825e8f06623e4d566fa7c6bc"
+                    ]
+                },
+                "failed": false,
+                "stdout": [
+                    
+                ],
+                "errorMessage": null,
+                "trace": {
+                    "tasksFailed": 0,
+                    "tasksCount": 2,
+                    "tasksSucceeded": 2
+                },
+                "name": "workflow",
+                "success": true
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.3"
+        },
+        "timestamp": "2025-03-26T15:47:51.417603352"
+    },
+    "genome.json": {
+        "content": [
+            [
+                [
+                    {
+                        "accession": "GCA_000001215.4",
+                        "production_name": "GCA_000001215.4",
+                        "publish_dir": "GCA_000001215.4",
+                        "prefix": "",
+                        "has_annotation": true
+                    },
+                    "genome.json"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.3"
+        },
+        "timestamp": "2025-03-26T15:23:01.271023667"
+    }
+}
