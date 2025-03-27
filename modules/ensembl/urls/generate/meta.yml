@@ -18,7 +18,7 @@ input:
       description: Metadata map
   - protocol:
       type: string
-      description: The protocol for the database connection (e.g., mysql, postgresql)
+      description: The protocol for the database connection (e.g. mysql, postgresql)
   - user:
       type: string
       description: The username for the database connection
