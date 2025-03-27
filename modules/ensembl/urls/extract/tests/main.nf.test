@@ -1,0 +1,102 @@
+nextflow_process {
+
+    name "Test Process URLS_EXTRACT"
+    script "../main.nf"
+    process "URLS_EXTRACT"
+
+    tag "modules"
+    tag "modules_ensembl"
+    tag "urls"
+    tag "urls/extract"
+
+    test("Should extract MySQL URL components") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    'mysql://user:password@host.com:3306/database'
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info != null },
+                { assert process.out.versions != null },
+                { assert snapshot(process.out.connection_info).match("connection_info") },
+                { assert snapshot(process.out.versions).match("versions") }
+            )
+        }
+    }
+
+    test("Should handle URL without password") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test_no_password' ],
+                    'mysql://user@host.com:3306/database'
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info != null },
+                { assert process.out.versions != null },
+                { assert snapshot(process.out.connection_info).match("connection_info_no_password") },
+                { assert snapshot(process.out.versions).match("versions_no_password") }
+            )
+        }
+    }
+
+    test("Should handle URL without database") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test_no_database' ],
+                    'mysql://user:password@host.com:3306'
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.connection_info != null },
+                { assert process.out.versions != null },
+                { assert snapshot(process.out.connection_info).match("connection_info_no_database") },
+                { assert snapshot(process.out.versions).match("versions_no_database") }
+            )
+        }
+    }
+
+    test("Should fail with invalid URL format") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test_invalid' ],
+                    'invalid_url_format'
+                ]
+                """
+            }
+        }
+
+         then {
+            assert process.failed
+            assert snapshot(process.stderr).match()
+        }
+    }
+}

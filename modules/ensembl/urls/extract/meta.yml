@@ -1,0 +1,49 @@
+---
+name: "URLS_EXTRACT"
+description: Extracts MySQL arguments from a URL string
+keywords:
+  - url
+  - mysql
+  - parse
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - url_string:
+      type: string
+      description: MySQL URL string to parse
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - user:
+      type: string
+      description: Extracted username from the URL
+  - password:
+      type: string
+      description: Extracted password from the URL (if present)
+  - host:
+      type: string
+      description: Extracted host from the URL
+  - port:
+      type: string
+      description: Extracted port from the URL
+  - database:
+      type: string
+      description: Extracted database name from the URL (if present)
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@ensembl-dev"
+  - "@Salome-Brunon"
+maintainers:
+  - "@ensembl-dev"

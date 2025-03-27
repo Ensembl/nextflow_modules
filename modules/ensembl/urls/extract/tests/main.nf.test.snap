@@ -1,0 +1,113 @@
+{
+    "connection_info": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "user",
+                    "host.com",
+                    "3306",
+                    "password",
+                    "database"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:10:02.948488"
+    },
+    "versions": {
+        "content": [
+            [
+                "versions.yml:md5,844210d41d31414da2041f13946f845c"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:10:02.953735"
+    },
+    "versions_no_database": {
+        "content": [
+            [
+                "versions.yml:md5,844210d41d31414da2041f13946f845c"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:10:06.887747"
+    },
+    "Should fail with invalid URL format": {
+        "content": [
+            [
+                
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:10:08.789647"
+    },
+    "versions_no_password": {
+        "content": [
+            [
+                "versions.yml:md5,844210d41d31414da2041f13946f845c"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:10:04.907779"
+    },
+    "connection_info_no_password": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test_no_password"
+                    },
+                    "user",
+                    "host.com",
+                    "3306",
+                    "",
+                    "database"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:10:04.9047"
+    },
+    "connection_info_no_database": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test_no_database"
+                    },
+                    "user",
+                    "host.com",
+                    "3306",
+                    "password",
+                    ""
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:10:06.883916"
+    }
+}
