@@ -2,10 +2,11 @@
 name: "metadata_amendgenome"
 description: Extends genome metadata using input files and validates the output against a genome schema.
 keywords:
+  - amend
   - genome
   - metada
   - validation
-  - amend
+
 tools:
   - "metadata_amendgenome":
       description: "This module processes genome metadata by incorporating additional data from assembly reports and GenBank files, ensuring compliance with the genome schema"

@@ -34,12 +34,12 @@ output:
 
   - all_files:
       type: file
-      description: "All files used as entry."
+      description: All files used as entry.
       pattern: "*.{gff3,fasta,json}"
 
   - integrity_file:
       type: file
-      description: "Captures potential errors detected during the integrity check of a manifest file (manifest.json)."
+      description: Captures potential errors detected during the integrity check of a manifest file (manifest.json).
       pattern: "integrity.out"
 
   - error_log:
@@ -52,6 +52,6 @@ output:
       pattern: "versions.yml"
 
 authors:
-  - "ensembl-dev@ebi.ac.uk"
+  - "@ensembl-dev"
 maintainers:
-  - "ensembl-dev@ebi.ac.uk"
+  - "@ensembl-dev"
