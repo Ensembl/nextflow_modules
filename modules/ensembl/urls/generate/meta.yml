@@ -1,7 +1,6 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "urls_generate"
-name: urls_generate
 description: Generates a URL for database connections based on input parameters
 keywords:
   - url
