@@ -39,7 +39,7 @@ output:
 
   - integrity_file:
       type: file
-      description: "captures potential errors detected during the integrity check of a manifest file (manifest.json)."
+      description: "Captures potential errors detected during the integrity check of a manifest file (manifest.json)."
       pattern: "integrity.out"
 
   - error_log:

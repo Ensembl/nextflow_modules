@@ -28,7 +28,7 @@ input:
       pattern: "*.txt"
   - genomic_fna:
       type: file
-      description: "FASTA file containing genomic sequences.""
+      description: "FASTA file containing genomic sequences."
       pattern: "*.{fna,fasta,fa}"
   
   - genbank_gbff:
@@ -52,6 +52,6 @@ output:
   
   
 authors:
-  - "ensembl-dev@ebi.ac.uk"
+  - "@ensembl-dev"
 maintainers:
-  - "ensembl-dev@ebi.ac.uk"
+  - "@ensembl-dev"

@@ -1,5 +1,5 @@
 ---
-name: "meetadata_amendgenome"
+name: metadata_amendgenome
 channels:
   - conda-forge
   - bioconda
