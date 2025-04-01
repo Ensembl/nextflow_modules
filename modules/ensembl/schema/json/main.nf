@@ -32,7 +32,7 @@ process SCHEMA_JSON {
     script:
         schema_name = json_file.simpleName
         """
-        schemas_json_validate --json_file !{json_file} --json_schema !{schema_name}
+        schemas_json_validate --json_file ${json_file} --json_schema ${schema_name}
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         schemas_json_validate --version >> versions.yml
