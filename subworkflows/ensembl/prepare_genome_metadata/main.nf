@@ -32,14 +32,11 @@ def metaFromGenomeJson(json_path) {
 
     def prod_name = data.assembly.accession
     def publish_dir = data.assembly.accession
+    def has_annotation = data.annotation.asBoolean()
 
     if ( data.species && data.species.production_name ) {
         prod_name = data.species.production_name
         publish_dir = prod_name
-    }
-    def has_annotation = false
-    if (data.annotation) {
-        has_annotation = true
     }
 
     return [
