@@ -11,8 +11,8 @@ keywords:
   - utility
   - validation
 components:
-  - Ensembl/genomio:genome_metadata_prepare
-  - Ensembl/genomio:schemas_json_validate
+  - ensembl-genomio:genome_metadata_prepare
+  - ensembl-genomio:schemas_json_validate
 input:
   - input:
       type: map
