@@ -1,5 +1,5 @@
 {
-    "genomesummary workflow test (with stub)": {
+    "genomesummary workflow test (full test)": {
         "content": [
             {
                 "stderr": [
@@ -17,7 +17,7 @@
                                 "prefix": "",
                                 "has_annotation": true
                             },
-                            "genome.json:md5,35290e51b83617b0deb85f4da6fd0b51"
+                            "genome.json:md5,9f34e758f4c9504a8f95476989af31c0"
                         ]
                     ],
                     "1": [
@@ -33,7 +33,7 @@
                                 "prefix": "",
                                 "has_annotation": true
                             },
-                            "genome.json:md5,35290e51b83617b0deb85f4da6fd0b51"
+                            "genome.json:md5,9f34e758f4c9504a8f95476989af31c0"
                         ]
                     ],
                     "versions": [
@@ -59,7 +59,7 @@
             "nf-test": "0.9.2",
             "nextflow": "24.10.3"
         },
-        "timestamp": "2025-03-26T15:47:51.417603352"
+        "timestamp": "2025-04-01T14:21:41.078165261"
     },
     "genome.json": {
         "content": [
@@ -80,6 +80,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.10.3"
         },
-        "timestamp": "2025-03-26T15:23:01.271023667"
+        "timestamp": "2025-04-01T15:09:04.471254559"
     }
 }

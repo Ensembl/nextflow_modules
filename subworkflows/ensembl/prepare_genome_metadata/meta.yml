@@ -14,7 +14,7 @@ components:
   - Ensembl/genomio:genome_metadata_prepare
   - Ensembl/genomio:schemas_json_validate
 input:
-  - ch_bam:
+  - input:
       type: map
       description: |
         Structured meta map, meta query JSON and NCBI datasets 'genome summary' JSON. 

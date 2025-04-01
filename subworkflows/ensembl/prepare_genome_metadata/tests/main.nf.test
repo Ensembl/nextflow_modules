@@ -8,10 +8,9 @@ nextflow_workflow {
     tag "subworkflows_ensembl"
     tag "subworkflows/prepare_genome_metadata"
 
-    test("genomesummary workflow test (with stub)") {
+    test("genomesummary workflow test (full test)") {
 
         when {
-            options "-stub"
 
             workflow {
                 """
@@ -35,7 +34,7 @@ nextflow_workflow {
                 { assert workflow.success},
                 { assert snapshot(workflow).match()},
                 { assert snapshot(workflow.out.versions) != null }
-                // { assert snapshot(workflow.out).size() == 2},
+
             )
         }
     }
