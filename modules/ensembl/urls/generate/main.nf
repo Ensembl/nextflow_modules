@@ -35,7 +35,6 @@ process URLS_GENERATE {
     export  base_url
 
     echo -e -n "${task.process}:\n\tbash version: " > versions.yml
-    bash --version | head -n 1 | cut -f 1,2,4 -d ' ' >> versions.yml
     """
     
     stub:
