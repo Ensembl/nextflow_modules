@@ -1,0 +1,58 @@
+---
+name: "metadata_amendgenome"
+description: Extends genome metadata using input files and validates the output against a genome schema.
+keywords:
+  - amend
+  - genome
+  - metada
+  - validation
+
+tools:
+  - "metadata_amendgenome":
+      description: "This module processes genome metadata by incorporating additional data from assembly reports and GenBank files, ensuring compliance with the genome schema"
+      homepage: "https://github.com/Ensembl/nextflow_modules"
+      licence: ['Apache License version 2.0']
+
+input:
+  - meta:
+      type: map
+      description: 
+        Groovy Map containing meta information
+        e.g. `[ accession:'accession01' ]
+  - genome_json:
+      type: file
+      description: "JSON file containing genome metadata."
+      pattern: "*.json"
+  - asm_report:
+      type: file
+      description: "Assembly report file with genomic metadata."
+      pattern: "*.txt"
+  - genomic_fna:
+      type: file
+      description: "FASTA file containing genomic sequences."
+      pattern: "*.{fna,fasta,fa}"
+  
+  - genbank_gbff:
+      type: file
+      description: "GenBank file containing genome annotations."
+      pattern: "*.{gbff,gb}"
+  
+output:
+  - meta:
+      type: map
+      description: 
+        Groovy Map containing meta information
+        e.g. `[ accession:'accession01' ]
+  - amended_json:
+      description: "JSON file containing genome metadata."
+      pattern: "*.json"
+  -  versions:
+      type: file
+      description: "File containing information on module software version."
+      pattern: "versions.yml"
+  
+  
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"
