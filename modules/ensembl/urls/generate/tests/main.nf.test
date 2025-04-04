@@ -1,0 +1,98 @@
+nextflow_process {
+
+    name "Test Process URLS_GENERATE"
+    script "../main.nf"
+    process "URLS_GENERATE"
+
+    tag "modules"
+    tag "modules_ensembl"
+    tag "urls"
+    tag "urls/generate"
+    
+    test("Should generate MySQL URL correctly with all parameters") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test1' ],
+                    'mysql',
+                    'user1',
+                    'host1.com',
+                    '3306',
+                    'password1',
+                    'database1'
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.url_sql != null },
+                { assert process.out.versions != null },
+                { assert process.out.url_sql.get(0).get(1) == 'mysql://user1:password1@host1.com:3306/database1' },
+                { assert snapshot(process.out.url_sql).match("generated_url_full") },
+                { assert snapshot(process.out.versions).match("versions_full") }
+            )
+        }
+    }
+
+    test("Should generate URL without password") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test2' ],
+                    'postgresql',
+                    'user2',
+                    'host2.com',
+                    '5432',
+                    '',
+                    'database2'
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.url_sql != null },
+                { assert process.out.versions != null },
+                { assert process.out.url_sql.get(0).get(1) == 'postgresql://user2@host2.com:5432/database2' },
+                { assert snapshot(process.out.url_sql).match("generated_url_no_password") },
+                { assert snapshot(process.out.versions).match("versions_no_password") }
+            )
+        }
+    }
+
+    test("Should generate URL without database") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test3' ],
+                    'oracle',
+                    'user3',
+                    'host3.com',
+                    '1521',
+                    'password3',
+                    ''
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.url_sql != null },
+                { assert process.out.versions != null },
+                { assert process.out.url_sql.get(0).get(1) == 'oracle://user3:password3@host3.com:1521' },
+                { assert snapshot(process.out.url_sql).match("generated_url_no_database") },
+                { assert snapshot(process.out.versions).match("versions_no_database") }
+            )
+        }
+    }
+}

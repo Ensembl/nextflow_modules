@@ -1,0 +1,2 @@
+urls/extract:
+  - "modules/ensembl/urls/generate/**"

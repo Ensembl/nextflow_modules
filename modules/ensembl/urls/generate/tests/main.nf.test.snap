@@ -1,0 +1,89 @@
+{
+    "versions_no_database": {
+        "content": [
+            [
+                "versions.yml:md5,538aac32a593906e9cf1f91cdc64582d"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:48:44.603805"
+    },
+    "versions_full": {
+        "content": [
+            [
+                "versions.yml:md5,538aac32a593906e9cf1f91cdc64582d"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:48:40.656702"
+    },
+    "versions_no_password": {
+        "content": [
+            [
+                "versions.yml:md5,538aac32a593906e9cf1f91cdc64582d"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:48:42.653821"
+    },
+    "generated_url_full": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test1"
+                    },
+                    "mysql://user1:password1@host1.com:3306/database1"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:48:40.650816"
+    },
+    "generated_url_no_password": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test2"
+                    },
+                    "postgresql://user2@host2.com:5432/database2"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:48:42.651032"
+    },
+    "generated_url_no_database": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test3"
+                    },
+                    "oracle://user3:password3@host3.com:1521"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-03-26T15:48:44.600396"
+    }
+}
