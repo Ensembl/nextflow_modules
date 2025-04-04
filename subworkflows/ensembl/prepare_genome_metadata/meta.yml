@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: "prepare_genome_metadata"
+description: A subworkflow to query specific genome metadata from a full genome summary report JSON \
+  obtained via NCBI datasets-cli.
+keywords:
+  - ensembl
+  - genome metadata
+  - genomio
+  - JSON
+  - metadata
+  - utility
+  - validation
+components:
+  - ensembl-genomio:genome_metadata_prepare
+  - ensembl-genomio:schemas_json_validate
+input:
+  - input:
+      type: map
+      description: |
+        Structured meta map, meta query JSON and NCBI datasets 'genome summary' JSON. 
+        Structure: [ val(meta), path(json) ]
+      pattern: "*.json"
+output:
+  - prepared_metadata:
+      type: map
+      description: |
+        Structured meta map and single schema verified genome meta JSON file.
+        Structure: [ val(meta), path(json) ]
+      pattern: "genome.json"
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"

@@ -1,0 +1,41 @@
+nextflow_workflow {
+
+    name "Test Subworkflow PREPARE_GENOME_METADATA"
+    script "../main.nf"
+    workflow "PREPARE_GENOME_METADATA"
+
+    tag "subworkflows"
+    tag "subworkflows_ensembl"
+    tag "subworkflows/prepare_genome_metadata"
+
+    test("genomesummary workflow test (full test)") {
+
+        when {
+
+            workflow {
+                """
+                input[0] = [
+                    [accession: 'GCA_000001215.4'],
+                    file("${projectDir}/tests/modules/ensembl/metadata/genomesummary/meta-query.json", checkIfExists: true),
+                    file("${projectDir}/tests/modules/ensembl/metadata/genomesummary/ncbi_genome-summary.json", checkIfExists: true)
+                    ]
+                """
+            }
+        }
+
+            then {
+                assert snapshot(
+                    (workflow).out.prepared_metadata.collect {
+                        it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
+                        }
+                    ).match("genome.json")
+
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(workflow).match()},
+                { assert snapshot(workflow.out.versions) != null }
+
+            )
+        }
+    }
+}
