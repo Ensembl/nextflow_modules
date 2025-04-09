@@ -1,0 +1,37 @@
+// nf-core modules test metadata/amendgenome
+nextflow_process {
+
+    name "Test Process METADATA_AMENDGENOME"
+    script "../main.nf"
+    process "METADATA_AMENDGENOME"
+
+    tag "modules"
+    tag "modules_ensembl"
+    tag "metadata"
+    tag "metadata/amendgenome"
+
+    test("amendgenome (genome.json) - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0]= [
+                    [id:'test'], 
+                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.json', checkIfExists: true),
+                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/assembly_report.txt', checkIfExists: true),
+                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.fasta', checkIfExists: true),
+                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.gbff', checkIfExists: true),
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert snapshot(process.out).match()
+        }
+
+    }
+}
