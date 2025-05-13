@@ -1,0 +1,52 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "urls_generate"
+description: Generates a URL for database connections based on input parameters
+keywords:
+  - url
+  - database
+  - connection
+tools:
+  - bash:
+      description: The module uses Bash scripting to generate the URL
+      homepage: https://www.gnu.org/software/bash/
+      documentation: https://www.gnu.org/software/bash/manual/
+input:
+  - meta:
+      type: map
+      description: Metadata map
+  - protocol:
+      type: string
+      description: The protocol for the database connection (e.g. mysql, postgresql)
+  - user:
+      type: string
+      description: The username for the database connection
+  - host:
+      type: string
+      description: The hostname or IP address of the database server
+  - port:
+      type: string
+      description: The port number for the database connection
+  - password:
+      type: string
+      description: The password for the database connection (optional)
+  - database:
+      type: string
+      description: The name of the database to connect to (optional)
+output:
+  - meta:
+      type: map
+      description: Metadata map
+  - base_url:
+      type: string
+      description: The generated URL for the database connection
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@ensembl-dev"
+  - "@Salome-Brunon"
+maintainers:
+  - "@ensembl-dev"
