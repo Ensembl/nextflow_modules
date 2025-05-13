@@ -38,9 +38,6 @@ process URLS_GENERATE {
     
     stub:
         """
-        host = host.com
-        user = user
-        port = 3306
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         """
