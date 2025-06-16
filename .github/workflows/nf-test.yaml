@@ -16,8 +16,13 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+<<<<<<< HEAD
       - name: Setup Nextflow latest-edge
         uses: nf-core/setup-nextflow@v1
+=======
+      - name: Setup Nextflow latest
+        uses: nf-core/setup-nextflow@v2
+>>>>>>> a16a059 (update nextflow version)
         with:
           version: "latest-edge"
 
