@@ -3,7 +3,7 @@
         "content": [
             {
                 "stderr": [
-                    "\u001b[33mNextflow 24.10.5 is available - Please consider updating your version to it\u001b(B\u001b[m"
+                    "\u001b[33mNextflow 25.04.4 is available - Please consider updating your version to it\u001b(B\u001b[m"
                 ],
                 "errorReport": null,
                 "exitStatus": 0,
@@ -17,7 +17,7 @@
                                 "prefix": "",
                                 "has_annotation": true
                             },
-                            "genome.json:md5,9f34e758f4c9504a8f95476989af31c0"
+                            "genome.json:md5,75d8680e4d2ca9f53cc3c9939d4d0aa2"
                         ]
                     ],
                     "1": [
@@ -33,7 +33,7 @@
                                 "prefix": "",
                                 "has_annotation": true
                             },
-                            "genome.json:md5,9f34e758f4c9504a8f95476989af31c0"
+                            "genome.json:md5,75d8680e4d2ca9f53cc3c9939d4d0aa2"
                         ]
                     ],
                     "versions": [
@@ -59,7 +59,7 @@
             "nf-test": "0.9.2",
             "nextflow": "24.10.3"
         },
-        "timestamp": "2025-04-01T14:21:41.078165261"
+        "timestamp": "2025-06-17T12:33:44.742874115"
     },
     "genome.json": {
         "content": [
