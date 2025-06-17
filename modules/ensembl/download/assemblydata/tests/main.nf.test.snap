@@ -42,7 +42,7 @@
                     ]
                 ],
                 "2": [
-                    "versions.yml:md5,397f2cc581ecbc8039f6ba1e998cadb3"
+                    "versions.yml:md5,99552c2487f9d5e7f4448b5ba5d238bc"
                 ],
                 "min_set": [
                     [
@@ -65,15 +65,15 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,397f2cc581ecbc8039f6ba1e998cadb3"
+                    "versions.yml:md5,99552c2487f9d5e7f4448b5ba5d238bc"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.04.3"
+            "nextflow": "24.10.3"
         },
-        "timestamp": "2024-12-19T16:18:39.547798388"
+        "timestamp": "2025-06-17T11:26:31.962280866"
     },
     "Minimal_file_set": {
         "content": [
