@@ -43,7 +43,7 @@
                     ]
                 ],
                 "5": [
-                    "versions.yml:md5,4b0af6aac956a5b0c26acd921a939796"
+                    "versions.yml:md5,7cb40da8b033f375c39f90f186e823dd"
                 ],
                 "dna_fasta": [
                     [
@@ -86,14 +86,14 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,4b0af6aac956a5b0c26acd921a939796"
+                    "versions.yml:md5,7cb40da8b033f375c39f90f186e823dd"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.04.3"
+            "nextflow": "24.10.3"
         },
-        "timestamp": "2025-01-06T12:08:14.543064333"
+        "timestamp": "2025-06-17T11:27:34.377951323"
     }
 }
