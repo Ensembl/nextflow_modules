@@ -40,7 +40,7 @@ nextflow_process {
         then {   
             // Since the start date and version is not constant we want to snapshot the file without them
             def genome_lines = path(process.out.meta_json.get(0).get(1)).readLines()
-            def static_text = genome_lines[0..11] + genome_lines[15..19]
+            def static_text = genome_lines[0..11] + genome_lines[14..19]
             assertAll(
                     { assert process.success },
                     { assert snapshot(process.out.versions).match() },

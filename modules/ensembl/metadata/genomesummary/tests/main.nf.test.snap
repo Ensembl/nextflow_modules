@@ -59,6 +59,7 @@
                 "        \"version\": 4",
                 "    },",
                 "    \"genebuild\": {",
+                "    },",
                 "    \"species\": {",
                 "        \"scientific_name\": \"Drosophila melanogaster\",",
                 "        \"taxonomy_id\": 7227",
@@ -70,6 +71,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.10.3"
         },
-        "timestamp": "2025-06-18T11:41:40.825657619"
+        "timestamp": "2025-06-18T11:55:06.017295472"
     }
 }
