@@ -24,6 +24,8 @@ nextflow_workflow {
         }
 
             then {
+                def genome_lines = path(workflow.out.prepared_metadata.get(0).get(1)).readLines()
+                def static_text = genome_lines[0..11] + genome_lines[14..19]
                 assert snapshot(
                     (workflow).out.prepared_metadata.collect {
                         it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
@@ -32,9 +34,9 @@ nextflow_workflow {
 
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow).match()},
+                { assert snapshot(workflow.out.versions).match() },
+                { assert snapshot(static_text).match("genomejson_output") },
                 { assert snapshot(workflow.out.versions) != null }
-
             )
         }
     }

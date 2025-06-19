@@ -6,20 +6,20 @@
                     "dbs.json:md5,476af329a36f4e5754d116a9f68b45f1"
                 ],
                 "1": [
-                    "versions.yml:md5,4263356faf21f07aeb4f540175e50a18"
+                    "versions.yml:md5,83772b4ed2e92b04d4afa005b32a00a1"
                 ],
                 "dbs_meta_json": [
                     "dbs.json:md5,476af329a36f4e5754d116a9f68b45f1"
                 ],
                 "versions": [
-                    "versions.yml:md5,4263356faf21f07aeb4f540175e50a18"
+                    "versions.yml:md5,83772b4ed2e92b04d4afa005b32a00a1"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.04.3"
+            "nextflow": "24.10.3"
         },
-        "timestamp": "2024-12-19T16:27:22.960883812"
+        "timestamp": "2025-06-17T11:26:19.149965366"
     }
 }

@@ -1,65 +1,45 @@
 {
     "genomesummary workflow test (full test)": {
         "content": [
-            {
-                "stderr": [
-                    "\u001b[33mNextflow 24.10.5 is available - Please consider updating your version to it\u001b(B\u001b[m"
-                ],
-                "errorReport": null,
-                "exitStatus": 0,
-                "out": {
-                    "0": [
-                        [
-                            {
-                                "accession": "GCA_000001215.4",
-                                "production_name": "GCA_000001215.4",
-                                "publish_dir": "GCA_000001215.4",
-                                "prefix": "",
-                                "has_annotation": true
-                            },
-                            "genome.json:md5,9f34e758f4c9504a8f95476989af31c0"
-                        ]
-                    ],
-                    "1": [
-                        "versions.yml:md5,889507ae0439c4584d12cf10d79e9202",
-                        "versions.yml:md5,9ce2ad4d825e8f06623e4d566fa7c6bc"
-                    ],
-                    "prepared_metadata": [
-                        [
-                            {
-                                "accession": "GCA_000001215.4",
-                                "production_name": "GCA_000001215.4",
-                                "publish_dir": "GCA_000001215.4",
-                                "prefix": "",
-                                "has_annotation": true
-                            },
-                            "genome.json:md5,9f34e758f4c9504a8f95476989af31c0"
-                        ]
-                    ],
-                    "versions": [
-                        "versions.yml:md5,889507ae0439c4584d12cf10d79e9202",
-                        "versions.yml:md5,9ce2ad4d825e8f06623e4d566fa7c6bc"
-                    ]
-                },
-                "failed": false,
-                "stdout": [
-                    
-                ],
-                "errorMessage": null,
-                "trace": {
-                    "tasksFailed": 0,
-                    "tasksCount": 2,
-                    "tasksSucceeded": 2
-                },
-                "name": "workflow",
-                "success": true
-            }
+            [
+                "versions.yml:md5,889507ae0439c4584d12cf10d79e9202",
+                "versions.yml:md5,9ce2ad4d825e8f06623e4d566fa7c6bc"
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.10.3"
         },
-        "timestamp": "2025-04-01T14:21:41.078165261"
+        "timestamp": "2025-06-18T12:53:07.216007345"
+    },
+    "genomejson_output": {
+        "content": [
+            [
+                "{",
+                "    \"annotation\": {",
+                "        \"provider_name\": \"GenBank\",",
+                "        \"provider_url\": \"https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4\"",
+                "    },",
+                "    \"assembly\": {",
+                "        \"accession\": \"GCA_000001215.4\",",
+                "        \"provider_name\": \"GenBank\",",
+                "        \"provider_url\": \"https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4\",",
+                "        \"version\": 4",
+                "    },",
+                "    \"genebuild\": {",
+                "    },",
+                "    \"species\": {",
+                "        \"scientific_name\": \"Drosophila melanogaster\",",
+                "        \"taxonomy_id\": 7227",
+                "    }",
+                "}"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.3"
+        },
+        "timestamp": "2025-06-18T12:38:42.666454381"
     },
     "genome.json": {
         "content": [
