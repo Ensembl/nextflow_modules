@@ -1,6 +1,25 @@
 #!/usr/bin/env python3
 
-"""Split a FASTA file (possibly gzipped) into multiple smaller FASTA files."""
+"""
+Split a FASTA file into multiple FASTA files, optionally chunking long sequences.
+
+This script reads an input FASTA (optionally gzipped) and writes one or more FASTA
+files to an output directory. Records can be split across output files either by:
+
+- maximum number of records per file (``max_seqs_per_file``), and/or
+- maximum cumulative sequence length per file (``max_seq_length_per_file``).
+
+If ``force_max_seq_length`` is enabled, individual sequences longer than
+``max_seq_length_per_file`` are split into chunks. When chunking, a final remainder
+chunk shorter than ``min_chunk_length`` can be merged into the previous chunk.
+
+Optionally, an AGP v2.0 file can be written describing how each input sequence
+maps to output contigs/chunks.
+
+The implementation is designed to stream the input once and write outputs in a
+single pass.
+"""
+
 
 import inspect
 import logging
@@ -37,7 +56,19 @@ except ImportError:
 
 
 class Params:
-    """Class to hold parameters for splitting FASTA files."""
+    """
+    Validated configuration for splitting a FASTA file.
+
+    Attributes correspond to CLI arguments and control:
+    - output location and cleanup behaviour,
+    - how records are grouped into output FASTA files,
+    - whether long sequences are chunked, and
+    - whether to write an AGP file describing the splits.
+
+    Validation is performed in ``_validate_params()`` and will raise ``ValueError``
+    for invalid combinations (e.g. ``min_chunk_length`` without
+    ``max_seq_length_per_file``).
+    """
 
     def __init__(
         self,
@@ -70,6 +101,13 @@ class Params:
         self._validate_params()
 
     def _validate_params(self) -> None:
+        """
+        Validate parameter values and combinations.
+
+        Raises:
+            ValueError: If any numeric limit is <= 0, or if ``min_chunk_length`` is
+                set without ``max_seq_length_per_file``.
+        """
         if self.max_dirs_per_directory is not None and self.max_dirs_per_directory <= 0:
             raise ValueError("--max-dirs-per-directory must be > 0 or None")
         if (
@@ -95,8 +133,22 @@ class Params:
 
 class OutputWriter:
     """
-    Manages output file creation and counters, writing in a single pass.
-    Creates/cleans directories lazily as required.
+    Write split FASTA outputs and (optionally) an AGP file.
+
+    The writer manages:
+    - output directory creation/cleanup (lazy, per-directory),
+    - output file naming (optionally unique across directories),
+    - record and length counters used to decide when to roll over to a new file,
+    - an optional AGP v2.0 file describing the mapping from original sequences
+      to output contigs/chunks.
+
+    Notes:
+        Output layout is controlled by:
+        - ``max_files_per_directory``: how many FASTA files to write per directory
+          before incrementing the directory index.
+        - ``max_dirs_per_directory``: how directory indices are expanded into a
+          multi-level path (base-N style).
+        - ``unique_file_names``: whether to include directory index in filenames.
     """
 
     def __init__(self, params: Params):
@@ -135,7 +187,14 @@ class OutputWriter:
             raise
 
     def _get_subdir_path(self, dir_index: int) -> Path:
-        """Computes subdirectory path based on dir_index and max_dirs_per_directory."""
+        """Return the output subdirectory path for a given directory index.
+
+        Args:
+            dir_index: Zero-based directory index computed from file count.
+
+        Returns:
+            A Path under ``params.out_dir`` into which output files are written.
+        """
         parts = []
         max_dirs = self.params.max_dirs_per_directory
         if max_dirs is None:
@@ -150,9 +209,16 @@ class OutputWriter:
         return self.params.out_dir.joinpath(*parts)
 
     def _get_file_and_dir_index(self) -> Tuple[int, int]:
-        """
-        Determines index of file and directory based on file count and max files per directory.
-        Returns (file_index, dir_index).
+        """Compute the file index within a directory and the directory index.
+
+        ``file_count`` increments monotonically for each output file. If
+        ``max_files_per_directory`` is set, files are grouped into directories such
+        that each directory contains at most that many files.
+
+        Returns:
+            (file_index, dir_index) where:
+            - file_index is 1-based within the directory, and
+            - dir_index is 0-based across directories.
         """
         max_files = self.params.max_files_per_directory
         if max_files is None:
@@ -182,10 +248,18 @@ class OutputWriter:
         part_id: str,
         part_length: int,
     ) -> None:
-        """Adds an entry to the AGP file."""
-        # AGP columns for WGS contig component type:
-        # object, object_beg, object_end, part_number, component_type,
-        # component_id, component_beg, component_end, orientation
+        """
+        Write a single AGP v2.0 component line for a chunk/contig.
+        Coordinates written to AGP are 1-based and inclusive.
+
+        Args:
+            object_id: The original input sequence ID (AGP 'object').
+            start: Start coordinate on the object (1-based, inclusive).
+            end: End coordinate on the object (1-based, inclusive).
+            part_nr: Component part number for this object (starts at 1 per object).
+            part_id: Output contig/chunk identifier (AGP 'component_id').
+            part_length: Length of the component in bases.
+        """
         if self._agp_fh is None:
             return
         try:
@@ -224,7 +298,7 @@ class OutputWriter:
         self.file_len = 0
 
     def write_record(self, record: SeqRecord) -> None:
-        """Writes a SeqRecord to the current output file."""
+        """Writes a SeqRecord to the current output file and update counters."""
         try:
             SeqIO.write(record, self._fh, "fasta")
             self.record_count += 1
@@ -243,7 +317,11 @@ class OutputWriter:
 
 
 def _get_param_defaults() -> dict:
-    """Retrieve default values for Params class attributes."""
+    """
+    Return default values from the ``Params`` constructor signature.
+
+    Keeps CLI help text in sync with the defaults defined in ``Params.__init__``.
+    """
     signature = inspect.signature(Params.__init__)
     defaults = {}
     for name, param in signature.parameters.items():
@@ -253,7 +331,30 @@ def _get_param_defaults() -> dict:
 
 
 def split_fasta(params: Params) -> None:
-    """Splits the input FASTA file into multiple smaller FASTA files, chunking long sequences if required."""
+    """
+    Split an input FASTA into multiple output FASTA files.
+
+    Records are streamed from the input file and written in a single pass.
+    Output file rollover can be triggered by:
+    - exceeding ``max_seqs_per_file`` (record-count based), and/or
+    - exceeding ``max_seq_length_per_file`` (cumulative sequence length per file).
+
+    If ``force_max_seq_length`` is enabled and an individual record is longer than
+    ``max_seq_length_per_file``, the sequence is split into fixed-size chunks.
+    If the final remainder chunk is shorter than ``min_chunk_length``, it is merged
+    with the previous chunk (which may exceed ``max_seq_length_per_file``).
+
+    When ``write_agp`` is enabled, an AGP v2.0 file is written describing the
+    mapping from each original sequence to its output contigs/chunks.
+
+    Args:
+        params: Validated configuration controlling splitting/chunking behaviour.
+
+    Raises:
+        FileNotFoundError: If the input FASTA does not exist.
+        ValueError: If parameter validation fails (raised when Params is created).
+        Exception: Propagates unexpected I/O or parsing errors.
+    """
     if not params.fasta_file.exists():
         logging.error(
             "DEBUG: fasta_file=%r resolved=%r cwd=%r",
@@ -363,6 +464,15 @@ def split_fasta(params: Params) -> None:
 
 
 def parse_args(argv: Optional[List[str]] = None) -> Params:
+    """
+    Parse CLI arguments and return a validated Params object.
+
+    Args:
+        argv: Optional argument list for testing. If None, uses sys.argv.
+
+    Returns:
+        A validated Params instance.
+    """
     defaults = _get_param_defaults()
     parser = ArgumentParser(
         description="Split a FASTA file into multiple FASTA files, optionally chunking long sequences."

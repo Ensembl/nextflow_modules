@@ -8,15 +8,18 @@ from Bio.SeqRecord import SeqRecord
 
 
 def write_fasta(path: Path, records):
+    """Write a list of SeqRecord objects to a FASTA file."""
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         SeqIO.write(records, fh, "fasta")
 
 
 def list_output_fastas(out_dir: Path):
+    """Return all FASTA files produced under the output directory."""
     return sorted(out_dir.rglob("*.fa"))
 
 
 def read_all_ids_from_fastas(out_dir: Path):
+    """Read and return all sequence IDs from all FASTA files under out_dir."""
     ids = []
     for fa in list_output_fastas(out_dir):
         with open(fa, "r", encoding="utf-8") as fh:
@@ -25,18 +28,26 @@ def read_all_ids_from_fastas(out_dir: Path):
 
 
 def parse_agp_lines(agp_path: Path):
+    """
+    Parse an AGP file into a list of column lists, excluding comments
+    and blank lines.
+    """
     lines = [l.rstrip("\n") for l in agp_path.read_text(encoding="utf-8").splitlines()]
     lines = [l for l in lines if l and not l.startswith("#")]
     return [l.split("\t") for l in lines]
 
 
 def test_no_agp_by_default(tmp_path: Path, split_fasta_module):
-    inp = tmp_path / "in.fa"
+    """
+    By default, splitting a FASTA should produce one or more FASTA outputs
+    but must NOT create an AGP file unless write_agp is explicitly enabled.
+    """
+    input_fasta = tmp_path / "in.fa"
     out = tmp_path / "out"
-    write_fasta(inp, [SeqRecord(Seq("ACGT"), id="seq1", description="")])
+    write_fasta(input_fasta, [SeqRecord(Seq("ACGT"), id="seq1", description="")])
 
     params = split_fasta_module.Params(
-        fasta_file=inp,
+        fasta_file=input_fasta,
         out_dir=out,
         write_agp=False,
     )
@@ -47,17 +58,22 @@ def test_no_agp_by_default(tmp_path: Path, split_fasta_module):
 
 
 def test_split_by_max_seqs_per_file(tmp_path: Path, split_fasta_module):
-    inp = tmp_path / "in.fa"
+    """
+    When max_seqs_per_file is set, sequences should be split across
+    multiple FASTA files while preserving original sequence order
+    and IDs.
+    """
+    input_fasta = tmp_path / "in.fa"
     out = tmp_path / "out"
     recs = [
         SeqRecord(Seq("A" * 10), id="s1", description=""),
         SeqRecord(Seq("C" * 10), id="s2", description=""),
         SeqRecord(Seq("G" * 10), id="s3", description=""),
     ]
-    write_fasta(inp, recs)
+    write_fasta(input_fasta, recs)
 
     params = split_fasta_module.Params(
-        fasta_file=inp,
+        fasta_file=input_fasta,
         out_dir=out,
         max_seqs_per_file=2,
         write_agp=False,
@@ -71,15 +87,19 @@ def test_split_by_max_seqs_per_file(tmp_path: Path, split_fasta_module):
 
 def test_chunk_merge_final_small_chunk_and_agp(tmp_path: Path, split_fasta_module):
     """
-    seq_len=2100, max=1000 -> chunks [1000, 1000, 100]
-    min_chunk_length=200 -> final chunk merged -> [1000, 1100]
+    When force_max_seq_length is enabled, long sequences are chunked.
+    If the final chunk is shorter than min_chunk_length, it should be
+    merged with the previous chunk, and the AGP file must reflect the
+    merged coordinates correctly.
     """
-    inp = tmp_path / "in.fa"
+    input_fasta = tmp_path / "in.fa"
     out = tmp_path / "out"
-    write_fasta(inp, [SeqRecord(Seq("A" * 2100), id="chr1", description="chr1")])
+    write_fasta(
+        input_fasta, [SeqRecord(Seq("A" * 2100), id="chr1", description="chr1")]
+    )
 
     params = split_fasta_module.Params(
-        fasta_file=inp,
+        fasta_file=input_fasta,
         out_dir=out,
         write_agp=True,
         force_max_seq_length=True,
@@ -101,31 +121,46 @@ def test_chunk_merge_final_small_chunk_and_agp(tmp_path: Path, split_fasta_modul
     cols = parse_agp_lines(agp)
     assert len(cols) == 2
 
-    # object, obj_beg, obj_end, part_no, type, comp_id, comp_beg, comp_end, orient
-    assert cols[0][0] == "chr1"
-    assert cols[0][1:4] == ["1", "1000", "1"]
-    assert cols[0][4] == "W"
-    assert cols[0][5] == "chr1_chunk_start_0"
-    assert cols[0][6:9] == ["1", "1000", "+"]
-
-    assert cols[1][0] == "chr1"
-    assert cols[1][1:4] == ["1001", "2100", "2"]
-    assert cols[1][4] == "W"
-    assert cols[1][5] == "chr1_chunk_start_1000"
-    assert cols[1][6:9] == ["1", "1100", "+"]
+    # object, obj_start, obj_end, part_no, type, comp_id, comp_start, comp_end, orientation
+    assert cols[0] == [
+        "chr1",
+        "1",
+        "1000",
+        "1",
+        "W",
+        "chr1_chunk_start_0",
+        "1",
+        "1000",
+        "+",
+    ]
+    assert cols[1] == [
+        "chr1",
+        "1001",
+        "2100",
+        "2",
+        "W",
+        "chr1_chunk_start_1000",
+        "1",
+        "1100",
+        "+",
+    ]
 
 
 def test_agp_part_numbers_restart_per_object(tmp_path: Path, split_fasta_module):
-    inp = tmp_path / "in.fa"
+    """
+    AGP part numbers must restart at 1 for each new input sequence
+    (object), even when multiple sequences are chunked in the same run.
+    """
+    input_fasta = tmp_path / "in.fa"
     out = tmp_path / "out"
     recs = [
         SeqRecord(Seq("A" * 1200), id="obj1", description=""),
         SeqRecord(Seq("C" * 1200), id="obj2", description=""),
     ]
-    write_fasta(inp, recs)
+    write_fasta(input_fasta, recs)
 
     params = split_fasta_module.Params(
-        fasta_file=inp,
+        fasta_file=input_fasta,
         out_dir=out,
         write_agp=True,
         force_max_seq_length=True,
