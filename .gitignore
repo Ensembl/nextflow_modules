@@ -1,2 +1,5 @@
 .nextflow*
 .nf-test*
+__pycache__/
+*.pyc
+.python-version
