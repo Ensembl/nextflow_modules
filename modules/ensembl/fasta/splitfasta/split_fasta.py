@@ -1,4 +1,19 @@
-#!/usr/bin/env python3
+#!env python3
+
+# See the NOTICE file distributed with this work for additional information
+# regarding copyright ownership.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 """
 Split a FASTA file into multiple FASTA files, optionally chunking long sequences.
@@ -480,11 +495,13 @@ def parse_args(argv: Optional[List[str]] = None) -> Params:
     parser.add_argument(
         "--fasta-file",
         type=Path,
+        metavar="FASTA",
         required=True,
         help="Input raw or compressed FASTA file containing sequences to split",
     )
     parser.add_argument(
         "--out-dir",
+        metavar="DIR",
         type=Path,
         help="Top-level output directory (default: input FASTA directory)",
     )
@@ -495,27 +512,32 @@ def parse_args(argv: Optional[List[str]] = None) -> Params:
     )
     parser.add_argument(
         "--max-seqs-per-file",
+        metavar="N",
         type=int,
         help=f"Max records per output file (default: {defaults['max_seqs_per_file']})",
     )
     parser.add_argument(
         "--max-seq-length-per-file",
         type=int,
+        metavar="BP",
         help=f"Max cumulative sequence length per output file (default: {defaults['max_seq_length_per_file']})",
     )
     parser.add_argument(
         "--min-chunk-length",
         type=int,
+        metavar="BP",
         help=f"Minimum length of a chunk allowed as a remainder (default: {defaults['min_chunk_length']})",
     )
     parser.add_argument(
         "--max-files-per-directory",
         type=int,
+        metavar="N",
         help=f"Max files per directory before moving to next computed dir (default: {defaults['max_files_per_directory']})",
     )
     parser.add_argument(
         "--max-dirs-per-directory",
         type=int,
+        metavar="N",
         help=f"Max subdirectories per directory level (default: {defaults['max_dirs_per_directory']})",
     )
     parser.add_argument(
