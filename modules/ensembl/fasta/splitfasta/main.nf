@@ -71,7 +71,7 @@ process FASTA_SPLITFASTA {
 
         """
         python \\
-            ${moduleDir}/split_fasta.py \\
+            fasta_split \\
             --fasta-file \$PWD/${fasta} \\
             --out-dir \$PWD \\
             ${args.join(' ')}
