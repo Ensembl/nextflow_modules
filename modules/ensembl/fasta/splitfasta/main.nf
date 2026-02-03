@@ -93,13 +93,6 @@ process FASTA_SPLITFASTA {
         mkdir -p splits
         cp -R "\$FIXTURE_DIR/splits/\$LAYOUT/." "splits/"
 
-        find splits -type f -name 'test*.fa' | while read -r f; do
-            bn=\$(basename "\$f")
-            dir=\$(dirname "\$f")
-            new_bn="\${bn/test/${meta.id}}"
-            mv "\$f" "\${dir}/\${new_bn}"
-        done
-
         if [[ "${params.write_agp ?: false}" == "true" ]]; then
             cp "\$FIXTURE_DIR/agp/test.agp" "${meta.id}.agp"
         fi
