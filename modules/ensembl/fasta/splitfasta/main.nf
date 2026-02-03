@@ -18,6 +18,9 @@ process FASTA_SPLITFASTA {
     tag "${meta.id}"
     label 'process_low'
 
+    conda "${moduleDir}/environment.yml"
+    container "ensemblorg/ensembl-genomio:v1.6.1"
+
     publishDir "${params.outdir ?: '.'}", mode: 'copy'
 
     input:
