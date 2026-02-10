@@ -1,0 +1,104 @@
+{
+    "Stub outputs: AGP mode": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "fasta": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-10T15:17:42.590604"
+    },
+    "Real run: header recombination": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "fasta": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-10T15:17:44.398141"
+    },
+    "Real run: AGP recombination": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "fasta": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-10T15:17:46.212088"
+    },
+    "Stub outputs: header mode": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "fasta": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-10T15:17:40.786056"
+    },
+    "Real run: extra suffix support": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "fasta": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-10T15:17:47.991813"
+    },
+    "Real run: custom chunk regex": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "fasta": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-10T15:17:49.822476"
+    }
+}

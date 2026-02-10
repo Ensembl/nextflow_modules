@@ -13,20 +13,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// nf-core modules test fasta/splitfasta
+// nf-core modules test fasta/split
 nextflow_process {
 
-    name "Test Process FASTA_SPLITFASTA"
+    name "Test Process FASTA_SPLIT"
     script "../main.nf"
-    process "FASTA_SPLITFASTA"
+    process "FASTA_SPLIT"
 
     tag "modules"
     tag "modules_ensembl"
     tag "fasta"
-    tag "fasta/splitfasta"
+    tag "fasta/split"
 
 
-    def real_fa = new File("modules/ensembl/fasta/splitfasta/tests/data/real/in.fa").canonicalFile
+    def real_fa = new File("modules/ensembl/fasta/split/tests/data/real/in.fa").canonicalFile
 
     test("Stub outputs: default layout, no AGP") {
 

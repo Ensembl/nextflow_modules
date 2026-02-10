@@ -1,5 +1,5 @@
 ---
-name: "fasta_splitfasta"
+name: "fasta_split"
 channels:
   - conda-forge
   - bioconda

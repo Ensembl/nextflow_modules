@@ -13,10 +13,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-process FASTA_SPLITFASTA {
+process FASTA_SPLIT {
 
     tag "${meta.id}"
-    label 'process_low'
+    label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
     container "ensemblorg/ensembl-genomio:v1.6.1"
@@ -70,9 +70,8 @@ process FASTA_SPLITFASTA {
         }
 
         """
-        python \\
-            fasta_split \\
-            --fasta-file \$PWD/${fasta} \\
+        fasta_split \\
+            --fasta-file ${fasta} \\
             --out-dir \$PWD \\
             ${args.join(' ')}
         """
@@ -81,20 +80,20 @@ process FASTA_SPLITFASTA {
         """
         set -euo pipefail
 
-        FIXTURE_DIR="${moduleDir}/tests/data"
+        test_data_dir="${moduleDir}/tests/data"
 
-        LAYOUT="default"
+        layout="default"
         if [[ "${params.unique_file_names ?: false}" == "true" ]]; then
-            LAYOUT="unique"
+            layout="unique"
         elif [[ -n "${params.max_dirs_per_directory ?: ''}" || -n "${params.max_files_per_directory ?: ''}" ]]; then
-        LAYOUT="multi_dir"
+            layout="multi_dir"
         fi
 
         mkdir -p splits
-        cp -R "\$FIXTURE_DIR/splits/\$LAYOUT/." "splits/"
+        cp -R "\$test_data_dir/splits/\$layout/." "splits/"
 
         if [[ "${params.write_agp ?: false}" == "true" ]]; then
-            cp "\$FIXTURE_DIR/agp/test.agp" "${meta.id}.agp"
+            cp "\$test_data_dir/agp/test.agp" "${meta.id}.agp"
         fi
         """
 
