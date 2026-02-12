@@ -1,0 +1,2 @@
+inputs/seq1_1.fa
+inputs/seq1_5.fa

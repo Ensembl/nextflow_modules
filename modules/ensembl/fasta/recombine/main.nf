@@ -24,17 +24,13 @@ process FASTA_RECOMBINE {
     publishDir "${params.outdir ?: '.'}", mode: 'copy'
 
     input:
-        tuple val(meta), path(fasta_dir), path(agp)
+        tuple val(meta), path(fasta_manifest), path(agp)
 
     output:
         tuple val(meta), path("*.fa"), emit: fasta
 
     script:
         def args = []
-
-        if (params.extra_suffixes) {
-            args << "--extra-suffixes ${params.extra_suffixes}"
-        }
 
         if (params.chunk_id_regex) {
             args << "--chunk-id-regex ${params.chunk_id_regex}"
@@ -45,14 +41,14 @@ process FASTA_RECOMBINE {
         }
 
         if (agp) {
-            args << "--agp-file '${agp}'"
+            args << "--agp-file ${agp}"
         }
 
         def out_fasta = "${meta.id}.fa"
 
         """
         fasta_recombine \\
-            --in-dir ${fasta_dir} \\
+            --fasta-manifest ${fasta_manifest} \\
             --out-fasta ${out_fasta} \\
             ${args.join(' ')}
         """
@@ -65,12 +61,14 @@ process FASTA_RECOMBINE {
 
         out_fasta="${meta.id}.fa"
 
+        test -s "${fasta_manifest}"
+
         mode="header"
         if [[ -n "${agp ?: ''}" ]]; then
-            MODE="agp"
+            mode="agp"
         fi
 
-        cp "\$test_data_dir/\$mode/output/${meta.id}.fa" "\$OUT_FASTA"
+        cp "\$test_data_dir/\$mode/output/${meta.id}.fa" "\$out_fasta"
         
         """
 

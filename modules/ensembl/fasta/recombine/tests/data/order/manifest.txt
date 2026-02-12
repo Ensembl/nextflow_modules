@@ -1,0 +1,2 @@
+inputs/02_first.fa
+inputs/01_second.fa
