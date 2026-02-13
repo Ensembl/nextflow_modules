@@ -21,8 +21,6 @@ process FASTA_RECOMBINE {
     conda "${moduleDir}/environment.yml"
     container "ensemblorg/ensembl-genomio:v1.6.1"
 
-    publishDir "${params.outdir ?: '.'}", mode: 'copy'
-
     input:
         tuple val(meta), path(fasta_manifest), path(agp)
 
@@ -33,14 +31,16 @@ process FASTA_RECOMBINE {
         def args = []
 
         if (params.chunk_id_regex) {
-            args << "--chunk-id-regex ${params.chunk_id_regex}"
+            def rx = params.chunk_id_regex.replace("'", "'\"'\"'")
+            args << "--chunk-id-regex '${rx}'"
         }
 
         if (params.allow_revcomp) {
             args << "--allow-revcomp"
         }
 
-        if (agp) {
+        def has_agp = agp && agp.baseName != 'NO_FILE'
+        if (has_agp) {
             args << "--agp-file ${agp}"
         }
 
@@ -64,9 +64,12 @@ process FASTA_RECOMBINE {
         test -s "${fasta_manifest}"
 
         mode="header"
-        if [[ -n "${agp ?: ''}" ]]; then
+        agp_path="${agp}"
+        agp_name="\${agp_path##*/}"
+        if [[ "\$agp_name" != "NO_FILE" ]]; then
             mode="agp"
         fi
+
 
         cp "\$test_data_dir/\$mode/output/${meta.id}.fa" "\$out_fasta"
         

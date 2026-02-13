@@ -42,11 +42,11 @@
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:27:15.469156",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.6"
-        },
-        "timestamp": "2026-02-03T11:44:20.723299027"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
     },
     "Stub outputs: nested directory layout contract": {
         "content": [
@@ -81,11 +81,11 @@
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:27:19.735631",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.6"
-        },
-        "timestamp": "2026-02-03T11:44:45.167257411"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
     },
     "Stub outputs: default layout, no AGP": {
         "content": [
@@ -120,11 +120,11 @@
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:27:13.38194",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.6"
-        },
-        "timestamp": "2026-02-03T11:44:08.447183258"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
     },
     "Stub outputs: unique_file_names contract": {
         "content": [
@@ -159,10 +159,10 @@
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:27:17.614981",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.6"
-        },
-        "timestamp": "2026-02-03T11:44:33.225993321"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
     }
 }

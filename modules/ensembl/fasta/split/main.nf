@@ -21,14 +21,12 @@ process FASTA_SPLIT {
     conda "${moduleDir}/environment.yml"
     container "ensemblorg/ensembl-genomio:v1.6.1"
 
-    publishDir "${params.outdir ?: '.'}", mode: 'copy'
-
     input:
         tuple val(meta), path(fasta)
 
     output:
-        tuple val(meta), path("**/*.fa"), emit: fasta
-        tuple val(meta), path("*.agp"), emit: agp, optional: true
+        tuple val(meta), path("splits/**/*.fa"), emit: fasta
+        tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
 
     script:
         def args = []
@@ -72,7 +70,7 @@ process FASTA_SPLIT {
         """
         fasta_split \\
             --fasta-file ${fasta} \\
-            --out-dir \$PWD \\
+            --out-dir splits \\
             ${args.join(' ')}
         """
 
@@ -93,7 +91,7 @@ process FASTA_SPLIT {
         cp -R "\$test_data_dir/splits/\$layout/." "splits/"
 
         if [[ "${params.write_agp ?: false}" == "true" ]]; then
-            cp "\$test_data_dir/agp/test.agp" "${meta.id}.agp"
+            cp "\$test_data_dir/agp/test.agp" "splits/${meta.id}.agp"
         fi
         """
 

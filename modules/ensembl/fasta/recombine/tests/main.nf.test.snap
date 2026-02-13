@@ -3,102 +3,162 @@
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,3ec81eef9dd73dc86ff01621dbacc7a0"
+                    ]
                 ],
                 "fasta": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,3ec81eef9dd73dc86ff01621dbacc7a0"
+                    ]
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:20:39.92005",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-10T15:17:42.590604"
-    },
-    "Real run: header recombination": {
-        "content": [
-            {
-                "0": [
-                    
-                ],
-                "fasta": [
-                    
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-10T15:17:44.398141"
+        }
     },
     "Real run: AGP recombination": {
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,5f81df5939251499ea60e666d8a306b3"
+                    ]
                 ],
                 "fasta": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,5f81df5939251499ea60e666d8a306b3"
+                    ]
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:20:44.283073",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-10T15:17:46.212088"
+        }
+    },
+    "Real run: header recombination": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,709337303b43192f7647b77c170adac7"
+                    ]
+                ],
+                "fasta": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,709337303b43192f7647b77c170adac7"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-13T15:23:27.996406",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
     },
     "Stub outputs: header mode": {
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,93d1870d020e197708753501e57db68f"
+                    ]
                 ],
                 "fasta": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,93d1870d020e197708753501e57db68f"
+                    ]
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:20:37.864233",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-10T15:17:40.786056"
+        }
     },
     "Real run: custom chunk regex": {
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,90d526c36d03ae9e226d09655f22f00e"
+                    ]
                 ],
                 "fasta": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,90d526c36d03ae9e226d09655f22f00e"
+                    ]
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:26:49.012219",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-10T15:17:49.822476"
+        }
     },
     "Real run: manifest order is preserved": {
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,52fa2054da674f0a5ebc263e724cf4a4"
+                    ]
                 ],
                 "fasta": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,52fa2054da674f0a5ebc263e724cf4a4"
+                    ]
                 ]
             }
         ],
+        "timestamp": "2026-02-13T15:20:48.517972",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-12T13:45:22.67052"
+        }
     }
 }
