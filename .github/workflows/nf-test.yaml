@@ -8,14 +8,7 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: nf-tes
-    needs: [nf-test-changes]
-    if: ( needs.nf-test-changes.outputs.paths != '[]' )
-    strategy:
-      fail-fast: false
-      matrix:
-        path: ["${{ fromJson(needs.nf-test-changes.outputs.paths) }}"]
-        profile: [singularity]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
