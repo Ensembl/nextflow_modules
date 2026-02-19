@@ -3,7 +3,14 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    name: nf-tes
+    needs: [nf-test-changes]
+    if: ( needs.nf-test-changes.outputs.paths != '[]' )
+    strategy:
+      fail-fast: false
+      matrix:
+        path: ["${{ fromJson(needs.nf-test-changes.outputs.paths) }}"]
+        profile: [singularity]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,5 +38,18 @@ jobs:
           wget -qO- https://get.nf-test.com | bash
           sudo mv nf-test /usr/local/bin/
 
+      - name: Setup apptainer
+        uses: eWaterCycle/setup-apptainer@main
+
+      - name: Set up Singularity
+        run: |
+          mkdir -p $NXF_SINGULARITY_CACHEDIR
+          mkdir -p $NXF_SINGULARITY_LIBRARYDIR
+
+      - name: Set up Python
+        uses: actions/setup-python@f677139bbe7f9c59b41e40162b753c062f5d49a3 # v5
+        with:
+          python-version: "3.11"
+
       - name: Run Tests
-        run: nf-test test --ci #this is used to prevent updating the snapshot 
+        run: nf-test test --ci --changed-since HEAD^ #this is used to prevent updating the snapshot 
