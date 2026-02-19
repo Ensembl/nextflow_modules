@@ -25,7 +25,7 @@ process FASTA_SPLIT {
         tuple val(meta), path(fasta)
 
     output:
-        tuple val(meta), path("splits/**/*.fa"), emit: fasta
+        tuple val(meta), path("splits/**/*.fa"), emit: fastas
         tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
 
     script:

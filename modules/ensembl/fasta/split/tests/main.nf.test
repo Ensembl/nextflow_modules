@@ -50,10 +50,10 @@ nextflow_process {
             assert snapshot(process.out).match()
 
             // fasta: tuple(meta, fa_paths)
-            assert process.out.fasta != null
-            assert process.out.fasta.size() == 1
+            assert process.out.fastas != null
+            assert process.out.fastas.size() == 1
 
-            def fasta_out = process.out.fasta[0]
+            def fasta_out = process.out.fastas[0]
             def meta = fasta_out[0]
             def fas  = fasta_out[1]
 
@@ -98,8 +98,8 @@ nextflow_process {
         then {
             assert snapshot(process.out).match()
 
-            assert process.out.fasta.size() == 1
-            def fasta_out = process.out.fasta[0]
+            assert process.out.fastas.size() == 1
+            def fasta_out = process.out.fastas[0]
             def fas = fasta_out[1]
             assert fas.size() == 2
 
@@ -146,7 +146,7 @@ nextflow_process {
         then {
             assert snapshot(process.out).match()
 
-            def fasta_out = process.out.fasta[0]
+            def fasta_out = process.out.fastas[0]
             def fas = fasta_out[1]
 
             assert fas.size() == 2
@@ -183,7 +183,7 @@ nextflow_process {
         then {
             assert snapshot(process.out).match()
 
-            def fastas = process.out.fasta[0][1]
+            def fastas = process.out.fastas[0][1]
             assert fastas.size() == 2
             assert process.out.agp.size() == 0
 
@@ -218,10 +218,10 @@ nextflow_process {
         then {
             assert process.success
 
-            assert process.out.fasta != null
-            assert process.out.fasta.size() == 1
+            assert process.out.fastas != null
+            assert process.out.fastas.size() == 1
 
-            def out = process.out.fasta[0]
+            def out = process.out.fastas[0]
             def meta = out[0]
             def fas  = out[1]
 
@@ -303,7 +303,7 @@ nextflow_process {
         then {
             assert process.success
 
-            def fas = process.out.fasta[0][1]
+            def fas = process.out.fastas[0][1]
             assert fas.size() == 2
 
             def merged = fas

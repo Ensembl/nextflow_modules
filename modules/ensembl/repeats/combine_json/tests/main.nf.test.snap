@@ -1,4 +1,31 @@
 {
+    "Real run: AGP-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.repeat.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.repeat.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-19T00:11:13.232239",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
     "Stub outputs: AGP mode": {
         "content": [
             {
@@ -7,26 +34,26 @@
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,3ec81eef9dd73dc86ff01621dbacc7a0"
+                        "test.repeat.json:md5,5fc5a0cd8050982334ada4bca1a55950"
                     ]
                 ],
-                "recombined_fasta": [
+                "combined_json": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,3ec81eef9dd73dc86ff01621dbacc7a0"
+                        "test.repeat.json:md5,5fc5a0cd8050982334ada4bca1a55950"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-02-18T23:12:05.089688",
+        "timestamp": "2026-02-19T00:11:08.721986",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
         }
     },
-    "Real run: AGP recombination": {
+    "Real run: header combine + header-driven liftover": {
         "content": [
             {
                 "0": [
@@ -34,47 +61,20 @@
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,f32bc79faea4bc05dd4675e0d4ededa1"
+                        "test.repeat.json:md5,007a5710a0037aae8f907d13cde08f77"
                     ]
                 ],
-                "recombined_fasta": [
+                "combined_json": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,f32bc79faea4bc05dd4675e0d4ededa1"
+                        "test.repeat.json:md5,007a5710a0037aae8f907d13cde08f77"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-02-18T23:12:09.601838",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
-        }
-    },
-    "Real run: header recombination": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,700550164316730d1145b7bde2ae3eb7"
-                    ]
-                ],
-                "recombined_fasta": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,700550164316730d1145b7bde2ae3eb7"
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-02-18T23:12:07.342405",
+        "timestamp": "2026-02-19T00:11:11.007889",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -88,20 +88,20 @@
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,93d1870d020e197708753501e57db68f"
+                        "test.repeat.json:md5,007a5710a0037aae8f907d13cde08f77"
                     ]
                 ],
-                "recombined_fasta": [
+                "combined_json": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,93d1870d020e197708753501e57db68f"
+                        "test.repeat.json:md5,007a5710a0037aae8f907d13cde08f77"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-02-18T23:12:03.015143",
+        "timestamp": "2026-02-19T00:11:06.662964",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -115,20 +115,20 @@
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,a589b60028be69f01622a61cc78fa1ae"
+                        "test.repeat.json:md5,f410544c71be74f7a8a7eab5e494b258"
                     ]
                 ],
-                "recombined_fasta": [
+                "combined_json": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,a589b60028be69f01622a61cc78fa1ae"
+                        "test.repeat.json:md5,f410544c71be74f7a8a7eab5e494b258"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-02-18T23:12:11.852053",
+        "timestamp": "2026-02-19T00:11:15.43463",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -142,20 +142,20 @@
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,52fa2054da674f0a5ebc263e724cf4a4"
+                        "test.repeat.json:md5,1b68c1371265dad11839769a5e776b33"
                     ]
                 ],
-                "recombined_fasta": [
+                "combined_json": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,52fa2054da674f0a5ebc263e724cf4a4"
+                        "test.repeat.json:md5,1b68c1371265dad11839769a5e776b33"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-02-18T23:12:14.083842",
+        "timestamp": "2026-02-19T00:11:17.627989",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

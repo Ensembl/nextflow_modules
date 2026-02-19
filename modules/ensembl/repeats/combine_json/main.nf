@@ -13,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-process FASTA_RECOMBINE {
+process REPEATS_COMBINE_JSON {
 
     tag "${meta.id}"
     label 'process_medium'
@@ -22,10 +22,10 @@ process FASTA_RECOMBINE {
     container "ensemblorg/ensembl-genomio:v1.6.1"
 
     input:
-        tuple val(meta), path(fasta_manifest), path(agp)
+        tuple val(meta), path(json_manifest), path(agp)
 
     output:
-        tuple val(meta), path("${meta.id}.fa"), emit: recombined_fasta
+        tuple val(meta), path("${meta.id}.repeat.json"), emit: combined_json
 
     script:
         def args = []
@@ -44,12 +44,12 @@ process FASTA_RECOMBINE {
             args << "--agp-file ${agp}"
         }
 
-        def out_fasta = "${meta.id}.fa"
+        def out_json = "${meta.id}.repeat.json"
 
         """
-        fasta_recombine \\
-            --fasta-manifest ${fasta_manifest} \\
-            --out-fasta ${out_fasta} \\
+        python -m ensembl.io.genomio.repeats.combine_json \\
+            --json-manifest ${json_manifest} \\
+            --out-json ${out_json} \\
             ${args.join(' ')}
         """
 
@@ -59,9 +59,9 @@ process FASTA_RECOMBINE {
 
         test_data_dir="${moduleDir}/tests/data"
 
-        out_fasta="${meta.id}.fa"
+        out_json="${meta.id}.repeat.json"
 
-        test -s "${fasta_manifest}"
+        test -s "${json_manifest}"
 
         mode="header"
         agp_path="${agp}"
@@ -70,9 +70,10 @@ process FASTA_RECOMBINE {
             mode="agp"
         fi
 
-
-        cp "\$test_data_dir/\$mode/output/${meta.id}.fa" "\$out_fasta"
-        
+        # Provide a schema-valid combined JSON fixture.
+        # Arrange fixtures under:
+        #   tests/data/header/output/<id>.repeat.json
+        #   tests/data/agp/output/<id>.repeat.json
+        cp "\$test_data_dir/\$mode/output/${meta.id}.repeat.json" "\$out_json"
         """
-        
 }
