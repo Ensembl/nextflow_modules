@@ -51,7 +51,7 @@ process DOWNLOAD_ASSEMBLYDATA {
     stub:
         def prefix = task.ext.prefix ?: "${meta.accession}"
         """
-        cp ${workflow.projectDir}/tests/modules/ensembl/download/assemblydata/* .
+        cp ${projectDir}/tests/modules/ensembl/download/assemblydata/* .
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         assembly_download --version >> versions.yml
