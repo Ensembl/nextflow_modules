@@ -52,4 +52,4 @@ jobs:
           python-version: "3.11"
 
       - name: Run Tests
-        run: nf-test test --ci --changed-since HEAD^ #this is used to prevent updating the snapshot 
+        run: nf-test test --ci #this is used to prevent updating the snapshot 
