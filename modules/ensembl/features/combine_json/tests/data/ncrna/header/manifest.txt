@@ -1,0 +1,2 @@
+inputs/a.json
+inputs/b.json

@@ -1,0 +1,488 @@
+{
+    "Real run: AGP-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T17:54:02.625791",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: ncRNA custom chunk regex": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,4c10f64659bc581612383e3afece97fb"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,4c10f64659bc581612383e3afece97fb"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:15:58.553743",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: header combine + header-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T17:54:00.401674",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: repeat custom chunk regex": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,f410544c71be74f7a8a7eab5e494b258"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,f410544c71be74f7a8a7eab5e494b258"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T18:38:58.589502",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: repeat manifest order is preserved": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,1b68c1371265dad11839769a5e776b33"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,1b68c1371265dad11839769a5e776b33"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T18:39:03.129965",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: ncRNA header mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,556a240063931bcbba8ee21d6efc373d"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,556a240063931bcbba8ee21d6efc373d"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:21:33.771238",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: ncRNA header combine + header-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,4c10f64659bc581612383e3afece97fb"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,4c10f64659bc581612383e3afece97fb"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:15:49.744214",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: ncRNA AGP mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,435c4d8f4008e57685ff951bbe81df0e"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,435c4d8f4008e57685ff951bbe81df0e"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:21:38.112104",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: ncRNA manifest order is preserved": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,c5b36cf499f0d111684f91372469154f"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,c5b36cf499f0d111684f91372469154f"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:16:02.962026",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: repeat AGP mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:21:35.954494",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: AGP mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T17:53:58.199351",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: header mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T17:53:56.112251",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: ncRNA AGP-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,837dcba57ebd00c1b8adbce528b8f1b0"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,837dcba57ebd00c1b8adbce528b8f1b0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:15:54.146861",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: repeat header combine + header-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T18:38:49.606314",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: custom chunk regex": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,f410544c71be74f7a8a7eab5e494b258"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,f410544c71be74f7a8a7eab5e494b258"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T17:54:04.861554",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: repeat header mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T19:21:31.584701",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: manifest order is preserved": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,1b68c1371265dad11839769a5e776b33"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,1b68c1371265dad11839769a5e776b33"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T17:54:07.074875",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: repeat AGP-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,5fc5a0cd8050982334ada4bca1a55950"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T18:38:54.140158",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    }
+}
