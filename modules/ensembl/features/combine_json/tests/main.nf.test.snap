@@ -161,6 +161,60 @@
             "nextflow": "25.10.3"
         }
     },
+    "Real run: repeat seq_region combine + seq_region-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T23:31:17.929825",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: ncRNA seq_region mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,556a240063931bcbba8ee21d6efc373d"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,556a240063931bcbba8ee21d6efc373d"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T23:32:28.865106",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
     "Real run: ncRNA header combine + header-driven liftover": {
         "content": [
             {
@@ -183,6 +237,33 @@
             }
         ],
         "timestamp": "2026-02-23T19:15:49.744214",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Real run: ncRNA seq_region combine + seq_region-driven liftover": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,4c10f64659bc581612383e3afece97fb"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,4c10f64659bc581612383e3afece97fb"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T23:31:20.204864",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -453,6 +534,33 @@
             }
         ],
         "timestamp": "2026-02-23T17:54:07.074875",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "Stub outputs: repeat seq_region mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,007a5710a0037aae8f907d13cde08f77"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-02-23T23:32:26.754167",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

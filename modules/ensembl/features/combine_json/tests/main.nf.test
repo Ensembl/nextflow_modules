@@ -25,7 +25,7 @@ nextflow_process {
     tag "features"
     tag "features/combine_json"
 
-    test("Stub outputs: repeat header mode") {
+    test("Stub outputs: repeat seq_region mode") {
 
         when {
             options "-stub"
@@ -33,7 +33,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/header/manifest.txt'),
+                            file('${moduleDir}/tests/data/repeat/seq_region/manifest.txt'),
                             file('${projectDir}/modules/assets/NO_FILE')]
                 """
             }
@@ -47,7 +47,7 @@ nextflow_process {
         }
     }
 
-    test("Stub outputs: ncRNA header mode") {
+    test("Stub outputs: ncRNA seq_region mode") {
 
         when {
             options "-stub"
@@ -55,7 +55,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/header/manifest.txt'),
+                            file('${moduleDir}/tests/data/ncrna/seq_region/manifest.txt'),
                             file('${projectDir}/modules/assets/NO_FILE')]
                 """
             }
@@ -113,13 +113,13 @@ nextflow_process {
         }
     }
 
-    test("Real run: repeat header combine + header-driven liftover") {
+    test("Real run: repeat seq_region combine + seq_region-driven liftover") {
 
         when {
             process {
                 """
                 input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/header/manifest.txt'),
+                            file('${moduleDir}/tests/data/repeat/seq_region/manifest.txt'),
                             file('${projectDir}/modules/assets/NO_FILE')]
                 """
             }
@@ -133,13 +133,13 @@ nextflow_process {
         }
     }
 
-    test("Real run: ncRNA header combine + header-driven liftover") {
+    test("Real run: ncRNA seq_region combine + seq_region-driven liftover") {
 
         when {
             process {
                 """
                 input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/header/manifest.txt'),
+                            file('${moduleDir}/tests/data/ncrna/seq_region/manifest.txt'),
                             file('${projectDir}/modules/assets/NO_FILE')]
                 """
             }

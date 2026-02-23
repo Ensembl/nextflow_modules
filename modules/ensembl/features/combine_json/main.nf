@@ -63,7 +63,7 @@ process FEATURES_COMBINE_JSON {
 
         test -s "${json_manifest}"
 
-        mode="header"
+        mode="seq_region"
         agp_path="${agp}"
         agp_name="\${agp_path##*/}"
         if [[ "\$agp_name" != "NO_FILE" ]]; then
@@ -99,9 +99,9 @@ process FEATURES_COMBINE_JSON {
 
         # Provide a schema-valid combined JSON fixture.
         # Fixtures are arranged under:
-        #   tests/data/repeat/header/output/<id>.features.json
+        #   tests/data/repeat/seq_region/output/<id>.features.json
         #   tests/data/repeat/agp/output/<id>.features.json
-        #   tests/data/ncrna/header/output/<id>.features.json
+        #   tests/data/ncrna/seq_region/output/<id>.features.json
         #   tests/data/ncrna/agp/output/<id>.features.json
         fixture="\$test_data_dir/\$load_type/\$mode/output/${meta.id}.features.json"
 
