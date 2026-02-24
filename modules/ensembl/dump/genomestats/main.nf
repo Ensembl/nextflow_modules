@@ -17,7 +17,7 @@ process DUMP_GENOMESTATS {
     tag "${db.species}"
     label 'process_low'
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "ensemblorg/ensembl-genomio:v1.6.2"
 
     input:
         val(db)

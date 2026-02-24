@@ -18,7 +18,7 @@ process METADATA_GENOMESUMMARY {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "ensemblorg/ensembl-genomio:v1.6.2"
 
     input:
         tuple val(meta), path(input_query), path(genome_summary_json)

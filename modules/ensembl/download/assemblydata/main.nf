@@ -18,7 +18,7 @@ process DOWNLOAD_ASSEMBLYDATA {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "ensemblorg/ensembl-genomio:v1.6.2"
     
     input:
         val(meta)

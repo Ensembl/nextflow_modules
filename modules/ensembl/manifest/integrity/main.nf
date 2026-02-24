@@ -2,7 +2,7 @@ process MANIFEST_INTEGRITY {
     tag "$meta.id"
     label 'process_low'
 
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "ensemblorg/ensembl-genomio:v1.6.2"
 
     input:
         tuple val(meta), path(manifest_files)
