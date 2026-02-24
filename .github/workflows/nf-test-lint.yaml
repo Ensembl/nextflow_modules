@@ -15,7 +15,7 @@ jobs:
       - image=ubuntu22-full-x64
     name: nf-core lint modules
     needs: nf-core-changes
-    if: ${{ needs.nf-core-changes.outputs.modules_files != '[]' }}
+    if: ${{ needs.nf-core-changes.outputs.modules_files }}
     strategy:
       fail-fast: false
       matrix:
