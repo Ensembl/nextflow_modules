@@ -52,10 +52,10 @@ process DOWNLOAD_ASSEMBLYDATA {
         def prefix = task.ext.prefix ?: "${meta.accession}"
         """
         echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_assembly_report.txt
-        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_genomic.fna.gz
-        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_genomic.gbff.gz
-        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_genomic.gff.gz
-        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_protein.faa.gz
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" | gzip > GCA_017607445.1_ASM1760744v1_genomic.fna.gz
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" | gzip > GCA_017607445.1_ASM1760744v1_genomic.gbff.gz
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" | gzip > GCA_017607445.1_ASM1760744v1_genomic.gff.gz
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" | gzip > GCA_017607445.1_ASM1760744v1_protein.faa.gz
         
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         assembly_download --version >> versions.yml

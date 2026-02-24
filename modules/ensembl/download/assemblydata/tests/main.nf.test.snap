@@ -27,8 +27,8 @@
                             "accession": "GCA_017607445.1"
                         },
                         "GCA_017607445.1_ASM1760744v1_assembly_report.txt:md5,c723c07f94187d028c1cf7a74e814667",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.fna.gz",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.gbff.gz"
+                        "GCA_017607445.1_ASM1760744v1_genomic.fna.gz:md5,c723c07f94187d028c1cf7a74e814667",
+                        "GCA_017607445.1_ASM1760744v1_genomic.gbff.gz:md5,c723c07f94187d028c1cf7a74e814667"
                     ]
                 ],
                 "1": [
@@ -36,9 +36,9 @@
                         {
                             "accession": "GCA_017607445.1"
                         },
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.gff.gz",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_protein.faa.gz",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.gbff.gz"
+                        "GCA_017607445.1_ASM1760744v1_genomic.gff.gz:md5,c723c07f94187d028c1cf7a74e814667",
+                        "GCA_017607445.1_ASM1760744v1_protein.faa.gz:md5,c723c07f94187d028c1cf7a74e814667",
+                        "GCA_017607445.1_ASM1760744v1_genomic.gbff.gz:md5,c723c07f94187d028c1cf7a74e814667"
                     ]
                 ],
                 "2": [
@@ -50,8 +50,8 @@
                             "accession": "GCA_017607445.1"
                         },
                         "GCA_017607445.1_ASM1760744v1_assembly_report.txt:md5,c723c07f94187d028c1cf7a74e814667",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.fna.gz",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.gbff.gz"
+                        "GCA_017607445.1_ASM1760744v1_genomic.fna.gz:md5,c723c07f94187d028c1cf7a74e814667",
+                        "GCA_017607445.1_ASM1760744v1_genomic.gbff.gz:md5,c723c07f94187d028c1cf7a74e814667"
                     ]
                 ],
                 "opt_set": [
@@ -59,9 +59,9 @@
                         {
                             "accession": "GCA_017607445.1"
                         },
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.gff.gz",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_protein.faa.gz",
-                        "/hps/software/users/ensembl/metazoa/dishalodha/modenv/nextflow_modules/.nf-test/tests/ddd2ab870bc5535c25d6c061fac53eb/work/20/4c2971ee6a186da70f5d2c534eb089/GCA_017607445.1_ASM1760744v1_genomic.gbff.gz"
+                        "GCA_017607445.1_ASM1760744v1_genomic.gff.gz:md5,c723c07f94187d028c1cf7a74e814667",
+                        "GCA_017607445.1_ASM1760744v1_protein.faa.gz:md5,c723c07f94187d028c1cf7a74e814667",
+                        "GCA_017607445.1_ASM1760744v1_genomic.gbff.gz:md5,c723c07f94187d028c1cf7a74e814667"
                     ]
                 ],
                 "versions": [
@@ -69,7 +69,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-02-24T21:03:09.748899712",
+        "timestamp": "2026-02-24T22:22:12.489255972",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "24.10.3"
