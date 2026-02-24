@@ -14,11 +14,11 @@
                 ]
             ]
         ],
+        "timestamp": "2024-12-02T18:03:42.927109271",
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-12-02T18:03:42.927109271"
+        }
     },
     "Fasta Dump Peptide [stub]": {
         "content": [
@@ -32,7 +32,7 @@
                             }
                         ],
                         "fasta_pep",
-                        "pep.fasta:md5,51b32025c7cb77ad3437b6ac129dd0df"
+                        "pep.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -47,7 +47,7 @@
                             }
                         ],
                         "fasta_pep",
-                        "pep.fasta:md5,51b32025c7cb77ad3437b6ac129dd0df"
+                        "pep.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
@@ -55,10 +55,10 @@
                 ]
             }
         ],
+        "timestamp": "2026-02-24T21:03:58.312171764",
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.4",
             "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-03-11T14:13:33.965197459"
+        }
     }
 }
