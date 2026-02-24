@@ -18,7 +18,7 @@ process METADATA_AMENDGENOME {
     label 'adaptive'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.2"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
 
     input:
         tuple val(meta), path(genome_json, stageAs: "incoming_genome.json"), path(asm_report),

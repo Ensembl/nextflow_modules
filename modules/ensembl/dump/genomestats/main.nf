@@ -17,7 +17,7 @@ process DUMP_GENOMESTATS {
     tag "${db.species}"
     label 'process_low'
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.2"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
 
     input:
         val(db)
@@ -50,11 +50,9 @@ process DUMP_GENOMESTATS {
     stub:
         def args = task.ext.args ?: ''
         def prefix = task.ext.prefix ?: "${db.test_id}"
-        output_file = "core_stats.json"
-        dump_dir = "${workflow.projectDir}/tests/modules/ensembl/dump/genomestats/"
-        dump_file = "dumped_core_stats.json"
         """
-        cp ${dump_dir}/${dump_file} ${output_file}
+        touch core_stats.json
+
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genome_stats_dump --version >> versions.yml
         """

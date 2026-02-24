@@ -18,7 +18,7 @@ process DOWNLOAD_ASSEMBLYDATA {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.2"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
     
     input:
         val(meta)
@@ -51,8 +51,12 @@ process DOWNLOAD_ASSEMBLYDATA {
     stub:
         def prefix = task.ext.prefix ?: "${meta.accession}"
         """
-        cp ${workflow.projectDir}/tests/modules/ensembl/download/assemblydata/* .
-
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_assembly_report.txt
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_genomic.fna.gz
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_genomic.gbff.gz
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_genomic.gff.gz
+        echo "No change, using GCA_017607445.1_ASM1760744v1 as test" > GCA_017607445.1_ASM1760744v1_protein.faa.gz
+        
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         assembly_download --version >> versions.yml
         """

@@ -18,7 +18,7 @@ process METADATA_GENOMESUMMARY {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.2"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
 
     input:
         tuple val(meta), path(input_query), path(genome_summary_json)
@@ -43,11 +43,8 @@ process METADATA_GENOMESUMMARY {
 
     stub:
         def prefix = task.ext.prefix ?: "${meta.accession}"
-        def testout_json = "genome-meta.json"
-        def output_json = "genome.json"
-
         """
-        cp ${workflow.projectDir}/tests/modules/ensembl/metadata/genomesummary/${testout_json} ./${output_json}
+        touch genome.json
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genome_metadata_prepare --version >> versions.yml

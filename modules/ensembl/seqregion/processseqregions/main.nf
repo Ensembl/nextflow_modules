@@ -18,7 +18,7 @@ process SEQREGION_PROCESSSEQREGIONS {
     label 'process_low'
     
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.2"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
 
     input:
         tuple val (meta),
