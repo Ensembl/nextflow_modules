@@ -39,26 +39,5 @@
             "nf-test": "0.9.4",
             "nextflow": "24.10.3"
         }
-    },
-    "gff3": {
-        "content": [
-            [
-                [
-                    [
-                        {
-                            "test_id": "dummy_core_db_core_110_1",
-                            "species": "Genus species"
-                        }
-                    ],
-                    "gff3",
-                    "gff_outfile.gff3"
-                ]
-            ]
-        ],
-        "timestamp": "2025-03-10T16:07:58.671715869",
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "24.10.3"
-        }
     }
 }

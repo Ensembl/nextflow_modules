@@ -43,34 +43,5 @@
             "nf-test": "0.9.4",
             "nextflow": "24.10.3"
         }
-    },
-    "genome.json": {
-        "content": [
-            [
-                "{",
-                "    \"annotation\": {",
-                "        \"provider_name\": \"GenBank\",",
-                "        \"provider_url\": \"https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4\"",
-                "    },",
-                "    \"assembly\": {",
-                "        \"accession\": \"GCA_000001215.4\",",
-                "        \"provider_name\": \"GenBank\",",
-                "        \"provider_url\": \"https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4\",",
-                "        \"version\": 4",
-                "    },",
-                "    \"genebuild\": {",
-                "    },",
-                "    \"species\": {",
-                "        \"scientific_name\": \"Drosophila melanogaster\",",
-                "        \"taxonomy_id\": 7227",
-                "    }",
-                "}"
-            ]
-        ],
-        "timestamp": "2025-06-18T11:55:06.017295472",
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "24.10.3"
-        }
     }
 }
