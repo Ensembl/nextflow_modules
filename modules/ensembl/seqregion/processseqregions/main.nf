@@ -49,14 +49,8 @@ process SEQREGION_PROCESSSEQREGIONS {
         """
 
     stub:
-        output = "seq_region.json"
         """
-        seq_region_prepare \
-            --genome_file ${genome_json} \
-            --report_file ${assembly_report} \
-            --gbff_file ${genomic_gbff} \
-            --dst_file ${output} \
-            --mock_run
+        touch seq_region.json
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         seq_region_prepare --version >> versions.yml
