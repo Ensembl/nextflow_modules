@@ -1,0 +1,4 @@
+# AGP-version 2.0
+seq1	1	10	1	W	seq1	1	10	+
+seq2	1	10	1	W	seq2	1	10	+
+seq3	1	11	1	W	seq3	1	11	+
