@@ -27,6 +27,7 @@ process FASTA_SPLIT {
     output:
         tuple val(meta), path("splits/**/*.fa"), emit: fastas
         tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
+        path "versions.yml", emit: versions
 
     script:
         def args = []
@@ -72,6 +73,11 @@ process FASTA_SPLIT {
             --fasta-file ${fasta} \\
             --out-dir splits \\
             ${args.join(' ')}
+
+        cat <<-END_VERSIONS > versions.yml
+        ${task.process}:
+        fasta_split: $(fasta_split --version 2>/dev/null | head -n 1)
+        END_VERSIONS
         """
 
     stub:
@@ -93,6 +99,11 @@ process FASTA_SPLIT {
         if [[ "${params.write_agp ?: false}" == "true" ]]; then
             cp "\$test_data_dir/agp/test.agp" "splits/${meta.id}.agp"
         fi
+
+        cat <<-END_VERSIONS > versions.yml
+        ${task.process}:
+        fasta_split: $(fasta_split --version 2>/dev/null | head -n 1)
+        END_VERSIONS
         """
 
         

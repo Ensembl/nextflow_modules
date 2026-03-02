@@ -34,7 +34,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/repeat/seq_region/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -56,7 +56,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/ncrna/seq_region/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -120,7 +120,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/repeat/seq_region/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -140,7 +140,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/ncrna/seq_region/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -202,7 +202,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/repeat/custom_regex/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -225,7 +225,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/ncrna/custom_regex/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -245,7 +245,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/repeat/order/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -265,7 +265,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/ncrna/order/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }

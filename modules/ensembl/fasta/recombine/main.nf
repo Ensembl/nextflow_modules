@@ -26,6 +26,7 @@ process FASTA_RECOMBINE {
 
     output:
         tuple val(meta), path("${meta.id}.fa"), emit: recombined_fasta
+        path "versions.yml", emit: versions
 
     script:
         def args = []
@@ -51,6 +52,11 @@ process FASTA_RECOMBINE {
             --fasta-manifest ${fasta_manifest} \\
             --out-fasta ${out_fasta} \\
             ${args.join(' ')}
+
+        cat <<-END_VERSIONS > versions.yml
+        ${task.process}:
+        fasta_recombine: $(fasta_recombine --version 2>/dev/null | head -n 1)
+        END_VERSIONS
         """
 
     stub:
@@ -73,6 +79,10 @@ process FASTA_RECOMBINE {
 
         cp "\$test_data_dir/\$mode/output/${meta.id}.fa" "\$out_fasta"
         
+        cat <<-END_VERSIONS > versions.yml
+        ${task.process}:
+        fasta_recombine: $(fasta_recombine --version 2>/dev/null | head -n 1)
+        END_VERSIONS
         """
         
 }

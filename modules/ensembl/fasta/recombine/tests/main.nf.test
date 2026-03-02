@@ -35,7 +35,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                         file('${moduleDir}/tests/data/header/manifest.txt'),
-                        file('${projectDir}/modules/assets/NO_FILE')]
+                        file('${workflow.projectDir}/modules/assets/NO_FILE')]
 
                 """
             }
@@ -80,7 +80,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/header/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -124,7 +124,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/custom_regex/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }
@@ -145,7 +145,7 @@ nextflow_process {
                 """
                 input[0] = [[ id:'test' ],
                             file('${moduleDir}/tests/data/order/manifest.txt'),
-                            file('${projectDir}/modules/assets/NO_FILE')]
+                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
                 """
             }
         }

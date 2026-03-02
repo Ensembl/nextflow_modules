@@ -26,6 +26,7 @@ process FEATURES_COMBINE_JSON {
 
     output:
         tuple val(meta), path("${meta.id}.features.json"), emit: combined_json
+        path "versions.yml", emit: versions
 
     script:
         def args = []
@@ -47,10 +48,15 @@ process FEATURES_COMBINE_JSON {
         def out_json = "${meta.id}.features.json"
 
         """
-        python -m ensembl.io.genomio.features.combine_json \\
+        features_combine_json \\
             --json-manifest '${json_manifest}' \\
             --out-json '${out_json}' \\
             ${args.join(' ')}
+
+        cat <<-END_VERSIONS > versions.yml
+        ${task.process}:
+        features_combine_json: $(features_combine_json --version 2>/dev/null | head -n 1)
+        END_VERSIONS
         """
 
     stub:
@@ -112,5 +118,10 @@ process FEATURES_COMBINE_JSON {
         fi
 
         cp "\$fixture" "\$out_json"
+
+        cat <<-END_VERSIONS > versions.yml
+        ${task.process}:
+        features_combine_json: $(features_combine_json --version 2>/dev/null | head -n 1)
+        END_VERSIONS
         """
 }
