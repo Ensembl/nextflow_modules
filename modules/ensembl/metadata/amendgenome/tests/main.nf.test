@@ -6,7 +6,6 @@ nextflow_process {
     process "METADATA_AMENDGENOME"
 
     tag "metadata/amendgenome"
-    
     test("amendgenome (genome.json) - stub") {
 
         options "-stub"
