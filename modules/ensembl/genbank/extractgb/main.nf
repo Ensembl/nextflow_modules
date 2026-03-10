@@ -56,11 +56,11 @@ process GENBANK_EXTRACTGB {
         prefix = task.ext.prefix ?: "${gb_file}"
 
         """
-        echo "{"accession": "NC_00001"}" > genome.json
-        echo "{"seq_region": "Chrm1"}" > seq_region.json
-        echo -e -n ">Seq1\nATGC" > dna.fasta
-        echo "test gff" > valid.gff
-        echo ">Peptide_1a\nMPLEGM" > pep.fasta
+        touch genome.json
+        touch seq_region.json
+        touch dna.fasta
+        touch valid.gff
+        touch pep.fasta
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genbank_extract_data --version >> versions.yml

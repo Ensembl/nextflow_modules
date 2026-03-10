@@ -7,7 +7,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "genome.json:md5,d453eccd0182cf9fd072daf4170ca743"
+                        "genome.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -15,7 +15,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "seq_region.json:md5,238b822b713730b11f790ef8fa6372ed"
+                        "seq_region.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "2": [
@@ -23,7 +23,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "dna.fasta:md5,7bf591c1a378a9bc6779aa8efd4b94d0"
+                        "dna.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "3": [
@@ -31,7 +31,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "valid.gff:md5,404b128f368e48e7357ab97b37933f09"
+                        "valid.gff:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "4": [
@@ -39,18 +39,18 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "pep.fasta:md5,71f0789bc9da7799197739226d951d23"
+                        "pep.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "5": [
-                    "versions.yml:md5,b122b0115e1e85487fc3b05515697764"
+                    "versions.yml:md5,91a93a7c3efeae181ebeed02ebf9b8ba"
                 ],
                 "dna_fasta": [
                     [
                         {
                             "accession": "test_genbank"
                         },
-                        "dna.fasta:md5,7bf591c1a378a9bc6779aa8efd4b94d0"
+                        "dna.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "gene_gff": [
@@ -58,7 +58,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "valid.gff:md5,404b128f368e48e7357ab97b37933f09"
+                        "valid.gff:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "genome": [
@@ -66,7 +66,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "genome.json:md5,d453eccd0182cf9fd072daf4170ca743"
+                        "genome.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "pep_fasta": [
@@ -74,7 +74,7 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "pep.fasta:md5,71f0789bc9da7799197739226d951d23"
+                        "pep.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "seq_regions": [
@@ -82,15 +82,15 @@
                         {
                             "accession": "test_genbank"
                         },
-                        "seq_region.json:md5,238b822b713730b11f790ef8fa6372ed"
+                        "seq_region.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,b122b0115e1e85487fc3b05515697764"
+                    "versions.yml:md5,91a93a7c3efeae181ebeed02ebf9b8ba"
                 ]
             }
         ],
-        "timestamp": "2026-02-24T21:04:11.890538908",
+        "timestamp": "2026-03-10T14:23:23.725761105",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "24.10.3"
