@@ -13,15 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-def fasta_split_mem(longest_seq_bp) {
-    if( !longest_seq_bp || longest_seq_bp <= 0 ) return 8.GB
-
-    // Heuristic: ~2.5 bytes/base peak => ~1 GB per 400 Mbp of the *longest* sequence
-    // Add 2GB base memory to account for overhead
-    def mem_gb = 2 + Math.ceil(longest_seq_bp as double / 400_000_000d)
-    return mem_gb.GB
-}
-
 process FASTA_SPLIT {
 
     tag "${meta.id}"
@@ -87,15 +78,13 @@ process FASTA_SPLIT {
 
         cat <<-END_VERSIONS > versions.yml
         ${task.process}:
-        fasta_split: $(fasta_split --version 2>/dev/null | head -n 1)
+        fasta_split: \$(fasta_split --version 2>/dev/null | head -n 1)
         END_VERSIONS
         """
 
     stub:
         """
         set -euo pipefail
-
-        test_data_dir="${moduleDir}/tests/data"
 
         layout="default"
         if [[ "${params.unique_file_names ?: false}" == "true" ]]; then
@@ -105,17 +94,42 @@ process FASTA_SPLIT {
         fi
 
         mkdir -p splits
-        cp -R "\$test_data_dir/splits/\$layout/." "splits/"
+
+        if [[ "\$layout" == "default" ]]; then
+            mkdir -p splits/0
+            touch splits/0/test.1.fa
+            touch splits/0/test.2.fa
+
+        elif [[ "\$layout" == "unique" ]]; then
+            mkdir -p splits/0
+            touch splits/0/test.0.1.fa
+            touch splits/0/test.0.2.fa
+
+        elif [[ "\$layout" == "multi_dir" ]]; then
+            mkdir -p splits/0/0
+            mkdir -p splits/0/1
+            touch splits/0/0/test.1.fa
+            touch splits/0/1/test.2.fa
+        fi
 
         if [[ "${params.write_agp ?: false}" == "true" ]]; then
-            cp "\$test_data_dir/agp/test.agp" "splits/${meta.id}.agp"
+            touch "splits/${meta.id}.agp"
         fi
 
         cat <<-END_VERSIONS > versions.yml
         ${task.process}:
-        fasta_split: $(fasta_split --version 2>/dev/null | head -n 1)
+            fasta_split: stub
         END_VERSIONS
-        """
-
-        
+        """     
 }
+
+
+def fasta_split_mem(longest_seq_bp) {
+    if( !longest_seq_bp || longest_seq_bp <= 0 ) return 8.GB
+
+    // Heuristic: ~2.5 bytes/base peak => ~1 GB per 400 Mbp of the *longest* sequence
+    // Add 2GB base memory to account for overhead
+    def mem_gb = 2 + Math.ceil(longest_seq_bp as double / 400_000_000d)
+    return mem_gb.GB
+}
+

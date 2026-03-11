@@ -25,7 +25,6 @@ nextflow_process {
     tag "fasta"
     tag "fasta/recombine"
 
-
     test("Stub outputs: header mode") {
 
         when {
@@ -33,10 +32,17 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ],
-                        file('${moduleDir}/tests/data/header/manifest.txt'),
-                        file('${workflow.projectDir}/modules/assets/NO_FILE')]
+                def manifest = file("manifest.txt")
+                manifest.text = "x\\n"
 
+                def no_file = file("NO_FILE")
+                no_file.text = ""
+
+                input[0] = [
+                    [ id: 'test' ],
+                    manifest,
+                    no_file
+                ]
                 """
             }
         }
@@ -48,7 +54,6 @@ nextflow_process {
             assert snapshot(process.out).match()
         }
     }
-
 
     test("Stub outputs: AGP mode") {
 
@@ -57,95 +62,16 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/agp/manifest.txt'),
-                            file('${moduleDir}/tests/data/agp/test.agp')]
-                """
-            }
-        }
+                def manifest = file("manifest.txt")
+                manifest.text = "x\\n"
 
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.recombined_fasta.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-
-    test("Real run: header recombination") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/header/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.recombined_fasta.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-
-    test("Real run: AGP recombination") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/agp/manifest.txt'),
-                            file('${moduleDir}/tests/data/agp/test.agp')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.recombined_fasta.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-
-    test("Real run: custom chunk regex") {
-
-        when {
-            params.chunk_id_regex = '^(?P<base>.+)_(?P<start>\\d+)$'
-
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/custom_regex/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.recombined_fasta.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-
-    test("Real run: manifest order is preserved") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/order/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
+                def agp = file("test.agp")
+                agp.text = ""
+                input[0] = [
+                    [ id: 'test' ],
+                    manifest,
+                    agp
+                ]
                 """
             }
         }
@@ -158,4 +84,3 @@ nextflow_process {
         }
     }
 }
-

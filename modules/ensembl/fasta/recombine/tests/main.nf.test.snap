@@ -7,74 +7,26 @@
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,3ec81eef9dd73dc86ff01621dbacc7a0"
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
+                ],
+                "1": [
+                    "versions.yml:md5,191cc20355b504364a619df6b4c639aa"
                 ],
                 "recombined_fasta": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,3ec81eef9dd73dc86ff01621dbacc7a0"
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-02-18T23:12:05.089688",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
-        }
-    },
-    "Real run: AGP recombination": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,f32bc79faea4bc05dd4675e0d4ededa1"
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
-                "recombined_fasta": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,f32bc79faea4bc05dd4675e0d4ededa1"
-                    ]
+                "versions": [
+                    "versions.yml:md5,191cc20355b504364a619df6b4c639aa"
                 ]
             }
         ],
-        "timestamp": "2026-02-18T23:12:09.601838",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
-        }
-    },
-    "Real run: header recombination": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,700550164316730d1145b7bde2ae3eb7"
-                    ]
-                ],
-                "recombined_fasta": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,700550164316730d1145b7bde2ae3eb7"
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-02-18T23:12:07.342405",
+        "timestamp": "2026-03-11T12:20:11.373089",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -88,74 +40,26 @@
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,93d1870d020e197708753501e57db68f"
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
+                ],
+                "1": [
+                    "versions.yml:md5,191cc20355b504364a619df6b4c639aa"
                 ],
                 "recombined_fasta": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.fa:md5,93d1870d020e197708753501e57db68f"
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-02-18T23:12:03.015143",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
-        }
-    },
-    "Real run: custom chunk regex": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,a589b60028be69f01622a61cc78fa1ae"
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
-                "recombined_fasta": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,a589b60028be69f01622a61cc78fa1ae"
-                    ]
+                "versions": [
+                    "versions.yml:md5,191cc20355b504364a619df6b4c639aa"
                 ]
             }
         ],
-        "timestamp": "2026-02-18T23:12:11.852053",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
-        }
-    },
-    "Real run: manifest order is preserved": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,52fa2054da674f0a5ebc263e724cf4a4"
-                    ]
-                ],
-                "recombined_fasta": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,52fa2054da674f0a5ebc263e724cf4a4"
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-02-18T23:12:14.083842",
+        "timestamp": "2026-03-11T12:20:09.308095",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

@@ -1,2 +1,0 @@
-inputs/02.json
-inputs/01.json

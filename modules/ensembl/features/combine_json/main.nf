@@ -55,7 +55,7 @@ process FEATURES_COMBINE_JSON {
 
         cat <<-END_VERSIONS > versions.yml
         ${task.process}:
-        features_combine_json: $(features_combine_json --version 2>/dev/null | head -n 1)
+        features_combine_json: \$(features_combine_json --version 2>/dev/null | head -n 1)
         END_VERSIONS
         """
 
@@ -63,18 +63,12 @@ process FEATURES_COMBINE_JSON {
         """
         set -euo pipefail
 
-        test_data_dir="${moduleDir}/tests/data"
-
         out_json="${meta.id}.features.json"
 
         test -s "${json_manifest}"
 
-        mode="seq_region"
         agp_path="${agp}"
         agp_name="\${agp_path##*/}"
-        if [[ "\$agp_name" != "NO_FILE" ]]; then
-            mode="agp"
-        fi
 
         manifest_real="\$(python -c 'from pathlib import Path; import sys; print(Path(sys.argv[1]).resolve())' "${json_manifest}")"
         manifest_dir="\$(dirname "\$manifest_real")"
@@ -92,7 +86,6 @@ process FEATURES_COMBINE_JSON {
             exit 1
         fi
 
-        
         if grep -q '"ncrna_features"' "\$first_json"; then
             load_type="ncrna"
         elif grep -q '"repeat_features"' "\$first_json"; then
@@ -103,25 +96,38 @@ process FEATURES_COMBINE_JSON {
             exit 1
         fi
 
-        # Provide a schema-valid combined JSON fixture.
-        # Fixtures are arranged under:
-        #   tests/data/repeat/seq_region/output/<id>.features.json
-        #   tests/data/repeat/agp/output/<id>.features.json
-        #   tests/data/ncrna/seq_region/output/<id>.features.json
-        #   tests/data/ncrna/agp/output/<id>.features.json
-        fixture="\$test_data_dir/\$load_type/\$mode/output/${meta.id}.features.json"
-
-        if [[ ! -s "\$fixture" ]]; then
-            echo "ERROR: missing stub fixture: \$fixture" >&2
-            echo "Make sure you created output fixture for meta.id='${meta.id}' under \$load_type/\$mode/output/." >&2
-            exit 1
+        if [[ "\$load_type" == "repeat" ]]; then
+            cat > "\$out_json" <<-EOF
+{
+    "analysis": {
+        "logic_name": "stub_repeat"
+    },
+    "source": {
+        "source_provider": "stub"
+    },
+    "repeat_consensus": [],
+    "repeat_features": []
+}
+EOF
+        else
+            cat > "\$out_json" <<-EOF
+{
+    "analysis": {
+        "logic_name": "stub_ncrna"
+    },
+    "source": {
+        "source_provider": "stub"
+    },
+    "ncrna_tool": "stub",
+    "ncrna_features": []
+    }
+EOF
         fi
-
-        cp "\$fixture" "\$out_json"
 
         cat <<-END_VERSIONS > versions.yml
         ${task.process}:
-        features_combine_json: $(features_combine_json --version 2>/dev/null | head -n 1)
+        features_combine_json: stub
         END_VERSIONS
         """
+        
 }

@@ -1,3 +1,0 @@
-inputs/seq1_chunk_start_1.fa
-inputs/seq1_chunk_start_5.fa
-inputs/seq2.fa

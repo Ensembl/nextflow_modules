@@ -55,7 +55,7 @@ process FASTA_RECOMBINE {
 
         cat <<-END_VERSIONS > versions.yml
         ${task.process}:
-        fasta_recombine: $(fasta_recombine --version 2>/dev/null | head -n 1)
+        fasta_recombine: \$(fasta_recombine --version 2>/dev/null | head -n 1)
         END_VERSIONS
         """
 
@@ -63,26 +63,12 @@ process FASTA_RECOMBINE {
         """
         set -euo pipefail
 
-        test_data_dir="${moduleDir}/tests/data"
+        out_fa="${meta.id}.fa"
+        touch "\$out_fa"
 
-        out_fasta="${meta.id}.fa"
-
-        test -s "${fasta_manifest}"
-
-        mode="header"
-        agp_path="${agp}"
-        agp_name="\${agp_path##*/}"
-        if [[ "\$agp_name" != "NO_FILE" ]]; then
-            mode="agp"
-        fi
-
-
-        cp "\$test_data_dir/\$mode/output/${meta.id}.fa" "\$out_fasta"
-        
         cat <<-END_VERSIONS > versions.yml
         ${task.process}:
-        fasta_recombine: $(fasta_recombine --version 2>/dev/null | head -n 1)
+            fasta_recombine: stub
         END_VERSIONS
-        """
-        
+        """   
 }

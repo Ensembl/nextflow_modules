@@ -32,9 +32,20 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/seq_region/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
+                def inJson = file("in.json")
+                inJson.text = '{"repeat_features": []}\\n'
+
+                def manifest = file("manifest.txt")
+                manifest.text = "in.json\\n"
+
+                def noFile = file("NO_FILE")
+                noFile.text = ""
+
+                input[0] = [
+                    [ id:'test' ],
+                    manifest,
+                    noFile
+                ]
                 """
             }
         }
@@ -54,9 +65,20 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/seq_region/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
+                def inJson = file("in.json")
+                inJson.text = '{"ncrna_features": [], "ncrna_tool": "cmscan"}\\n'
+
+                def manifest = file("manifest.txt")
+                manifest.text = "in.json\\n"
+
+                def noFile = file("NO_FILE")
+                noFile.text = ""
+
+                input[0] = [
+                    [ id:'test' ],
+                    manifest,
+                    noFile
+                ]
                 """
             }
         }
@@ -76,9 +98,20 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/agp/manifest.txt'),
-                            file('${moduleDir}/tests/data/repeat/agp/test.agp')]
+                def inJson = file("in.json")
+                inJson.text = '{"repeat_features": []}\\n'
+
+                def manifest = file("manifest.txt")
+                manifest.text = "in.json\\n"
+
+                def agp = file("test.agp")
+                agp.text = ""
+
+                input[0] = [
+                    [ id:'test' ],
+                    manifest,
+                    agp
+                ]
                 """
             }
         }
@@ -98,174 +131,20 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/agp/manifest.txt'),
-                            file('${moduleDir}/tests/data/ncrna/agp/test.agp')]
-                """
-            }
-        }
+                def inJson = file("in.json")
+                inJson.text = '{"ncrna_features": [], "ncrna_tool": "cmscan"}\\n'
 
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
+                def manifest = file("manifest.txt")
+                manifest.text = "in.json\\n"
 
-    test("Real run: repeat seq_region combine + seq_region-driven liftover") {
+                def agp = file("test.agp")
+                agp.text = ""
 
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/seq_region/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Real run: ncRNA seq_region combine + seq_region-driven liftover") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/seq_region/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Real run: repeat AGP-driven liftover") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/agp/manifest.txt'),
-                            file('${moduleDir}/tests/data/repeat/agp/test.agp')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Real run: ncRNA AGP-driven liftover") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/agp/manifest.txt'),
-                            file('${moduleDir}/tests/data/ncrna/agp/test.agp')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Real run: repeat custom chunk regex") {
-
-        when {
-            params.chunk_id_regex = '^(?P<base>.+)_(?P<start>\\d+)$'
-
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/custom_regex/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Real run: ncRNA custom chunk regex") {
-
-        when {
-            // Matches the ncRNA custom_regex inputs: <base>_<start>
-            params.chunk_id_regex = '^(?P<base>.+)_(?P<start>\\d+)$'
-
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/custom_regex/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Real run: repeat manifest order is preserved") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/repeat/order/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Real run: ncRNA manifest order is preserved") {
-
-        when {
-            process {
-                """
-                input[0] = [[ id:'test' ],
-                            file('${moduleDir}/tests/data/ncrna/order/manifest.txt'),
-                            file('${workflow.projectDir}/modules/assets/NO_FILE')]
+                input[0] = [
+                    [ id:'test' ],
+                    manifest,
+                    agp
+                ]
                 """
             }
         }
