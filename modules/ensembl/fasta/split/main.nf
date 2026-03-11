@@ -13,6 +13,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+def fasta_split_mem(longest_seq_bp) {
+    if( !longest_seq_bp || longest_seq_bp <= 0 ) return 8.GB
+
+    // Heuristic: ~2.5 bytes/base peak => ~1 GB per 400 Mbp of the *longest* sequence
+    // Add 2GB base memory to account for overhead
+    def mem_gb = 2 + Math.ceil(longest_seq_bp as double / 400_000_000d)
+    return mem_gb.GB
+}
+
 process FASTA_SPLIT {
 
     tag "${meta.id}"
@@ -21,8 +30,10 @@ process FASTA_SPLIT {
     conda "${moduleDir}/environment.yml"
     container "ensemblorg/ensembl-genomio:v1.6.1"
 
+    memory { fasta_split_mem(longest_seq_bp) }
+
     input:
-        tuple val(meta), path(fasta)
+        tuple val(meta), path(fasta), val(longest_seq_bp)
 
     output:
         tuple val(meta), path("splits/**/*.fa"), emit: fastas

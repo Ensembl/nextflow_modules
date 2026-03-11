@@ -1,8 +1,0 @@
----
-name: "fasta_splitfasta"
-channels:
-  - conda-forge
-  - bioconda
-dependencies:
-  - python=3.11.7
-  - biopython=1.86
