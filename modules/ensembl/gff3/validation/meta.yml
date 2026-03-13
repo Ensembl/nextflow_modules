@@ -1,4 +1,3 @@
----
 name: "gff3_validation"
 description: Check for proper validation of the GFF3 using GenomeTools.
 
@@ -12,37 +11,39 @@ keywords:
 
 tools:
   - "gff3":
-      description: "Modules for GFF3 validation, data deposition and retrieval from/into GFF3 file format"
+      description:
+        "Modules for GFF3 validation, data deposition and retrieval from/into\
+        \ GFF3 file format"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
+      license: ["Apache License version 2.0"]
+      identifier: ""
 
 input:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing meta information
-        e.g. `[ id:'accession1' ]`
-  
-  - gene_models:
-      type: file
-      description: GFF3 files
-      pattern: "*.{gff3}"
-
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing meta information
+          e.g. `[ id:'accession1' ]`
+    - gene_models:
+        type: file
+        description: GFF3 files
+        pattern: "*.{gff3}"
 output:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing meta information
-        e.g. `[ id:'accession1' ]`
   - gene_models:
-      type: file
-      description: All files used as entry
-      pattern: "*.{gff3}"
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing meta information
+            e.g. `[ id:'accession1' ]`
+      - gene_models.gff3:
+          type: file
+          description: All files used as entry
+          pattern: "*.{gff3}"
   - versions:
-      type: file
-      description: File containing information on module software version
-      pattern: "versions.yml"
-
+      - versions.yml:
+          type: file
+          description: File containing information on module software version
+          pattern: "versions.yml"
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:

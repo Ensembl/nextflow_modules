@@ -1,4 +1,3 @@
----
 name: "manifest_integrity"
 description: Check the data integrity of a set of genomic files, listed by their manifest.
 keywords:
@@ -12,45 +11,47 @@ tools:
   - "manifest":
       description: "Nextflow modules for genomic data file manifest comparison/checking"
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
+      license: ["Apache License version 2.0"]
+      identifier: ""
 
 input:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing meta information
-        e.g. `[ id:'accession1' ]`
-  - manifest_files:
-      type: file
-      description: Set of genomic data files
-      pattern: "*.{gff3,fasta,json}"
-
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing meta information
+          e.g. `[ id:'accession1' ]`
+    - manifest_files:
+        type: file
+        description: Set of genomic data files
+        pattern: "*.{gff3,fasta,json}"
 output:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing meta information
-        e.g. `[ id:'accession1' ]`
-
   - all_files:
-      type: file
-      description: All files used as entry.
-      pattern: "*.{gff3,fasta,json}"
-
-  - integrity_file:
-      type: file
-      description: Captures potential errors detected during the integrity check of a manifest file (manifest.json).
-      pattern: "integrity.out"
-
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing meta information
+            e.g. `[ id:'accession1' ]`
+      - '*.*", includeInputs: true':
+          type: file
+          description: All files used as entry.
+          pattern: "*.{gff3,fasta,json}"
   - error_log:
-      type: file
-      description: Integrity error log if it failed
-      pattern: "integrity.out"
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing meta information
+            e.g. `[ id:'accession1' ]`
+      - integrity_file:
+          type: file
+          description:
+            Captures potential errors detected during the integrity check of
+            a manifest file (manifest.json).
+          pattern: "integrity.out"
   - versions:
-      type: file
-      description: File containing information on module software version
-      pattern: "versions.yml"
-
+      - versions.yml:
+          type: file
+          description: File containing information on module software version
+          pattern: "versions.yml"
 authors:
   - "@ensembl-dev"
 maintainers:

@@ -1,6 +1,7 @@
----
 name: "genbank_extractgb"
-description: Parse a GenBank file and create cleaned up files and validate generated JSON files. 
+description:
+  Parse a GenBank file and create cleaned up files and validate generated
+  JSON files.
 
 keywords:
   - container
@@ -12,48 +13,75 @@ keywords:
 
 tools:
   - "genbank":
-      description: "Modules with functions related to work with Genbank related data files."
+      description:
+        "Modules with functions related to work with Genbank related data\
+        \ files."
       homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
+      license: ["Apache License version 2.0"]
+      identifier: ""
 
 input:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing genome database meta information
-        e.g. `[ accession:'NC_XXXX.X' ]`
-  - gb_file:
-      type: file
-      description: |
-        File path to genbank formatted input file (*.gb)
-        e.g. `[gb_file("genome.gb")]`
-
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing genome database meta information
+          e.g. `[ accession:'NC_XXXX.X' ]`
+    - gb_file:
+        type: file
+        description: |
+          File path to genbank formatted input file (*.gb)
+          e.g. `[gb_file("genome.gb")]`
 output:
   - genome:
-      type: file
-      description: Genome metadata (JSON)
-      pattern: "genome.json"
+      - meta:
+          type: file
+          description: Genome metadata (JSON)
+          pattern: "genome.json"
+      - genome.json:
+          type: file
+          description: Genome metadata (JSON)
+          pattern: "genome.json"
   - seq_regions:
-      type: file
-      description: Sequence region(s) meta (JSON)
-      pattern: "seq_region.json"
+      - meta:
+          type: file
+          description: Sequence region(s) meta (JSON)
+          pattern: "seq_region.json"
+      - seq_region.json:
+          type: file
+          description: Sequence region(s) meta (JSON)
+          pattern: "seq_region.json"
   - dna_fasta:
-      type: file
-      description: Genome nucleotide sequence(s) (FASTA)
-      pattern: "dna.fasta"
+      - meta:
+          type: file
+          description: Genome nucleotide sequence(s) (FASTA)
+          pattern: "dna.fasta"
+      - dna.fasta:
+          type: file
+          description: Genome nucleotide sequence(s) (FASTA)
+          pattern: "dna.fasta"
   - gene_gff:
-      type: file
-      description: Gene model information (GFF3)
-      pattern: "*.gff"
+      - meta:
+          type: file
+          description: Gene model information (GFF3)
+          pattern: "*.gff"
+      - "*.gff":
+          type: file
+          description: Gene model information (GFF3)
+          pattern: "*.gff"
   - pep_fasta:
-      type: file
-      description: Genome protein-coding gene amino acid sequence(s) (FASTA)
-      pattern: "pep.fasta"
+      - meta:
+          type: file
+          description: Genome protein-coding gene amino acid sequence(s) (FASTA)
+          pattern: "pep.fasta"
+      - pep.fasta:
+          type: file
+          description: Genome protein-coding gene amino acid sequence(s) (FASTA)
+          pattern: "pep.fasta"
   - versions:
-      type: file
-      description: File containing information on module software version
-      pattern: "versions.yml"
-
+      - versions.yml:
+          type: file
+          description: File containing information on module software version
+          pattern: "versions.yml"
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:
