@@ -14,7 +14,6 @@ process URLS_EXTRACT {
 
     script:
     """
-    NXF_DISABLE_CHECK_LATEST=1
     # Extract and parse the MySQL URL
     url_string="${url_string}"
 
