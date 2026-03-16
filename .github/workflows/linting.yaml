@@ -79,11 +79,19 @@ jobs:
       - image=ubuntu22-full-x64
     name: nf-core lint modules
     needs: nf-core-changes
+<<<<<<< HEAD
     if: ${{ needs.nf-core-changes.outputs.modules_files != '[]' }}
     strategy:
       fail-fast: false
       matrix:
         module: ${{ fromJson(needs.nf-core-changes.outputs.modules_files || '[]') }}
+=======
+    if: needs.nf-core-changes.outputs.modules != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        tags: ["${{ fromJson(needs.nf-core-changes.outputs.modules) }}"]
+>>>>>>> e15843f (correcting the id)
     steps:
       - name: Clean workspace
         run: |
