@@ -38,7 +38,10 @@ jobs:
     name: nf-core lint
     runs-on: ubuntu-latest
     needs: nf-core-changes
-
+    strategy:
+      fail-fast: false
+      matrix:
+        tags: ["${{ fromJson(needs.changes.outputs.modules) }}"]
     steps:
       - uses: actions/checkout@v6
 
@@ -58,8 +61,8 @@ jobs:
 
       - name: Lint modules
         if: needs.nf-core-changes.outputs.modules == 'true'
-        run: nf-core modules lint
+        run: nf-core modules lint ${{ matrix.tags }}
 
       - name: Lint subworkflows
         if: needs.nf-core-changes.outputs.subworkflows == 'true'
-        run: nf-core subworkflows lint
+        run: nf-core subworkflows lint --all 
