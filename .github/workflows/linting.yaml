@@ -85,11 +85,6 @@ jobs:
       matrix:
         module: ${{ fromJson(needs.nf-core-changes.outputs.modules_files || '[]') }}
     steps:
-      - name: Clean workspace
-        run: |
-          sudo rm -rf ./* || true
-          sudo rm -rf ./.* || true
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
@@ -133,11 +128,6 @@ jobs:
       matrix:
         subworkflow: ${{ fromJson(needs.nf-core-changes.outputs.subworkflows_files || '[]') }}
     steps:
-      - name: Clean workspace
-        run: |
-          sudo rm -rf ./* || true
-          sudo rm -rf ./.* || true
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
