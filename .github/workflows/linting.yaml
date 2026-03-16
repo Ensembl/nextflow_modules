@@ -36,11 +36,11 @@ jobs:
     name: nf-core lint
     runs-on: ubuntu-latest
     needs: nf-core-changes
-    if: needs.changes.outputs.modules != '[]'
+    if: needs.nf-core-changes.outputs.modules != '[]'
     strategy:
       fail-fast: false
       matrix:
-        tags: ["${{ fromJson(needs.changes.outputs.modules) }}"]
+        tags: ["${{ fromJson(needs.nf-core-changes.outputs.modules) }}"]
     steps:
       - uses: actions/checkout@v6
 
