@@ -1,4 +1,5 @@
 name: Run Linting
+
 on: [push, pull_request]
 
 env:
@@ -8,66 +9,57 @@ env:
   NXF_VER: "25.10.2"
   NXF_SYNTAX_PARSER: "v2"
 
-# Cancel if a newer run is started
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   nf-core-changes:
-    name: nf-core-changes
-    runs-on:
-      - runs-on=${{ github.run_id }}-nf-core-changes
-      - runner=4cpu-linux-x64
-      - image=ubuntu22-full-x64
+    name: Detect changes
+    runs-on: ubuntu-latest
+
     outputs:
       modules: ${{ steps.filter.outputs.modules }}
-      modules_files: ${{ steps.module_names.outputs.result }}
       subworkflows: ${{ steps.filter.outputs.subworkflows }}
-      subworkflows_files: ${{ steps.subworkflow_names.outputs.result }}
+
     steps:
-      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3
+      - uses: actions/checkout@v6
+
+      - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
             modules:
-              - added|modified: 'modules/ensembl/**'
+              - 'modules/ensembl/**'
             subworkflows:
-              - added|modified: 'subworkflows/ensembl/**'
-          token: ""
-          list-files: "json"         
-  
-  nf-core-lint:
-    runs-on: ubuntu-latest
-    name: nf-core-lint
-    needs: nf-core-changes
-    if: ${{ needs.nf-core-changes.outputs.modules_files != '[]' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        module: ${{ fromJson(needs.nf-core-changes.outputs.modules_files || '[]') }}
-    steps:
-      - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
-        with:
-          python-version: "3.14"
+              - 'subworkflows/ensembl/**'
 
-      - uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
-        id: cache-pip
+  nf-core-lint:
+    name: nf-core lint
+    runs-on: ubuntu-latest
+    needs: nf-core-changes
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - uses: actions/cache@v5
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip
-          restore-keys: |
-            ${{ runner.os }}-pip
 
-      - name: Install pip
-        run: python -m pip install --upgrade pip
+      - uses: nf-core/setup-nextflow@v2
 
-      - name: Set up Nextflow
-        uses: nf-core/setup-nextflow@v2
+      - name: Install nf-core tools
+        run: pip install --upgrade git+https://github.com/nf-core/tools.git@dev
 
-      - name: Lint module ${{ matrix.module }}
-        run: nf-core modules lint ${{ matrix.module }}
-  
-      - name: Lint subworkflow ${{ matrix.subworkflow }}
-        run: nf-core subworkflows lint ${{ matrix.subworkflow }}
+      - name: Lint modules
+        if: needs.nf-core-changes.outputs.modules == 'true'
+        run: nf-core modules lint
+
+      - name: Lint subworkflows
+        if: needs.nf-core-changes.outputs.subworkflows == 'true'
+        run: nf-core subworkflows lint
