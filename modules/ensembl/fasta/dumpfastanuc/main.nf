@@ -49,11 +49,9 @@ process FASTA_DUMPFASTANUC {
 
     stub:
         version = "0.4"
-        output_file = "dna.fasta"
-        dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_nucleotide/"
-        dump_file = "dumped_dna.fasta"
+        
         """
-        cp ${dump_dir}/${dump_file} ${output_file}
+        touch dna.fasta
         echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}" > versions.yml
         """
 }

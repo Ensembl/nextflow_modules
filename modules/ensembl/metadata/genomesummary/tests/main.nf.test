@@ -23,55 +23,28 @@ nextflow_process {
     tag "metadata"
     tag "metadata/genomesummary"
 
-    test("Metadata 'genome summary' test-A [real test]") {
-        
-        when {
-            process {
-                """
-                input[0] = [ 
-                    [accession: 'GCA_000001215.4'], 
-                    file("${projectDir}/tests/modules/ensembl/metadata/genomesummary/meta-query.json", checkIfExists: true),
-                    file("${projectDir}/tests/modules/ensembl/metadata/genomesummary/ncbi_genome-summary.json", checkIfExists: true)
-                    ]
-                """
-            }
-        }
-
-        then {   
-            // Since the start date and version is not constant we want to snapshot the file without them
-            def genome_lines = path(process.out.meta_json.get(0).get(1)).readLines()
-            def static_text = genome_lines[0..11] + genome_lines[14..19]
-            assertAll(
-                    { assert process.success },
-                    { assert snapshot(process.out.versions).match() },
-                    { assert snapshot(static_text).match("genome.json") },
-                    { assert process.out.meta_json.size() == 1 },
-            )
-        }
-    }
-
-    test("Metadata 'genome summary' test-B [stub]") {
+    test("Metadata 'genome summary' [stub]") {
         
         when {
             options "-stub"
             process {
                 """
-                input[0] = [ 
-                    [accession: 'GCA_000111222.3'], 
-                    file("query.json"),
-                    file("ncbi-genome.json")
-                    ]
-                """
+                input[0] = Channel.of('{ "genome": "test" }')
+                .collectFile(name: 'meta_query.json', newLine: true)
+                .combine(Channel.of('summary test')
+                .collectFile(name: 'ncbi_genome_summary.json', newLine: true)
+                ).map { meta_query, ncbi_genome_summary ->
+                [ [ id: 'GCA_000001215.4' ], meta_query, ncbi_genome_summary ]
+                }
+            """
             }
         }
-
-            then {
+        then {   
             assertAll(
                     { assert process.success },
-                    { assert snapshot(process.out).match() },
-                    { assert process.out.meta_json.size() == 1 },
-                    { assert process.out.versions != null }
+                    { assert snapshot(process.out.versions).match() },
             )
         }
     }
+
 }

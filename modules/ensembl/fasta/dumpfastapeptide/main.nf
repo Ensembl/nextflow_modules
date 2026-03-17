@@ -51,11 +51,8 @@ process FASTA_DUMPFASTAPEPTIDE {
 
     stub:
         version = "0.4"
-        output_file = "pep.fasta"
-        dump_dir = "${workflow.projectDir}/tests/modules/ensembl/fasta/dump_peptide/"
-        dump_file = "dumped_pep.fasta"
         """
-        cp ${dump_dir}/${dump_file} ${output_file}
+        touch pep.fasta
         echo -e -n "${task.process}:\n\tensembl-legacy-scripts: ${version}" > versions.yml
         """
 }
