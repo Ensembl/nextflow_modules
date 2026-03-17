@@ -34,6 +34,7 @@ jobs:
 >>>>>>> a5a9800 (trying to extract module names for lint)
     steps:
 <<<<<<< HEAD
+<<<<<<< HEAD
       - name: Clean workspace
         run: |
           sudo rm -rf ./* || true
@@ -46,6 +47,12 @@ jobs:
       - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3
 =======
   
+=======
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          
+>>>>>>> 576a2d3 (actions update)
       - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4
 >>>>>>> dccbe8e (linting extracting the module nf-core style)
         id: filter
