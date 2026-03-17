@@ -37,14 +37,9 @@ jobs:
         id: modules
         run: |
           echo '${{ steps.filter.outputs.modules_files }}' \
-          | jq -r 'map(split("/")[2]) | unique' \
+          | jq -r 'map((split("/")[2] + "/" + split("/")[3])) | unique' \
           > modules.json
           echo "modules=$(cat modules.json)" >> $GITHUB_OUTPUT
-      
-      - name: Debug
-        run: |
-          echo "RAW: ${{ steps.filter.outputs.modules }}"
-          echo "FILES: ${{ steps.filter.outputs.modules_files }}"
 
   nf-core-lint:
     name: nf-core lint
