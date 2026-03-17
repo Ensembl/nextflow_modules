@@ -23,7 +23,10 @@ jobs:
       subworkflows: ${{ steps.filter.outputs.subworkflows }}
       subworkflows_files: ${{ steps.subworkflow_names.outputs.result }}
     steps:
-  
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          
       - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4
         id: filter
         with:
