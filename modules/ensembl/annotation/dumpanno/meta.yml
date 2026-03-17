@@ -1,51 +1,47 @@
 ---
-name: "annotation_dumpanno"
-
-description: This module is used to dump the functional annotation of a genome from core databases.
+name: "database_dbfactory"
+description: >
+  Generate a list of one or more databases plus some associated meta table information.
 
 keywords:
   - container
   - core_database
   - docker
-  - ensembl-legacy-scripts
-  - fasta
-  
+  - database
+  - ensembl-genomio
+
 tools:
-  - "annotation":
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "This module handles all annotation-related interactions with the core database, including annotation dumping and processing"
-      license: ['Apache License version 2.0']
+  database:
+    description: >
+      Modules which function to read or write information from core databases.
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  # Only when we have meta
-  - meta:
-        type: map
-        description: |
-          A meta map including 'core database information'.
-          e.g. [ id:'db_name', server_details:[ host:'db' ] ]
-        pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+  - name: server
+    type: map
+    description: >
+      Groovy Map containing MySQL server host, port, user, and password meta information,
+      e.g. `[ host:"mysql-host-test-prod" ]`
+
+  - name: filter_map
+    type: file
+    description: "JSON file containing database filter information."
+    pattern: "*.json"
 
 output:
-  - meta:
-      type: map
-      description: |
-        Database containing meta information.
-        e.g. [ id:'db_name', server_details:[ host:'db' ] ]
-      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+  - name: dbs_meta
+    type: file
+    description: "JSON file containing database metadata."
+    pattern: "dbs.json"
 
-  - functional_annotation.json:
-      type: map
-      description: |
-        Functional annotation file containing biotypes.
-        e.g [ db:'database name', file("*.json") ]
-      pattern: ".json"
-
-  - versions:
-      type: file
-      description: File containing software versions.
-      pattern: "versions.yml"
+  - name: versions
+    type: file
+    description: "File containing information on module software version"
+    pattern: "versions.yml"
 
 authors:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"
 maintainers:
-  - "@ensembl-dev"
+  - "ensembl-dev@ebi.ac.uk"

@@ -1,6 +1,7 @@
 ---
 name: "fasta_dumpfastanuc"
-description: A module for dumping core database gene module nucleotide fasta seqs
+description: >
+  A module for dumping core database gene module nucleotide FASTA sequences.
 
 keywords:
   - container
@@ -11,28 +12,37 @@ keywords:
   - fasta
 
 tools:
-  - "fasta":
-      description: "Modules which function to facilitate data deposition/retrieval of fasta sequences."
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
+  fasta:
+    description: >
+      Modules which function to facilitate data deposition and retrieval
+      of FASTA sequences.
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  - db:
-      type: map
-      description: "A meta map including 'core database name'."
-        e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
-      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+  - name: db
+    type: map
+    description: >
+      A meta map including 'core database name',
+      e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
+    pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
 
 output:
-  - nucleotide_fasta:
-      type: map
-      description: "Fasta file containing nucleotide sequence(s)."
-        e.g [ db:'database name', file("*_fasta_dna.fasta") ]
-      pattern: "*_fasta_dna.fasta"
-  - versions:
-      type: file
-      description: File containing information on module software version
-      pattern: "versions.yml"
+  - name: nucleotide_fasta_meta
+    type: map
+    description: >
+      Metadata for nucleotide FASTA sequences, e.g. [ db:'database name', file("*_fasta_dna.fasta") ]
+
+  - name: nucleotide_fasta_file
+    type: file
+    description: "Nucleotide FASTA sequences from the database"
+    pattern: "*_fasta_dna.fasta"
+
+  - name: versions
+    type: file
+    description: "File containing information on module software version"
+    pattern: "versions.yml"
 
 authors:
   - "ensembl-dev@ebi.ac.uk"

@@ -1,6 +1,7 @@
 ---
 name: "download_assemblydata"
-description: Generate a list of one or more databases plus some associated meta table information.
+description: >
+  Generate a list of one or more databases plus some associated meta table information.
 
 keywords:
   - ensembl-genomio
@@ -12,33 +13,36 @@ keywords:
   - INSDC
 
 tools:
-  - download:
-      description: "Modules which function to download information or various data from externally hosted resources."
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
+  download:
+    description: >
+      Modules which function to download information or various data from
+      externally hosted resources.
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing A single INSDC GCA or NCBI 'amended' GCF genome assembly accession meta information.
-        e.g. `[ accession:'GCA_000000000.1' ]`
+  - name: meta
+    type: map
+    description: >
+      Groovy Map containing a single INSDC GCA or NCBI 'amended' GCF genome assembly accession meta information,
+      e.g. `[ accession:'GCA_000000000.1' ]`
 
 output:
-  - min_set:
-      type: map
-      description: "Groovy Map including various genome assembly data files (.txt, .fna, .gbff) into compressed Gzip archives."
-        e.g. [ accession:'GCA_000000000.1', file("*_assembly_report.txt"), file("*_genomic.fna.gz"), file("*_genomic.gbff.gz") ]
-      pattern: (*.txt, *.fna.gz, *.gbff.gz)
-  - opt_set:
-      type: map
-      description: "Groovy Map including various genome assembly data files (.txt, .faa, .gff) into compressed Gzip archives."
-        e.g. [ accession:'GCA_000000000.1', file("*_assembly_report.txt"), file("*_genomic.gff.gz"), file("*_genomic.gbff.gz") ]
-      pattern: (*.txt, *.fna.gz, *.gbff.gz)
-  - versions:
-      type: file
-      description: File containing information on module software version
-      pattern: "versions.yml"
+  - name: min_set
+    type: file
+    description: "Minimal set of downloaded assembly data files"
+    pattern: "*"
+
+  - name: opt_set
+    type: file
+    description: "Optional set of downloaded assembly data files"
+    pattern: "*"
+
+  - name: versions
+    type: file
+    description: "File containing information on module software version"
+    pattern: "versions.yml"
 
 authors:
   - "ensembl-dev@ebi.ac.uk"

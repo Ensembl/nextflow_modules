@@ -1,6 +1,7 @@
 ---
 name: "download_genbank"
-description: Download a single sequence from NCBI GenBank.
+description: >
+  Download a single sequence from NCBI GenBank.
 
 keywords:
   - core_database
@@ -11,27 +12,33 @@ keywords:
   - genomics
 
 tools:
-  - download:
-      description: "Modules which function to download information or various data from externally hosted resources."
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
+  download:
+    description: >
+      Modules which function to download information or various data from
+      externally hosted resources.
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  - accession:
-      type: map
-      description: Meta map including sequence accession. Sequence record associated with 
-        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
-        e.g. [[ accession:'NC_12341']]
+  - name: meta
+    type: map
+    description: "Optional meta information about the sequence to download."
 
 output:
-  - gb_sequence:
-      type: file
-      description: A sequence record outfile in genbank format.
-      pattern: "output.gb"
-  - versions:
-      type: file
-      description: File containing information on module software version
-      pattern: "versions.yml"
+  - name: gb_sequence_file
+    type: file
+    description: "A sequence record outfile in GenBank format"
+    pattern: "output.gb"
+
+  - name: gb_sequence_meta
+    type: map
+    description: "Metadata associated with the downloaded GenBank sequence"
+
+  - name: versions
+    type: file
+    description: "File containing information on module software version"
+    pattern: "versions.yml"
 
 authors:
   - "ensembl-dev@ebi.ac.uk"
