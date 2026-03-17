@@ -22,10 +22,16 @@ jobs:
       - runner=4cpu-linux-x64
       - image=ubuntu22-full-x64
     outputs:
+<<<<<<< HEAD
       modules: ${{ steps.filter.outputs.modules }}
       modules_files: ${{ steps.module_names.outputs.result }}
       subworkflows: ${{ steps.filter.outputs.subworkflows }}
       subworkflows_files: ${{ steps.subworkflow_names.outputs.result }}
+=======
+      modules: ${{ steps.filter.outputs.modules_files }}
+      subworkflows: ${{ steps.filter.outputs.subworkflows_files }}
+    
+>>>>>>> a5a9800 (trying to extract module names for lint)
     steps:
       - name: Clean workspace
         run: |
@@ -46,6 +52,19 @@ jobs:
               - added|modified: 'subworkflows/ensembl/**'
           token: ""
           list-files: "json"
+          
+      - name: Extract module names
+        id: modules
+        run: |
+          echo '${{ steps.filter.outputs.modules_files }}' \
+          | jq -r 'map(split("/")[2]) | unique' \
+          > modules.json
+          echo "modules=$(cat modules.json)" >> $GITHUB_OUTPUT
+      
+      - name: Debug
+        run: |
+          echo "RAW: ${{ steps.filter.outputs.modules }}"
+          echo "FILES: ${{ steps.filter.outputs.modules_files }}"
 
       - name: Get module name
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
@@ -90,8 +109,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+<<<<<<< HEAD
         tags: ["${{ fromJson(needs.nf-core-changes.outputs.modules) }}"]
 >>>>>>> e15843f (correcting the id)
+=======
+        module: ${{ fromJson(needs.nf-core-changes.outputs.modules || '[]') }}
+>>>>>>> a5a9800 (trying to extract module names for lint)
     steps:
       - name: Clean workspace
         run: |
@@ -119,8 +142,13 @@ jobs:
           distribution: "temurin"
           java-version: "17"
 
+<<<<<<< HEAD
       - name: Set up Nextflow
         uses: nf-core/setup-nextflow@v2
+=======
+      - name: Lint modules
+        run: nf-core modules lint ${{ matrix.module }}
+>>>>>>> a5a9800 (trying to extract module names for lint)
 
       - name: Install nf-core tools development version
         run: python -m pip install --upgrade --force-reinstall git+https://github.com/nf-core/tools.git@dev
