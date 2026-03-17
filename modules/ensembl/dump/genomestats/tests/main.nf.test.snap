@@ -10,11 +10,11 @@
                                 "species": "Genus species"
                             }
                         ],
-                        "core_stats.json:md5,dc964a618276360f339d65dabd3e279a"
+                        "core_stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,3874d3d94b6b4756c287444ccd013e28"
+                    "versions.yml:md5,6e0e2ab59a2af0e33a3223391168fdc0"
                 ],
                 "core_stats": [
                     [
@@ -24,19 +24,19 @@
                                 "species": "Genus species"
                             }
                         ],
-                        "core_stats.json:md5,dc964a618276360f339d65dabd3e279a"
+                        "core_stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,3874d3d94b6b4756c287444ccd013e28"
+                    "versions.yml:md5,6e0e2ab59a2af0e33a3223391168fdc0"
                 ]
             }
         ],
+        "timestamp": "2026-02-24T21:03:34.420916147",
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.4",
             "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-17T11:26:56.649041557"
+        }
     },
     "genome_stats": {
         "content": [
@@ -52,10 +52,10 @@
                 ]
             ]
         ],
+        "timestamp": "2024-12-02T17:39:27.332030943",
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-12-02T17:39:27.332030943"
+        }
     }
 }

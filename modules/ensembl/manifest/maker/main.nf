@@ -19,7 +19,7 @@ process MANIFEST_MAKER {
     label 'adaptive'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
 
     input:
         tuple val(meta), path(file_name)

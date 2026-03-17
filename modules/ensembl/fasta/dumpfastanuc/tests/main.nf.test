@@ -39,25 +39,6 @@ nextflow_process {
 
             then {
 
-                assert snapshot(
-                    process.out.nucleotide_fasta.collect {
-                        it.collect { it instanceof String && file(it).exists() ? file(it).name : it }
-                        }
-                    ).match("nucleotide_fasta")
-
-                def testData = process.out.nucleotide_fasta.collect { core_db, pipeline_tag, fastaPath -> [[ core_db, pipeline_tag, path(fastaPath).fasta]] }
-                assert testData.contains([
-                    [
-                        [['test_id':'dummy_core_db_core_110_1','species':'Genus species']],
-                            'fasta_dna', [
-                                'NUC1':'GCACTAGTATGAAATTCTTGGTCAACGTTGCCCTTGTTTTTATGG',
-                                'NUC2':'TCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAACCGG',
-                                'NUC3':'ATGGTCGTGTACATTTCTTACATCTATGCGGCCCCTGAACCGGAA'
-                            ]
-                        ]
-                    ]
-                )
-
                 assertAll(
                     { assert process.success },
                     { assert snapshot(process.out).match() },

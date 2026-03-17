@@ -18,7 +18,7 @@ process DOWNLOAD_GENBANK {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
 
     input:
         val(meta)
@@ -43,9 +43,9 @@ process DOWNLOAD_GENBANK {
 
     stub:
         def prefix = task.ext.prefix ?: "${meta.accession}"
-        output_file = "output.gb"
+
         """
-        cp ${workflow.projectDir}/tests/modules/ensembl/download/genbank/${output_file} ./${output_file}
+        touch output.gb 
         
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genbank_download --version >> versions.yml

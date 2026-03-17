@@ -2,6 +2,9 @@ process URLS_EXTRACT {
     tag "$meta.id"
     label 'process_low'
 
+    conda "${moduleDir}/environment.yml"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
+
     input:
     tuple val(meta), val(url_string)
 
@@ -10,7 +13,6 @@ process URLS_EXTRACT {
     path "versions.yml", emit: versions
 
     script:
-
     """
     # Extract and parse the MySQL URL
     url_string="${url_string}"

@@ -56,10 +56,8 @@ process GFF3_DUMPGFF3 {
 
     stub:
         version = "0.4"
-        output_stub = "gff_outfile.gff3"
-        input_gff3 = "${projectDir}/tests/modules/ensembl/gff3/dumpgff3/test_dump.gff3"
         """
-        cp ${input_gff3} ${output_stub}
+        touch gff_outfile.gff3
 
         echo -e -n "${task.process}:\n\tgt gff3validator: " > versions.yml
         gt gff3validator -version | head -n 1 | cut -f4 -d ' ' >> versions.yml

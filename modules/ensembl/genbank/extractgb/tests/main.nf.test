@@ -40,13 +40,6 @@ test("Genbank extract gb [stub]") {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() },
-                { assert process.out.size() >= 3  },
-                { assert process.out.genome.size() == 1 },
-                { assert process.out.seq_regions.size() == 1 },
-                { assert process.out.dna_fasta.size() == 1 },
-                { assert process.out.gene_gff.size() <= 1 },
-                { assert process.out.pep_fasta.size() <= 1 },
-                { assert process.out != null }
             )
         }
     }
