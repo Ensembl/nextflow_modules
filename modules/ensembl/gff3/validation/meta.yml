@@ -1,5 +1,7 @@
+---
 name: "gff3_validation"
-description: Check for proper validation of the GFF3 using GenomeTools.
+description: >
+  Check for proper validation of GFF3 files using GenomeTools.
 
 keywords:
   - ensembl
@@ -10,40 +12,39 @@ keywords:
   - validation
 
 tools:
-  - "gff3":
-      description:
-        "Modules for GFF3 validation, data deposition and retrieval from/into\
-        \ GFF3 file format"
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ["Apache License version 2.0"]
-      identifier: ""
+  gff3:
+    description: >
+      Modules for GFF3 validation, data deposition, and retrieval from/into
+      GFF3 file format.
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  - - meta:
-        type: map
-        description: |
-          Groovy Map containing meta information
-          e.g. `[ id:'accession1' ]`
-    - gene_models:
-        type: file
-        description: GFF3 files
-        pattern: "*.{gff3}"
+  - name: meta
+    type: map
+    description: "Groovy Map containing meta information, e.g. `[ id:'accession1' ]`"
+
+  - name: gene_models
+    type: file
+    description: "GFF3 files"
+    pattern: "*.{gff3}"
+
 output:
-  - gene_models:
-      - meta:
-          type: map
-          description: |
-            Groovy Map containing meta information
-            e.g. `[ id:'accession1' ]`
-      - gene_models.gff3:
-          type: file
-          description: All files used as entry
-          pattern: "*.{gff3}"
-  - versions:
-      - versions.yml:
-          type: file
-          description: File containing information on module software version
-          pattern: "versions.yml"
+  - name: gene_models_meta
+    type: map
+    description: "Groovy Map containing meta information, e.g. `[ id:'accession1' ]`"
+
+  - name: gene_models_file
+    type: file
+    description: "All GFF3 files used as input"
+    pattern: "*.{gff3}"
+
+  - name: versions
+    type: file
+    description: "File containing information on module software version"
+    pattern: "versions.yml"
+
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:

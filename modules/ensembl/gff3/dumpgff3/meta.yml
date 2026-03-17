@@ -1,5 +1,8 @@
+---
 name: "gff3_dumpgff3"
-description: write your description here
+description: >
+  Dump GFF3 gene models from a core Ensembl database into GFF3 files.
+  (Add more details as needed.)
 
 keywords:
   - container
@@ -9,47 +12,39 @@ keywords:
   - gff3
 
 tools:
-  - "gff3":
-      description:
-        "Modules for GFF3 validation, data deposition and retrieval from/into\
-        \ GFF3 file format"
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ["Apache License version 2.0"]
-      identifier: ""
+  gff3:
+    description: >
+      Modules for GFF3 validation, data deposition, and retrieval from/into
+      GFF3 file format.
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  - - db:
-        type: map
-        description: >
-          A meta map including 'core database name'.
-          e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species',
-          ...]]
-        pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+  - name: db
+    type: map
+    description: >
+      A meta map including 'core database name', e.g.
+      [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
+    pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+
 output:
-  - gff3:
-      - db:
-          type: map
-          description: >
-            GFF3 file containing gene model(s).
-            e.g [ db:'database name', file("*.gff3") ]
-          pattern: "*.gff3"
-      - gff3:
-          type: map
-          description: >
-            GFF3 file containing gene model(s).
-            e.g [ db:'database name', file("*.gff3") ]
-          pattern: "*.gff3"
-      - "*.gff3":
-          type: map
-          description: >
-            GFF3 file containing gene model(s).
-            e.g [ db:'database name', file("*.gff3") ]
-          pattern: "*.gff3"
-  - versions:
-      - versions.yml:
-          type: file
-          description: File containing information on module software version
-          pattern: "versions.yml"
+  - name: gff3_meta
+    type: map
+    description: >
+      GFF3 file metadata including database information, e.g.
+      [ db:'database name', file("*.gff3") ]
+
+  - name: gff3_file
+    type: file
+    description: "GFF3 file containing gene model(s)."
+    pattern: "*.gff3"
+
+  - name: versions
+    type: file
+    description: "File containing information on module software version."
+    pattern: "versions.yml"
+
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:

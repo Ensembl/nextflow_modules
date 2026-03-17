@@ -1,5 +1,8 @@
+---
 name: "dump_genomestats"
-description: A module for dumping a core database
+description: >
+  A module for dumping a core database, including assembly and annotation statistics.
+
 keywords:
   - container
   - core_database
@@ -8,41 +11,37 @@ keywords:
   - json
 
 tools:
-  - dump:
-      description:
-        "Modules which function to dump various forms of data from a core\
-        \ database."
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ["Apache License version 2.0"]
-      identifier: ""
+  dump:
+    description: >
+      Modules which function to dump various forms of data from a core database.
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  - - db:
-        type: map
-        description: >
-          A meta map including 'core database name'.
-          e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species',
-          ...]]
-          pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+  - name: db
+    type: map
+    description: >
+      A meta map including 'core database name',
+      e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
+    pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+
 output:
-  - core_stats:
-      - db:
-          type: map
-          description: >
-            JSON file containing core database statistics (assembly and annotation).
-            e.g [ db:"database name", file("core_stats.json") ]
-            pattern: "core_stats.json"
-      - core_stats.json:
-          type: map
-          description: >
-            JSON file containing core database statistics (assembly and annotation).
-            e.g [ db:"database name", file("core_stats.json") ]
-            pattern: "core_stats.json"
-  - versions:
-      - versions.yml:
-          type: file
-          description: File containing information on module software version
-          pattern: "versions.yml"
+  - name: core_stats_meta
+    type: map
+    description: >
+      Metadata for the core database statistics JSON, e.g. [ db:"database name", file("core_stats.json") ]
+
+  - name: core_stats_file
+    type: file
+    description: "JSON file containing core database statistics (assembly and annotation)"
+    pattern: "core_stats.json"
+
+  - name: versions
+    type: file
+    description: "File containing information on module software version"
+    pattern: "versions.yml"
+
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:

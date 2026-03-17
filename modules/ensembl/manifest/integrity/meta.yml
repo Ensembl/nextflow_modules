@@ -1,5 +1,7 @@
+---
 name: "manifest_integrity"
-description: Check the data integrity of a set of genomic files, listed by their manifest.
+description: >
+  Check the data integrity of a set of genomic files, listed by their manifest.
 keywords:
   - ensembl
   - genomics
@@ -8,50 +10,47 @@ keywords:
   - validation
 
 tools:
-  - "manifest":
-      description: "Nextflow modules for genomic data file manifest comparison/checking"
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ["Apache License version 2.0"]
-      identifier: ""
+  manifest:
+    description: "Nextflow modules for genomic data file manifest comparison/checking"
+    homepage: "https://github.com/Ensembl/nextflow_modules"
+    license: ["Apache License version 2.0"]
+    identifier: ""
 
 input:
-  - - meta:
-        type: map
-        description: |
-          Groovy Map containing meta information
-          e.g. `[ id:'accession1' ]`
-    - manifest_files:
-        type: file
-        description: Set of genomic data files
-        pattern: "*.{gff3,fasta,json}"
+  - name: meta
+    type: map
+    description: "Groovy Map containing meta information, e.g. `[ id:'accession1' ]`"
+
+  - name: manifest_files
+    type: file
+    description: "Set of genomic data files"
+    pattern: "*.{gff3,fasta,json}"
+
 output:
-  - all_files:
-      - meta:
-          type: map
-          description: |
-            Groovy Map containing meta information
-            e.g. `[ id:'accession1' ]`
-      - '*.*", includeInputs: true':
-          type: file
-          description: All files used as entry.
-          pattern: "*.{gff3,fasta,json}"
-  - error_log:
-      - meta:
-          type: map
-          description: |
-            Groovy Map containing meta information
-            e.g. `[ id:'accession1' ]`
-      - integrity_file:
-          type: file
-          description:
-            Captures potential errors detected during the integrity check of
-            a manifest file (manifest.json).
-          pattern: "integrity.out"
-  - versions:
-      - versions.yml:
-          type: file
-          description: File containing information on module software version
-          pattern: "versions.yml"
+  - name: all_files_meta
+    type: map
+    description: "Groovy Map containing meta information, e.g. `[ id:'accession1' ]`"
+
+  - name: all_files
+    type: file
+    description: "All files used as entry"
+    pattern: "*.{gff3,fasta,json}"
+    includeInputs: true
+
+  - name: error_log_meta
+    type: map
+    description: "Groovy Map containing meta information, e.g. `[ id:'accession1' ]`"
+
+  - name: integrity_file
+    type: file
+    description: "Captures potential errors detected during integrity check"
+    pattern: "integrity.out"
+
+  - name: versions
+    type: file
+    description: "File containing module software versions"
+    pattern: "versions.yml"
+
 authors:
   - "@ensembl-dev"
 maintainers:
