@@ -33,6 +33,7 @@ jobs:
     
 >>>>>>> a5a9800 (trying to extract module names for lint)
     steps:
+<<<<<<< HEAD
       - name: Clean workspace
         run: |
           sudo rm -rf ./* || true
@@ -43,6 +44,10 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
 
       - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3
+=======
+  
+      - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4
+>>>>>>> dccbe8e (linting extracting the module nf-core style)
         id: filter
         with:
           filters: |
@@ -90,6 +95,7 @@ jobs:
                 .replace(/\/(main\.nf|tests\/.*)$/, '')
               )
             )];
+<<<<<<< HEAD
             
   nf-core-lint-modules:
     runs-on:
@@ -115,6 +121,26 @@ jobs:
 =======
         module: ${{ fromJson(needs.nf-core-changes.outputs.modules || '[]') }}
 >>>>>>> a5a9800 (trying to extract module names for lint)
+=======
+
+      - name: debug
+        run: |
+          echo ${{ steps.filter.outputs.modules_files }}
+          echo ${{ steps.module_names.outputs.result }}
+          echo ${{ steps.filter.outputs.subworkflows_files }}
+          echo ${{ steps.subworkflow_names.outputs.result }}
+
+
+  nf-core-lint:
+    name: nf-core lint
+    runs-on: ubuntu-latest
+    needs: nf-core-changes
+    if: needs.nf-core-changes.outputs.modules_files != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        module: ${{ fromJson(needs.nf-core-changes.outputs.modules_files) }}
+>>>>>>> dccbe8e (linting extracting the module nf-core style)
     steps:
       - name: Clean workspace
         run: |
