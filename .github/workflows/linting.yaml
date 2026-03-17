@@ -17,29 +17,53 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      modules: ${{ steps.filter.outputs.modules_files }}
-      subworkflows: ${{ steps.filter.outputs.subworkflows_files }}
-    
+      # https://github.com/dorny/paths-filter?tab=readme-ov-file#custom-processing-of-changed-files
+      modules: ${{ steps.filter.outputs.modules }}
+      modules_files: ${{ steps.module_names.outputs.result }}
+      subworkflows: ${{ steps.filter.outputs.subworkflows }}
+      subworkflows_files: ${{ steps.subworkflow_names.outputs.result }}
     steps:
-      - uses: actions/checkout@v6
-
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4
         id: filter
         with:
           filters: |
             modules:
-              - 'modules/ensembl/**'
+              - added|modified: 'modules/ensembl/**'
             subworkflows:
-              - 'subworkflows/ensembl/**'
+              - added|modified: 'subworkflows/ensembl/**'
+          token: ""
           list-files: "json"
-          
-      - name: Extract module names
-        id: modules
+
+      - name: Get module name
+        id: module_names
+        with:
+          script: |
+            return [...new Set(${{ steps.filter.outputs.modules_files }}
+              .filter(x => x.endsWith('main.nf') || x.endsWith('.nf.test.snap'))
+              .map(path => path
+                .replace('modules/ensembl/', '')
+                .replace(/\/(main\.nf|tests\/.*)$/, '')
+              )
+            )];
+
+      - name: Get subworkflow name
+        id: subworkflow_names
+        with:
+          script: |
+            return [...new Set(${{ steps.filter.outputs.subworkflows_files }}
+              .filter(x => x.endsWith('main.nf') || x.endsWith('.nf.test.snap'))
+              .map(path => path
+                .replace('subworkflows/nf-core/', '')
+                .replace(/\/(main\.nf|tests\/.*)$/, '')
+              )
+            )];
+
+      - name: debug
         run: |
-          echo '${{ steps.filter.outputs.modules_files }}' \
-          | jq -r 'map((split("/")[2] + "/" + split("/")[3])) | unique' \
-          > modules.json
-          echo "modules=$(cat modules.json)" >> $GITHUB_OUTPUT
+          echo ${{ steps.filter.outputs.modules_files }}
+          echo ${{ steps.module_names.outputs.result }}
+          echo ${{ steps.filter.outputs.subworkflows_files }}
+          echo ${{ steps.subworkflow_names.outputs.result }}
 
   nf-core-lint:
     name: nf-core lint
