@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      modules: ${{ steps.filter.outputs.modules }}
-      subworkflows: ${{ steps.filter.outputs.subworkflows }}
-
+      modules: ${{ steps.filter.outputs.modules_files }}
+      subworkflows: ${{ steps.filter.outputs.subworkflows_files }}
+    
     steps:
       - uses: actions/checkout@v6
 
@@ -32,6 +32,19 @@ jobs:
             subworkflows:
               - 'subworkflows/ensembl/**'
           list-files: "json"
+          
+      - name: Extract module names
+        id: modules
+        run: |
+          echo '${{ steps.filter.outputs.modules_files }}' \
+          | jq -r 'map(split("/")[2]) | unique' \
+          > modules.json
+          echo "modules=$(cat modules.json)" >> $GITHUB_OUTPUT
+      
+      - name: Debug
+        run: |
+          echo "RAW: ${{ steps.filter.outputs.modules }}"
+          echo "FILES: ${{ steps.filter.outputs.modules_files }}"
 
   nf-core-lint:
     name: nf-core lint
@@ -41,7 +54,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tags: ["${{ fromJson(needs.nf-core-changes.outputs.modules) }}"]
+        module: ${{ fromJson(needs.nf-core-changes.outputs.modules || '[]') }}
     steps:
       - uses: actions/checkout@v6
 
@@ -60,7 +73,7 @@ jobs:
         run: pip install --upgrade git+https://github.com/nf-core/tools.git@dev
 
       - name: Lint modules
-        run: nf-core modules lint ${{ matrix.tags }}
+        run: nf-core modules lint ${{ matrix.module }}
 
       - name: Lint subworkflows
         if: needs.nf-core-changes.outputs.subworkflows == 'true'
