@@ -5,56 +5,29 @@ env:
   NXF_SINGULARITY_CACHEDIR: ${{ github.workspace }}/.singularity
   NXF_SINGULARITY_LIBRARYDIR: ${{ github.workspace }}/.singularity
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  # renovate: datasource=github-releases depName=nextflow/nextflow versioning=semver
   NXF_VER: "25.10.2"
-  NXF_SYNTAX_PARSER: "v2"
 
-# Cancel if a newer run is started
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   nf-core-changes:
-    name: nf-core-changes
-    runs-on:
-      - runs-on=${{ github.run_id }}-nf-core-changes
-      - runner=4cpu-linux-x64
-      - image=ubuntu22-full-x64
+    name: Detect changes
+    runs-on: ubuntu-latest
+
     outputs:
-<<<<<<< HEAD
+      # https://github.com/dorny/paths-filter?tab=readme-ov-file#custom-processing-of-changed-files
       modules: ${{ steps.filter.outputs.modules }}
       modules_files: ${{ steps.module_names.outputs.result }}
       subworkflows: ${{ steps.filter.outputs.subworkflows }}
       subworkflows_files: ${{ steps.subworkflow_names.outputs.result }}
-=======
-      modules: ${{ steps.filter.outputs.modules_files }}
-      subworkflows: ${{ steps.filter.outputs.subworkflows_files }}
-    
->>>>>>> a5a9800 (trying to extract module names for lint)
     steps:
-<<<<<<< HEAD
-<<<<<<< HEAD
-      - name: Clean workspace
-        run: |
-          sudo rm -rf ./* || true
-          sudo rm -rf ./.* || true
-
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-        with:
-          fetch-depth: 2 # To retrieve the preceding commit.
-
-      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3
-=======
-  
-=======
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           
->>>>>>> 576a2d3 (actions update)
       - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4
->>>>>>> dccbe8e (linting extracting the module nf-core style)
         id: filter
         with:
           filters: |
@@ -64,19 +37,6 @@ jobs:
               - added|modified: 'subworkflows/ensembl/**'
           token: ""
           list-files: "json"
-          
-      - name: Extract module names
-        id: modules
-        run: |
-          echo '${{ steps.filter.outputs.modules_files }}' \
-          | jq -r 'map(split("/")[2]) | unique' \
-          > modules.json
-          echo "modules=$(cat modules.json)" >> $GITHUB_OUTPUT
-      
-      - name: Debug
-        run: |
-          echo "RAW: ${{ steps.filter.outputs.modules }}"
-          echo "FILES: ${{ steps.filter.outputs.modules_files }}"
 
       - name: Get module name
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
@@ -98,45 +58,10 @@ jobs:
             return [...new Set(${{ steps.filter.outputs.subworkflows_files }}
               .filter(x => x.endsWith('main.nf') || x.endsWith('.nf.test.snap'))
               .map(path => path
-                .replace('subworkflows/ensembl/', '')
+                .replace('subworkflows/nf-core/', '')
                 .replace(/\/(main\.nf|tests\/.*)$/, '')
               )
             )];
-<<<<<<< HEAD
-            
-  nf-core-lint-modules:
-    runs-on:
-      - runs-on=${{ github.run_id }}-nf-core-lint-modules
-      - runner=4cpu-linux-x64
-      - image=ubuntu22-full-x64
-    name: nf-core lint modules
-    needs: nf-core-changes
-<<<<<<< HEAD
-    if: ${{ needs.nf-core-changes.outputs.modules_files != '[]' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        module: ${{ fromJson(needs.nf-core-changes.outputs.modules_files || '[]') }}
-=======
-    if: needs.nf-core-changes.outputs.modules != '[]'
-    strategy:
-      fail-fast: false
-      matrix:
-<<<<<<< HEAD
-        tags: ["${{ fromJson(needs.nf-core-changes.outputs.modules) }}"]
->>>>>>> e15843f (correcting the id)
-=======
-        module: ${{ fromJson(needs.nf-core-changes.outputs.modules || '[]') }}
->>>>>>> a5a9800 (trying to extract module names for lint)
-=======
-
-      - name: debug
-        run: |
-          echo ${{ steps.filter.outputs.modules_files }}
-          echo ${{ steps.module_names.outputs.result }}
-          echo ${{ steps.filter.outputs.subworkflows_files }}
-          echo ${{ steps.subworkflow_names.outputs.result }}
-
 
   nf-core-lint:
     name: nf-core lint
@@ -147,76 +72,26 @@ jobs:
       fail-fast: false
       matrix:
         module: ${{ fromJson(needs.nf-core-changes.outputs.modules_files) }}
->>>>>>> dccbe8e (linting extracting the module nf-core style)
     steps:
-      - name: Clean workspace
-        run: |
-          sudo rm -rf ./* || true
-          sudo rm -rf ./.* || true
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
-        with:
-          python-version: "3.14"
+      - uses: actions/checkout@v6
 
-      - uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
-        id: cache-pip
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - uses: actions/cache@v5
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip
-          restore-keys: |
-            ${{ runner.os }}-pip
 
-      - name: Install pip
-        run: python -m pip install --upgrade pip
+      - uses: nf-core/setup-nextflow@v2
 
-      - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
-        with:
-          distribution: "temurin"
-          java-version: "17"
+      - name: Install nf-core tools
+        run: pip install --upgrade git+https://github.com/nf-core/tools.git@dev
 
-<<<<<<< HEAD
-      - name: Set up Nextflow
-        uses: nf-core/setup-nextflow@v2
-=======
       - name: Lint modules
         run: nf-core modules lint ${{ matrix.module }}
->>>>>>> a5a9800 (trying to extract module names for lint)
 
-      - name: Install nf-core tools development version
-        run: python -m pip install --upgrade --force-reinstall git+https://github.com/nf-core/tools.git@dev
-
-      - name: Lint module ${{ matrix.module }}
-        run: nf-core modules lint ${{ matrix.module }}
-
-  nf-core-lint-subworkflows:
-    runs-on:
-      - runs-on=${{ github.run_id }}-nf-core-lint-subworkflows
-      - runner=4cpu-linux-x64
-      - image=ubuntu22-full-x64
-    name: nf-core lint subworkflows
-    needs: nf-core-changes
-    if: ${{ needs.nf-core-changes.outputs.subworkflows_files != '[]' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        subworkflow: ${{ fromJson(needs.nf-core-changes.outputs.subworkflows_files || '[]') }}
-    steps:
-      - name: Clean workspace
-        run: |
-          sudo rm -rf ./* || true
-          sudo rm -rf ./.* || true
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
-        with:
-          python-version: "3.14"
-
-      - name: Set up Nextflow
-        uses: nf-core/setup-nextflow@v2
-
-      - name: Install nf-core tools development version
-        run: python -m pip install --upgrade --force-reinstall git+https://github.com/nf-core/tools.git@dev
-
-      - name: Lint subworkflow ${{ matrix.subworkflow }}
-        run: nf-core subworkflows lint ${{ matrix.subworkflow }}
+      - name: Lint subworkflows
+        if: needs.nf-core-changes.outputs.subworkflows == 'true'
+        run: nf-core subworkflows lint --all
