@@ -44,18 +44,6 @@
             "nextflow": "24.10.5"
         }
     },
-    "Should fail with invalid URL format": {
-        "content": [
-            [
-                "\u001b[33mNextflow 25.10.4 is available - Please consider updating your version to it\u001b(B\u001b[m"
-            ]
-        ],
-        "timestamp": "2026-02-24T21:07:09.653082857",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "24.10.3"
-        }
-    },
     "versions_no_password": {
         "content": [
             [

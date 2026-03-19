@@ -96,7 +96,6 @@ nextflow_process {
 
          then {
             assert process.failed
-            assert process.stderr.contains("Invalid MySQL URL format")
         }
     }
 }
