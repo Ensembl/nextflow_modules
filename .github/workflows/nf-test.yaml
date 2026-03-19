@@ -7,7 +7,7 @@ env:
   NXF_SINGULARITY_LIBRARYDIR: ${{ github.workspace }}/.singularity
   NFTEST_VER: "0.9.0"
   NXF_ANSI_LOG: "false"
-  NXF_OPTS: "-Dnextflow.disableAnsi=true"
+  NXF_OPTS: "-Dnextflow.disableAnsi=true -Dnextflow.enable.check.latest=false"
 
 jobs:
   nf-test:
