@@ -25,7 +25,7 @@ process FEATURES_COMBINE_JSON {
         tuple val(meta), path(json_manifest), path(agp)
 
     output:
-        tuple val(meta), path("${meta.id}.features.json"), emit: combined_json
+        tuple val(meta), path("${meta.id}.${meta.analysis}.json"), emit: combined_json
         path "versions.yml", emit: versions
 
     script:
@@ -45,7 +45,7 @@ process FEATURES_COMBINE_JSON {
             args << "--agp-file '${agp}'"
         }
 
-        def out_json = "${meta.id}.features.json"
+        def out_json = "${meta.id}.${meta.analysis}.json"
 
         """
         features_combine_json \\
@@ -63,7 +63,7 @@ process FEATURES_COMBINE_JSON {
         """
         set -euo pipefail
 
-        out_json="${meta.id}.features.json"
+        out_json="${meta.id}.${meta.analysis}.json"
 
         test -s "${json_manifest}"
 
