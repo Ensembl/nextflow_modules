@@ -2,6 +2,8 @@ process URLS_GENERATE {
     tag "$meta.id"
     label 'process_low'
 
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
+
     input:
         tuple val(meta), val(protocol), val(user), val(host), val(port), val(password), val(database)
 
