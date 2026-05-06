@@ -39,10 +39,12 @@ process URLS_EXTRACT {
 
     stub:
     """
-    user=user
-    host=host.com
-    port=3306
-
+    export user=user
+    export host=host.com
+    export port=3306
+    export password=""
+    export database=""
+    
     echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
     """
 }
