@@ -40,7 +40,6 @@ nextflow_workflow {
                 { assert meta.accession == "GCA_000001215.4" },
                 { assert meta.has_annotation },
                 { assert genome_json.text.contains('"accession": "GCA_000001215.4"') },
-                { assert workflow.out.versions.size() == 2 },
                 { assert snapshot(workflow).match("workflow") },
             )
         }
