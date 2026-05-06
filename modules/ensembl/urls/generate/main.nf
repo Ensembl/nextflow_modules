@@ -8,7 +8,7 @@ process URLS_GENERATE {
         tuple val(meta), val(protocol), val(user), val(host), val(port), val(password), val(database)
 
     output:
-        tuple val(meta), env(base_url) , emit: url_sql
+        tuple val(meta), env('base_url') , emit: url_sql
         path "versions.yml"            , emit: versions
 
     script:
