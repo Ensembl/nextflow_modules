@@ -26,7 +26,7 @@ nextflow_process {
     tag "fasta/split"
 
 
-    test("Stub outputs: default layout, no AGP") {
+    test("stub outputs: default layout, no AGP") {
 
         when {
             options "-stub"
@@ -67,7 +67,7 @@ nextflow_process {
         }
     }
 
-    test("Stub outputs: AGP optional output appears when enabled") {
+    test("stub outputs: AGP optional output appears when enabled") {
 
         when {
             options "-stub"
@@ -109,7 +109,7 @@ nextflow_process {
         }
     }
 
-    test("Stub outputs: unique_file_names contract") {
+    test("stub outputs: unique_file_names contract") {
 
         when {
             options "-stub"
@@ -144,7 +144,7 @@ nextflow_process {
         }
     }
 
-    test("Stub outputs: nested directory layout contract") {
+    test("stub outputs: nested directory layout contract") {
 
         when {
             options "-stub"

@@ -1,5 +1,58 @@
 {
-    "Stub outputs: AGP optional output appears when enabled": {
+    "stub outputs: default layout, no AGP": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
+                ],
+                "agp": [
+                    
+                ],
+                "fastas": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-12T13:50:15.366293",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "stub outputs: AGP optional output appears when enabled": {
         "content": [
             {
                 "0": [
@@ -22,7 +75,11 @@
                     ]
                 ],
                 "2": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
                 ],
                 "agp": [
                     [
@@ -43,18 +100,22 @@
                         ]
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-03-11T12:20:33.334793",
+        "timestamp": "2026-05-12T13:50:17.499614",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
         }
     },
-    "Stub outputs: nested directory layout contract": {
+    "stub outputs: nested directory layout contract": {
         "content": [
             {
                 "0": [
@@ -72,7 +133,11 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
                 ],
                 "agp": [
                     
@@ -88,63 +153,22 @@
                         ]
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-03-11T12:20:37.504172",
+        "timestamp": "2026-05-12T13:50:21.755317",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
         }
     },
-    "Stub outputs: default layout, no AGP": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
-                        ]
-                    ]
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
-                ],
-                "agp": [
-                    
-                ],
-                "fastas": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
-                        ]
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
-                ]
-            }
-        ],
-        "timestamp": "2026-03-11T12:20:31.268587",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
-        }
-    },
-    "Stub outputs: unique_file_names contract": {
+    "stub outputs: unique_file_names contract": {
         "content": [
             {
                 "0": [
@@ -162,7 +186,11 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
                 ],
                 "agp": [
                     
@@ -178,12 +206,16 @@
                         ]
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,f9829a6851db178766a8ce7426f53a65"
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.1"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-03-11T12:20:35.403767",
+        "timestamp": "2026-05-12T13:50:19.618244",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

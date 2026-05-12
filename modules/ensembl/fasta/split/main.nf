@@ -19,7 +19,9 @@ process FASTA_SPLIT {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
+        ? 'https://depot.galaxyproject.org/singularity/ensembl-genomio:1.6.1--pyhdfd78af_0'
+        : 'biocontainers/ensembl-genomio:1.6.1--pyhdfd78af_0'}"
 
     input:
         tuple val(meta), path(fasta), val(longest_seq_bp)
@@ -27,7 +29,10 @@ process FASTA_SPLIT {
     output:
         tuple val(meta), path("splits/**/*.fa"), emit: fastas
         tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
-        path "versions.yml", emit: versions
+        tuple val("${task.process}"), val('fasta_split'), eval('echo 1.6.1'), emit: versions_fasta_split, topic: versions
+
+    when:
+        task.ext.when == null || task.ext.when
 
     script:
         def args = []
@@ -73,11 +78,6 @@ process FASTA_SPLIT {
             --fasta-file ${fasta} \\
             --out-dir splits \\
             ${args.join(' ')}
-
-        cat <<-END_VERSIONS > versions.yml
-        ${task.process}:
-        fasta_split: \$(fasta_split --version 2>/dev/null | head -n 1)
-        END_VERSIONS
         """
 
     stub:
@@ -114,9 +114,5 @@ process FASTA_SPLIT {
             touch "splits/${meta.id}.agp"
         fi
 
-        cat <<-END_VERSIONS > versions.yml
-        ${task.process}:
-            fasta_split: stub
-        END_VERSIONS
         """     
 }

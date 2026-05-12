@@ -45,11 +45,27 @@ output:
           type: file
           description: Recombined FASTA file.
           pattern: "*.fa"
+  versions_fasta_recombine:
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - fasta_recombine:
+          type: string
+          description: The name of the tool.
+      - echo 1.6.1:
+          type: eval
+          description: The expression to obtain the version of the tool.
+topics:
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions.
-        pattern: "versions.yml"
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - fasta_recombine:
+          type: string
+          description: The name of the tool.
+      - echo 1.6.1:
+          type: eval
+          description: The expression to obtain the version of the tool.
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:

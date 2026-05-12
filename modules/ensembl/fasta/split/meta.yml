@@ -53,11 +53,27 @@ output:
           type: file
           description: Optional AGP file describing split sequence chunks.
           pattern: "splits/*.agp"
+  versions_fasta_split:
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - fasta_split:
+          type: string
+          description: The name of the tool.
+      - echo 1.6.1:
+          type: eval
+          description: The expression to obtain the version of the tool.
+topics:
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions.
-        pattern: "versions.yml"
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - fasta_split:
+          type: string
+          description: The name of the tool.
+      - echo 1.6.1:
+          type: eval
+          description: The expression to obtain the version of the tool.
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:

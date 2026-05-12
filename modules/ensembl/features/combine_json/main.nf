@@ -19,14 +19,19 @@ process FEATURES_COMBINE_JSON {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
+        ? 'https://depot.galaxyproject.org/singularity/ensembl-genomio:1.6.1--pyhdfd78af_0'
+        : 'biocontainers/ensembl-genomio:1.6.1--pyhdfd78af_0'}"
 
     input:
         tuple val(meta), path(json_manifest), path(agp)
 
     output:
         tuple val(meta), path("${meta.id}.${meta.analysis}.json"), emit: combined_json
-        path "versions.yml", emit: versions
+        tuple val("${task.process}"), val('features_combine_json'), eval('echo 1.6.1'), emit: versions_features_combine_json, topic: versions
+
+    when:
+        task.ext.when == null || task.ext.when
 
     script:
         def args = []
@@ -52,11 +57,6 @@ process FEATURES_COMBINE_JSON {
             --json-manifest '${json_manifest}' \\
             --out-json '${out_json}' \\
             ${args.join(' ')}
-
-        cat <<-END_VERSIONS > versions.yml
-        ${task.process}:
-        features_combine_json: \$(features_combine_json --version 2>/dev/null | head -n 1)
-        END_VERSIONS
         """
 
     stub:
@@ -124,10 +124,6 @@ EOF
 EOF
         fi
 
-        cat <<-END_VERSIONS > versions.yml
-        ${task.process}:
-        features_combine_json: stub
-        END_VERSIONS
         """
         
 }

@@ -12,7 +12,11 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ],
                 "combined_json": [
                     [
@@ -23,12 +27,16 @@
                         "test.features.json:md5,aefc84472e26178b64d01051be6d58b2"
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                "versions_features_combine_json": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-03-11T12:27:17.171188",
+        "timestamp": "2026-05-12T13:52:12.162809",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -47,7 +55,11 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ],
                 "combined_json": [
                     [
@@ -58,12 +70,16 @@
                         "test.features.json:md5,67c630685f9c819ef28574144c284b4e"
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                "versions_features_combine_json": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-03-11T12:27:15.074952",
+        "timestamp": "2026-05-12T13:52:09.797407",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -82,7 +98,11 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ],
                 "combined_json": [
                     [
@@ -93,12 +113,16 @@
                         "test.features.json:md5,67c630685f9c819ef28574144c284b4e"
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                "versions_features_combine_json": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-03-11T12:27:19.259793",
+        "timestamp": "2026-05-12T13:52:14.52976",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -117,7 +141,11 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ],
                 "combined_json": [
                     [
@@ -128,12 +156,16 @@
                         "test.features.json:md5,aefc84472e26178b64d01051be6d58b2"
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,8258695d6a28a46edbaf2a9bf2dde339"
+                "versions_features_combine_json": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.6.1"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-03-11T12:27:12.976715",
+        "timestamp": "2026-05-12T13:52:07.471915",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

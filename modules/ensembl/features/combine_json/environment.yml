@@ -1,5 +1,4 @@
 ---
-name: "features_combine_json"
 channels:
   - conda-forge
   - bioconda

@@ -1,5 +1,4 @@
 ---
-name: "fasta_recombine"
 channels:
   - conda-forge
   - bioconda

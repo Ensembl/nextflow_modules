@@ -19,14 +19,19 @@ process FASTA_RECOMBINE {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
+        ? 'https://depot.galaxyproject.org/singularity/ensembl-genomio:1.6.1--pyhdfd78af_0'
+        : 'biocontainers/ensembl-genomio:1.6.1--pyhdfd78af_0'}"
 
     input:
         tuple val(meta), path(fasta_manifest), path(agp)
 
     output:
         tuple val(meta), path("${meta.id}.fa"), emit: recombined_fasta
-        path "versions.yml", emit: versions
+        tuple val("${task.process}"), val('fasta_recombine'), eval('echo 1.6.1'), emit: versions_fasta_recombine, topic: versions
+
+    when:
+        task.ext.when == null || task.ext.when
 
     script:
         def args = []
@@ -52,11 +57,6 @@ process FASTA_RECOMBINE {
             --fasta-manifest ${fasta_manifest} \\
             --out-fasta ${out_fasta} \\
             ${args.join(' ')}
-
-        cat <<-END_VERSIONS > versions.yml
-        ${task.process}:
-        fasta_recombine: \$(fasta_recombine --version 2>/dev/null | head -n 1)
-        END_VERSIONS
         """
 
     stub:
@@ -65,10 +65,5 @@ process FASTA_RECOMBINE {
 
         out_fa="${meta.id}.fa"
         touch "\$out_fa"
-
-        cat <<-END_VERSIONS > versions.yml
-        ${task.process}:
-            fasta_recombine: stub
-        END_VERSIONS
         """   
 }
