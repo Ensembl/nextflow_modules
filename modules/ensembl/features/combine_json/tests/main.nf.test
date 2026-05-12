@@ -42,7 +42,7 @@ nextflow_process {
                 noFile.text = ""
 
                 input[0] = [
-                    [ id:'test' ],
+                    [ id:'test', analysis:'features' ],
                     manifest,
                     noFile
                 ]
@@ -75,7 +75,7 @@ nextflow_process {
                 noFile.text = ""
 
                 input[0] = [
-                    [ id:'test' ],
+                    [ id:'test', analysis:'features' ],
                     manifest,
                     noFile
                 ]
@@ -108,7 +108,7 @@ nextflow_process {
                 agp.text = ""
 
                 input[0] = [
-                    [ id:'test' ],
+                    [ id:'test', analysis:'features' ],
                     manifest,
                     agp
                 ]
@@ -141,7 +141,7 @@ nextflow_process {
                 agp.text = ""
 
                 input[0] = [
-                    [ id:'test' ],
+                    [ id:'test', analysis:'features' ],
                     manifest,
                     agp
                 ]

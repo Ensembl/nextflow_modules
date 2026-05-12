@@ -1,0 +1,64 @@
+---
+name: "fasta_split"
+description: Split a FASTA file into smaller FASTA files and optionally write an
+  AGP file.
+keywords:
+  - ensembl
+  - fasta
+  - genomics
+  - genomio
+  - split
+
+tools:
+  - "fasta_split":
+      description: "Split FASTA files with ensembl-genomio."
+      homepage: "https://github.com/Ensembl/ensembl-genomio"
+      licence: ["Apache License version 2.0"]
+      identifier: ""
+
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing meta information
+          e.g. `[ id:'accession1' ]`
+    - fasta:
+        type: file
+        description: FASTA file to split.
+        pattern: "*.{fa,fasta,fna}"
+        ontologies: []
+    - longest_seq_bp:
+        type: integer
+        description: Length in base pairs of the longest sequence in the input
+          FASTA.
+
+output:
+  fastas:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing meta information
+            e.g. `[ id:'accession1' ]`
+      - "splits/**/*.fa":
+          type: file
+          description: Split FASTA files.
+          pattern: "splits/**/*.fa"
+  agp:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing meta information
+            e.g. `[ id:'accession1' ]`
+      - "splits/*.agp":
+          type: file
+          description: Optional AGP file describing split sequence chunks.
+          pattern: "splits/*.agp"
+  versions:
+    - versions.yml:
+        type: file
+        description: File containing software versions.
+        pattern: "versions.yml"
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+maintainers:
+  - "ensembl-dev@ebi.ac.uk"
