@@ -43,7 +43,7 @@ process METADATA_GENOMESUMMARY {
 
     stub:
         def prefix = task.ext.prefix ?: "${meta.accession}"
-        def accession = meta.accession ?: meta.id ?: "stub"
+        def accession = meta.accession ?: "null"
         """
         # The stub writes a valid JSON file that can be passed in the subworkflow. 
         echo '{"annotation": true, "assembly": {"accession": "${accession}"}}' > genome.json
