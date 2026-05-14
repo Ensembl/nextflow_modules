@@ -13,6 +13,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+params.ensembl_genomio_version_cmd = '''
+python - <<'PY'
+from importlib.metadata import distributions
+
+print(next(
+    (
+        dist.version
+        for dist in distributions()
+        if dist.metadata["Name"].lower().replace("_", "-") == "ensembl-genomio"
+    ),
+    "unknown",
+))
+PY
+'''.stripIndent()
+
 process FASTA_RECOMBINE {
 
     tag "${meta.id}"
@@ -28,7 +43,10 @@ process FASTA_RECOMBINE {
 
     output:
         tuple val(meta), path("${meta.id}.fa"), emit: recombined_fasta
-        tuple val("${task.process}"), val('fasta_recombine'), eval('echo 1.6.1'), emit: versions_fasta_recombine, topic: versions
+        tuple val("${task.process}"),
+            val('fasta_recombine'),
+            eval(params.ensembl_genomio_version_cmd),
+            emit: versions_fasta_recombine, topic: versions
 
     when:
         task.ext.when == null || task.ext.when
@@ -61,8 +79,6 @@ process FASTA_RECOMBINE {
 
     stub:
         """
-        set -euo pipefail
-
         out_fa="${meta.id}.fa"
         touch "\$out_fa"
         """   

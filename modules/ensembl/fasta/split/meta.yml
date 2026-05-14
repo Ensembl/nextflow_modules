@@ -60,7 +60,7 @@ output:
       - fasta_split:
           type: string
           description: The name of the tool.
-      - echo 1.6.1:
+      - params.ensembl_genomio_version_cmd:
           type: eval
           description: The expression to obtain the version of the tool.
 topics:
@@ -71,7 +71,7 @@ topics:
       - fasta_split:
           type: string
           description: The name of the tool.
-      - echo 1.6.1:
+      - params.ensembl_genomio_version_cmd:
           type: eval
           description: The expression to obtain the version of the tool.
 authors:

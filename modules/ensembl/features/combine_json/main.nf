@@ -13,8 +13,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-process FEATURES_COMBINE_JSON {
+params.ensembl_genomio_version_cmd = '''
+python - <<'PY'
+from importlib.metadata import distributions
 
+print(next(
+    (
+        dist.version
+        for dist in distributions()
+        if dist.metadata["Name"].lower().replace("_", "-") == "ensembl-genomio"
+    ),
+    "unknown",
+))
+PY
+'''.stripIndent()
+
+process FEATURES_COMBINE_JSON {
     tag "${meta.id}"
     label 'process_medium'
 
@@ -28,7 +42,10 @@ process FEATURES_COMBINE_JSON {
 
     output:
         tuple val(meta), path("${meta.id}.${meta.analysis}.json"), emit: combined_json
-        tuple val("${task.process}"), val('features_combine_json'), eval('echo 1.6.1'), emit: versions_features_combine_json, topic: versions
+        tuple val("${task.process}"),
+            val('features_combine_json'),
+            eval(params.ensembl_genomio_version_cmd),
+            emit: versions_features_combine_json, topic: versions
 
     when:
         task.ext.when == null || task.ext.when
@@ -61,8 +78,6 @@ process FEATURES_COMBINE_JSON {
 
     stub:
         """
-        set -euo pipefail
-
         out_json="${meta.id}.${meta.analysis}.json"
 
         test -s "${json_manifest}"
