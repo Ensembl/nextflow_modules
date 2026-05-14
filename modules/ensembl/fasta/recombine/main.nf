@@ -69,7 +69,6 @@ process FASTA_RECOMBINE {
         }
 
         def out_fasta = "${meta.id}.fa"
-
         """
         fasta_recombine \\
             --fasta-manifest ${fasta_manifest} \\
