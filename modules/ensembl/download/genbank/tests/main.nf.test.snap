@@ -9,11 +9,11 @@
                                 "accession": "test"
                             }
                         ],
-                        "output.gb:md5,7aad1ec58b439ead323ea7b5ab7eaddb"
+                        "output.gb:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,b0d039542cf6fd3f37c717f77bbc1f62"
+                    "versions.yml:md5,9a69c98f544c3d521700af1c54553fb7"
                 ],
                 "gb_sequence": [
                     [
@@ -22,19 +22,19 @@
                                 "accession": "test"
                             }
                         ],
-                        "output.gb:md5,7aad1ec58b439ead323ea7b5ab7eaddb"
+                        "output.gb:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,b0d039542cf6fd3f37c717f77bbc1f62"
+                    "versions.yml:md5,9a69c98f544c3d521700af1c54553fb7"
                 ]
             }
         ],
+        "timestamp": "2026-02-24T21:03:22.01509319",
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.4",
             "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-17T11:26:44.683939622"
+        }
     },
     "genabank_seq_record": {
         "content": [
@@ -49,10 +49,10 @@
                 ]
             ]
         ],
+        "timestamp": "2024-12-02T15:31:47.170791005",
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.04.3"
-        },
-        "timestamp": "2024-12-02T15:31:47.170791005"
+        }
     }
 }

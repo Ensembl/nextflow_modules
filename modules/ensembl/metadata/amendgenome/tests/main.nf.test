@@ -5,11 +5,7 @@ nextflow_process {
     script "../main.nf"
     process "METADATA_AMENDGENOME"
 
-    tag "modules"
-    tag "modules_ensembl"
-    tag "metadata"
     tag "metadata/amendgenome"
-
     test("amendgenome (genome.json) - stub") {
 
         options "-stub"
@@ -17,17 +13,20 @@ nextflow_process {
         when {
             process {
                 """
-                input[0]= [
-                    [id:'test'], 
-                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.json', checkIfExists: true),
-                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/assembly_report.txt', checkIfExists: true),
-                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.fasta', checkIfExists: true),
-                    file('${projectDir}/tests/modules/ensembl/seqregion/processseqregions/genome.gbff', checkIfExists: true),
-                ]
+                input[0]= Channel.of('>chr1', 'ATGCATGC')
+                    .collectFile(name: 'genome.fasta', newLine: true)
+                    .combine(Channel.of('{ "genome": "test" }')
+                    .collectFile(name: 'genome.json', newLine: true))
+                    .combine(Channel.of('# Assembly report')
+                    .collectFile(name: 'assembly_report.txt', newLine: true))
+                    .combine(Channel.of('LOCUS test')
+                    .collectFile(name: 'genome.gbff', newLine: true))
+                    .map { fasta, json, report, gbff ->
+                    [ [ id: 'test' ], json, report, fasta, gbff ]
+                    }
                 """
             }
         }
-
         then {
             assert process.success
             assert snapshot(process.out).match()

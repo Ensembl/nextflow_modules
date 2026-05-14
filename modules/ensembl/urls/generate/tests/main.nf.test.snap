@@ -2,38 +2,38 @@
     "versions_no_database": {
         "content": [
             [
-                "versions.yml:md5,d817b1f3c9f2bd1f04c668984320951c"
+                "versions.yml:md5,41c139bc234f0b7004e888a0c907c22f"
             ]
         ],
+        "timestamp": "2026-03-18T16:45:02.331367418",
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.4",
             "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-17T11:31:22.822012541"
+        }
     },
     "versions_full": {
         "content": [
             [
-                "versions.yml:md5,d817b1f3c9f2bd1f04c668984320951c"
+                "versions.yml:md5,41c139bc234f0b7004e888a0c907c22f"
             ]
         ],
+        "timestamp": "2026-03-18T16:44:39.072916609",
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.4",
             "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-17T11:30:59.208840884"
+        }
     },
     "versions_no_password": {
         "content": [
             [
-                "versions.yml:md5,d817b1f3c9f2bd1f04c668984320951c"
+                "versions.yml:md5,41c139bc234f0b7004e888a0c907c22f"
             ]
         ],
+        "timestamp": "2026-03-18T16:44:51.056227741",
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.4",
             "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-17T11:31:11.312214413"
+        }
     },
     "generated_url_full": {
         "content": [
@@ -46,11 +46,11 @@
                 ]
             ]
         ],
+        "timestamp": "2025-03-26T15:48:40.650816",
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.10.5"
-        },
-        "timestamp": "2025-03-26T15:48:40.650816"
+        }
     },
     "generated_url_no_password": {
         "content": [
@@ -63,11 +63,11 @@
                 ]
             ]
         ],
+        "timestamp": "2025-03-26T15:48:42.651032",
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.10.5"
-        },
-        "timestamp": "2025-03-26T15:48:42.651032"
+        }
     },
     "generated_url_no_database": {
         "content": [
@@ -80,10 +80,10 @@
                 ]
             ]
         ],
+        "timestamp": "2025-03-26T15:48:44.600396",
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.10.5"
-        },
-        "timestamp": "2025-03-26T15:48:44.600396"
+        }
     }
 }

@@ -1,76 +1,14 @@
 {
-    "Metadata 'genome summary' test-B [stub]": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "accession": "GCA_000111222.3"
-                        },
-                        "genome.json:md5,bf1aaba93d39ae7146ade4f55c53a2d8"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,f2b370b16189c705b60651d56a20c96c"
-                ],
-                "meta_json": [
-                    [
-                        {
-                            "accession": "GCA_000111222.3"
-                        },
-                        "genome.json:md5,bf1aaba93d39ae7146ade4f55c53a2d8"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,f2b370b16189c705b60651d56a20c96c"
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-18T11:41:51.128599882"
-    },
-    "Metadata 'genome summary' test-A [real test]": {
+    "Metadata 'genome summary' [stub]": {
         "content": [
             [
-                "versions.yml:md5,f2b370b16189c705b60651d56a20c96c"
+                "versions.yml:md5,5a68eb9e53407e984f9128436fc63572"
             ]
         ],
+        "timestamp": "2026-02-25T12:26:16.771347437",
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.4",
             "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-18T11:41:40.716467645"
-    },
-    "genome.json": {
-        "content": [
-            [
-                "{",
-                "    \"annotation\": {",
-                "        \"provider_name\": \"GenBank\",",
-                "        \"provider_url\": \"https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4\"",
-                "    },",
-                "    \"assembly\": {",
-                "        \"accession\": \"GCA_000001215.4\",",
-                "        \"provider_name\": \"GenBank\",",
-                "        \"provider_url\": \"https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000001215.4\",",
-                "        \"version\": 4",
-                "    },",
-                "    \"genebuild\": {",
-                "    },",
-                "    \"species\": {",
-                "        \"scientific_name\": \"Drosophila melanogaster\",",
-                "        \"taxonomy_id\": 7227",
-                "    }",
-                "}"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "24.10.3"
-        },
-        "timestamp": "2025-06-18T11:55:06.017295472"
+        }
     }
 }

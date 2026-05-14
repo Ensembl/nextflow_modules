@@ -18,7 +18,7 @@ process GENBANK_EXTRACTGB {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.6.1"
+    container "ensemblorg/ensembl-genomio:v1.6.2-docker"
 
     input:
         tuple val(meta), path(gb_file)
@@ -54,18 +54,13 @@ process GENBANK_EXTRACTGB {
 
     stub:
         prefix = task.ext.prefix ?: "${gb_file}"
-        out_genome_json = "genome.json"
-        out_seq_json = "seq_region.json"
-        out_dna_fa = "dna.fasta"
-        out_gene_gff = "valid.gff"
-        out_pep_fa = "pep.fasta"
 
         """
-        echo "{"accession": "NC_00001"}" > ${out_genome_json}
-        echo "{"seq_region": "Chrm1"}" > ${out_seq_json}
-        echo -e -n ">Seq1\nATGC" > ${out_dna_fa}
-        cp ${workflow.projectDir}/tests/modules/ensembl/download/genbank/test.gff ${out_gene_gff}
-        echo ">Peptide_1a\nMPLEGM" > ${out_pep_fa}
+        touch genome.json
+        touch seq_region.json
+        touch dna.fasta
+        touch valid.gff
+        touch pep.fasta
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genbank_extract_data --version >> versions.yml
