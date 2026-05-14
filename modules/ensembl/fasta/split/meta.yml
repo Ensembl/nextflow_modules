@@ -1,4 +1,3 @@
----
 name: "fasta_split"
 description: Split a FASTA file into smaller FASTA files and optionally write an
   AGP file.
@@ -8,14 +7,13 @@ keywords:
   - genomics
   - genomio
   - split
-
 tools:
   - "fasta_split":
       description: "Split FASTA files with ensembl-genomio."
       homepage: "https://github.com/Ensembl/ensembl-genomio"
-      licence: ["Apache License version 2.0"]
+      licence:
+        - "Apache License version 2.0"
       identifier: ""
-
 input:
   - - meta:
         type: map
@@ -31,7 +29,6 @@ input:
         type: integer
         description: Length in base pairs of the longest sequence in the input
           FASTA.
-
 output:
   fastas:
     - - meta:
@@ -39,20 +36,22 @@ output:
           description: |
             Groovy Map containing meta information
             e.g. `[ id:'accession1' ]`
-      - "splits/**/*.fa":
+      - splits/**/*.fa:
           type: file
           description: Split FASTA files.
           pattern: "splits/**/*.fa"
+          ontologies: []
   agp:
     - - meta:
           type: map
           description: |
             Groovy Map containing meta information
             e.g. `[ id:'accession1' ]`
-      - "splits/*.agp":
+      - splits/*.agp:
           type: file
           description: Optional AGP file describing split sequence chunks.
           pattern: "splits/*.agp"
+          ontologies: []
   versions_fasta_split:
     - - ${task.process}:
           type: string
@@ -60,9 +59,12 @@ output:
       - fasta_split:
           type: string
           description: The name of the tool.
-      - params.ensembl_genomio_version_cmd:
-          type: eval
-          description: The expression to obtain the version of the tool.
+      - ? python -c 'from importlib.metadata import distributions;
+          print(next((dist.version for dist in distributions() if
+          dist.metadata["Name"].lower().replace("_", "-") == "ensembl-genomio"),
+          "unknown"))'
+        : type: eval
+          description: The expression to obtain the version of the tool
 topics:
   versions:
     - - ${task.process}:
@@ -71,9 +73,12 @@ topics:
       - fasta_split:
           type: string
           description: The name of the tool.
-      - params.ensembl_genomio_version_cmd:
-          type: eval
-          description: The expression to obtain the version of the tool.
+      - ? python -c 'from importlib.metadata import distributions;
+          print(next((dist.version for dist in distributions() if
+          dist.metadata["Name"].lower().replace("_", "-") == "ensembl-genomio"),
+          "unknown"))'
+        : type: eval
+          description: The expression to obtain the version of the tool
 authors:
   - "ensembl-dev@ebi.ac.uk"
 maintainers:

@@ -20,7 +20,7 @@ process FASTA_SPLIT {
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
         ? 'https://depot.galaxyproject.org/singularity/ensembl-genomio:1.6.1--pyhdfd78af_0'
-        : 'biocontainers/ensembl-genomio:1.6.1--pyhdfd78af_0'}"
+        : 'quay.io/biocontainers/ensembl-genomio:1.6.1--pyhdfd78af_0'}"
 
     input:
         tuple val(meta), path(fasta), val(longest_seq_bp)
@@ -28,10 +28,7 @@ process FASTA_SPLIT {
     output:
         tuple val(meta), path("splits/**/*.fa"), emit: fastas
         tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
-        tuple val("${task.process}"),
-            val('fasta_split'),
-            eval("python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"),
-            emit: versions_fasta_split, topic: versions
+        tuple val("${task.process}"), val('fasta_split'), eval("python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"), emit: versions_fasta_split, topic: versions
 
     when:
         task.ext.when == null || task.ext.when

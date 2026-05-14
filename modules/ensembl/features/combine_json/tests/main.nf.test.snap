@@ -5,8 +5,7 @@
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,aefc84472e26178b64d01051be6d58b2"
                     ]
@@ -21,8 +20,7 @@
                 "combined_json": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,aefc84472e26178b64d01051be6d58b2"
                     ]
@@ -48,8 +46,7 @@
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,67c630685f9c819ef28574144c284b4e"
                     ]
@@ -64,8 +61,7 @@
                 "combined_json": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,67c630685f9c819ef28574144c284b4e"
                     ]
@@ -91,8 +87,7 @@
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,67c630685f9c819ef28574144c284b4e"
                     ]
@@ -107,8 +102,7 @@
                 "combined_json": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,67c630685f9c819ef28574144c284b4e"
                     ]
@@ -134,8 +128,7 @@
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,aefc84472e26178b64d01051be6d58b2"
                     ]
@@ -150,8 +143,7 @@
                 "combined_json": [
                     [
                         {
-                            "id": "test",
-                            "analysis": "features"
+                            "id": "test"
                         },
                         "test.features.json:md5,aefc84472e26178b64d01051be6d58b2"
                     ]

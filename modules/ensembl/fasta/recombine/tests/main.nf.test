@@ -20,6 +20,8 @@ nextflow_process {
     script "../main.nf"
     process "FASTA_RECOMBINE"
 
+    tag "modules"
+    tag "modules_ensembl"
     tag "fasta"
     tag "fasta/recombine"
 
