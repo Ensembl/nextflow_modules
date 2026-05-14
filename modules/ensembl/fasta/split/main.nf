@@ -13,8 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-params.ensembl_genomio_version_cmd = "python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"
-
 process FASTA_SPLIT {
     tag "${meta.id}"
     label 'process_medium'
@@ -32,7 +30,7 @@ process FASTA_SPLIT {
         tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
         tuple val("${task.process}"),
             val('fasta_split'),
-            eval(params.ensembl_genomio_version_cmd),
+            eval("python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"),
             emit: versions_fasta_split, topic: versions
 
     when:

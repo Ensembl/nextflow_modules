@@ -13,8 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-params.ensembl_genomio_version_cmd = "python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"
-
 process FEATURES_COMBINE_JSON {
     tag "${meta.id}"
     label 'process_medium'
@@ -31,7 +29,7 @@ process FEATURES_COMBINE_JSON {
         tuple val(meta), path("${meta.id}.${meta.analysis}.json"), emit: combined_json
         tuple val("${task.process}"),
             val('features_combine_json'),
-            eval(params.ensembl_genomio_version_cmd),
+            eval("python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"),
             emit: versions_features_combine_json, topic: versions
 
     when:
