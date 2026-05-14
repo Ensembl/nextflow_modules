@@ -13,20 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-params.ensembl_genomio_version_cmd = '''
-python - <<'PY'
-from importlib.metadata import distributions
-
-print(next(
-    (
-        dist.version
-        for dist in distributions()
-        if dist.metadata["Name"].lower().replace("_", "-") == "ensembl-genomio"
-    ),
-    "unknown",
-))
-PY
-'''.stripIndent()
+params.ensembl_genomio_version_cmd = "python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"
 
 process FASTA_SPLIT {
     tag "${meta.id}"
