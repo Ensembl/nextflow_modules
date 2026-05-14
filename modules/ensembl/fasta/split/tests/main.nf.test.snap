@@ -20,7 +20,7 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "agp": [
@@ -41,12 +41,12 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:50:15.366293",
+        "timestamp": "2026-05-14T14:38:41.602246",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -78,7 +78,7 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "agp": [
@@ -104,12 +104,12 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:50:17.499614",
+        "timestamp": "2026-05-14T14:38:43.765608",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -136,7 +136,7 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "agp": [
@@ -157,12 +157,12 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:50:21.755317",
+        "timestamp": "2026-05-14T14:38:48.132705",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -189,7 +189,7 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "agp": [
@@ -210,12 +210,12 @@
                     [
                         "FASTA_SPLIT",
                         "fasta_split",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:50:19.618244",
+        "timestamp": "2026-05-14T14:38:45.953655",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

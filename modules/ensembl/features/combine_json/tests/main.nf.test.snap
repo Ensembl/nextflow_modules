@@ -15,7 +15,7 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "combined_json": [
@@ -31,12 +31,12 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:52:12.162809",
+        "timestamp": "2026-05-14T14:39:29.784572",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -58,7 +58,7 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "combined_json": [
@@ -74,12 +74,12 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:52:09.797407",
+        "timestamp": "2026-05-14T14:39:27.607529",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -101,7 +101,7 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "combined_json": [
@@ -117,12 +117,12 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:52:14.52976",
+        "timestamp": "2026-05-14T14:39:31.963829",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -144,7 +144,7 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "combined_json": [
@@ -160,12 +160,12 @@
                     [
                         "FEATURES_COMBINE_JSON",
                         "features_combine_json",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:52:07.471915",
+        "timestamp": "2026-05-14T14:39:25.403423",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

@@ -14,7 +14,7 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "recombined_fasta": [
@@ -29,12 +29,12 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:50:13.249443",
+        "timestamp": "2026-05-14T14:39:11.350698",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
@@ -55,7 +55,7 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ],
                 "recombined_fasta": [
@@ -70,12 +70,12 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.1"
+                        "1.6.2"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-12T13:50:11.167936",
+        "timestamp": "2026-05-14T14:39:09.216174",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"
