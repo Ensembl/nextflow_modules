@@ -28,7 +28,7 @@ process FASTA_SPLIT {
     output:
         tuple val(meta), path("splits/**/*.fa"), emit: fastas
         tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
-        tuple val("${task.process}"), val('fasta_split'), eval("python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"), emit: versions_fasta_split, topic: versions
+        tuple val("${task.process}"), val('fasta_split'), eval("fasta_split --version"), emit: versions_fasta_split, topic: versions
 
     when:
         task.ext.when == null || task.ext.when

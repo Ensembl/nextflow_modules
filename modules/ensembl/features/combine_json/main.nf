@@ -27,7 +27,7 @@ process FEATURES_COMBINE_JSON {
 
     output:
         tuple val(meta), path("${meta.id}.${analysis}.json"), emit: combined_json
-        tuple val("${task.process}"), val('features_combine_json'), eval("python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"), emit: versions_features_combine_json, topic: versions
+        tuple val("${task.process}"), val('features_combine_json'), eval("features_combine_json --version"), emit: versions_features_combine_json, topic: versions
 
     when:
         task.ext.when == null || task.ext.when
