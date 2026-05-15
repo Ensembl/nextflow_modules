@@ -14,7 +14,7 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.2"
+                        "1.6.3"
                     ]
                 ],
                 "recombined_fasta": [
@@ -29,7 +29,7 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.2"
+                        "1.6.3"
                     ]
                 ]
             }
@@ -55,7 +55,7 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.2"
+                        "1.6.3"
                     ]
                 ],
                 "recombined_fasta": [
@@ -70,7 +70,7 @@
                     [
                         "FASTA_RECOMBINE",
                         "fasta_recombine",
-                        "1.6.2"
+                        "1.6.3"
                     ]
                 ]
             }
