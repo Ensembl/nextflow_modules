@@ -1,0 +1,37 @@
+{
+    "Stub outputs stats tuple and versions": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "input.fa:md5,f37ac43dc028047998888bb2058ac52a",
+                        "test.fasta_stats.txt:md5,ca2b5716c136493d670c362a7a2b3c2c"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,541b54dfeac2fdd2d3344d054668a892"
+                ],
+                "stats": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "input.fa:md5,f37ac43dc028047998888bb2058ac52a",
+                        "test.fasta_stats.txt:md5,ca2b5716c136493d670c362a7a2b3c2c"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,541b54dfeac2fdd2d3344d054668a892"
+                ]
+            }
+        ],
+        "timestamp": "2026-05-14T18:26:14.113497",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    }
+}

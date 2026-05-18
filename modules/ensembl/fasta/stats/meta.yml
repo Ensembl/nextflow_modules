@@ -1,0 +1,39 @@
+name: "fasta_stats"
+description: "Compute basic statistics for FASTA files"
+keywords:
+  - fasta
+  - statistics
+tools:
+  - "fasta_stats"
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+
+input:
+  - meta:
+      type: map
+      description: Groovy meta map
+  - fasta:
+      type: file
+      description: FASTA file
+      pattern: "*.{fa,fasta,fna,fa.gz,fasta.gz,fna.gz}"
+
+output:
+  - meta:
+      type: map
+      description: Groovy meta map
+  - stats:
+      type: file
+      description: FASTA statistics file
+      pattern: "*.fasta_stats.txt"
+
+topics:
+  versions:
+    - - process:
+          type: string
+          description: The process the versions were collected from
+      - tool:
+          type: string
+          description: The tool name
+      - version:
+          type: string
+          description: The version of the tool
