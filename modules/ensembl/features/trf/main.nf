@@ -13,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-process TANDEM_REPEATS_FINDER {
+process FEATURES_TRF {
     tag "${meta.id}"
     label 'process_medium'
 
