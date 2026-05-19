@@ -28,7 +28,7 @@ process FASTA_RECOMBINE {
 
     output:
         tuple val(meta), path("${meta.id}.fa"), emit: recombined_fasta
-        tuple val("${task.process}"), val('fasta_recombine'), eval("python -c 'from importlib.metadata import distributions; print(next((dist.version for dist in distributions() if dist.metadata[\"Name\"].lower().replace(\"_\", \"-\") == \"ensembl-genomio\"), \"unknown\"))'"), emit: versions_fasta_recombine, topic: versions
+        tuple val("${task.process}"), val('fasta_recombine'), eval("fasta_recombine --version"), emit: versions_fasta_recombine, topic: versions
 
     when:
         task.ext.when == null || task.ext.when
