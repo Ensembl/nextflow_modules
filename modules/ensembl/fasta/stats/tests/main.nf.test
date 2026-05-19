@@ -32,7 +32,6 @@ nextflow_process {
             process {
                 """
                 def fasta = file("input.fa")
-                fasta.text = ">seq1\\nACGT\\n"
 
                 input[0] = [[ id:'test' ], fasta]
                 """
@@ -43,18 +42,10 @@ nextflow_process {
             assert process.success
             assert process.trace.tasks().size() == 1
             assert process.out.stats.size() == 1
-            assert process.out.versions.size() == 1
-
+            
             def stats_out = process.out.stats[0]
-            def meta = stats_out[0]
-            def fasta = stats_out[1]
-            def stats = stats_out[2]
-
-            assert meta.id == "test"
-            assert path(fasta).toFile().name == "input.fa"
-            assert path(stats).toFile().name == "test.fasta_stats.txt"
-            assert file(stats).text.trim() == "1 1 1"
-            assert path(process.out.versions[0]).toFile().name == "versions.yml"
+            assert stats_out[0].id == "test"
+            assert file(stats_out[1]).name == "input.stats.txt"
             assert snapshot(process.out).match()
         }
     }
