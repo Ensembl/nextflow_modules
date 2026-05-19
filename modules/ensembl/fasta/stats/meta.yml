@@ -1,10 +1,14 @@
 name: "fasta_stats"
 description: "Compute basic statistics for FASTA files"
 keywords:
+  - ensembl
+  - genomio
   - fasta
   - statistics
 tools:
-  - "fasta_stats"
+  - "fasta_stats":
+      description: "Compute basic statistics for FASTA files"
+      homepage: "https://github.com/Ensembl/ensembl-genomio"
 authors:
   - "ensembl-dev@ebi.ac.uk"
 
@@ -24,16 +28,16 @@ output:
   - stats:
       type: file
       description: FASTA statistics file
-      pattern: "*.fasta_stats.txt"
+      pattern: "*.stats.txt"
 
 topics:
   versions:
-    - - process:
+    - - ${task.process}:
           type: string
-          description: The process the versions were collected from
-      - tool:
+          description: The name of the process.
+      - fasta_stats:
           type: string
-          description: The tool name
-      - version:
-          type: string
-          description: The version of the tool
+          description: The name of the tool.
+      - ? fasta_stats --version
+        : type: eval
+          description: The expression to obtain the version of the tool

@@ -22,20 +22,17 @@ process FASTA_STATS {
         tuple val(meta), path(fasta)
 
     output:
-        tuple val(meta), path(fasta), path("${meta.id}.fasta_stats.txt"), emit: stats
-        tuple val("${task.process}"), val('fasta_stats'), val('1.0.0'), emit: versions_fasta_stats, topic: versions
+        tuple val(meta), path(fasta), path("${fasta.basename}.stats.txt"), emit: stats
+        tuple val("${task.process}"), val('fasta_stats'), eval("fasta_stats --version"), emit: versions_fasta_stats, topic: versions
 
     script:
-        template 'fasta_stats.sh'
+        """
+        fasta_stats --fasta ${fasta} --output ${fasta.simpleName}.stats.txt'
+        """
 
     stub:
         """
-        set -euo pipefail
-
-        test -s "${fasta}"
-
-        cat <<-EOF > "${meta.id}.fasta_stats.txt"
-        1 1 1
-        EOF
+        stats_out = "${fasta.simpleName}.stats.txt"
+        touch "\${stats_out}"
         """
 }

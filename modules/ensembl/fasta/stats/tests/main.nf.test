@@ -22,7 +22,7 @@ nextflow_process {
     tag "modules"
     tag "modules_local"
     tag "fasta"
-    tag "fasta/fastastats"
+    tag "fasta/stats"
 
     test("Stub outputs stats tuple and versions") {
 

@@ -3,4 +3,4 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - ensembl-utils=0.9.1
+  - ensembl-genomio=1.6.3
