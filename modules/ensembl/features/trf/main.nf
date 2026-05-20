@@ -31,7 +31,7 @@ process FEATURES_TRF {
         task.ext.when == null || task.ext.when
 
     script:
-        def args task.ext.args ?: '2 7 7 80 10 100 500'
+        def args = task.ext.args ?: '2 7 7 80 10 100 500'
         """
         trf '${fasta}' ${args} -d -h
         """
