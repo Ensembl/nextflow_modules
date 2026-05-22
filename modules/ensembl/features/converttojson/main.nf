@@ -60,7 +60,7 @@ process FEATURES_CONVERTTOJSON {
             args+=( --rm-consensus-lib ${consensus_lib_fasta} )
         fi
 
-        features_convert_to_json "\${args[@]}"
+        features_convert_to_genomio_json "\${args[@]}"
         """
 
     stub:
