@@ -1,0 +1,117 @@
+// See the NOTICE file distributed with this work for additional information
+// regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+nextflow_process {
+
+    name "Test Process FEATURES_OUT_TO_JSON"
+    script "../main.nf"
+    process "FEATURES_OUT_TO_JSON"
+
+    tag "modules"
+    tag "modules_local"
+    tag "features"
+    tag "features/out_to_json"
+
+    test("Stub outputs features JSON without consensus library") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresOut = file("test.out")
+                featuresOut.text = "stub\\n"
+
+                def noFile = file("NO_FILE")
+                noFile.text = ""
+
+                input[0] = [[ id:'test', chunk_id:'chunk_01' ], featuresOut, noFile]
+                input[1] = "repeatmask_customlib"
+                input[2] = null
+                input[3] = null
+                input[4] = null
+                input[5] = "4.1.7"
+                input[6] = "-species stub"
+                input[7] = "stub_provider"
+                input[8] = false
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.json.size() == 1
+
+            def jsonPath = process.out.json[0][1]
+            def payload = new groovy.json.JsonSlurper().parse(path(jsonPath).toFile())
+
+            assert path(jsonPath).toFile().name == "test.repeatmask_customlib.features.json"
+            assert process.out.json[0][0].id == "test"
+            assert process.out.json[0][0].chunk_id == "chunk_01"
+            assert payload.analysis.logic_name == "repeatmask_customlib"
+            assert payload.analysis.description == "Stub features output"
+            assert payload.source.program_version == "4.1.7"
+            assert payload.repeat_consensus == []
+            assert payload.repeat_features[0].seq_region_name == "chunk_01"
+            assert payload.repeat_features[0].used_consensus_lib == false
+        }
+    }
+
+    test("Stub outputs features JSON with consensus library") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresOut = file("test.out")
+                featuresOut.text = "stub\\n"
+
+                def consensus = file("repeatmodeler.fa")
+                consensus.text = ">consensus\\nACGT\\n"
+
+                input[0] = [[ id:'test', chunk_id:'chunk_01' ], featuresOut, consensus]
+                input[1] = "repeatmask_customlib"
+                input[2] = "Display label"
+                input[3] = "Description"
+                input[4] = "repeatmasker"
+                input[5] = "4.1.7"
+                input[6] = "-species stub"
+                input[7] = "stub_provider"
+                input[8] = true
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.json.size() == 1
+
+            def jsonPath = process.out.json[0][1]
+            def payload = new groovy.json.JsonSlurper().parse(path(jsonPath).toFile())
+
+            assert path(jsonPath).toFile().name == "test.repeatmask_customlib.features.json"
+            assert process.out.json[0][0].id == "test"
+            assert process.out.json[0][0].chunk_id == "chunk_01"
+            assert payload.analysis.logic_name == "repeatmask_customlib"
+            assert payload.analysis.description == "Stub features output"
+            assert payload.source.program_version == "4.1.7"
+            assert payload.repeat_consensus.size() == 1
+            assert payload.repeat_consensus[0].name == "stub_consensus"
+            assert payload.repeat_features[0].seq_region_name == "chunk_01"
+            assert payload.repeat_features[0].used_consensus_lib == true
+        }
+    }
+}

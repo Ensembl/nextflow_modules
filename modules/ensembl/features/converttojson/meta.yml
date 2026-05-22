@@ -1,0 +1,97 @@
+name: "features_convert_to_json"
+description: Convert feature output files into Ensembl feature JSON,
+  optionally including repeat consensus library records.
+keywords:
+  - ensembl
+  - features
+  - genomics
+  - genomio
+  - json
+tools:
+  - "features_convert_to_json":
+      description: "Convert feature output files to feature JSON using ensembl-genomio."
+      homepage: "https://github.com/Ensembl/ensembl-genomio"
+      licence:
+        - "Apache License version 2.0"
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing meta information
+          e.g. `[ id:'accession1', chunk_id:'chunk_01' ]`
+    - features_out:
+        type: file
+        description: Feature output file to convert to JSON.
+        pattern: "*"
+        ontologies: []
+    - consensus_lib_fasta:
+        type: file
+        description:
+          Optional repeat consensus library FASTA. Use NO_FILE when not
+          required.
+        pattern: "*.{fa,fasta,NO_FILE}"
+        ontologies:
+          - edam: http://edamontology.org/format_1929
+  - analysis_logic_name:
+      type: string
+      description: Analysis logic name to include in the feature JSON.
+  - analysis_display_label:
+      type: string
+      description: Optional display label for the analysis.
+  - analysis_description:
+      type: string
+      description: Optional description for the analysis.
+  - program_name:
+      type: string
+      description: Optional name of the program that generated the feature output.
+  - program_version:
+      type: string
+      description: Version of the program that generated the feature output.
+  - program_parameters:
+      type: string
+      description: Optional parameters used to generate the feature output.
+  - annotation_provider:
+      type: string
+      description: Optional annotation provider to record as the source provider.
+  - is_primary_source:
+      type: boolean
+      description: Whether the annotation provider is the primary source.
+output:
+  json:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing meta information
+            e.g. `[ id:'accession1', chunk_id:'chunk_01' ]`
+      - ${meta.id}.${analysis_logic_name}.features.json:
+          type: file
+          description: Feature JSON file.
+          pattern: "*.features.json"
+          ontologies:
+            - edam: http://edamontology.org/format_3464
+  versions_features_convert_to_json:
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - features_convert_to_json:
+          type: string
+          description: The name of the tool.
+      - ? features_convert_to_json --version
+        : type: eval
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - features_convert_to_json:
+          type: string
+          description: The name of the tool.
+      - ? features_convert_to_json --version
+        : type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+maintainers:
+  - "ensembl-dev@ebi.ac.uk"
