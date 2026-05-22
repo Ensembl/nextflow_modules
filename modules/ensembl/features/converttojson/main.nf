@@ -33,6 +33,7 @@ process FEATURES_CONVERTTOJSON {
 
     output:
         tuple val(meta), path("${meta.id}.${analysis_logic_name}.features.json"), emit: json
+        tuple val("${task.process}"), val('features_convert_to_genomio_json'), eval("features_convert_to_genomio_json --version"), emit: versions_features_combine_json, topic: versions
 
     script:
         def analysis_display_label_arg = analysis_display_label != null ? "--analysis-display-label '${analysis_display_label}'" : ''
