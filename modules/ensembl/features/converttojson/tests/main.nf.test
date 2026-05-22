@@ -15,14 +15,14 @@
 
 nextflow_process {
 
-    name "Test Process FEATURES_OUT_TO_JSON"
+    name "Test Process FEATURES_CONVERTTOJSON"
     script "../main.nf"
-    process "FEATURES_OUT_TO_JSON"
+    process "FEATURES_CONVERTTOJSON"
 
     tag "modules"
     tag "modules_local"
     tag "features"
-    tag "features/out_to_json"
+    tag "features/converttojson"
 
     test("Stub outputs features JSON without consensus library") {
 
