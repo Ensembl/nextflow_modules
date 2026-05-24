@@ -39,9 +39,9 @@ nextflow_process {
 
                 input[0] = [[ id:'test', chunk_id:'chunk_01' ], featuresOut, noFile]
                 input[1] = "repeatmask_customlib"
-                input[2] = null
-                input[3] = null
-                input[4] = null
+                input[2] = ""
+                input[3] = ""
+                input[4] = ""
                 input[5] = "4.1.7"
                 input[6] = "-species stub"
                 input[7] = "stub_provider"
