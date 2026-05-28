@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "input.stats.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "input.stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -22,7 +22,7 @@
                         {
                             "id": "test"
                         },
-                        "input.stats.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "input.stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions_fasta_stats": [
@@ -34,7 +34,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-19T13:26:42.634166",
+        "timestamp": "2026-05-28T17:33:45.604898",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

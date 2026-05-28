@@ -22,17 +22,17 @@ process FASTA_STATS {
         tuple val(meta), path(fasta)
 
     output:
-        tuple val(meta), path("${fasta.simpleName}.stats.txt"), emit: stats
+        tuple val(meta), path("${fasta.simpleName}.stats.json"), emit: stats
         tuple val("${task.process}"), val('fasta_stats'), eval("fasta_stats --version"), emit: versions_fasta_stats, topic: versions
 
     script:
         """
-        fasta_stats --fasta ${fasta} --output ${fasta.simpleName}.stats.txt
+        fasta_stats --fasta ${fasta} --output ${fasta.simpleName}.stats.json
         """
 
     stub:
         """
-        stats_out="${fasta.simpleName}.stats.txt"
+        stats_out="${fasta.simpleName}.stats.json"
         touch "\${stats_out}"
         """
 }

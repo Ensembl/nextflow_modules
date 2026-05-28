@@ -45,7 +45,7 @@ nextflow_process {
             
             def stats_out = process.out.stats[0]
             assert stats_out[0].id == "test"
-            assert file(stats_out[1]).name == "input.stats.txt"
+            assert file(stats_out[1]).name == "input.stats.json"
             assert snapshot(process.out).match()
         }
     }
