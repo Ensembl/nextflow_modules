@@ -1,0 +1,84 @@
+{
+    "stub outputs: AGP mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "FASTA_RECOMBINE",
+                        "fasta_recombine",
+                        "1.6.3"
+                    ]
+                ],
+                "recombined_fasta": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_fasta_recombine": [
+                    [
+                        "FASTA_RECOMBINE",
+                        "fasta_recombine",
+                        "1.6.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-14T14:39:11.350698",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "stub outputs: header mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "FASTA_RECOMBINE",
+                        "fasta_recombine",
+                        "1.6.3"
+                    ]
+                ],
+                "recombined_fasta": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_fasta_recombine": [
+                    [
+                        "FASTA_RECOMBINE",
+                        "fasta_recombine",
+                        "1.6.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-14T14:39:09.216174",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    }
+}

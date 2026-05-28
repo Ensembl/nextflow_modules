@@ -1,0 +1,224 @@
+{
+    "stub outputs: default layout, no AGP": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ],
+                "agp": [
+                    
+                ],
+                "fastas": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-14T14:38:41.602246",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "stub outputs: AGP optional output appears when enabled": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.agp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ],
+                "agp": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.agp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fastas": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-14T14:38:43.765608",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "stub outputs: nested directory layout contract": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ],
+                "agp": [
+                    
+                ],
+                "fastas": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-14T14:38:48.132705",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
+    "stub outputs: unique_file_names contract": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.0.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.0.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ],
+                "agp": [
+                    
+                ],
+                "fastas": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.0.1.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.0.2.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "versions_fasta_split": [
+                    [
+                        "FASTA_SPLIT",
+                        "fasta_split",
+                        "1.6.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-14T14:38:45.953655",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    }
+}
