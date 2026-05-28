@@ -9,7 +9,7 @@ process URLS_EXTRACT {
     tuple val(meta), val(url_string)
 
     output:
-    tuple val(meta), env(user), env(host), env(port), env(password), env(database), emit: connection_info
+    tuple val(meta), env('user'), env('host'), env('port'), env('password'), env('database'), emit: connection_info
     path "versions.yml", emit: versions
 
     script:
@@ -39,10 +39,12 @@ process URLS_EXTRACT {
 
     stub:
     """
-    host = host.com
-    user = user
-    port = 3306
-
+    export user=user
+    export host=host.com
+    export port=3306
+    export password=""
+    export database=""
+    
     echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
     """
 }

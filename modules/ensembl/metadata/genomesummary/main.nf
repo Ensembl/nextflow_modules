@@ -43,8 +43,10 @@ process METADATA_GENOMESUMMARY {
 
     stub:
         def prefix = task.ext.prefix ?: "${meta.accession}"
+        def accession = meta.accession ?: "null"
         """
-        touch genome.json
+        # The stub writes a valid JSON file that can be passed in the subworkflow. 
+        echo '{"annotation": true, "assembly": {"accession": "${accession}"}}' > genome.json
 
         echo -e -n "${task.process}:\n\tensembl-genomio: " > versions.yml
         genome_metadata_prepare --version >> versions.yml
