@@ -24,7 +24,7 @@ nextflow_process {
     tag "features"
     tag "features/converttojson"
 
-    test("Stub outputs features JSON without consensus library") {
+    test("Stub wires TRF input mode") {
 
         when {
             options "-stub"
@@ -37,15 +37,12 @@ nextflow_process {
                 def noFile = file("NO_FILE")
                 noFile.text = ""
 
-                input[0] = [[ id:'test', chunk_id:'chunk_01' ], featuresOut, noFile]
-                input[1] = "repeatmask_customlib"
-                input[2] = ""
-                input[3] = ""
-                input[4] = ""
-                input[5] = "4.1.7"
-                input[6] = "-species stub"
-                input[7] = "stub_provider"
-                input[8] = false
+                input[0] = [[ id:'test' ], featuresOut, noFile]
+                input[1] = "trf"
+                input[2] = "4.1.7"
+                input[3] = "-species stub"
+                input[4] = "stub_provider"
+                input[5] = false
                 """
             }
         }
@@ -55,21 +52,53 @@ nextflow_process {
             assert process.out.json.size() == 1
 
             def jsonPath = process.out.json[0][1]
-            def payload = new groovy.json.JsonSlurper().parse(path(jsonPath).toFile())
+            def jsonFile = path(jsonPath).toFile()
 
-            assert path(jsonPath).toFile().name == "test.repeatmask_customlib.features.json"
+            assert jsonFile.exists()
+            assert jsonFile.name == "test.trf.features.json"
             assert process.out.json[0][0].id == "test"
-            assert process.out.json[0][0].chunk_id == "chunk_01"
-            assert payload.analysis.logic_name == "repeatmask_customlib"
-            assert payload.analysis.description == "Stub features output"
-            assert payload.source.program_version == "4.1.7"
-            assert payload.repeat_consensus == []
-            assert payload.repeat_features[0].seq_region_name == "chunk_01"
-            assert payload.repeat_features[0].used_consensus_lib == false
+            assert snapshot(process.out).match()
         }
     }
 
-    test("Stub outputs features JSON with consensus library") {
+    test("Stub wires RepeatMasker Repbase input mode") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresOut = file("test.out")
+                featuresOut.text = "stub\\n"
+
+                def noFile = file("NO_FILE")
+                noFile.text = ""
+
+                input[0] = [[ id:'test' ], featuresOut, noFile]
+                input[1] = "repeatmasker_rmlib"
+                input[2] = "4.1.7"
+                input[3] = "-species stub"
+                input[4] = "stub_provider"
+                input[5] = false
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.json.size() == 1
+
+            def jsonPath = process.out.json[0][1]
+            def jsonFile = path(jsonPath).toFile()
+
+            assert jsonFile.exists()
+            assert jsonFile.name == "test.repeatmasker_rmlib.features.json"
+            assert process.out.json[0][0].id == "test"
+            assert snapshot(process.out).match()
+        }
+    }
+
+    test("Stub wires RepeatMasker custom library input mode") {
 
         when {
             options "-stub"
@@ -82,15 +111,12 @@ nextflow_process {
                 def consensus = file("repeatmodeler.fa")
                 consensus.text = ">consensus\\nACGT\\n"
 
-                input[0] = [[ id:'test', chunk_id:'chunk_01' ], featuresOut, consensus]
+                input[0] = [[ id:'test' ], featuresOut, consensus]
                 input[1] = "repeatmask_customlib"
-                input[2] = "Display label"
-                input[3] = "Description"
-                input[4] = "repeatmasker"
-                input[5] = "4.1.7"
-                input[6] = "-species stub"
-                input[7] = "stub_provider"
-                input[8] = true
+                input[2] = "4.1.7"
+                input[3] = "-species stub"
+                input[4] = "stub_provider"
+                input[5] = true
                 """
             }
         }
@@ -100,18 +126,12 @@ nextflow_process {
             assert process.out.json.size() == 1
 
             def jsonPath = process.out.json[0][1]
-            def payload = new groovy.json.JsonSlurper().parse(path(jsonPath).toFile())
+            def jsonFile = path(jsonPath).toFile()
 
-            assert path(jsonPath).toFile().name == "test.repeatmask_customlib.features.json"
+            assert jsonFile.exists()
+            assert jsonFile.name == "test.repeatmask_customlib.features.json"
             assert process.out.json[0][0].id == "test"
-            assert process.out.json[0][0].chunk_id == "chunk_01"
-            assert payload.analysis.logic_name == "repeatmask_customlib"
-            assert payload.analysis.description == "Stub features output"
-            assert payload.source.program_version == "4.1.7"
-            assert payload.repeat_consensus.size() == 1
-            assert payload.repeat_consensus[0].name == "stub_consensus"
-            assert payload.repeat_features[0].seq_region_name == "chunk_01"
-            assert payload.repeat_features[0].used_consensus_lib == true
+            assert snapshot(process.out).match()
         }
     }
 }
