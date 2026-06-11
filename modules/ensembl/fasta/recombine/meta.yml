@@ -45,7 +45,7 @@ output:
           description: Recombined FASTA file.
           pattern: "*.fa"
           ontologies:
-            
+            - edam: http://edamontology.org/format_1929 # FASTA
   versions_fasta_recombine:
     - - ${task.process}:
           type: string
