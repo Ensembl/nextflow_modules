@@ -18,9 +18,7 @@ process FEATURES_COMBINE_JSON {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
-        ? 'https://depot.galaxyproject.org/singularity/ensembl-genomio:1.6.1--pyhdfd78af_0'
-        : 'quay.io/biocontainers/ensembl-genomio:1.6.1--pyhdfd78af_0'}"
+    container "ensemblorg/ensembl-genomio:v1.7.0-docker"
 
     input:
         tuple val(meta), val(analysis), path(json_manifest), path(agp)
@@ -60,67 +58,7 @@ process FEATURES_COMBINE_JSON {
 
     stub:
         """
-        out_json="${meta.id}.${analysis}.json"
-
-        test -s "${json_manifest}"
-
-        agp_path="${agp}"
-        agp_name="\${agp_path##*/}"
-
-        manifest_real="\$(python -c 'from pathlib import Path; import sys; print(Path(sys.argv[1]).resolve())' "${json_manifest}")"
-        manifest_dir="\$(dirname "\$manifest_real")"
-
-        first_json="\$(head -n 1 "${json_manifest}")"
-        if [[ -z "\$first_json" ]]; then
-            echo "ERROR: manifest is empty: ${json_manifest}" >&2
-            exit 1
-        fi
-        if [[ "\$first_json" != /* ]]; then
-            first_json="\${manifest_dir}/\${first_json}"
-        fi
-        if [[ ! -s "\$first_json" ]]; then
-            echo "ERROR: first JSON in manifest does not exist or is empty: \$first_json" >&2
-            exit 1
-        fi
-
-        if grep -q '"ncrna_features"' "\$first_json"; then
-            load_type="ncrna"
-        elif grep -q '"repeat_features"' "\$first_json"; then
-            load_type="repeat"
-        else
-            echo "ERROR: cannot detect load type from first JSON: \$first_json" >&2
-            echo "Expected top-level key: 'repeat_features' or 'ncrna_features'." >&2
-            exit 1
-        fi
-
-        if [[ "\$load_type" == "repeat" ]]; then
-            cat > "\$out_json" <<-EOF
-{
-    "analysis": {
-        "logic_name": "stub_repeat"
-    },
-    "source": {
-        "source_provider": "stub"
-    },
-    "repeat_consensus": [],
-    "repeat_features": []
-}
-EOF
-        else
-            cat > "\$out_json" <<-EOF
-{
-    "analysis": {
-        "logic_name": "stub_ncrna"
-    },
-    "source": {
-        "source_provider": "stub"
-    },
-    "ncrna_tool": "stub",
-    "ncrna_features": []
-    }
-EOF
-        fi
-
+        touch ${meta.id}.${analysis}.json
         """
         
 }

@@ -81,6 +81,47 @@
             "nextflow": "25.10.3"
         }
     },
+    "Stub outputs": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.7.0"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_features_combine_json": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.7.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-11T16:43:08.537828",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    },
     "Stub outputs: ncRNA AGP mode": {
         "content": [
             {

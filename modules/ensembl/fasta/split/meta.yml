@@ -24,7 +24,8 @@ input:
         type: file
         description: FASTA file to split.
         pattern: "*.{fa,fasta,fna}"
-        ontologies: []
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
     - longest_seq_bp:
         type: integer
         description: Length in base pairs of the longest sequence in the input
@@ -40,7 +41,8 @@ output:
           type: file
           description: Split FASTA files.
           pattern: "splits/**/*.fa"
-          ontologies: []
+          ontologies:
+
   agp:
     - - meta:
           type: map
@@ -51,7 +53,8 @@ output:
           type: file
           description: Optional AGP file describing split sequence chunks.
           pattern: "splits/*.agp"
-          ontologies: []
+          ontologies:
+            - edam: "http://edamontology.org/format_3693" # AGP
   versions_fasta_split:
     - - ${task.process}:
           type: string
@@ -59,8 +62,8 @@ output:
       - fasta_split:
           type: string
           description: The name of the tool.
-      - ? fasta_split --version
-        : type: eval
+      - "fasta_split --version":
+          type: eval
           description: The expression to obtain the version of the tool
 topics:
   versions:
@@ -70,8 +73,8 @@ topics:
       - fasta_split:
           type: string
           description: The name of the tool.
-      - ? fasta_split --version
-        : type: eval
+      - "fasta_split --version":
+          type: eval
           description: The expression to obtain the version of the tool
 authors:
   - "ensembl-dev@ebi.ac.uk"

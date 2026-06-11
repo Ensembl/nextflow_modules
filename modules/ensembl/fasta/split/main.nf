@@ -18,9 +18,7 @@ process FASTA_SPLIT {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
-        ? 'https://depot.galaxyproject.org/singularity/ensembl-genomio:1.6.1--pyhdfd78af_0'
-        : 'quay.io/biocontainers/ensembl-genomio:1.6.1--pyhdfd78af_0'}"
+    container "ensemblorg/ensembl-genomio:v1.7.0-docker"
 
     input:
         tuple val(meta), path(fasta), val(longest_seq_bp)

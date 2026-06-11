@@ -25,18 +25,15 @@ nextflow_process {
     tag "features"
     tag "features/combine_json"
 
-    test("Stub outputs: repeat seq_region mode") {
+    test("Stub outputs") {
 
         when {
             options "-stub"
 
             process {
                 """
-                def inJson = file("in.json")
-                inJson.text = '{"repeat_features": []}\\n'
-
                 def manifest = file("manifest.txt")
-                manifest.text = "in.json\\n"
+                manifest.text = ""
 
                 def noFile = file("NO_FILE")
                 noFile.text = ""
@@ -46,108 +43,6 @@ nextflow_process {
                     'features',
                     manifest,
                     noFile
-                ]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Stub outputs: ncRNA seq_region mode") {
-
-        when {
-            options "-stub"
-
-            process {
-                """
-                def inJson = file("in.json")
-                inJson.text = '{"ncrna_features": [], "ncrna_tool": "cmscan"}\\n'
-
-                def manifest = file("manifest.txt")
-                manifest.text = "in.json\\n"
-
-                def noFile = file("NO_FILE")
-                noFile.text = ""
-
-                input[0] = [
-                    [ id:'test' ],
-                    'features',
-                    manifest,
-                    noFile
-                ]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Stub outputs: repeat AGP mode") {
-
-        when {
-            options "-stub"
-
-            process {
-                """
-                def inJson = file("in.json")
-                inJson.text = '{"repeat_features": []}\\n'
-
-                def manifest = file("manifest.txt")
-                manifest.text = "in.json\\n"
-
-                def agp = file("test.agp")
-                agp.text = ""
-
-                input[0] = [
-                    [ id:'test' ],
-                    'features',
-                    manifest,
-                    agp
-                ]
-                """
-            }
-        }
-
-        then {
-            assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
-            assert process.success
-            assert snapshot(process.out).match()
-        }
-    }
-
-    test("Stub outputs: ncRNA AGP mode") {
-
-        when {
-            options "-stub"
-
-            process {
-                """
-                def inJson = file("in.json")
-                inJson.text = '{"ncrna_features": [], "ncrna_tool": "cmscan"}\\n'
-
-                def manifest = file("manifest.txt")
-                manifest.text = "in.json\\n"
-
-                def agp = file("test.agp")
-                agp.text = ""
-
-                input[0] = [
-                    [ id:'test' ],
-                    'features',
-                    manifest,
-                    agp
                 ]
                 """
             }

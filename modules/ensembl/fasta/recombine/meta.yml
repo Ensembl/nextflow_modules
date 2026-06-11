@@ -30,8 +30,9 @@ input:
         description:
           Optional AGP file describing how split sequence chunks should
           be recombined. Use NO_FILE when not required.
-        pattern: "*.{agp,NO_FILE}"
-        ontologies: []
+        pattern: "{*.agp,NO_FILE}"
+        ontologies: 
+          - edam: "http://edamontology.org/format_3693" # AGP
 output:
   recombined_fasta:
     - - meta:
@@ -43,7 +44,8 @@ output:
           type: file
           description: Recombined FASTA file.
           pattern: "*.fa"
-          ontologies: []
+          ontologies:
+            
   versions_fasta_recombine:
     - - ${task.process}:
           type: string
@@ -51,8 +53,8 @@ output:
       - fasta_recombine:
           type: string
           description: The name of the tool.
-      - ? fasta_recombine --version
-        : type: eval
+      - "fasta_recombine --version":
+          type: eval
           description: The expression to obtain the version of the tool
 topics:
   versions:
@@ -62,8 +64,8 @@ topics:
       - fasta_recombine:
           type: string
           description: The name of the tool.
-      - ? fasta_recombine --version
-        : type: eval
+      - "fasta_recombine --version":
+          type: eval
           description: The expression to obtain the version of the tool
 authors:
   - "ensembl-dev@ebi.ac.uk"
