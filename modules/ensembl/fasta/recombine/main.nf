@@ -58,6 +58,9 @@ process FASTA_RECOMBINE {
 
     stub:
         """
-        touch "${meta.id}.fa"
+        cat > "${meta.id}.fa" <<EOF
+        >${meta.id}
+        A
+        EOF
         """   
 }

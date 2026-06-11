@@ -58,7 +58,9 @@ process FEATURES_COMBINE_JSON {
 
     stub:
         """
-        touch ${meta.id}.${analysis}.json
+        cat > "${meta.id}.${analysis}.json" <<'EOF'
+        {}
+        EOF
         """
         
 }

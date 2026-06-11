@@ -89,7 +89,7 @@
                         {
                             "id": "test"
                         },
-                        "test.features.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
                     ]
                 ],
                 "1": [
@@ -104,7 +104,7 @@
                         {
                             "id": "test"
                         },
-                        "test.features.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
                     ]
                 ],
                 "versions_features_combine_json": [
@@ -116,7 +116,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-11T16:43:08.537828",
+        "timestamp": "2026-06-11T18:09:19.997741",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.3"

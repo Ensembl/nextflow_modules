@@ -86,28 +86,37 @@ process FASTA_SPLIT {
             layout="multi_dir"
         fi
 
+        create_fasta() {
+            local file="\$1"
+            cat > "\$file" <<EOF
+        >stub
+        A
+        EOF
+        }
+
         mkdir -p splits
 
         if [[ "\$layout" == "default" ]]; then
             mkdir -p splits/0
-            touch splits/0/test.1.fa
-            touch splits/0/test.2.fa
+            create_fasta splits/0/test.1.fa
+            create_fasta splits/0/test.2.fa
 
         elif [[ "\$layout" == "unique" ]]; then
             mkdir -p splits/0
-            touch splits/0/test.0.1.fa
-            touch splits/0/test.0.2.fa
+            create_fasta splits/0/test.0.1.fa
+            create_fasta splits/0/test.0.2.fa
 
         elif [[ "\$layout" == "multi_dir" ]]; then
             mkdir -p splits/0/0
             mkdir -p splits/0/1
-            touch splits/0/0/test.1.fa
-            touch splits/0/1/test.2.fa
+            create_fasta splits/0/0/test.1.fa
+            create_fasta splits/0/1/test.2.fa
         fi
 
         if [[ "${params.write_agp ?: false}" == "true" ]]; then
-            touch "splits/${meta.id}.agp"
+            cat > "splits/${meta.id}.agp" <<EOF
+        stub	1	1	1	W	stub	1	1	+
+        EOF
         fi
-
-        """     
+        """   
 }

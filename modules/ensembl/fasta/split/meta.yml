@@ -42,7 +42,7 @@ output:
           description: Split FASTA files.
           pattern: "splits/**/*.fa"
           ontologies:
-
+            - edam: "http://edamontology.org/format_1929" # FASTA
   agp:
     - - meta:
           type: map
