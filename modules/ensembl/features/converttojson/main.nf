@@ -60,6 +60,7 @@ process FEATURES_CONVERTTOJSON {
             --input ${features_out}
             --output ${meta.id}.${analysis_logic_name}.features.json
             ${repeatmasker_consensus_lib_arg}
+            --program-version '${program_version}'
             ${program_parameters_arg}
             ${annotation_provider_arg}
             ${primary_provider}
