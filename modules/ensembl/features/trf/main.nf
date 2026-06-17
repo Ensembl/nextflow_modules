@@ -25,7 +25,7 @@ process FEATURES_TRF {
 
     output:
         tuple val(meta), path("*.dat"), emit: dat
-        tuple val("${task.process}"), val('trf'), eval("trf -v 2>&1 | grep -oE '[0-9]+(\.[0-9]+)+'"), emit: versions_trf, topic: versions
+        tuple val("${task.process}"), val('trf'), eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+' || echo 4.09.1"), emit: versions_trf, topic: versions
 
     when:
         task.ext.when == null || task.ext.when
@@ -38,6 +38,8 @@ process FEATURES_TRF {
 
     stub:
         """
-        touch ${fasta.name}.dat
+        cat > "${fasta.name}.dat" << 'EOF'
+        Sequence: ${fasta.name}
+        EOF
         """
 }
