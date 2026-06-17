@@ -71,6 +71,8 @@ process FEATURES_CONVERTTOJSON {
 
     stub:
         """
-        touch "${meta.id}.${analysis_logic_name}.features.json"
+        cat > "${meta.id}.${analysis_logic_name}.features.json" <<'EOF'
+        {}
+        EOF
         """
 }
