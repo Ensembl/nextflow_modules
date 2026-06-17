@@ -12,7 +12,7 @@
                 ],
                 "1": [
                     [
-                        "FEATURES_CONVERTTOJSON",
+                        "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
                         "1.7.0"
                     ]
@@ -27,7 +27,7 @@
                 ],
                 "versions_convert_to_genomio_json": [
                     [
-                        "FEATURES_CONVERTTOJSON",
+                        "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
                         "1.7.0"
                     ]
@@ -53,7 +53,7 @@
                 ],
                 "1": [
                     [
-                        "FEATURES_CONVERTTOJSON",
+                        "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
                         "1.7.0"
                     ]
@@ -68,7 +68,7 @@
                 ],
                 "versions_convert_to_genomio_json": [
                     [
-                        "FEATURES_CONVERTTOJSON",
+                        "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
                         "1.7.0"
                     ]
@@ -94,7 +94,7 @@
                 ],
                 "1": [
                     [
-                        "FEATURES_CONVERTTOJSON",
+                        "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
                         "1.7.0"
                     ]
@@ -109,7 +109,7 @@
                 ],
                 "versions_convert_to_genomio_json": [
                     [
-                        "FEATURES_CONVERTTOJSON",
+                        "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
                         "1.7.0"
                     ]

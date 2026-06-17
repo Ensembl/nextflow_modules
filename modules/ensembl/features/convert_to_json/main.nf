@@ -15,7 +15,7 @@
 
 nextflow.enable.dsl = 2
 
-process FEATURES_CONVERTTOJSON {
+process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
     label 'process_small'
     container 'ensemblorg/ensembl-genomio:v1.7.0'

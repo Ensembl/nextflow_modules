@@ -15,14 +15,14 @@
 
 nextflow_process {
 
-    name "Test Process FEATURES_CONVERTTOJSON"
+    name "Test Process FEATURES_CONVERT_TO_JSON"
     script "../main.nf"
-    process "FEATURES_CONVERTTOJSON"
+    process "FEATURES_CONVERT_TO_JSON"
 
     tag "modules"
     tag "modules_local"
     tag "features"
-    tag "features/converttojson"
+    tag "features/convert_to_json"
 
     test("Stub wires TRF input mode") {
 
