@@ -14,7 +14,7 @@
                     [
                         "FASTA_STATS",
                         "fasta_stats",
-                        "1.6.2"
+                        "1.7.0"
                     ]
                 ],
                 "stats": [
@@ -29,15 +29,15 @@
                     [
                         "FASTA_STATS",
                         "fasta_stats",
-                        "1.6.2"
+                        "1.7.0"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-28T17:33:45.604898",
+        "timestamp": "2026-06-17T21:16:28.217339",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
         }
     }
 }
