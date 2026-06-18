@@ -18,7 +18,7 @@ process FASTA_SPLIT {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.7.0-docker"
+    container "ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
         tuple val(meta), path(fasta), val(longest_seq_bp)

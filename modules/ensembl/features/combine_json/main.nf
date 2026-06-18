@@ -18,7 +18,7 @@ process FEATURES_COMBINE_JSON {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.7.0-docker"
+    container "ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
         tuple val(meta), val(analysis), path(json_manifest), path(agp)
