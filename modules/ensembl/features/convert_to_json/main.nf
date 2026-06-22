@@ -18,7 +18,7 @@ nextflow.enable.dsl = 2
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
     label 'process_small'
-    container 'ensemblorg/ensembl-genomio:v1.7.0'
+    container 'docker.io/ensemblorg/ensembl-genomio:v1.7.0'
 
     input:
         tuple val(meta), path(features_out), path(repeatmasker_consensus_lib)
