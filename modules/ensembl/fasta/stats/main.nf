@@ -18,6 +18,9 @@ process FASTA_STATS {
     tag "${meta.id}"
     label 'process_small'
 
+    conda "${moduleDir}/environment.yml"
+    container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
+
     input:
         tuple val(meta), path(fasta)
 
