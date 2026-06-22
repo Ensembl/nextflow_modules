@@ -19,7 +19,7 @@ process FASTA_RECOMBINE {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/ensembl-genomio:v1.7.0"
+    container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
         tuple val(meta), path(fasta_manifest), path(agp)
