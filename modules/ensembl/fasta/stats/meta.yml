@@ -27,8 +27,8 @@ output:
       description: Groovy meta map
   - stats:
       type: file
-      description: FASTA statistics file
-      pattern: "*.stats.txt"
+      description: JSON file containing FASTA statistics
+      pattern: "*.stats.json"
 
 topics:
   versions:
