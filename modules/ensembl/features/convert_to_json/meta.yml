@@ -28,14 +28,18 @@ input:
     - consensus_lib_fasta:
         type: file
         description:
-          Optional repeat consensus library FASTA. Use NO_FILE when not
+          Repeat consensus library FASTA. Use NO_FILE when not
           required.
-        pattern: "*.{fa,fasta,NO_FILE}"
+        pattern: "{*.fa,*.fasta,*.fna,NO_FILE}"
         ontologies:
           - edam: http://edamontology.org/format_1929
   - analysis_logic_name:
       type: string
       description: Analysis logic name to include in the feature JSON.
+      enum:
+        - repeatmask_customlib
+        - repeatmask_rmlib
+        - trf
   - analysis_display_label:
       type: string
       description: Optional display label for the analysis.

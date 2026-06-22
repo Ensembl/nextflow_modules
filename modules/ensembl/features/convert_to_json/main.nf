@@ -13,8 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-nextflow.enable.dsl = 2
-
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
     label 'process_small'
@@ -53,20 +51,17 @@ process FEATURES_CONVERT_TO_JSON {
 
         def program_parameters_arg = program_parameters != null ? "--program-parameters '${program_parameters}'" : ''
         def annotation_provider_arg = annotation_provider != null ? "--source-provider '${annotation_provider}'" : ''
-        def primary_provider = (is_primary_source in [true, 'true', 'TRUE', '1']) ? '--is-primary' : ''
+        def primary_provider = is_primary_source ? '--is-primary' : ''
 
         """
-        args=(
-            --input ${features_out}
-            --output ${meta.id}.${analysis_logic_name}.features.json
-            ${repeatmasker_consensus_lib_arg}
-            --program-version '${program_version}'
-            ${program_parameters_arg}
-            ${annotation_provider_arg}
+        features_convert_to_genomio_json ${prefix} \
+            --input ${features_out} \
+            --output ${meta.id}.${analysis_logic_name}.features.json \
+            ${repeatmasker_consensus_lib_arg} \
+            --program-version '${program_version}' \
+            ${program_parameters_arg} \
+            ${annotation_provider_arg} \
             ${primary_provider}
-        )
-
-        features_convert_to_genomio_json ${prefix} "\${args[@]}"
         """
 
     stub:
