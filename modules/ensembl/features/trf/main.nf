@@ -18,7 +18,7 @@ process FEATURES_TRF {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "quay.io/biocontainers/trf:4.10.0rc2-0"
+    container "quay.io/biocontainers/trf:4.10.0rc2--h7b50bb2_0"
 
     input:
         tuple val(meta), path(fasta)
