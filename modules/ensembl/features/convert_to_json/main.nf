@@ -35,7 +35,7 @@ process FEATURES_CONVERT_TO_JSON {
         def repeatmasker_consensus_lib_arg = ''
         if (analysis_logic_name) {
             if (analysis_logic_name == 'trf') {
-                prefix = 'TRF'
+                prefix = 'trf'
             } else if (analysis_logic_name == 'repeatmask_repbase') {
                 prefix = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
