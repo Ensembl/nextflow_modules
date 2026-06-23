@@ -18,14 +18,14 @@ process FEATURES_TRF {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "quay.io/biocontainers/trf:4.09.1--h7b50bb2_7"
+    container "quay.io/biocontainers/trf:4.10.0rc2-0"
 
     input:
         tuple val(meta), path(fasta)
 
     output:
         tuple val(meta), path("*.dat"), emit: dat
-        tuple val("${task.process}"), val('trf'), eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+' || echo 4.09.1"), emit: versions_trf, topic: versions
+        tuple val("${task.process}"), val('trf'), eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0rc2-0"), emit: versions_trf, topic: versions
 
     when:
         task.ext.when == null || task.ext.when
