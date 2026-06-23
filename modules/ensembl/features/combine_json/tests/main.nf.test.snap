@@ -1,0 +1,43 @@
+{
+    "Stub outputs": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
+                    ]
+                ],
+                "1": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.7.0"
+                    ]
+                ],
+                "combined_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
+                    ]
+                ],
+                "versions_features_combine_json": [
+                    [
+                        "FEATURES_COMBINE_JSON",
+                        "features_combine_json",
+                        "1.7.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-11T18:09:19.997741",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.3"
+        }
+    }
+}
