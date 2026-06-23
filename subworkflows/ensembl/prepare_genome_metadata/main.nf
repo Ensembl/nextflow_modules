@@ -16,9 +16,8 @@
 include { METADATA_GENOMESUMMARY } from '../../../modules/ensembl/metadata/genomesummary'
 include { SCHEMA_JSON } from '../../../modules/ensembl/schema/json'
 
-import groovy.json.JsonSlurper
 def readJson(json_path) {
-    def slurp = new JsonSlurper()
+    def slurp = new groovy.json.JsonSlurper()
     def json_file = file(json_path)
     def text = json_file.text
     def not_a_lazy_val = slurp.parseText(text)
