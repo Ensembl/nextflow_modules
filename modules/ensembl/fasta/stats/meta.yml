@@ -1,0 +1,43 @@
+name: "fasta_stats"
+description: "Compute basic statistics for FASTA files"
+keywords:
+  - ensembl
+  - genomio
+  - fasta
+  - statistics
+tools:
+  - "fasta_stats":
+      description: "Compute basic statistics for FASTA files"
+      homepage: "https://github.com/Ensembl/ensembl-genomio"
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+
+input:
+  - meta:
+      type: map
+      description: Groovy meta map
+  - fasta:
+      type: file
+      description: FASTA file
+      pattern: "*.{fa,fasta,fna,fa.gz,fasta.gz,fna.gz}"
+
+output:
+  - meta:
+      type: map
+      description: Groovy meta map
+  - stats:
+      type: file
+      description: JSON file containing FASTA statistics
+      pattern: "*.stats.json"
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - fasta_stats:
+          type: string
+          description: The name of the tool.
+      - ? fasta_stats --version
+        : type: eval
+          description: The expression to obtain the version of the tool
