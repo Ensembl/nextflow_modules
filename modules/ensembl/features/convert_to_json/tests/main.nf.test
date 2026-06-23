@@ -1,0 +1,137 @@
+// See the NOTICE file distributed with this work for additional information
+// regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+nextflow_process {
+
+    name "Test Process FEATURES_CONVERT_TO_JSON"
+    script "../main.nf"
+    process "FEATURES_CONVERT_TO_JSON"
+
+    tag "modules"
+    tag "modules_local"
+    tag "features"
+    tag "features/convert_to_json"
+
+    test("Stub wires TRF input mode") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresOut = file("test.out")
+                featuresOut.text = "stub\\n"
+
+                def noFile = file("NO_FILE")
+                noFile.text = ""
+
+                input[0] = [[ id:'test' ], featuresOut, noFile]
+                input[1] = "trf"
+                input[2] = "4.1.7"
+                input[3] = "-species stub"
+                input[4] = "stub_provider"
+                input[5] = false
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.features_json.size() == 1
+
+            def jsonPath = process.out.features_json[0][1]
+            def jsonFile = path(jsonPath).toFile()
+
+            assert jsonFile.exists()
+            assert jsonFile.name == "test.trf.features.json"
+            assert process.out.features_json[0][0].id == "test"
+            assert snapshot(process.out).match()
+        }
+    }
+
+    test("Stub wires RepeatMasker Repbase input mode") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresOut = file("test.out")
+                featuresOut.text = "stub\\n"
+
+                def noFile = file("NO_FILE")
+                noFile.text = ""
+
+                input[0] = [[ id:'test' ], featuresOut, noFile]
+                input[1] = "repeatmasker_repbase"
+                input[2] = "4.1.7"
+                input[3] = "-species stub"
+                input[4] = "stub_provider"
+                input[5] = false
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.features_json.size() == 1
+
+            def jsonPath = process.out.features_json[0][1]
+            def jsonFile = path(jsonPath).toFile()
+
+            assert jsonFile.exists()
+            assert jsonFile.name == "test.repeatmasker_repbase.features.json"
+            assert process.out.features_json[0][0].id == "test"
+            assert snapshot(process.out).match()
+        }
+    }
+
+    test("Stub wires RepeatMasker custom library input mode") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresOut = file("test.out")
+                featuresOut.text = "stub\\n"
+
+                def consensus = file("repeatmodeler.fa")
+                consensus.text = ">consensus\\nACGT\\n"
+
+                input[0] = [[ id:'test' ], featuresOut, consensus]
+                input[1] = "repeatmask_customlib"
+                input[2] = "4.1.7"
+                input[3] = "-species stub"
+                input[4] = "stub_provider"
+                input[5] = true
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.features_json.size() == 1
+
+            def jsonPath = process.out.features_json[0][1]
+            def jsonFile = path(jsonPath).toFile()
+
+            assert jsonFile.exists()
+            assert jsonFile.name == "test.repeatmask_customlib.features.json"
+            assert process.out.features_json[0][0].id == "test"
+            assert snapshot(process.out).match()
+        }
+    }
+}
