@@ -36,7 +36,7 @@ process FEATURES_CONVERT_TO_JSON {
         if (analysis_logic_name) {
             if (analysis_logic_name == 'trf') {
                 prefix = 'TRF'
-            } else if (analysis_logic_name == 'repeatmasker_rmlib') {
+            } else if (analysis_logic_name == 'repeatmask_repbase') {
                 prefix = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
                 prefix = 'repeatmasker custom'

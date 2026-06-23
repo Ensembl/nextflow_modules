@@ -38,7 +38,7 @@ input:
       description: Analysis logic name to include in the feature JSON.
       enum:
         - repeatmask_customlib
-        - repeatmask_rmlib
+        - repeatmask_repbase
         - trf
   - analysis_display_label:
       type: string

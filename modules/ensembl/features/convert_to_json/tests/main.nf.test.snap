@@ -48,7 +48,7 @@
                         {
                             "id": "test"
                         },
-                        "test.repeatmasker_rmlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
+                        "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
                     ]
                 ],
                 "1": [
@@ -63,7 +63,7 @@
                         {
                             "id": "test"
                         },
-                        "test.repeatmasker_rmlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
+                        "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
                     ]
                 ],
                 "versions_convert_to_genomio_json": [
