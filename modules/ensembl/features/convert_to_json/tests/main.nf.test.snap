@@ -17,7 +17,7 @@
                         "1.7.0"
                     ]
                 ],
-                "json": [
+                "features_json": [
                     [
                         {
                             "id": "test"
@@ -34,10 +34,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-17T14:28:38.145441",
+        "timestamp": "2026-06-23T11:49:16.328488",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.3"
         }
     },
     "Stub wires RepeatMasker Repbase input mode": {
@@ -58,7 +58,7 @@
                         "1.7.0"
                     ]
                 ],
-                "json": [
+                "features_json": [
                     [
                         {
                             "id": "test"
@@ -75,10 +75,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-17T14:28:35.776723",
+        "timestamp": "2026-06-23T11:49:13.92402",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.3"
         }
     },
     "Stub wires TRF input mode": {
@@ -99,7 +99,7 @@
                         "1.7.0"
                     ]
                 ],
-                "json": [
+                "features_json": [
                     [
                         {
                             "id": "test"
@@ -116,10 +116,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-17T14:28:33.432141",
+        "timestamp": "2026-06-23T11:49:11.562335",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.3"
         }
     }
 }

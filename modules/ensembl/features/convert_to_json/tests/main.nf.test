@@ -49,14 +49,14 @@ nextflow_process {
 
         then {
             assert process.success
-            assert process.out.json.size() == 1
+            assert process.out.features_json.size() == 1
 
-            def jsonPath = process.out.json[0][1]
+            def jsonPath = process.out.features_json[0][1]
             def jsonFile = path(jsonPath).toFile()
 
             assert jsonFile.exists()
             assert jsonFile.name == "test.trf.features.json"
-            assert process.out.json[0][0].id == "test"
+            assert process.out.features_json[0][0].id == "test"
             assert snapshot(process.out).match()
         }
     }
@@ -86,14 +86,14 @@ nextflow_process {
 
         then {
             assert process.success
-            assert process.out.json.size() == 1
+            assert process.out.features_json.size() == 1
 
-            def jsonPath = process.out.json[0][1]
+            def jsonPath = process.out.features_json[0][1]
             def jsonFile = path(jsonPath).toFile()
 
             assert jsonFile.exists()
             assert jsonFile.name == "test.repeatmasker_repbase.features.json"
-            assert process.out.json[0][0].id == "test"
+            assert process.out.features_json[0][0].id == "test"
             assert snapshot(process.out).match()
         }
     }
@@ -123,14 +123,14 @@ nextflow_process {
 
         then {
             assert process.success
-            assert process.out.json.size() == 1
+            assert process.out.features_json.size() == 1
 
-            def jsonPath = process.out.json[0][1]
+            def jsonPath = process.out.features_json[0][1]
             def jsonFile = path(jsonPath).toFile()
 
             assert jsonFile.exists()
             assert jsonFile.name == "test.repeatmask_customlib.features.json"
-            assert process.out.json[0][0].id == "test"
+            assert process.out.features_json[0][0].id == "test"
             assert snapshot(process.out).match()
         }
     }

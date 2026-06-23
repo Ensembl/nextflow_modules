@@ -27,7 +27,7 @@ process FEATURES_CONVERT_TO_JSON {
         val(is_primary_source)
 
     output:
-        tuple val(meta), path("${meta.id}.${analysis_logic_name}.features.json"), emit: json
+        tuple val(meta), path("${meta.id}.${analysis_logic_name}.features.json"), emit: features_json
         tuple val("${task.process}"), val('features_convert_to_genomio_json'), eval("features_convert_to_genomio_json --version"), emit: versions_convert_to_genomio_json, topic: versions
 
     script:
