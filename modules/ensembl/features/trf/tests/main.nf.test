@@ -36,14 +36,13 @@ nextflow_process {
         }
 
         then {
-            assertAll(
-                { assert process.success },
-                { assert process.out.dat.size() == 1 },
-                { assert process.out.dat[0][0] == [ id: 'test' ] },
-                { assert file(process.out.dat[0][1]).name == 'dummy.fa.dat' },
-                { assert file(process.out.dat[0][1]).size() > 0 },
-                { assert process.out.versions_trf.size() == 1 }
-            )
+            assert process.success
+            assert snapshot(process.out).match()
+            assert process.out.dat.size() == 1
+            assert process.out.dat[0][0] == [ id: 'test' ]
+            assert file(process.out.dat[0][1]).name == 'dummy.fa.dat'
+            assert file(process.out.dat[0][1]).size() > 0
+            assert process.out.versions_trf.size() == 1
         }
     }
 }

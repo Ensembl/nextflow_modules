@@ -1,0 +1,43 @@
+{
+    "Stub: TRF": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "dummy.fa.dat:md5,7afa5cc8da76212b28fe6a2c4db74917"
+                    ]
+                ],
+                "1": [
+                    [
+                        "FEATURES_TRF",
+                        "trf",
+                        "4.10.0rc2"
+                    ]
+                ],
+                "dat": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "dummy.fa.dat:md5,7afa5cc8da76212b28fe6a2c4db74917"
+                    ]
+                ],
+                "versions_trf": [
+                    [
+                        "FEATURES_TRF",
+                        "trf",
+                        "4.10.0rc2"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-25T13:50:41.590756",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    }
+}

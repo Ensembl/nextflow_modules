@@ -47,7 +47,7 @@ output:
       - trf:
           type: string
           description: The tool name
-      - trf -v 2>&1 | grep -oE '[0-9]+(\.[0-9]+)+' || echo 4.09.1:
+      - trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0-rc2:
           type: eval
           description: The expression to obtain the TRF version
 topics:
@@ -58,7 +58,7 @@ topics:
       - trf:
           type: string
           description: The tool name
-      - trf -v 2>&1 | grep -oE '[0-9]+(\.[0-9]+)+' || echo 4.09.1:
+      - trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0-rc2:
           type: eval
           description: The expression to obtain the TRF version
 authors:
