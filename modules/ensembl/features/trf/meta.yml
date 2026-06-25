@@ -1,0 +1,67 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "features_trf"
+description: Detect tandem repeats in FASTA sequences with Tandem Repeats Finder.
+keywords:
+  - fasta
+  - features
+  - repeats
+  - tandem repeats
+  - trf
+  - genomio
+tools:
+  - "trf":
+      description: "Tandem Repeats Finder detects and reports tandem repeats in DNA sequences."
+      homepage: "https://tandem.bu.edu/trf/trf.html"
+      documentation: "https://tandem.bu.edu/trf/trf.html"
+      tool_dev_url: "https://tandem.bu.edu/trf/trf.html"
+      licence: ["custom"]
+      identifier: "biotools:trf"
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - fasta:
+        type: file
+        description: FASTA file containing DNA sequence(s)
+        pattern: "*.{fa,fasta,fna}"
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
+output:
+  dat:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.dat":
+          type: file
+          description: TRF repeat annotations in DAT format
+          pattern: "*.dat"
+  versions_trf:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - trf:
+          type: string
+          description: The tool name
+      - trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0:
+          type: eval
+          description: The expression to obtain the TRF version
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - trf:
+          type: string
+          description: The tool name
+      - trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0:
+          type: eval
+          description: The expression to obtain the TRF version
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+maintainers:
+  - "ensembl-dev@ebi.ac.uk"
