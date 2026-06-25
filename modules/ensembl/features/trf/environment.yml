@@ -2,4 +2,4 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - trf=4.09.1
+  - trf=4.10.0-rc2
