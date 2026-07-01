@@ -1,0 +1,68 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "features_red"
+description: Detect repeats de novo in genome FASTA sequences with Red.
+keywords:
+  - fasta
+  - features
+  - repeats
+  - de novo repeats
+  - red
+  - genomio
+tools:
+  - "red":
+      description: "Red detects repeats de novo on the genomic scale."
+      homepage: "http://toolsmith.ens.utulsa.edu"
+      documentation: "http://toolsmith.ens.utulsa.edu"
+      tool_dev_url: "http://toolsmith.ens.utulsa.edu"
+      doi: "10.1186/s12859-015-0654-5"
+      licence: ["custom"]
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - fasta:
+        type: file
+        description: FASTA file containing genome sequence(s).
+        pattern: "*.{fa,fasta,fna}"
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
+output:
+  rpt:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "rpt/*.rpt":
+          type: file
+          description: Red repeat report file.
+          pattern: "*.rpt"
+  versions_red:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - red:
+          type: string
+          description: The tool name
+      - conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0]["version"])' || echo 2.0:
+          type: eval
+          description: The expression to obtain the Red version
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - red:
+          type: string
+          description: The tool name
+      - conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0]["version"])' || echo 2.0:
+          type: eval
+          description: The expression to obtain the Red version
+authors:
+  - "ensembl-dev@ebi.ac.uk"
+maintainers:
+  - "ensembl-dev@ebi.ac.uk"
