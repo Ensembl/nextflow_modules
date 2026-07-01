@@ -61,6 +61,43 @@ nextflow_process {
         }
     }
 
+    test("Stub wires Red input mode") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresOut = file("test.out")
+                featuresOut.text = "stub\\n"
+
+                def noFile = file("NO_FILE")
+                noFile.text = ""
+
+                input[0] = [[ id:'test' ], featuresOut, noFile]
+                input[1] = "repeatdetector"
+                input[2] = "2.0"
+                input[3] = "-species stub"
+                input[4] = "stub_provider"
+                input[5] = false
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.features_json.size() == 1
+
+            def jsonPath = process.out.features_json[0][1]
+            def jsonFile = path(jsonPath).toFile()
+
+            assert jsonFile.exists()
+            assert jsonFile.name == "test.repeatdetector.features.json"
+            assert process.out.features_json[0][0].id == "test"
+            assert snapshot(process.out).match()
+        }
+    }
+
     test("Stub wires RepeatMasker Repbase input mode") {
 
         when {

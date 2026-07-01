@@ -14,7 +14,7 @@
                     [
                         "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
-                        "1.7.0"
+                        "1.7.1"
                     ]
                 ],
                 "features_json": [
@@ -29,12 +29,12 @@
                     [
                         "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
-                        "1.7.0"
+                        "1.7.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-23T11:49:16.328488",
+        "timestamp": "2026-07-01T11:09:39.813534",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"
@@ -55,7 +55,7 @@
                     [
                         "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
-                        "1.7.0"
+                        "1.7.1"
                     ]
                 ],
                 "features_json": [
@@ -70,12 +70,53 @@
                     [
                         "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
-                        "1.7.0"
+                        "1.7.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-23T11:49:13.92402",
+        "timestamp": "2026-07-01T11:09:37.486523",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    },
+    "Stub wires Red input mode": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.repeatdetector.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
+                    ]
+                ],
+                "1": [
+                    [
+                        "FEATURES_CONVERT_TO_JSON",
+                        "features_convert_to_genomio_json",
+                        "1.7.1"
+                    ]
+                ],
+                "features_json": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.repeatdetector.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
+                    ]
+                ],
+                "versions_convert_to_genomio_json": [
+                    [
+                        "FEATURES_CONVERT_TO_JSON",
+                        "features_convert_to_genomio_json",
+                        "1.7.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-01T11:09:35.164006",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"
@@ -96,7 +137,7 @@
                     [
                         "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
-                        "1.7.0"
+                        "1.7.1"
                     ]
                 ],
                 "features_json": [
@@ -111,12 +152,12 @@
                     [
                         "FEATURES_CONVERT_TO_JSON",
                         "features_convert_to_genomio_json",
-                        "1.7.0"
+                        "1.7.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-23T11:49:11.562335",
+        "timestamp": "2026-07-01T11:09:32.841906",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"

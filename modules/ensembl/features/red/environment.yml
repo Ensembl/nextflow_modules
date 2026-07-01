@@ -1,0 +1,7 @@
+---
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - red=2018.09.10
