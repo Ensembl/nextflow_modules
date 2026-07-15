@@ -16,7 +16,7 @@
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
     label 'process_small'
-    container 'docker.io/ensemblorg/ensembl-genomio:v1.7.0'
+    container 'docker.io/ensemblorg/ensembl-genomio:v1.7.1'
 
     input:
         tuple val(meta), path(features_out), path(repeatmasker_consensus_lib)
@@ -36,6 +36,8 @@ process FEATURES_CONVERT_TO_JSON {
         if (analysis_logic_name) {
             if (analysis_logic_name == 'trf') {
                 prefix = 'trf'
+            } else if (analysis_logic_name == 'repeatdetector') {
+                prefix = 'red'
             } else if (analysis_logic_name == 'repeatmask_repbase') {
                 prefix = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
