@@ -45,8 +45,8 @@ process FEATURES_RED {
         """
         mkdir -p genome rpt
 
-        # Red only scans .fa files in the genome directory
-        cp ${fasta} genome/${meta.id}.fa
+        # Red only processes .fa files in the genome directory
+        ln -snf \$(realpath "${fasta}") genome/${meta.id}.fa
 
         Red \
             -gnm genome \
