@@ -1,0 +1,22 @@
+{
+    "should create a lineage classification JSON": {
+        "content": [
+            {
+                "0": [
+                    {
+                        "json": "classification.json:md5,8a1b235fc7b2b83a658f7a9ec282b59e",
+                        "meta": {
+                            "id": "test_species"
+                        },
+                        "species": "Arabidopsis thaliana"
+                    }
+                ]
+            }
+        ],
+        "timestamp": "2026-08-06T15:48:40.679892238",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
+        }
+    }
+}
