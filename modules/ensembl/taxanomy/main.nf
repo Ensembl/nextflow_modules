@@ -41,13 +41,12 @@ process TAXONOMY_CLASSIFICATION {
         """
         echo "Calling datasets-cli for ${species}"
         ids=\$(datasets summary taxonomy taxon "${species}" \
-        | jq -r '.reports[0].taxonomy | ((.lineage // .parents)[], .tax_id)')
+        	| jq -r '.reports[0].taxonomy | ((.lineage // .parents)[], .tax_id)')
 
         datasets summary taxonomy taxon \$ids \
-        | jq -r '.reports[].taxonomy.current_scientific_name.name' \
-        | awk 'NF && !seen[\$0]++' \
-        | jq -Rsc 'split("\n") | map(select(length > 0))' \
-        > "classification.json"
+        	| jq -r '.reports[].taxonomy.current_scientific_name.name' \
+        	| awk 'NF && !seen[\$0]++' \
+        	| jq -Rsc 'split("\n") | map(select(length > 0))'> classification.json
 
         if [ "\$(jq 'length' classification.json)" -eq 0 ]; then
         echo "No classification found for ${species}" >&2
