@@ -1,0 +1,26 @@
+name: TAXONOMY_CLASSIFICATION
+description: Retrieve a species lineage and write it as a JSON classification using datasets-cli.
+keywords:
+  - taxonomy
+  - classification
+  - datasets-cli
+tools:
+  - datasets:
+      description: NCBI Datasets command-line tool.
+      homepage: https://www.ncbi.nlm.nih.gov/datasets/
+      documentation: https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/
+      licence: ["Public Domain"]
+input:
+  - meta:
+      type: map
+      description: Sample metadata containing a unique `id`.
+  - species:
+      type: string
+      description: Scientific species name passed to datasets-cli.
+output:
+  - classification:
+      type: record
+      description: Record containing sample metadata, species, and the lineage JSON file.
+  - versions:
+      type: tuple
+      description: Dataset version tuple published to the `versions` topic.
