@@ -1,0 +1,43 @@
+{
+    "Stub creates Red repeat report": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed:md5,aa604b48150afc506072a1f9656b6bb7"
+                    ]
+                ],
+                "1": [
+                    [
+                        "FEATURES_RED",
+                        "red",
+                        "2.0"
+                    ]
+                ],
+                "bed": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed:md5,aa604b48150afc506072a1f9656b6bb7"
+                    ]
+                ],
+                "versions_red": [
+                    [
+                        "FEATURES_RED",
+                        "red",
+                        "2.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-14T16:03:16.866216",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    }
+}
