@@ -19,7 +19,7 @@ process TAXONOMY_CLASSIFICATION {
     label 'process_small'
 
     conda "${moduleDir}/environment.yml"
-    container 'ensemblorg/datasets-cli:latest'
+    container 'ensemblorg/datasets-cli:18.35.0'
 
     input:
         record(
@@ -40,18 +40,13 @@ process TAXONOMY_CLASSIFICATION {
     script:
         """
         echo "Calling datasets-cli for ${species}"
-        ids=\$(datasets summary taxonomy taxon "${species}" \
-        	| jq -r '.reports[0].taxonomy | ((.lineage // .parents)[], .tax_id)')
-
-        datasets summary taxonomy taxon \$ids \
-        	| jq -r '.reports[].taxonomy.current_scientific_name.name' \
-        	| awk 'NF && !seen[\$0]++' \
-        	| jq -Rsc 'split("\n") | map(select(length > 0))'> classification.json
-
-        if [ "\$(jq 'length' classification.json)" -eq 0 ]; then
-        echo "No classification found for ${species}" >&2
-        exit 1
+        report=$(datasets summary taxonomy taxon"${species}" --report names --parents --rank "domain,kingdom,phylum,class,order,family,genus,species,subspecies")
+        if [[ $(jq -r '.total_count' <<< $report) -eq "0" ]]; then
+            echo "No classification found for ${species}" >&2
+            exit 1
         fi
+        
+        jq -c '[.reports[].taxonomy.current_scientific_name.name]' <<< $report > classification.json
         """
 
     stub:
