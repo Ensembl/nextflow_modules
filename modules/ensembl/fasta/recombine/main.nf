@@ -13,6 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+nextflow.enable.types = true
+
 process FASTA_RECOMBINE {
 
     tag "${meta.id}"
@@ -22,11 +24,13 @@ process FASTA_RECOMBINE {
     container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
-        tuple val(meta), path(fasta_manifest), path(agp)
+        record(meta: Map, fasta_manifest: Path, agp: Path?)
 
     output:
-        tuple val(meta), path("${meta.id}.fa"), emit: recombined_fasta
-        tuple val("${task.process}"), val('fasta_recombine'), eval("fasta_recombine --version"), emit: versions_fasta_recombine, topic: versions
+        record(meta: meta, recombined_fasta: file("${meta.id}.fa"))
+
+    topic:
+        tuple(task.process, 'fasta_recombine', eval("fasta_recombine --version 2>/dev/null || echo unknown")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

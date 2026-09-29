@@ -62,7 +62,7 @@ input:
       type: boolean
       description: Whether the annotation provider is the primary source.
 output:
-  json:
+  features_json:
     - - meta:
           type: map
           description: |
@@ -74,16 +74,6 @@ output:
           pattern: "*.features.json"
           ontologies:
             - edam: http://edamontology.org/format_3464
-  versions_features_convert_to_json:
-    - - ${task.process}:
-          type: string
-          description: The name of the process.
-      - features_convert_to_json:
-          type: string
-          description: The name of the tool.
-      - ? features_convert_to_json --version
-        : type: eval
-          description: The expression to obtain the version of the tool
 topics:
   versions:
     - - ${task.process}:
@@ -92,7 +82,7 @@ topics:
       - features_convert_to_json:
           type: string
           description: The name of the tool.
-      - ? features_convert_to_json --version
+      - ? features_convert_to_genomio_json --version 2>/dev/null || echo unknown
         : type: eval
           description: The expression to obtain the version of the tool
 authors:

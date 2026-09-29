@@ -24,6 +24,7 @@ nextflow_process {
     tag "modules_ensembl"
     tag "fasta"
     tag "fasta/split"
+    topics "versions"
 
 
     test("stub outputs: default layout, no AGP") {
@@ -38,28 +39,31 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ], file('dummy.fa'), 1000]
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
                 """
             }
         }
 
         then {
-            assert snapshot(process.out).match()
+            assert snapshot(
+                process.out[0].collect { output -> [ meta: output.meta, fastas: output.fastas.collect { path(it).toFile().name }.sort(), agp: output.agp ] },
+                topics.versions
+            ).match()
 
-            assert process.out.fastas != null
-            assert process.out.fastas.size() == 1
+            assert process.out[0] != null
+            assert process.out[0].size() == 1
 
-            def fasta_out = process.out.fastas[0]
-            def meta = fasta_out[0]
-            def fas  = fasta_out[1]
+            def fasta_out = process.out[0][0]
+            def meta = fasta_out.meta
+            def fas  = fasta_out.fastas
 
             assert meta.id == "test"
             assert fas != null
             assert fas.size() == 2
             assert fas.collect { path(it).toFile().name }.sort() == ["test.1.fa", "test.2.fa"]
 
-            assert process.out.agp != null
-            assert process.out.agp.size() == 0
+            assert process.out[0][0].agp == null
+            assert topics.versions.size() == 1
 
             assertAll(
                 { assert process.success }
@@ -79,23 +83,25 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ], file('dummy.fa'), 1000]
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
                 """
             }
         }
 
         then {
-            assert snapshot(process.out).match()
+            assert snapshot(
+                process.out[0].collect { output -> [ meta: output.meta, fastas: output.fastas.collect { path(it).toFile().name }.sort(), agp: output.agp ] },
+                topics.versions
+            ).match()
 
-            assert process.out.fastas.size() == 1
-            def fasta_out = process.out.fastas[0]
-            def fas = fasta_out[1]
+            assert process.out[0].size() == 1
+            def fasta_out = process.out[0][0]
+            def fas = fasta_out.fastas
             assert fas.size() == 2
 
-            assert process.out.agp.size() == 1
-            def agp_out = process.out.agp[0]
-            def agp_meta = agp_out[0]
-            def agp = agp_out[1]
+            def agp_out = process.out[0][0]
+            def agp_meta = agp_out.meta
+            def agp = agp_out.agp
             def agp_paths = agp instanceof List ? agp : [agp]
             def agp_file = path(agp_paths[0]).toFile()
 
@@ -121,19 +127,22 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ], file('dummy.fa'), 1000]
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
                 """
             }
         }
 
         then {
-            assert snapshot(process.out).match()
+            assert snapshot(
+                process.out[0].collect { output -> [ meta: output.meta, fastas: output.fastas.collect { path(it).toFile().name }.sort(), agp: output.agp ] },
+                topics.versions
+            ).match()
 
-            def fasta_out = process.out.fastas[0]
-            def fas = fasta_out[1]
+            def fasta_out = process.out[0][0]
+            def fas = fasta_out.fastas
 
             assert fas.size() == 2
-            assert process.out.agp.size() == 0
+            assert process.out[0][0].agp == null
 
             // Contract check: names match the unique fixture pattern
             assert fas.collect { path(it).toFile().name }.sort() == ["test.0.1.fa", "test.0.2.fa"]
@@ -158,17 +167,20 @@ nextflow_process {
 
             process {
                 """
-                input[0] = [[ id:'test' ], file('dummy.fa'), 1000]
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
                 """
             }
         }
 
         then {
-            assert snapshot(process.out).match()
+            assert snapshot(
+                process.out[0].collect { output -> [ meta: output.meta, fastas: output.fastas.collect { path(it).toFile().name }.sort(), agp: output.agp ] },
+                topics.versions
+            ).match()
 
-            def fastas = process.out.fastas[0][1]
+            def fastas = process.out[0][0].fastas
             assert fastas.size() == 2
-            assert process.out.agp.size() == 0
+            assert process.out[0][0].agp == null
 
             def rels = fastas.collect { path(it).toString() }
             assert rels.any { it.contains("splits/0/0/") }

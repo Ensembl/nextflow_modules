@@ -13,6 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+nextflow.enable.types = true
+
 process FEATURES_RED {
     tag "${meta.id}"
     label 'process_medium'
@@ -21,11 +23,13 @@ process FEATURES_RED {
     container "quay.io/biocontainers/red:2018.09.10--h9948957_3"
 
     input:
-        tuple val(meta), path(fasta)
+        record(meta: Map, fasta: Path)
 
     output:
-        tuple val(meta), path("rpt/*.bed"), emit: bed
-        tuple val("${task.process}"), val('red'), eval("conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0][\"version\"])' || echo 2.0"), emit: versions_red, topic: versions
+        record(meta: meta, bed: file("rpt/*.bed"))
+
+    topic:
+        tuple(task.process, 'red', eval("conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0][\"version\"])' || echo 2.0")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

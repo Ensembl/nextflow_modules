@@ -13,6 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+nextflow.enable.types = true
+
 process FASTA_STATS {
 
     tag "${meta.id}"
@@ -22,11 +24,13 @@ process FASTA_STATS {
     container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
-        tuple val(meta), path(fasta)
+        record(meta: Map, fasta: Path)
 
     output:
-        tuple val(meta), path("${fasta.simpleName}.stats.json"), emit: stats
-        tuple val("${task.process}"), val('fasta_stats'), eval("fasta_stats --version"), emit: versions_fasta_stats, topic: versions
+        record(meta: meta, stats: file("${fasta.simpleName}.stats.json"))
+
+    topic:
+        tuple(task.process, 'fasta_stats', eval("fasta_stats --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
         """

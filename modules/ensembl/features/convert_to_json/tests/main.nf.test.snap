@@ -3,38 +3,16 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
+                    {
+                        "features_json": "test.repeatmask_customlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
                             "id": "test"
-                        },
-                        "test.repeatmask_customlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "1": [
-                    [
-                        "FEATURES_CONVERT_TO_JSON",
-                        "features_convert_to_genomio_json",
-                        "1.7.0"
-                    ]
-                ],
-                "features_json": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.repeatmask_customlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "versions_convert_to_genomio_json": [
-                    [
-                        "FEATURES_CONVERT_TO_JSON",
-                        "features_convert_to_genomio_json",
-                        "1.7.0"
-                    ]
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-06-23T11:49:16.328488",
+        "timestamp": "2026-09-29T12:54:04.437296",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"
@@ -44,38 +22,16 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
+                    {
+                        "features_json": "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
                             "id": "test"
-                        },
-                        "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "1": [
-                    [
-                        "FEATURES_CONVERT_TO_JSON",
-                        "features_convert_to_genomio_json",
-                        "1.7.0"
-                    ]
-                ],
-                "features_json": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "versions_convert_to_genomio_json": [
-                    [
-                        "FEATURES_CONVERT_TO_JSON",
-                        "features_convert_to_genomio_json",
-                        "1.7.0"
-                    ]
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-06-23T11:49:13.92402",
+        "timestamp": "2026-09-29T12:54:02.363885",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"
@@ -85,38 +41,16 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
+                    {
+                        "features_json": "test.trf.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
                             "id": "test"
-                        },
-                        "test.trf.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "1": [
-                    [
-                        "FEATURES_CONVERT_TO_JSON",
-                        "features_convert_to_genomio_json",
-                        "1.7.0"
-                    ]
-                ],
-                "features_json": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.trf.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "versions_convert_to_genomio_json": [
-                    [
-                        "FEATURES_CONVERT_TO_JSON",
-                        "features_convert_to_genomio_json",
-                        "1.7.0"
-                    ]
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-06-23T11:49:11.562335",
+        "timestamp": "2026-09-29T12:54:00.329076",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"

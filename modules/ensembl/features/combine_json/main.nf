@@ -13,6 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+nextflow.enable.types = true
+
 process FEATURES_COMBINE_JSON {
     tag "${meta.id}"
     label 'process_medium'
@@ -21,11 +23,18 @@ process FEATURES_COMBINE_JSON {
     container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
-        tuple val(meta), val(analysis), path(json_manifest), path(agp)
+        record(
+            meta: Map,
+            analysis: String,
+            json_manifest: Path,
+            agp: Path?
+        )
 
     output:
-        tuple val(meta), path("${meta.id}.${analysis}.json"), emit: combined_json
-        tuple val("${task.process}"), val('features_combine_json'), eval("features_combine_json --version"), emit: versions_features_combine_json, topic: versions
+        record(meta: meta, combined_json: file("${meta.id}.${analysis}.json"))
+
+    topic:
+        tuple(task.process, 'features_combine_json', eval("features_combine_json --version 2>/dev/null || echo unknown")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

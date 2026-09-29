@@ -13,6 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+nextflow.enable.types = true
+
 process FEATURES_TRF {
     tag "${meta.id}"
     label 'process_medium'
@@ -21,11 +23,13 @@ process FEATURES_TRF {
     container "quay.io/biocontainers/trf:4.10.0rc2--h7b50bb2_0"
 
     input:
-        tuple val(meta), path(fasta)
+        record(meta: Map, fasta: Path)
 
     output:
-        tuple val(meta), path("*.dat"), emit: dat
-        tuple val("${task.process}"), val('trf'), eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0"), emit: versions_trf, topic: versions
+        record(meta: meta, dat: file("*.dat"))
+
+    topic:
+        tuple(task.process, 'trf', eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

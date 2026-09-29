@@ -3,38 +3,16 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
+                    {
+                        "meta": {
                             "id": "test"
                         },
-                        "input.stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    [
-                        "FASTA_STATS",
-                        "fasta_stats",
-                        "1.7.0"
-                    ]
-                ],
-                "stats": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "input.stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "versions_fasta_stats": [
-                    [
-                        "FASTA_STATS",
-                        "fasta_stats",
-                        "1.7.0"
-                    ]
+                        "stats": "input.stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-06-17T21:16:28.217339",
+        "timestamp": "2026-09-29T12:53:55.741606",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"
