@@ -18,7 +18,7 @@ nextflow.enable.types = true
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
     label 'process_small'
-    container 'docker.io/ensemblorg/ensembl-genomio:v1.8.0'
+    container 'docker.io/ensemblorg/ensembl-genomio:v1.7.0'
 
     input:
         record(

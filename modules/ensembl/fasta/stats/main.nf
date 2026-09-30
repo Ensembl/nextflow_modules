@@ -21,7 +21,7 @@ process FASTA_STATS {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "docker.io/ensemblorg/ensembl-genomio:v1.8.0"
+    container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
         record(meta: Map, fasta: Path)
