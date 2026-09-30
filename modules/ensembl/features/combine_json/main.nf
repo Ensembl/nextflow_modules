@@ -20,7 +20,7 @@ process FEATURES_COMBINE_JSON {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
+    container "docker.io/ensemblorg/ensembl-genomio:v1.8.0"
 
     input:
         record(
