@@ -34,7 +34,7 @@ process FEATURES_COMBINE_JSON {
         record(meta: meta, combined_json: file("${meta.id}.${analysis}.json"))
 
     topic:
-        tuple('features_combine_json', eval("features_combine_json --version 2>/dev/null || echo unknown")) >> 'versions'
+        tuple(task.process, 'features_combine_json', eval("features_combine_json --version 2>/dev/null || echo unknown")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

@@ -64,8 +64,8 @@ nextflow_process {
 
             assert process.out[0][0].agp == null
             assert topics.versions.size() == 1
-            assert topics.versions[0].size() == 2
-            assert topics.versions[0][0] == 'fasta_split'
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FASTA_SPLIT'
 
             assertAll(
                 { assert process.success }

@@ -63,8 +63,8 @@ nextflow_process {
             assert jsonFile.name == "test.trf.features.json"
             assert process.out[0][0].meta.id == "test"
             assert topics.versions.size() == 1
-            assert topics.versions[0].size() == 2
-            assert topics.versions[0][0] == 'features_convert_to_genomio_json'
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FEATURES_CONVERT_TO_JSON'
             assert snapshot(process.out).match()
         }
     }
@@ -107,8 +107,8 @@ nextflow_process {
             assert jsonFile.name == "test.repeatmasker_repbase.features.json"
             assert process.out[0][0].meta.id == "test"
             assert topics.versions.size() == 1
-            assert topics.versions[0].size() == 2
-            assert topics.versions[0][0] == 'features_convert_to_genomio_json'
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FEATURES_CONVERT_TO_JSON'
             assert snapshot(process.out).match()
         }
     }
@@ -151,8 +151,8 @@ nextflow_process {
             assert jsonFile.name == "test.repeatmask_customlib.features.json"
             assert process.out[0][0].meta.id == "test"
             assert topics.versions.size() == 1
-            assert topics.versions[0].size() == 2
-            assert topics.versions[0][0] == 'features_convert_to_genomio_json'
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FEATURES_CONVERT_TO_JSON'
             assert snapshot(process.out).match()
         }
     }

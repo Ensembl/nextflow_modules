@@ -36,7 +36,7 @@ process FEATURES_CONVERT_TO_JSON {
         record(meta: meta, features_json: file("${meta.id}.${analysis_logic_name}.features.json"))
 
     topic:
-        tuple('features_convert_to_genomio_json', eval("features_convert_to_genomio_json --version 2>/dev/null || echo unknown")) >> 'versions'
+        tuple(task.process, 'features_convert_to_genomio_json', eval("features_convert_to_genomio_json --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
         def prefix = ''

@@ -51,7 +51,10 @@ output:
             - edam: http://edamontology.org/format_3464 # JSON
 topics:
   versions:
-    - - features_combine_json:
+    - - ${task.process}:
+          type: string
+          description: The name of the process.
+      - features_combine_json:
           type: string
           description: The name of the tool.
       - "features_combine_json --version 2>/dev/null || echo unknown":

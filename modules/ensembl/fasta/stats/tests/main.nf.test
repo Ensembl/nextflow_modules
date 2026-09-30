@@ -48,8 +48,8 @@ nextflow_process {
             assert stats_out.meta.id == "test"
             assert file(stats_out.stats).name == "input.stats.json"
             assert topics.versions.size() == 1
-            assert topics.versions[0].size() == 2
-            assert topics.versions[0][0] == 'fasta_stats'
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FASTA_STATS'
             assert snapshot(process.out).match()
         }
     }
