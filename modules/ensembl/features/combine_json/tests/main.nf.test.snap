@@ -3,41 +3,19 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
+                    {
+                        "combined_json": "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
                             "id": "test"
-                        },
-                        "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "1": [
-                    [
-                        "FEATURES_COMBINE_JSON",
-                        "features_combine_json",
-                        "1.7.0"
-                    ]
-                ],
-                "combined_json": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11"
-                    ]
-                ],
-                "versions_features_combine_json": [
-                    [
-                        "FEATURES_COMBINE_JSON",
-                        "features_combine_json",
-                        "1.7.0"
-                    ]
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-06-11T18:09:19.997741",
+        "timestamp": "2026-09-29T12:53:58.29327",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
         }
     }
 }

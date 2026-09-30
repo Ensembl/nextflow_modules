@@ -13,22 +13,23 @@ authors:
   - "ensembl-dev@ebi.ac.uk"
 
 input:
-  - meta:
-      type: map
-      description: Groovy meta map
-  - fasta:
-      type: file
-      description: FASTA file
-      pattern: "*.{fa,fasta,fna,fa.gz,fasta.gz,fna.gz}"
+  - - meta:
+        type: map
+        description: Groovy meta map
+    - fasta:
+        type: file
+        description: FASTA file
+        pattern: "*.{fa,fasta,fna,fa.gz,fasta.gz,fna.gz}"
 
 output:
-  - meta:
-      type: map
-      description: Groovy meta map
-  - stats:
-      type: file
-      description: JSON file containing FASTA statistics
-      pattern: "*.stats.json"
+  stats:
+    - - meta:
+          type: map
+          description: Groovy meta map
+      - stats:
+          type: file
+          description: JSON file containing FASTA statistics
+          pattern: "*.stats.json"
 
 topics:
   versions:
@@ -38,6 +39,6 @@ topics:
       - fasta_stats:
           type: string
           description: The name of the tool.
-      - ? fasta_stats --version
+      - ? fasta_stats --version 2>/dev/null || echo unknown
         : type: eval
           description: The expression to obtain the version of the tool
