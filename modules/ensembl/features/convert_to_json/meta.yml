@@ -76,10 +76,7 @@ output:
             - edam: http://edamontology.org/format_3464
 topics:
   versions:
-    - - ${task.process}:
-          type: string
-          description: The name of the process.
-      - features_convert_to_json:
+    - - features_convert_to_genomio_json:
           type: string
           description: The name of the tool.
       - ? features_convert_to_genomio_json --version 2>/dev/null || echo unknown

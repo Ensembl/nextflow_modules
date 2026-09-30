@@ -48,6 +48,8 @@ nextflow_process {
             assert file(process.out[0][0].bed).name == "test.bed"
             assert file(process.out[0][0].bed).size() > 0
             assert topics.versions.size() == 1
+            assert topics.versions[0].size() == 2
+            assert topics.versions[0][0] == 'red'
         }
     }
 }

@@ -30,7 +30,7 @@ process FASTA_STATS {
         record(meta: meta, stats: file("${fasta.simpleName}.stats.json"))
 
     topic:
-        tuple(task.process, 'fasta_stats', eval("fasta_stats --version 2>/dev/null || echo unknown")) >> 'versions'
+        tuple('fasta_stats', eval("fasta_stats --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
         """

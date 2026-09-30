@@ -29,7 +29,7 @@ process FEATURES_TRF {
         record(meta: meta, dat: file("*.dat"))
 
     topic:
-        tuple(task.process, 'trf', eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0")) >> 'versions'
+        tuple('trf', eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

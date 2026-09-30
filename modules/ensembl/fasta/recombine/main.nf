@@ -30,7 +30,7 @@ process FASTA_RECOMBINE {
         record(meta: meta, recombined_fasta: file("${meta.id}.fa"))
 
     topic:
-        tuple(task.process, 'fasta_recombine', eval("fasta_recombine --version 2>/dev/null || echo unknown")) >> 'versions'
+        tuple('fasta_recombine', eval("fasta_recombine --version 2>/dev/null || echo unknown")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

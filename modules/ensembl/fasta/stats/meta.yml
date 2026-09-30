@@ -33,10 +33,7 @@ output:
 
 topics:
   versions:
-    - - ${task.process}:
-          type: string
-          description: The name of the process.
-      - fasta_stats:
+    - - fasta_stats:
           type: string
           description: The name of the tool.
       - ? fasta_stats --version 2>/dev/null || echo unknown

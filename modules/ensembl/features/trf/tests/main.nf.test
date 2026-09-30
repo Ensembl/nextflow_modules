@@ -43,6 +43,8 @@ nextflow_process {
             assert file(process.out[0][0].dat).name == 'dummy.fa.dat'
             assert file(process.out[0][0].dat).size() > 0
             assert topics.versions.size() == 1
+            assert topics.versions[0].size() == 2
+            assert topics.versions[0][0] == 'trf'
         }
     }
 }

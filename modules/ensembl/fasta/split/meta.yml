@@ -57,10 +57,7 @@ output:
             - edam: "http://edamontology.org/format_3693" # AGP
 topics:
   versions:
-    - - ${task.process}:
-          type: string
-          description: The name of the process.
-      - fasta_split:
+    - - fasta_split:
           type: string
           description: The name of the tool.
       - "fasta_split --version 2>/dev/null || echo unknown":

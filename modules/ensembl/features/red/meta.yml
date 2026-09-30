@@ -42,10 +42,7 @@ output:
           pattern: "*.bed"
 topics:
   versions:
-    - - ${task.process}:
-          type: string
-          description: The process the versions were collected from
-      - red:
+    - - red:
           type: string
           description: The tool name
       - conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0]["version"])' || echo 2.0:

@@ -29,7 +29,7 @@ process FEATURES_RED {
         record(meta: meta, bed: file("rpt/*.bed"))
 
     topic:
-        tuple(task.process, 'red', eval("conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0][\"version\"])' || echo 2.0")) >> 'versions'
+        tuple('red', eval("conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0][\"version\"])' || echo 2.0")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when
