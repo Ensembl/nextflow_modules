@@ -43,8 +43,6 @@ process CMSCAN {
             eval("cmscan -h 2>&1 | sed -nE 's/^# INFERNAL ([^ ]+).*/\\1/p'")
         ) >> 'versions'
 
-
-
     script:
         def prefix = task.ext.prefix
             ? "${task.ext.prefix}.${meta.id}.${task.index}"
