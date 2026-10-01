@@ -37,7 +37,13 @@ process CMSCAN {
         )
 
     topic:
-        file('versions.yml') >> 'versions'
+        tuple(
+            task.process,
+            'infernal',
+            eval("cmscan -h 2>&1 | sed -nE 's/^# INFERNAL ([^ ]+).*/\\1/p'")
+        ) >> 'versions'
+
+
 
     script:
         def prefix = task.ext.prefix
@@ -53,10 +59,6 @@ process CMSCAN {
         ${rfam_filtered_cm} \\
         ${chunk}
 
-        cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            infernal: \$(cmscan -h 2>&1 | grep -m 1 "# INFERNAL" | sed 's/.*INFERNAL //; s/ .*//')
-        END_VERSIONS
         """
 
     stub:
