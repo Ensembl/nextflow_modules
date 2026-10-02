@@ -15,7 +15,7 @@
 
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
-    label 'process_small'
+    label 'process_low'
     container 'docker.io/ensemblorg/ensembl-genomio:v1.7.0'
 
     input:
@@ -57,16 +57,15 @@ process FEATURES_CONVERT_TO_JSON {
         def annotation_provider_arg = annotation_provider != null ? "--source-provider '${annotation_provider}'" : ''
         def primary_provider = is_primary_source ? '--is-primary' : ''
 
-        
         """
         features_convert_to_genomio_json ${prefix} \
-                --input ${features_out} \
-                --output ${meta.id}.${analysis_logic_name}.features.json \
-                ${repeatmasker_consensus_lib_arg} \
-                --program-version '${program_version}' \
-                ${program_parameters_arg} \
-                ${annotation_provider_arg} \
-                ${primary_provider}
+            --input ${features_out} \
+            --output ${meta.id}.${analysis_logic_name}.features.json \
+            ${repeatmasker_consensus_lib_arg} \
+            --program-version '${program_version}' \
+            ${program_parameters_arg} \
+            ${annotation_provider_arg} \
+            ${primary_provider}
         """
 
     stub:
