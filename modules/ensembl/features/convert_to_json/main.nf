@@ -29,13 +29,15 @@ process FEATURES_CONVERT_TO_JSON {
     output:
         tuple val(meta), path("${meta.id}.${analysis_logic_name}.features.json"), emit: features_json
         tuple val("${task.process}"), val('features_convert_to_genomio_json'), eval("features_convert_to_genomio_json --version"), emit: versions_convert_to_genomio_json, topic: versions
-
+    
     script:
         def prefix = ''
         def repeatmasker_consensus_lib_arg = ''
         if (analysis_logic_name) {
             if (analysis_logic_name == 'trf') {
                 prefix = 'trf'
+            } else if (analysis_logic_name == 'repeatdetector') {
+                prefix = 'red'
             } else if (analysis_logic_name == 'repeatmask_repbase') {
                 prefix = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
@@ -44,7 +46,7 @@ process FEATURES_CONVERT_TO_JSON {
                     throw new IllegalArgumentException("RepeatMasker consensus library is required for analysis logic name '${analysis_logic_name}'")
                 }
                 repeatmasker_consensus_lib_arg = "--consensus-lib ${repeatmasker_consensus_lib}"
-	    } else if (analysis_logic_name == 'trnascan') {
+            } else if (analysis_logic_name == 'trnascan') {
                 prefix = 'trnascan'
             } else {
                 throw new IllegalArgumentException("Unsupported analysis logic name '${analysis_logic_name}'")
@@ -55,15 +57,16 @@ process FEATURES_CONVERT_TO_JSON {
         def annotation_provider_arg = annotation_provider != null ? "--source-provider '${annotation_provider}'" : ''
         def primary_provider = is_primary_source ? '--is-primary' : ''
 
+        
         """
         features_convert_to_genomio_json ${prefix} \
-            --input ${features_out} \
-            --output ${meta.id}.${analysis_logic_name}.features.json \
-            ${repeatmasker_consensus_lib_arg} \
-            --program-version '${program_version}' \
-            ${program_parameters_arg} \
-            ${annotation_provider_arg} \
-            ${primary_provider}
+                --input ${features_out} \
+                --output ${meta.id}.${analysis_logic_name}.features.json \
+                ${repeatmasker_consensus_lib_arg} \
+                --program-version '${program_version}' \
+                ${program_parameters_arg} \
+                ${annotation_provider_arg} \
+                ${primary_provider}
         """
 
     stub:
