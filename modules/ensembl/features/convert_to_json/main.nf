@@ -44,6 +44,8 @@ process FEATURES_CONVERT_TO_JSON {
                     throw new IllegalArgumentException("RepeatMasker consensus library is required for analysis logic name '${analysis_logic_name}'")
                 }
                 repeatmasker_consensus_lib_arg = "--consensus-lib ${repeatmasker_consensus_lib}"
+            } else if (analysis_logic_name == 'trnascan') {
+                prefix = 'trnascan'
             } else {
                 throw new IllegalArgumentException("Unsupported analysis logic name '${analysis_logic_name}'")
             }
