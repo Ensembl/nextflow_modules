@@ -15,7 +15,7 @@
 
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
-    label 'process_low'
+    label 'process_small'
     container 'docker.io/ensemblorg/ensembl-genomio:v1.7.0'
 
     input:
@@ -29,15 +29,13 @@ process FEATURES_CONVERT_TO_JSON {
     output:
         tuple val(meta), path("${meta.id}.${analysis_logic_name}.features.json"), emit: features_json
         tuple val("${task.process}"), val('features_convert_to_genomio_json'), eval("features_convert_to_genomio_json --version"), emit: versions_convert_to_genomio_json, topic: versions
-    
+
     script:
         def prefix = ''
         def repeatmasker_consensus_lib_arg = ''
         if (analysis_logic_name) {
             if (analysis_logic_name == 'trf') {
                 prefix = 'trf'
-            } else if (analysis_logic_name == 'repeatdetector') {
-                prefix = 'red'
             } else if (analysis_logic_name == 'repeatmask_repbase') {
                 prefix = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
