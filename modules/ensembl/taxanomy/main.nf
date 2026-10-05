@@ -19,7 +19,7 @@ process TAXONOMY_CLASSIFICATION {
     label 'process_small'
 
     conda "${moduleDir}/environment.yml"
-    container "ensemblorg/datasets-cli:latest"
+    container "ensemblorg/datasets-cli:v18.36.0"
 
     input:
         record(
@@ -40,8 +40,8 @@ process TAXONOMY_CLASSIFICATION {
     script:
         """
         echo "Calling datasets-cli for ${species}"
-        datasets summary taxonomy taxon"${species}" --report names --parents --rank "domain,kingdom,phylum,class,order,family,genus,species,subspecies" > report.json
-        if [[ $(jq -r '.total_count' report.json) -eq "0" ]]; then
+        datasets summary taxonomy taxon "${species}" --report names --parents --rank "domain,kingdom,phylum,class,order,family,genus,species,subspecies" > report.json
+        if [[ \$(jq -r '.total_count' report.json) -eq "0" ]]; then
             echo "No classification found for ${species}" >&2
             exit 1
         fi
@@ -51,9 +51,6 @@ process TAXONOMY_CLASSIFICATION {
 
     stub:
         """
-        cat <<'EOF' > classification.json
-        ["cellular organisms", "Eukaryota", "Viridiplantae"]
-        EOF
+        printf '%s\n' '["cellular organisms", "Eukaryota", "Viridiplantae"]' > classification.json
         """
 }
-
