@@ -1,0 +1,21 @@
+{
+    "should produce a cmscan tblout file": {
+        "content": [
+            {
+                "0": [
+                    {
+                        "meta": {
+                            "id": "test"
+                        },
+                        "tblout": "test.1.tblout:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    }
+                ]
+            }
+        ],
+        "timestamp": "2026-09-25T18:22:53.008883237",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
+        }
+    }
+}
