@@ -3,82 +3,38 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
+                    {
+                        "meta": {
                             "id": "test"
                         },
-                        "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
-                    ]
-                ],
-                "1": [
-                    [
-                        "FASTA_RECOMBINE",
-                        "fasta_recombine",
-                        "1.7.0"
-                    ]
-                ],
-                "recombined_fasta": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
-                    ]
-                ],
-                "versions_fasta_recombine": [
-                    [
-                        "FASTA_RECOMBINE",
-                        "fasta_recombine",
-                        "1.7.0"
-                    ]
+                        "recombined_fasta": "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-06-11T18:08:46.722339",
+        "timestamp": "2026-09-29T12:53:47.242818",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
         }
     },
     "stub outputs: header mode": {
         "content": [
             {
                 "0": [
-                    [
-                        {
+                    {
+                        "meta": {
                             "id": "test"
                         },
-                        "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
-                    ]
-                ],
-                "1": [
-                    [
-                        "FASTA_RECOMBINE",
-                        "fasta_recombine",
-                        "1.7.0"
-                    ]
-                ],
-                "recombined_fasta": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
-                    ]
-                ],
-                "versions_fasta_recombine": [
-                    [
-                        "FASTA_RECOMBINE",
-                        "fasta_recombine",
-                        "1.7.0"
-                    ]
+                        "recombined_fasta": "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-06-11T18:08:44.434921",
+        "timestamp": "2026-09-29T12:53:44.690151",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.3"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
         }
     }
 }

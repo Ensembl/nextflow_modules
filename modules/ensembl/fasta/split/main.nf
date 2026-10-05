@@ -13,6 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+nextflow.enable.types = true
+
 process FASTA_SPLIT {
     tag "${meta.id}"
     label 'process_medium'
@@ -21,12 +23,17 @@ process FASTA_SPLIT {
     container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
-        tuple val(meta), path(fasta), val(longest_seq_bp)
+        record(meta: Map, fasta: Path, longest_seq_bp: Integer)
 
     output:
-        tuple val(meta), path("splits/**/*.fa"), emit: fastas
-        tuple val(meta), path("splits/*.agp"), emit: agp, optional: true
-        tuple val("${task.process}"), val('fasta_split'), eval("fasta_split --version"), emit: versions_fasta_split, topic: versions
+        record(
+            meta: meta,
+            fastas: files("splits/**/*.fa"),
+            agp: file("splits/*.agp", optional: true)
+        )
+
+    topic:
+        tuple(task.process, 'fasta_split', eval("fasta_split --version 2>/dev/null || echo unknown")) >> 'versions'
 
     when:
         task.ext.when == null || task.ext.when

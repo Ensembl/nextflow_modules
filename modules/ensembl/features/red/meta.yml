@@ -30,7 +30,7 @@ input:
         ontologies:
           - edam: "http://edamontology.org/format_1929" # FASTA
 output:
-  rpt:
+  bed:
     - - meta:
           type: map
           description: |
@@ -40,16 +40,6 @@ output:
           type: file
           description: Red repeat report file.
           pattern: "*.bed"
-  versions_red:
-    - - ${task.process}:
-          type: string
-          description: The process the versions were collected from
-      - red:
-          type: string
-          description: The tool name
-      - conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0]["version"])' || echo 2.0:
-          type: eval
-          description: The expression to obtain the Red version
 topics:
   versions:
     - - ${task.process}:

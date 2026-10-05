@@ -24,6 +24,7 @@ nextflow_process {
     tag "modules_ensembl"
     tag "features"
     tag "features/combine_json"
+    topics "versions"
 
     test("Stub outputs") {
 
@@ -38,19 +39,23 @@ nextflow_process {
                 def noFile = file("NO_FILE")
                 noFile.text = ""
 
-                input[0] = [
-                    [ id:'test' ],
-                    'features',
-                    manifest,
-                    noFile
-                ]
+                input[0] = record(
+                    meta: [ id:'test' ],
+                    analysis: 'features',
+                    json_manifest: manifest,
+                    agp: noFile
+                )
                 """
             }
         }
 
         then {
             assert process.trace.tasks().size() == 1
-            assert process.out.combined_json.size() == 1
+            assert process.out[0].size() == 1
+            assert file(process.out[0][0].combined_json).name == 'test.features.json'
+            assert topics.versions.size() == 1
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FEATURES_COMBINE_JSON'
             assert process.success
             assert snapshot(process.out).match()
         }

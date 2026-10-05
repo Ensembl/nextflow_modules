@@ -24,6 +24,7 @@ nextflow_process {
     tag "modules_ensembl"
     tag "fasta"
     tag "fasta/recombine"
+    topics "versions"
 
     test("stub outputs: header mode") {
 
@@ -38,18 +39,18 @@ nextflow_process {
                 def no_file = file("NO_FILE")
                 no_file.text = ""
 
-                input[0] = [
-                    [ id: 'test' ],
-                    manifest,
-                    no_file
-                ]
+                input[0] = record(meta: [ id: 'test' ], fasta_manifest: manifest, agp: no_file)
                 """
             }
         }
 
         then {
             assert process.trace.tasks().size() == 1
-            assert process.out.recombined_fasta.size() == 1
+            assert process.out[0].size() == 1
+            assert file(process.out[0][0].recombined_fasta).name == 'test.fa'
+            assert topics.versions.size() == 1
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FASTA_RECOMBINE'
             assert process.success
             assert snapshot(process.out).match()
         }
@@ -67,18 +68,18 @@ nextflow_process {
 
                 def agp = file("test.agp")
                 agp.text = ""
-                input[0] = [
-                    [ id: 'test' ],
-                    manifest,
-                    agp
-                ]
+                input[0] = record(meta: [ id: 'test' ], fasta_manifest: manifest, agp: agp)
                 """
             }
         }
 
         then {
             assert process.trace.tasks().size() == 1
-            assert process.out.recombined_fasta.size() == 1
+            assert process.out[0].size() == 1
+            assert file(process.out[0][0].recombined_fasta).name == 'test.fa'
+            assert topics.versions.size() == 1
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FASTA_RECOMBINE'
             assert process.success
             assert snapshot(process.out).match()
         }

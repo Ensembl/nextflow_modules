@@ -13,22 +13,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+nextflow.enable.types = true
+
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
     label 'process_small'
     container 'docker.io/ensemblorg/ensembl-genomio:v1.7.0'
 
     input:
-        tuple val(meta), path(features_out), path(repeatmasker_consensus_lib)
-        val(analysis_logic_name)
-        val(program_version)
-        val(program_parameters)
-        val(annotation_provider)
-        val(is_primary_source)
+        record(
+            meta: Map,
+            features_out: Path,
+            repeatmasker_consensus_lib: Path?,
+            analysis_logic_name: String,
+            program_version: String,
+            program_parameters: String?,
+            annotation_provider: String?,
+            is_primary_source: Boolean
+        )
 
     output:
-        tuple val(meta), path("${meta.id}.${analysis_logic_name}.features.json"), emit: features_json
-        tuple val("${task.process}"), val('features_convert_to_genomio_json'), eval("features_convert_to_genomio_json --version"), emit: versions_convert_to_genomio_json, topic: versions
+        record(meta: meta, features_json: file("${meta.id}.${analysis_logic_name}.features.json"))
+
+    topic:
+        tuple(task.process, 'features_convert_to_genomio_json', eval("features_convert_to_genomio_json --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
         def prefix = ''

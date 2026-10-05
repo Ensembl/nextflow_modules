@@ -55,16 +55,6 @@ output:
           pattern: "splits/*.agp"
           ontologies:
             - edam: "http://edamontology.org/format_3693" # AGP
-  versions_fasta_split:
-    - - ${task.process}:
-          type: string
-          description: The name of the process.
-      - fasta_split:
-          type: string
-          description: The name of the tool.
-      - "fasta_split --version":
-          type: eval
-          description: The expression to obtain the version of the tool
 topics:
   versions:
     - - ${task.process}:
@@ -73,7 +63,7 @@ topics:
       - fasta_split:
           type: string
           description: The name of the tool.
-      - "fasta_split --version":
+      - "fasta_split --version 2>/dev/null || echo unknown":
           type: eval
           description: The expression to obtain the version of the tool
 authors:
