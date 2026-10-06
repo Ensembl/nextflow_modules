@@ -23,7 +23,7 @@ process FASTA_SPLIT {
     container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
 
     input:
-        record(meta: Map, fasta: Path, longest_seq_bp: Integer)
+        record(meta: Map, fasta: Path, longest_seq_bp: Long)
 
     output:
         record(
