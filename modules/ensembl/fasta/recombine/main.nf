@@ -32,8 +32,6 @@ process FASTA_RECOMBINE {
     topic:
         tuple(task.process, 'fasta_recombine', eval("fasta_recombine --version 2>/dev/null || echo unknown")) >> 'versions'
 
-    when:
-        task.ext.when == null || task.ext.when
 
     script:
         def args = []

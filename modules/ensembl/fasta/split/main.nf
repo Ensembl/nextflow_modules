@@ -35,8 +35,6 @@ process FASTA_SPLIT {
     topic:
         tuple(task.process, 'fasta_split', eval("fasta_split --version 2>/dev/null || echo unknown")) >> 'versions'
 
-    when:
-        task.ext.when == null || task.ext.when
 
     script:
         def args = []
