@@ -39,7 +39,7 @@ nextflow_process {
 
             process {
                 """
-                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000L)
                 """
             }
         }
@@ -85,7 +85,7 @@ nextflow_process {
 
             process {
                 """
-                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000L)
                 """
             }
         }
@@ -129,7 +129,7 @@ nextflow_process {
 
             process {
                 """
-                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000L)
                 """
             }
         }
@@ -169,7 +169,7 @@ nextflow_process {
 
             process {
                 """
-                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000)
+                input[0] = record(meta: [ id:'test' ], fasta: file('dummy.fa'), longest_seq_bp: 1000L)
                 """
             }
         }
