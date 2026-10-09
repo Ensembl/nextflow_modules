@@ -34,7 +34,7 @@ process CMSCAN {
         record(
             meta:   meta,
             tblout: file("*.tblout")
-        )
+        ), emit: tblout
 
     topic:
         tuple(

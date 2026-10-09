@@ -26,7 +26,7 @@ process FEATURES_RED {
         record(meta: Map, fasta: Path)
 
     output:
-        record(meta: meta, bed: file("rpt/*.bed"))
+        record(meta: meta, bed: file("rpt/*.bed")), emit: bed
 
     topic:
         tuple(task.process, 'red', eval("conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0][\"version\"])' || echo 2.0")) >> 'versions'

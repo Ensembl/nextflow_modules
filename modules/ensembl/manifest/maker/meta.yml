@@ -25,23 +25,19 @@ input:
       type: file
       description: Channel element file_name.
 output:
-  output:
-  - - meta:
-        type: map
-        description: 'Groovy Map containing meta information
-
-          e.g. `[ accession:''accession1'' ]`
-
-          '
-    - '*.{gff3,fasta,json}':
-        type: file
-        description: Channel element *.{gff3,fasta,json}.
-        pattern: '*.{gff3,fasta,json}'
+  manifest:
+    - - meta:
+          type: map
+          description: Groovy Map containing manifest metadata.
+      - '*.{gff3,fasta,json}':
+          type: file
+          description: Generated manifest and input files.
+          pattern: '*.{gff3,fasta,json}'
   versions:
-  - versions.yml:
-      type: file
-      description: File containing information on module software version
-      pattern: versions.yml
+    - versions.yml:
+        type: file
+        description: File containing information on module software version.
+        pattern: 'versions.yml'
 authors:
 - ensembl-dev@ebi.ac.uk
 maintainers:

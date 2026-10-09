@@ -25,7 +25,7 @@ process MANIFEST_MAKER {
         tuple val(meta), path(file_name)
 
     output:
-        tuple val(meta), path("*.{gff3,fasta,json}", includeInputs: true)
+        tuple val(meta), path("*.{gff3,fasta,json}", includeInputs: true), emit: manifest
         path "versions.yml", emit: versions
     
     when:

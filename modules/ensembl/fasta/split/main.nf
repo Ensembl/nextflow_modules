@@ -30,7 +30,7 @@ process FASTA_SPLIT {
             meta: meta,
             fastas: files("splits/**/*.fa"),
             agp: file("splits/*.agp", optional: true)
-        )
+        ), emit: split
 
     topic:
         tuple(task.process, 'fasta_split', eval("fasta_split --version 2>/dev/null || echo unknown")) >> 'versions'

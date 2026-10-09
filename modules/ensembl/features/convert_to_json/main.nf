@@ -33,7 +33,7 @@ process FEATURES_CONVERT_TO_JSON {
         )
 
     output:
-        record(meta: meta, features_json: file("${meta.id}.${analysis_logic_name}.features.json"))
+        record(meta: meta, features_json: file("${meta.id}.${analysis_logic_name}.features.json")), emit: features_json
 
     topic:
         tuple(task.process, 'features_convert_to_genomio_json', eval("features_convert_to_genomio_json --version 2>/dev/null || echo unknown")) >> 'versions'

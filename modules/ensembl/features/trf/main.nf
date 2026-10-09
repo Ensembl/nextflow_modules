@@ -26,7 +26,7 @@ process FEATURES_TRF {
         record(meta: Map, fasta: Path)
 
     output:
-        record(meta: meta, dat: file("*.dat"))
+        record(meta: meta, dat: file("*.dat")), emit: dat
 
     topic:
         tuple(task.process, 'trf', eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0")) >> 'versions'

@@ -21,6 +21,8 @@ nextflow_process {
 
     tag "annotation"
     tag "annotation/dumpanno"
+    tag "modules_ensembl"
+    tag "modules"
 
        
     test("Dump functional annotation ") {
