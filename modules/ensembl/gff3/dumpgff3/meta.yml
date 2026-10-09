@@ -1,39 +1,60 @@
----
-name: "gff3_dumpgff3"
+name: gff3_dumpgff3
 description: write your description here
-
 keywords:
-  - container
-  - database
-  - docker
-  - ensembl-legacy-scripts
-  - gff3
-
+- container
+- database
+- docker
+- ensembl-legacy-scripts
+- gff3
 tools:
-  - "gff3":
-      description: "Modules for GFF3 validation, data deposition and retrieval from/into GFF3 file format"
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
-
+- gff3:
+    description: Modules for GFF3 validation, data deposition and retrieval from/into
+      GFF3 file format
+    homepage: https://github.com/Ensembl/nextflow_modules
+    licence:
+    - Apache License version 2.0
 input:
-  - db:
-      type: map
-      description: "A meta map including 'core database name'."
-        e.g. [[ db:'genus_species_gca00000000v1_core_110_1', species:'Genus species', ...]]
-      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
+- db:
+    type: map
+    description: 'A meta map including the core database name.
 
+      Example: [[ db:''genus_species_gca00000000v1_core_110_1'', species:''Genus species'',
+      ...]]
+
+      '
+    pattern: '[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*'
 output:
-  - gff3:
-      type: map
-      description: "GFF3 file containing gene model(s)."
-        e.g [ db:'database name', file("*.gff3") ]
-      pattern: "*.gff3"
-  - versions:
+  gff3:
+  - - db:
+        type: map
+        description: 'GFF3 file containing gene model(s).
+
+          Example: [ db:''database name'', file("*.gff3") ]
+
+          '
+        pattern: '*.gff3'
+    - gff3:
+        type: string
+        description: 'GFF3 file containing gene model(s).
+
+          Example: [ db:''database name'', file("*.gff3") ]
+
+          '
+        pattern: '*.gff3'
+    - '*.gff3':
+        type: file
+        description: 'GFF3 file containing gene model(s).
+
+          Example: [ db:''database name'', file("*.gff3") ]
+
+          '
+        pattern: '*.gff3'
+  versions:
+  - versions.yml:
       type: file
       description: File containing information on module software version
-      pattern: "versions.yml"
-
+      pattern: versions.yml
 authors:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk
 maintainers:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk

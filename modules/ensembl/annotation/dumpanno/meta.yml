@@ -1,51 +1,41 @@
----
-name: "annotation_dumpanno"
-
-description: This module is used to dump the functional annotation of a genome from core databases.
-
+name: annotation_dumpanno
+description: This module is used to dump the functional annotation of a genome from
+  core databases.
 keywords:
-  - container
-  - core_database
-  - docker
-  - ensembl-legacy-scripts
-  - fasta
-  
+- container
+- core_database
+- docker
+- ensembl-legacy-scripts
+- fasta
 tools:
-  - "annotation":
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      description: "This module handles all annotation-related interactions with the core database, including annotation dumping and processing"
-      license: ['Apache License version 2.0']
-
+- annotation:
+    homepage: https://github.com/Ensembl/nextflow_modules
+    description: This module handles all annotation-related interactions with the
+      core database, including annotation dumping and processing
+    licence:
+    - Apache License version 2.0
 input:
-  # Only when we have meta
-  - meta:
-        type: map
-        description: |
-          A meta map including 'core database information'.
-          e.g. [ id:'db_name', server_details:[ host:'db' ] ]
-        pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
-
+- db:
+    type: map
+    description: Channel element db.
 output:
-  - meta:
-      type: map
-      description: |
-        Database containing meta information.
-        e.g. [ id:'db_name', server_details:[ host:'db' ] ]
-      pattern: "[a-z]+_[a-z]_gc[af][0-9]v[0-9]+_core_*"
-
-  - functional_annotation.json:
-      type: map
-      description: |
-        Functional annotation file containing biotypes.
-        e.g [ db:'database name', file("*.json") ]
-      pattern: ".json"
-
-  - versions:
+  functional_annotation:
+  - - db:
+        type: map
+        description: Channel element db.
+    - functional_annotation:
+        type: string
+        description: Channel element functional_annotation.
+    - '*.json':
+        type: file
+        description: Channel element *.json.
+        pattern: '*.json'
+  versions:
+  - versions.yml:
       type: file
       description: File containing software versions.
-      pattern: "versions.yml"
-
+      pattern: versions.yml
 authors:
-  - "@ensembl-dev"
+- '@ensembl-dev'
 maintainers:
-  - "@ensembl-dev"
+- '@ensembl-dev'

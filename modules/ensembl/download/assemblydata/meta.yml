@@ -1,46 +1,135 @@
----
-name: "download_assemblydata"
-description: Generate a list of one or more databases plus some associated meta table information.
-
+name: download_assemblydata
+description: Generate a list of one or more databases plus some associated meta table
+  information.
 keywords:
-  - ensembl-genomio
-  - container
-  - docker
-  - download
-  - genome
-  - gzip
-  - INSDC
-
+- ensembl-genomio
+- container
+- docker
+- download
+- genome
+- gzip
+- INSDC
 tools:
-  - download:
-      description: "Modules which function to download information or various data from externally hosted resources."
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
-
+- download:
+    description: Modules which function to download information or various data from
+      externally hosted resources.
+    homepage: https://github.com/Ensembl/nextflow_modules
+    licence:
+    - Apache License version 2.0
 input:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing A single INSDC GCA or NCBI 'amended' GCF genome assembly accession meta information.
-        e.g. `[ accession:'GCA_000000000.1' ]`
+- meta:
+    type: map
+    description: 'Groovy Map containing A single INSDC GCA or NCBI ''amended'' GCF
+      genome assembly accession meta information.
 
+      e.g. `[ accession:''GCA_000000000.1'' ]`
+
+      '
 output:
-  - min_set:
-      type: map
-      description: "Groovy Map including various genome assembly data files (.txt, .fna, .gbff) into compressed Gzip archives."
-        e.g. [ accession:'GCA_000000000.1', file("*_assembly_report.txt"), file("*_genomic.fna.gz"), file("*_genomic.gbff.gz") ]
-      pattern: (*.txt, *.fna.gz, *.gbff.gz)
-  - opt_set:
-      type: map
-      description: "Groovy Map including various genome assembly data files (.txt, .faa, .gff) into compressed Gzip archives."
-        e.g. [ accession:'GCA_000000000.1', file("*_assembly_report.txt"), file("*_genomic.gff.gz"), file("*_genomic.gbff.gz") ]
-      pattern: (*.txt, *.fna.gz, *.gbff.gz)
-  - versions:
+  min_set:
+  - - meta:
+        type: map
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .fna,
+
+          .gbff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.fna.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,fna.gz,gbff.gz}'
+    - '*_assembly_report.txt':
+        type: file
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .fna,
+
+          .gbff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.fna.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,fna.gz,gbff.gz}'
+    - '*_genomic.fna.gz':
+        type: file
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .fna,
+
+          .gbff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.fna.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,fna.gz,gbff.gz}'
+    - '*_genomic.gbff.gz':
+        type: file
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .fna,
+
+          .gbff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.fna.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,fna.gz,gbff.gz}'
+  opt_set:
+  - - meta:
+        type: map
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .faa,
+
+          .gff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.gff.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,gff.gz,gbff.gz}'
+    - '*_genomic.gff.gz':
+        type: file
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .faa,
+
+          .gff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.gff.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,gff.gz,gbff.gz}'
+    - '*_protein.faa.gz':
+        type: file
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .faa,
+
+          .gff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.gff.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,gff.gz,gbff.gz}'
+    - '*_genomic.gbff.gz':
+        type: file
+        description: 'Groovy Map including various genome assembly data files (.txt,
+          .faa,
+
+          .gff) into compressed Gzip archives.
+
+          Example: [ accession:''GCA_000000000.1'', file("*_assembly_report.txt"),
+          file("*_genomic.gff.gz"), file("*_genomic.gbff.gz") ]
+
+          '
+        pattern: '*.{txt,gff.gz,gbff.gz}'
+  versions:
+  - versions.yml:
       type: file
       description: File containing information on module software version
-      pattern: "versions.yml"
-
+      pattern: versions.yml
 authors:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk
 maintainers:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk

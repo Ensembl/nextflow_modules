@@ -1,50 +1,48 @@
----
-name: "manifest_maker"
-description: Generate a manifest and validate its JSON schema using provided input files and metadata.
+name: manifest_maker
+description: Generate a manifest and validate its JSON schema using provided input
+  files and metadata.
 keywords:
-  - ensembl
-  - genomics
-  - genomio
-  - integrity
-  - validation
+- ensembl
+- genomics
+- genomio
+- integrity
+- validation
 tools:
-  - "manifest_maker":
-      description: "Nextflow modules for genomic data file manifest comparison/checking."
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
-      
+- manifest_maker:
+    description: Nextflow modules for genomic data file manifest comparison/checking.
+    homepage: https://github.com/Ensembl/nextflow_modules
+    licence:
+    - Apache License version 2.0
 input:
-  - meta:
+- - meta:
       type: map
-      description: |
-        Groovy Map containing meta information
-        e.g. `[ accession:'accession01' ]`
-  - manifest_files:
-      type: file
-      description: Set of genomic data files
-      pattern: "*.{gff3,fasta,json}"
+      description: 'Groovy Map containing meta information
 
+        e.g. `[ accession:''accession01'' ]`
+
+        '
+  - file_name:
+      type: file
+      description: Channel element file_name.
 output:
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing meta information
-        e.g. `[ accession:'accession1' ]`
+  output:
+  - - meta:
+        type: map
+        description: 'Groovy Map containing meta information
 
-  - all_files:
-      type: file
-      description: All files used as entry
-      pattern: "*.{gff3,fasta,json}"
-  - error_log:
-      type: file
-      description: Integrity error log if it failed
-      pattern: "integrity.out"
-  - versions:
+          e.g. `[ accession:''accession1'' ]`
+
+          '
+    - '*.{gff3,fasta,json}':
+        type: file
+        description: Channel element *.{gff3,fasta,json}.
+        pattern: '*.{gff3,fasta,json}'
+  versions:
+  - versions.yml:
       type: file
       description: File containing information on module software version
-      pattern: "versions.yml"
-
+      pattern: versions.yml
 authors:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk
 maintainers:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk

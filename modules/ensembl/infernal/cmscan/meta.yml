@@ -12,6 +12,9 @@ tools:
       homepage: http://eddylab.org/infernal/
       documentation: http://eddylab.org/infernal/
       licence: ["BSD-3-Clause"]
+
+authors:
+  - "@ensembl-dev"
 input:
   - - meta:
         type: map
