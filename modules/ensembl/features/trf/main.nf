@@ -31,9 +31,6 @@ process FEATURES_TRF {
     topic:
         tuple(task.process, 'trf', eval("trf -v 2>&1 | grep -oE '[0-9]+(\\.[0-9]+)+(rc[0-9]+)?(-[0-9]+)?' || echo 4.10.0")) >> 'versions'
 
-    when:
-        task.ext.when == null || task.ext.when
-
     script:
         def args = task.ext.args ?: '2 7 7 80 10 100 500 -d'
         """
