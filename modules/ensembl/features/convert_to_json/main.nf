@@ -44,6 +44,8 @@ process FEATURES_CONVERT_TO_JSON {
         if (analysis_logic_name) {
             if (analysis_logic_name == 'trf') {
                 prefix = 'trf'
+            } else if (analysis_logic_name == 'repeatdetector') {
+                prefix = 'red'
             } else if (analysis_logic_name == 'repeatmask_repbase') {
                 prefix = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
