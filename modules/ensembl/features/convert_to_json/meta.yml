@@ -40,6 +40,7 @@ input:
         - repeatmask_customlib
         - repeatmask_repbase
         - trf
+        - repeatdetector 
   - analysis_display_label:
       type: string
       description: Optional display label for the analysis.
