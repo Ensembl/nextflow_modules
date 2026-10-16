@@ -36,8 +36,12 @@ output:
           type: file
           description: Tabular cmscan hits for the input chunk.
           pattern: "*.tblout"
+
+topics:
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions.
-        pattern: "versions.yml"
+    - - cmscan:
+          type: string
+          description: The name of the tool.
+      - ? cmscan --version 2>/dev/null || echo unknown
+        : type: eval
+          description: The expression to obtain the version of the tool.
