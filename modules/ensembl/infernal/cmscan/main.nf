@@ -31,18 +31,13 @@ process CMSCAN {
         )
 
     output:
-        record(
+        tblout = record(
             meta:   meta,
             tblout: file("*.tblout")
-        ), emit: tblout
+        )
 
     topic:
-        tuple(
-            task.process,
-            'infernal',
-            eval("cmscan -h 2>&1 | sed -nE 's/^# INFERNAL ([^ ]+).*/\\1/p'")
-        ) >> 'versions'
-
+        tuple(task.process, 'cmscan', eval("cmscan --version 2>/dev/null || echo unknown")) >> 'versions'
     script:
         def prefix = task.ext.prefix
             ? "${task.ext.prefix}.${meta.id}.${task.index}"
