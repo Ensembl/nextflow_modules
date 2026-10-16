@@ -37,7 +37,8 @@ process CMSCAN {
         )
 
     topic:
-        tuple(task.process, 'cmscan', eval("cmscan --version 2>/dev/null || echo unknown")) >> 'versions'
+        tuple('cmscan', eval("cmscan --version 2>/dev/null || echo unknown")) >> 'versions'
+
     script:
         def prefix = task.ext.prefix
             ? "${task.ext.prefix}.${meta.id}.${task.index}"
