@@ -31,14 +31,11 @@ process FEATURES_RED {
     topic:
         tuple(task.process, 'red', eval("conda list red --json | python -c 'import sys,json; print(json.load(sys.stdin)[0][\"version\"])' || echo 2.0")) >> 'versions'
 
-    when:
-        task.ext.when == null || task.ext.when
-
     script:
         def args = task.ext.args ?: ''
 
         def reserved = ['-gnm', '-rpt', '-msk', '-frm', '-cor']
-        def supplied = args.tokenize()
+        def supplied = args.tokenize(' ')
 
         supplied.each { opt ->
             if (opt in reserved) {

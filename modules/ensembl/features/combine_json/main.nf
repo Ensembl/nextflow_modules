@@ -36,8 +36,6 @@ process FEATURES_COMBINE_JSON {
     topic:
         tuple(task.process, 'features_combine_json', eval("features_combine_json --version 2>/dev/null || echo unknown")) >> 'versions'
 
-    when:
-        task.ext.when == null || task.ext.when
 
     script:
         def args = []
