@@ -9,13 +9,21 @@
                         },
                         "recombined_fasta": "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
                     }
+                ],
+                "recombined_fasta": [
+                    {
+                        "meta": {
+                            "id": "test"
+                        },
+                        "recombined_fasta": "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:53:47.242818",
+        "timestamp": "2026-10-19T12:18:14.056577866",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     },
     "stub outputs: header mode": {
@@ -28,13 +36,21 @@
                         },
                         "recombined_fasta": "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
                     }
+                ],
+                "recombined_fasta": [
+                    {
+                        "meta": {
+                            "id": "test"
+                        },
+                        "recombined_fasta": "test.fa:md5,c40116e7d725da4662e6bdd654f70075"
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:53:44.690151",
+        "timestamp": "2026-10-19T12:18:11.23778328",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     }
 }
