@@ -62,7 +62,7 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert process.out.size() == 1 },
+                { assert process.out.size() == 2 },
                 { assert process.out[0][0].meta.id == 'test' },
                 { assert path(process.out[0][0].tblout instanceof List ? process.out[0][0].tblout[0] : process.out[0][0].tblout).fileName.toString().endsWith('.tblout') },
                 { assert snapshot(process.out).match() }
