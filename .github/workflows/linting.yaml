@@ -1,5 +1,5 @@
 name: Run Linting
-on: workflow_dispatch
+on: {}
 
 env:
   NXF_SINGULARITY_CACHEDIR: ${{ github.workspace }}/.singularity
