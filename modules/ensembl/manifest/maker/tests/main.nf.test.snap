@@ -14,15 +14,24 @@
                 "1": [
                     "versions.yml:md5,b2d9940151b29e7881ddbf8e3df6db49"
                 ],
+                "manifest": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "manifest.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
                 "versions": [
                     "versions.yml:md5,b2d9940151b29e7881ddbf8e3df6db49"
                 ]
             }
         ],
-        "timestamp": "2026-02-24T21:05:18.307649581",
+        "timestamp": "2026-10-19T12:28:43.967112538",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "24.10.3"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         }
     },
     "Maker check stub": {
@@ -42,15 +51,26 @@
                 "1": [
                     "versions.yml:md5,b2d9940151b29e7881ddbf8e3df6db49"
                 ],
+                "manifest": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "genes.gff3:md5,5e2fd50352e7d2ebec2bdccaa352e541",
+                            "manifest.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
                 "versions": [
                     "versions.yml:md5,b2d9940151b29e7881ddbf8e3df6db49"
                 ]
             }
         ],
-        "timestamp": "2026-02-24T21:05:04.068850359",
+        "timestamp": "2026-10-19T12:28:40.977854791",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "24.10.3"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         }
     }
 }
