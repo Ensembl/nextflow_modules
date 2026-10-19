@@ -39,7 +39,7 @@ input:
       enum:
         - repeatmask_customlib
         - repeatmask_repbase
-	-trnascan
+        - trnascan
         - trf
   - analysis_display_label:
       type: string
