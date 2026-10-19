@@ -27,7 +27,7 @@ process FASTA_STATS {
         record(meta: Map, fasta: Path)
 
     output:
-        record(meta: meta, stats: file("${fasta.simpleName}.stats.json"))
+        stats = record(meta: meta, stats: file("${fasta.simpleName}.stats.json"))
 
     topic:
         tuple(task.process, 'fasta_stats', eval("fasta_stats --version 2>/dev/null || echo unknown")) >> 'versions'

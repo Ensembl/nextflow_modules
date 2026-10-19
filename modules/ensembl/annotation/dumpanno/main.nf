@@ -24,7 +24,7 @@ process ANNOTATION_DUMPANNO {
 
     output:
         tuple val(db), val("functional_annotation"), path("*.json"), emit: functional_annotation
-        path "versions.yml", emit: versions
+        path "versions.yml", emit: versions, topic: versions
 
     when:
         task.ext.when == null || task.ext.when

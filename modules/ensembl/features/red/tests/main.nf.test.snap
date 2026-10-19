@@ -9,13 +9,21 @@
                             "id": "test"
                         }
                     }
+                ],
+                "bed": [
+                    {
+                        "bed": "test.bed:md5,aa604b48150afc506072a1f9656b6bb7",
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:54:06.783701",
+        "timestamp": "2026-10-19T12:24:00.376023273",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     }
 }

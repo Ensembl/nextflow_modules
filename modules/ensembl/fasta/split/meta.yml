@@ -31,25 +31,19 @@ input:
         description: Length in base pairs of the longest sequence in the input
           FASTA.
 output:
-  fastas:
+  split:
     - - meta:
           type: map
           description: |
             Groovy Map containing meta information
             e.g. `[ id:'accession1' ]`
-      - splits/**/*.fa:
+      - fastas:
           type: file
           description: Split FASTA files.
           pattern: "splits/**/*.fa"
           ontologies:
             - edam: "http://edamontology.org/format_1929" # FASTA
-  agp:
-    - - meta:
-          type: map
-          description: |
-            Groovy Map containing meta information
-            e.g. `[ id:'accession1' ]`
-      - splits/*.agp:
+      - agp:
           type: file
           description: Optional AGP file describing split sequence chunks.
           pattern: "splits/*.agp"

@@ -9,13 +9,21 @@
                             "id": "test"
                         }
                     }
+                ],
+                "combined_json": [
+                    {
+                        "combined_json": "test.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:53:58.29327",
+        "timestamp": "2026-10-19T12:23:49.238647631",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     }
 }

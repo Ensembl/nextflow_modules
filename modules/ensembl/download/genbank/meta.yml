@@ -1,39 +1,39 @@
----
-name: "download_genbank"
+name: download_genbank
 description: Download a single sequence from NCBI GenBank.
-
 keywords:
-  - core_database
-  - container
-  - docker
-  - ensembl-genomio
-  - genbank
-  - genomics
-
+- core_database
+- container
+- docker
+- ensembl-genomio
+- genbank
+- genomics
 tools:
-  - download:
-      description: "Modules which function to download information or various data from externally hosted resources."
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
-
+- download:
+    description: Modules which function to download information or various data from
+      externally hosted resources.
+    homepage: https://github.com/Ensembl/nextflow_modules
+    licence:
+    - Apache License version 2.0
 input:
-  - accession:
-      type: map
-      description: Meta map including sequence accession. Sequence record associated with 
-        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
-        e.g. [[ accession:'NC_12341']]
-
+- meta:
+    type: map
+    description: Channel element meta.
 output:
-  - gb_sequence:
-      type: file
-      description: A sequence record outfile in genbank format.
-      pattern: "output.gb"
-  - versions:
+  gb_sequence:
+  - - meta:
+        type: map
+        description: A sequence record outfile in genbank format.
+        pattern: output.gb
+    - output.gb:
+        type: file
+        description: A sequence record outfile in genbank format.
+        pattern: output.gb
+  versions:
+  - versions.yml:
       type: file
       description: File containing information on module software version
-      pattern: "versions.yml"
-
+      pattern: versions.yml
 authors:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk
 maintainers:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk

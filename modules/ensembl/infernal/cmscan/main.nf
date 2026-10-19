@@ -19,9 +19,7 @@ process CMSCAN {
     label 'process_high'
 
     conda "bioconda::infernal=1.1.5"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/infernal:1.1.5--pl5321h7b50bb2_4' :
-        'quay.io/biocontainers/infernal:1.1.5--pl5321h7b50bb2_4' }"
+    container "quay.io/biocontainers/infernal:1.1.5--pl5321h7b50bb2_4"
 
     input:
         record(
@@ -31,17 +29,13 @@ process CMSCAN {
         )
 
     output:
-        record(
+        tblout = record(
             meta:   meta,
             tblout: file("*.tblout")
         )
 
     topic:
-        tuple(
-            task.process,
-            'infernal',
-            eval("cmscan -h 2>&1 | sed -nE 's/^# INFERNAL ([^ ]+).*/\\1/p'")
-        ) >> 'versions'
+        tuple('cmscan', eval("cmscan --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
         def prefix = task.ext.prefix

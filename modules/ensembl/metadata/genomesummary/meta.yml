@@ -1,56 +1,57 @@
----
-name: "metadata_genomesummary"
-description: Extract genome meta info from am NCBI datasets-cli 'genome summary' JSON.
-  A structured query JSON is also input and used to extract the key meta from the genome summary JSON.
-keywords:
-  - container
-  - docker
-  - datasets
-  - ensembl-genomio
-  - genome
-  - metadata
-tools:
-  - "metadata":
-      description: Modules which function to generate,fetch or otherwise work \
-        with metadata curation or preparation.
-      homepage: "https://github.com/Ensembl/nextflow_modules"
-      license: ['Apache License version 2.0']
+name: metadata_genomesummary
+description: 'Extract genome metadata from an NCBI datasets-cli ''genome summary''
+  JSON.
 
+  A structured query JSON is also input and used to extract key metadata.
+
+  '
+keywords:
+- container
+- docker
+- datasets
+- ensembl-genomio
+- genome
+- metadata
+tools:
+- metadata:
+    description: Modules which generate, fetch, or otherwise work with metadata curation
+      or preparation.
+    homepage: https://github.com/Ensembl/nextflow_modules
+    licence:
+    - Apache License version 2.0
 input:
-  - accession:
+- - meta:
       type: map
-      description: Meta map including sequence accession. Sequence record associated with 
-        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
-        e.g. [[ accession:'NC_12341']]
+      description: Channel element meta.
   - input_query:
       type: file
-      description: Input query to parse an NCBI genome summary JSON 
-      pattern: "*-query.json"
+      description: Input query to parse an NCBI genome summary JSON.
+      pattern: '*-query.json'
   - genome_summary_json:
       type: file
-      description: A genome summary JSON file downloaded via datasets-cli (NCBI) \
-        containing 1> genome summaries '{reports: {}}'
-      pattern: "*.json"
+      description: 'A genome summary JSON file downloaded via datasets-cli (NCBI),
 
+        containing one or more genome summaries.
+
+        '
+      pattern: '*.json'
 output:
-  - meta:
-      type: map
-      description: |
-        Meta map including sequence accession. Sequence record associated with 
-        NCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)
-        e.g. [[ accession:'NC_12341']]
-  - meta_json:
-    - "genome-meta.json":
-      type: file
-      description: Genome metadata queried from complete NCBI datasets genome summary JSON.
-      pattern: "*-meta.json"
-  - versions:
-    - "versions.yml":
+  meta_json:
+  - - meta:
+        type: map
+        description: "Meta map including sequence accession. Sequence record associated\
+          \ with \nNCBI accession (e.g. NC_0-9+, NM_0-9+, NT_0-9+, NP_0-9+)\ne.g.\
+          \ [[ accession:'NC_12341']]\n"
+    - genome.json:
         type: file
-        description: File containing software versions
-        pattern: "versions.yml"
-
+        description: Channel element genome.json.
+        pattern: genome.json
+  versions:
+  - versions.yml:
+      type: file
+      description: Channel element versions.yml.
+      pattern: versions.yml
 authors:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk
 maintainers:
-  - "ensembl-dev@ebi.ac.uk"
+- ensembl-dev@ebi.ac.uk

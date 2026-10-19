@@ -9,13 +9,21 @@
                         },
                         "stats": "input.stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
                     }
+                ],
+                "stats": [
+                    {
+                        "meta": {
+                            "id": "test"
+                        },
+                        "stats": "input.stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:53:55.741606",
+        "timestamp": "2026-10-19T12:20:59.659318033",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     }
 }

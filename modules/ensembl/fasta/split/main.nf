@@ -26,7 +26,7 @@ process FASTA_SPLIT {
         record(meta: Map, fasta: Path, longest_seq_bp: Long)
 
     output:
-        record(
+        split = record(
             meta: meta,
             fastas: files("splits/**/*.fa"),
             agp: file("splits/*.agp", optional: true)
@@ -34,7 +34,6 @@ process FASTA_SPLIT {
 
     topic:
         tuple(task.process, 'fasta_split', eval("fasta_split --version 2>/dev/null || echo unknown")) >> 'versions'
-
 
     script:
         def args = []

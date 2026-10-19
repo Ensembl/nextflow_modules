@@ -27,7 +27,7 @@ process FASTA_RECOMBINE {
         record(meta: Map, fasta_manifest: Path, agp: Path?)
 
     output:
-        record(meta: meta, recombined_fasta: file("${meta.id}.fa"))
+        recombined_fasta = record(meta: meta, recombined_fasta: file("${meta.id}.fa"))
 
     topic:
         tuple(task.process, 'fasta_recombine', eval("fasta_recombine --version 2>/dev/null || echo unknown")) >> 'versions'
