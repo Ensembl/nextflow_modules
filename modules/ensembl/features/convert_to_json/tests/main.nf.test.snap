@@ -9,13 +9,21 @@
                             "id": "test"
                         }
                     }
+                ],
+                "features_json": [
+                    {
+                        "features_json": "test.repeatmask_customlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:54:04.437296",
+        "timestamp": "2026-10-19T12:23:58.024921293",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     },
     "Stub wires RepeatMasker Repbase input mode": {
@@ -28,13 +36,21 @@
                             "id": "test"
                         }
                     }
+                ],
+                "features_json": [
+                    {
+                        "features_json": "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:54:02.363885",
+        "timestamp": "2026-10-19T12:23:55.069267917",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     },
     "Stub wires TRF input mode": {
@@ -47,13 +63,21 @@
                             "id": "test"
                         }
                     }
+                ],
+                "features_json": [
+                    {
+                        "features_json": "test.trf.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:54:00.329076",
+        "timestamp": "2026-10-19T12:23:52.218780934",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     }
 }

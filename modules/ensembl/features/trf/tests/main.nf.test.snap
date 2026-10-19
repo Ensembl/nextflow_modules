@@ -9,13 +9,21 @@
                             "id": "test"
                         }
                     }
+                ],
+                "dat": [
+                    {
+                        "dat": "dummy.fa.dat:md5,7afa5cc8da76212b28fe6a2c4db74917",
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
                 ]
             }
         ],
-        "timestamp": "2026-09-29T12:54:08.817888",
+        "timestamp": "2026-10-19T12:24:02.655480303",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "26.04.0"
         }
     }
 }
