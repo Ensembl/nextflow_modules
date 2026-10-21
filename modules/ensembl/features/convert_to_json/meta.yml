@@ -75,6 +75,10 @@ output:
           pattern: "*.features.json"
           ontologies:
             - edam: http://edamontology.org/format_3464
+      - ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt:
+          type: file
+          description: Optional file containing tool output that could not be converted to JSON.
+          pattern: "*.features.invalid_tool_output.txt"
 topics:
   versions:
     - - ${task.process}:

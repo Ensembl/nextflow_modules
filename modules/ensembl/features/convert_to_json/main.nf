@@ -33,7 +33,11 @@ process FEATURES_CONVERT_TO_JSON {
         )
 
     output:
-        features_json = record(meta: meta, features_json: file("${meta.id}.${analysis_logic_name}.features.json"))
+        features_json = record(
+            meta: meta,
+            features_json: file("${meta.id}.${analysis_logic_name}.features.json"),
+            invalid_tool_output: file("${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt", optional: true)
+        )
 
     topic:
         tuple(task.process, 'features_convert_to_genomio_json', eval("features_convert_to_genomio_json --version 2>/dev/null || echo unknown")) >> 'versions'
@@ -62,6 +66,7 @@ process FEATURES_CONVERT_TO_JSON {
         def program_parameters_arg = program_parameters != null ? "--program-parameters '${program_parameters}'" : ''
         def annotation_provider_arg = annotation_provider != null ? "--source-provider '${annotation_provider}'" : ''
         def primary_provider = is_primary_source ? '--is-primary' : ''
+        def args = task.ext.args ?: ''
 
         """
         features_convert_to_genomio_json ${prefix} \
@@ -71,13 +76,17 @@ process FEATURES_CONVERT_TO_JSON {
             --program-version '${program_version}' \
             ${program_parameters_arg} \
             ${annotation_provider_arg} \
-            ${primary_provider}
+            ${primary_provider} \
+            ${args}
         """
 
     stub:
         """
         cat > "${meta.id}.${analysis_logic_name}.features.json" <<'EOF'
         {}
+        EOF
+        cat > "${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt" <<'EOF'
+        stub invalid output
         EOF
         """
 }

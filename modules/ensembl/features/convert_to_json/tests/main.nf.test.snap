@@ -5,6 +5,7 @@
                 "0": [
                     {
                         "features_json": "test.repeatmask_customlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "invalid_tool_output": "test.repeatmask_customlib.features.invalid_tool_output.txt:md5,cb9615428aa629d7054415a274e111c3",
                         "meta": {
                             "id": "test"
                         }
@@ -13,6 +14,7 @@
                 "features_json": [
                     {
                         "features_json": "test.repeatmask_customlib.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "invalid_tool_output": "test.repeatmask_customlib.features.invalid_tool_output.txt:md5,cb9615428aa629d7054415a274e111c3",
                         "meta": {
                             "id": "test"
                         }
@@ -20,10 +22,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-10-19T12:23:58.024921293",
+        "timestamp": "2026-10-20T13:06:52.792639",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.3"
         }
     },
     "Stub wires RepeatMasker Repbase input mode": {
@@ -32,6 +34,7 @@
                 "0": [
                     {
                         "features_json": "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "invalid_tool_output": "test.repeatmasker_repbase.features.invalid_tool_output.txt:md5,cb9615428aa629d7054415a274e111c3",
                         "meta": {
                             "id": "test"
                         }
@@ -40,6 +43,7 @@
                 "features_json": [
                     {
                         "features_json": "test.repeatmasker_repbase.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "invalid_tool_output": "test.repeatmasker_repbase.features.invalid_tool_output.txt:md5,cb9615428aa629d7054415a274e111c3",
                         "meta": {
                             "id": "test"
                         }
@@ -47,10 +51,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-10-19T12:23:55.069267917",
+        "timestamp": "2026-10-20T13:06:50.649955",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.3"
         }
     },
     "Stub wires TRF input mode": {
@@ -59,6 +63,7 @@
                 "0": [
                     {
                         "features_json": "test.trf.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "invalid_tool_output": "test.trf.features.invalid_tool_output.txt:md5,cb9615428aa629d7054415a274e111c3",
                         "meta": {
                             "id": "test"
                         }
@@ -67,6 +72,7 @@
                 "features_json": [
                     {
                         "features_json": "test.trf.features.json:md5,8a80554c91d9fca8acb82f023de02f11",
+                        "invalid_tool_output": "test.trf.features.invalid_tool_output.txt:md5,cb9615428aa629d7054415a274e111c3",
                         "meta": {
                             "id": "test"
                         }
@@ -74,10 +80,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-10-19T12:23:52.218780934",
+        "timestamp": "2026-10-20T13:06:48.599105",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.3"
         }
     }
 }
