@@ -36,7 +36,7 @@ process FEATURES_CONVERT_TO_JSON {
         features_json = record(
             meta: meta,
             features_json: file("${meta.id}.${analysis_logic_name}.features.json"),
-            invalid_tool_output: file("${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt", optional: true)
+            invalid_tool_output: file("${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt")
         )
 
     topic:
@@ -69,6 +69,8 @@ process FEATURES_CONVERT_TO_JSON {
         def args = task.ext.args ?: ''
 
         """
+        touch ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt
+
         features_convert_to_genomio_json ${prefix} \
             --input ${features_out} \
             --output ${meta.id}.${analysis_logic_name}.features.json \
