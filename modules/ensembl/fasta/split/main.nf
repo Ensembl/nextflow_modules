@@ -74,6 +74,10 @@ process FASTA_SPLIT {
             args << "--delete-existing-files"
         }
 
+        if (params.preserve_header_descriptions) {
+            args << "--preserve-header-descriptions"
+        }
+
         """
         fasta_split \\
             --fasta-file ${fasta} \\
