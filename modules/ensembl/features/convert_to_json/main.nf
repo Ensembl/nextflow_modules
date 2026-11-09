@@ -46,6 +46,13 @@ process FEATURES_CONVERT_TO_JSON {
         def prefix = ''
         def repeatmasker_consensus_lib_arg = ''
         if (analysis_logic_name) {
+            def repeatmasker_analyses = ['repeatmask_repbase', 'repeatmask_customlib']
+            if (repeatmasker_analyses.contains(analysis_logic_name) &&
+                (repeatmasker_consensus_lib == null || repeatmasker_consensus_lib.name == 'NO_FILE')) {
+                throw new IllegalArgumentException(
+                    "RepeatMasker consensus library is required for analysis logic name '${analysis_logic_name}'"
+                )
+}
             if (analysis_logic_name == 'trf') {
                 prefix = 'trf'
             } else if (analysis_logic_name == 'repeatdetector') {
@@ -54,10 +61,6 @@ process FEATURES_CONVERT_TO_JSON {
                 prefix = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
                 prefix = 'repeatmasker custom'
-                if (repeatmasker_consensus_lib == null || repeatmasker_consensus_lib.name == "NO_FILE") {
-                    throw new IllegalArgumentException("RepeatMasker consensus library is required for analysis logic name '${analysis_logic_name}'")
-                }
-                repeatmasker_consensus_lib_arg = "--consensus-lib ${repeatmasker_consensus_lib}"
             } else if (analysis_logic_name == 'trnascan') {
                 prefix = 'trnascan'
             } else {
