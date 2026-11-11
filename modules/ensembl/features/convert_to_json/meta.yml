@@ -25,7 +25,7 @@ input:
         description: Feature output file to convert to JSON.
         pattern: "*"
         ontologies: []
-    - consensus_lib_fasta:
+    - repeatmasker_consensus_lib:
         type: file
         description:
           Repeat consensus library FASTA. Use NO_FILE when not
@@ -33,36 +33,48 @@ input:
         pattern: "{*.fa,*.fasta,*.fna,NO_FILE}"
         ontologies:
           - edam: http://edamontology.org/format_1929
-  - analysis_logic_name:
-      type: string
-      description: Analysis logic name to include in the feature JSON.
-      enum:
-        - repeatmask_customlib
-        - repeatmask_repbase
-        - trnascan
-        - trf
-        - repeatdetector 
-  - analysis_display_label:
-      type: string
-      description: Optional display label for the analysis.
-  - analysis_description:
-      type: string
-      description: Optional description for the analysis.
-  - program_name:
-      type: string
-      description: Optional name of the program that generated the feature output.
-  - program_version:
-      type: string
-      description: Version of the program that generated the feature output.
-  - program_parameters:
-      type: string
-      description: Optional parameters used to generate the feature output.
-  - annotation_provider:
-      type: string
-      description: Optional annotation provider to record as the source provider.
-  - is_primary_source:
-      type: boolean
-      description: Whether the annotation provider is the primary source.
+    - analysis_logic_name:
+        type: string
+        description: Analysis logic name to include in the feature JSON.
+        enum:
+          - repeatmask_customlib
+          - repeatmask_repbase
+          - trnascan
+          - trf
+          - repeatdetector 
+    - analysis_display_label:
+        type: string
+        description: Optional display label for the analysis.
+    - analysis_description:
+        type: string
+        description: Optional description for the analysis.
+    - prod_host:
+        type: string
+        description: Optional production database host for analysis metadata retrieval.
+    - prod_database:
+        type: string
+        description: Optional production database name for analysis metadata retrieval.
+    - prod_user:
+        type: string
+        description: Optional production database user for analysis metadata retrieval.
+    - prod_port:
+        type: integer
+        description: Optional production database port for analysis metadata retrieval.
+    - prod_password:
+        type: string
+        description: Optional production database password for analysis metadata retrieval.
+    - program_version:
+        type: string
+        description: Version of the program that generated the feature output.
+    - program_parameters:
+        type: string
+        description: Optional parameters used to generate the feature output.
+    - annotation_provider:
+        type: string
+        description: Optional annotation provider to record as the source provider.
+    - is_primary_source:
+        type: boolean
+        description: Whether the annotation provider is the primary source.
 output:
   features_json:
     - - meta:

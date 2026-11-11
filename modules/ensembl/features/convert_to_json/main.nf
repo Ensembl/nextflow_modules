@@ -30,7 +30,7 @@ process FEATURES_CONVERT_TO_JSON {
             program_parameters: String?,
             annotation_provider: String?,
             analysis_description: String?,
-            analysis_display_name: String?,
+            analysis_display_label: String?,
             prod_host: String?,
             prod_database: String?,
             prod_user: String?,
@@ -80,7 +80,7 @@ process FEATURES_CONVERT_TO_JSON {
         def program_parameters_arg = program_parameters != null ? "--program-parameters '${program_parameters}'" : ''
         def annotation_provider_arg = annotation_provider != null ? "--source-provider '${annotation_provider}'" : ''
         def analysis_description_arg = analysis_description != null ? "--analysis-description '${analysis_description}'" : ''
-        def analysis_display_name_arg = analysis_logic_name != null ? "--analysis-display-name '${analysis_display_name}'" : ''
+        def analysis_display_label_arg = analysis_display_label != null ? "--analysis-display-label '${analysis_display_label}'" : ''
         def prod_host_arg = prod_host != null ? "--prod_host '${prod_host}'" : ''
         def prod_database_arg = prod_database != null ? "--prod_database '${prod_database}'" : ''
         def prod_user_arg = prod_user != null ? "--prod_user '${prod_user}'" : ''
@@ -100,7 +100,7 @@ process FEATURES_CONVERT_TO_JSON {
             ${program_parameters_arg} \
             ${annotation_provider_arg} \
             ${analysis_description_arg} \
-            ${analysis_display_name_arg} \
+            ${analysis_display_label_arg} \
             ${prod_host_arg} \
             ${prod_database_arg} \
             ${prod_user_arg} \
