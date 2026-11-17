@@ -95,6 +95,7 @@ process FEATURES_CONVERT_TO_JSON {
         features_convert_to_genomio_json ${prefix} \
             --input ${features_out} \
             --output ${meta.id}.${analysis_logic_name}.features.json \
+            --invalid-tool-output ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt \
             ${repeatmasker_consensus_lib_arg} \
             --program-version '${program_version}' \
             ${program_parameters_arg} \
