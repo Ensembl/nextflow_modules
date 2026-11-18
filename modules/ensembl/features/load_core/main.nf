@@ -23,7 +23,7 @@ def optionalArg(name: String, value) -> String {
     if (value == null) {
         return ''
     }
-    '--' + name + '=' + quoteArg(value)
+    '--' + name + '=' + value
 }
 
 process FEATURES_LOAD_CORE {
@@ -60,13 +60,13 @@ process FEATURES_LOAD_CORE {
             optionalArg('prod_user', prod_user),
             optionalArg('prod_port', prod_port),
             optionalArg('prod_password', prod_password),
-            optionalArg('analysis_description', analysis_description),
-            optionalArg('analysis_display_name', analysis_display_name),
+            optionalArg('analysis_description', quoteArg(analysis_description)),
+            optionalArg('analysis_display_name', quoteArg(analysis_display_name)),
         ].join(' ')
         def args = task.ext.args ?: ''
 
         """
-        features_core_load --input-file ${features_json} \
+        features_core_load --input_file ${features_json} \
             --core_host=${core_host} \
             --core_database=${core_database} \
             --core_user=${core_user} \
