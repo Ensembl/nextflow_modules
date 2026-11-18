@@ -48,12 +48,12 @@ process FEATURES_LOAD_CORE {
 
     script:
         def optional_args = [
-            optionalArg('core_password', core_password),
-            optionalArg('prod_host', prod_host),
-            optionalArg('prod_database', prod_database),
-            optionalArg('prod_user', prod_user),
-            optionalArg('prod_port', prod_port),
-            optionalArg('prod_password', prod_password),
+            optionalArg('core-password', core_password),
+            optionalArg('prod-host', prod_host),
+            optionalArg('prod-database', prod_database),
+            optionalArg('prod-user', prod_user),
+            optionalArg('prod-port', prod_port),
+            optionalArg('prod-password', prod_password),
         ].join(' ')
         def args = task.ext.args ?: ''
 
