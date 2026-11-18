@@ -91,8 +91,8 @@ process FEATURES_CONVERT_TO_JSON {
         }
 
         def optional_args = [
-            optionalArg('program-parameters', program_parameters),
-            optionalArg('source-provider', annotation_provider),
+            optionalArg('program-parameters', program_parameters, true),
+            optionalArg('source-provider', annotation_provider, true),
             optionalArg('analysis-description', analysis_description, true),
             optionalArg('analysis-display-label', analysis_display_label, true),
             optionalArg('prod-host', prod_host),
