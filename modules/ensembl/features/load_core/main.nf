@@ -15,21 +15,17 @@
 
 nextflow.enable.types = true
 
-def quoteArg(value) {
-    "'" + value.toString().replace("'", "'\"'\"'") + "'"
-}
-
 def optionalArg(name: String, value) -> String {
     if (value == null) {
         return ''
     }
-    '--' + name + '=' + value
+    '--' + name + '=' + value.toString()
 }
 
 process FEATURES_LOAD_CORE {
     tag "${meta.id}"
     label 'process_medium'
-    container 'docker.io/ensemblorg/ensembl-genomio:v1.8.0'
+    container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
 
     input:
         record(
@@ -45,8 +41,6 @@ process FEATURES_LOAD_CORE {
             prod_user: String?,
             prod_port: Integer?,
             prod_password: String?,
-            analysis_description: String?,
-            analysis_display_name: String?,
         )
 
     topic:
@@ -60,8 +54,6 @@ process FEATURES_LOAD_CORE {
             optionalArg('prod_user', prod_user),
             optionalArg('prod_port', prod_port),
             optionalArg('prod_password', prod_password),
-            optionalArg('analysis_description', quoteArg(analysis_description)),
-            optionalArg('analysis_display_name', quoteArg(analysis_display_name)),
         ].join(' ')
         def args = task.ext.args ?: ''
 
