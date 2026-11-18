@@ -15,6 +15,17 @@
 
 nextflow.enable.types = true
 
+def quoteArg(value) {
+    "'" + value.toString().replace("'", "'\"'\"'") + "'"
+}
+
+def optionalArg(name: String, value) -> String {
+    if (value == null) {
+        return ''
+    }
+    '--' + name + '=' + quoteArg(value)
+}
+
 process FEATURES_LOAD_CORE {
     tag "${meta.id}"
     label 'process_medium'
@@ -24,39 +35,43 @@ process FEATURES_LOAD_CORE {
         record(
             meta: Map,
             features_json: Path,
-            prod_host: String,
-            prod_database: String,
-            prod_user: String,
-            prod_port: Integer,
-            prod_password: String?,
             core_host: String,
             core_database: String,
             core_user: String,
             core_port: Integer,
             core_password: String?,
+            prod_host: String?,
+            prod_database: String?,
+            prod_user: String?,
+            prod_port: Integer?,
+            prod_password: String?,
+            analysis_description: String?,
+            analysis_display_name: String?,
         )
 
     topic:
         tuple(task.process, 'features_core_load', eval("features_core_load --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
-        
-        def prod_pass = prod_password != null ? "--prod_password ${prod_password}" : '' 
-        def core_pass = core_password != null ? "--core_password ${core_password}" : ''
+        def optional_args = [
+            optionalArg('core_password', core_password),
+            optionalArg('prod_host', prod_host),
+            optionalArg('prod_database', prod_database),
+            optionalArg('prod_user', prod_user),
+            optionalArg('prod_port', prod_port),
+            optionalArg('prod_password', prod_password),
+            optionalArg('analysis_description', analysis_description),
+            optionalArg('analysis_display_name', analysis_display_name),
+        ].join(' ')
         def args = task.ext.args ?: ''
 
         """
-        features_core_load  --input-file ${features_json} \
-            --prod_host ${prod_host} \
-            --prod_database ${prod_database} \
-            --prod_user ${prod_user} \
-            --prod_port ${prod_port} \
-            ${prod_pass} \
-            --core_host ${core_host} \
-            --core_database ${core_database} \
-            --core_user ${core_user} \
-            --core_port ${core_port} \
-            ${core_pass} \
+        features_core_load --input-file ${features_json} \
+            --core_host=${core_host} \
+            --core_database=${core_database} \
+            --core_user=${core_user} \
+            --core_port=${core_port} \
+            ${optional_args} \
             ${args}
         """
 
