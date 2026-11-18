@@ -58,11 +58,11 @@ process FEATURES_LOAD_CORE {
         def args = task.ext.args ?: ''
 
         """
-        features_core_load --input_file ${features_json} \
-            --core_host=${core_host} \
-            --core_database=${core_database} \
-            --core_user=${core_user} \
-            --core_port=${core_port} \
+        features_core_load --input-file ${features_json} \
+            --core-host=${core_host} \
+            --core-database=${core_database} \
+            --core-user=${core_user} \
+            --core-port=${core_port} \
             ${optional_args} \
             ${args}
         """
