@@ -60,9 +60,6 @@ input:
     - prod_port:
         type: integer
         description: Optional production database port for analysis metadata retrieval.
-    - prod_password:
-        type: string
-        description: Optional production database password for analysis metadata retrieval.
     - program_version:
         type: string
         description: Version of the program that generated the feature output.

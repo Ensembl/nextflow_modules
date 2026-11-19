@@ -33,6 +33,8 @@ process FEATURES_CONVERT_TO_JSON {
     label 'process_small'
     container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
 
+    secret 'PROD_DB_PASSWORD'
+
     input:
         record(
             meta: Map,
@@ -48,7 +50,6 @@ process FEATURES_CONVERT_TO_JSON {
             prod_database: String?,
             prod_user: String?,
             prod_port: Integer?,
-            prod_password: String?,
             is_primary_source: Boolean
         )
 
@@ -99,7 +100,6 @@ process FEATURES_CONVERT_TO_JSON {
             optionalArg('prod-database', prod_database),
             optionalArg('prod-user', prod_user),
             optionalArg('prod-port', prod_port),
-            optionalArg('prod-password', prod_password),
         ].join(' ')
         
         def primary_provider = is_primary_source ? '--is-primary' : ''
