@@ -27,6 +27,9 @@ process FEATURES_LOAD_CORE {
     label 'process_medium'
     container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
 
+    secret 'CORE_DB_PASSWORD'
+    secret 'PROD_DB_PASSWORD'
+
     input:
         record(
             meta: Map,
@@ -35,12 +38,10 @@ process FEATURES_LOAD_CORE {
             core_database: String,
             core_user: String,
             core_port: Integer,
-            core_password: String?,
             prod_host: String?,
             prod_database: String?,
             prod_user: String?,
             prod_port: Integer?,
-            prod_password: String?,
         )
 
     topic:
@@ -48,12 +49,10 @@ process FEATURES_LOAD_CORE {
 
     script:
         def optional_args = [
-            optionalArg('core-password', core_password),
             optionalArg('prod-host', prod_host),
             optionalArg('prod-database', prod_database),
             optionalArg('prod-user', prod_user),
             optionalArg('prod-port', prod_port),
-            optionalArg('prod-password', prod_password),
         ].join(' ')
         def args = task.ext.args ?: ''
 
