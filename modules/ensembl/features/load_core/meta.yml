@@ -38,9 +38,6 @@ input:
     - prod_port:
         type: integer
         description: Port for the production database connection.
-    - prod_password:
-        type: string
-        description: Optional password for the production database.
     - core_host:
         type: string
         description: Hostname of the target core database.
@@ -53,9 +50,6 @@ input:
     - core_port:
         type: integer
         description: Port for the target core database connection.
-    - core_password:
-        type: string
-        description: Optional password for the target core database.
 output: {}
 topics:
   versions:
