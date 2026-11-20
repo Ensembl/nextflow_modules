@@ -18,6 +18,7 @@ nextflow.enable.types = true
 process FEATURES_LOAD_CORE {
     tag "${meta.id}"
     label 'process_medium'
+    maxForks 1
     container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
 
     secret 'CORE_DB_PASSWORD'
