@@ -42,10 +42,10 @@ process FEATURES_LOAD_CORE {
 
     stage:
         env 'BACKUP_FILENAME', meta.id
-        env 'BACKUP_DB_HOST', core_host
-        env 'BACKUP_DB_NAME', core_database
-        env 'BACKUP_DB_USER', core_user
-        env 'BACKUP_DB_PORT', "${core_port}"
+        env 'CORE_DB_HOST', core_host
+        env 'CORE_DB_NAME', core_database
+        env 'CORE_DB_USER', core_user
+        env 'CORE_DB_PORT', "${core_port}"
 
     output:
         backups = record(
@@ -71,12 +71,12 @@ process FEATURES_LOAD_CORE {
                 unset password CORE_DB_PASSWORD
 
                 mysqldump --defaults-file="$credentials" --no-login-paths \\
-                    --host="$BACKUP_DB_HOST" \\
-                    --port="$BACKUP_DB_PORT" \\
-                    --user="$BACKUP_DB_USER" \\
+                    --host="$CORE_DB_HOST" \\
+                    --port="$CORE_DB_PORT" \\
+                    --user="$CORE_DB_USER" \\
                     --no-tablespaces \\
                     --set-gtid-purged=OFF \\
-                    --databases -- "$BACKUP_DB_NAME" \\
+                    --databases -- "$CORE_DB_NAME" \\
                     | gzip -c > "$BACKUP_FILENAME.part"
 
                 mv -- "$BACKUP_FILENAME.part" "$BACKUP_FILENAME"
@@ -85,10 +85,10 @@ process FEATURES_LOAD_CORE {
 
         def load_script = """
             features_core_load --input-file "${features_json}" \\
-                --core-host="\$BACKUP_DB_HOST" \\
-                --core-database="\$BACKUP_DB_NAME" \\
-                --core-user="\$BACKUP_DB_USER" \\
-                --core-port="\$BACKUP_DB_PORT" \\
+                --core-host="\$CORE_DB_HOST" \\
+                --core-database="\$CORE_DB_NAME" \\
+                --core-user="\$CORE_DB_USER" \\
+                --core-port="\$CORE_DB_PORT" \\
                 --prod-host="${prod_host}" \\
                 --prod-database="${prod_database}" \\
                 --prod-user="${prod_user}" \\
