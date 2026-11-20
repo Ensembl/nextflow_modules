@@ -25,7 +25,7 @@ nextflow_process {
     tag "features/load_core"
     topics "versions"
 
-    test("Stub loads feature JSON into core") {
+    test("Stub creates backup when backup_before_load is true") {
 
         when {
             options "-stub"
@@ -47,6 +47,7 @@ nextflow_process {
                     core_database: 'core_db',
                     core_user: 'core_user',
                     core_port: 3306,
+                    backup_before_load: true,
                     core_password: null
                 )
                 """
@@ -55,12 +56,53 @@ nextflow_process {
 
         then {
             assert process.success
+            assert process.out[0][0].backups.size() == 1
+            assert snapshot(process.out).match()
             assert snapshot(topics.versions).match()
             assert process.trace.tasks().size() == 1
             assert topics.versions.size() == 1
             assert topics.versions[0].size() == 3
             assert topics.versions[0][0] == 'FEATURES_LOAD_CORE'
             assert topics.versions[0][1] == 'features_core_load'
+        }
+    }
+
+    test("Stub skips backup when backup_before_load is false") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresJson = file("features.json")
+                featuresJson.text = "{}"
+
+                input[0] = record(
+                    meta: [ id: 'test' ],
+                    features_json: featuresJson,
+                    prod_host: 'production.example.org',
+                    prod_database: 'production_db',
+                    prod_user: 'prod_user',
+                    prod_port: 3306,
+                    prod_password: null,
+                    core_host: 'core.example.org',
+                    core_database: 'core_db',
+                    core_user: 'core_user',
+                    core_port: 3306,
+                    core_password: null,
+                    backup_before_load: false
+                )
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out[0][0].backups.size() == 0
+            assert snapshot(process.out).match()
+            assert snapshot(topics.versions).match()
+            assert process.trace.tasks().size() == 1
+            assert topics.versions.size() == 1
         }
     }
 }

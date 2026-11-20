@@ -17,9 +17,10 @@ nextflow.enable.types = true
 
 process FEATURES_LOAD_CORE {
     tag "${meta.id}"
-    label 'process_medium'
+    label 'process_high'
     maxForks 1
     container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
+    container 'docker.io/library/mysql:8.4'
 
     secret 'CORE_DB_PASSWORD'
     secret 'PROD_DB_PASSWORD'
@@ -36,6 +37,20 @@ process FEATURES_LOAD_CORE {
             prod_database: String,
             prod_user: String,
             prod_port: Integer,
+            backup_before_load: Boolean,
+        )
+
+    stage:
+        env 'BACKUP_FILENAME', meta.id
+        env 'BACKUP_DB_HOST', core_host
+        env 'BACKUP_DB_NAME', core_database
+        env 'BACKUP_DB_USER', core_user
+        env 'BACKUP_DB_PORT', "${core_port}"
+
+    output:
+        split = record(
+            meta: meta,
+            backups: files("*.sql.gz", optional: true)
         )
 
     topic:
@@ -44,21 +59,48 @@ process FEATURES_LOAD_CORE {
     script:
         def args = task.ext.args ?: ''
 
-        """
-        features_core_load --input-file ${features_json} \
-            --core-host=${core_host} \
-            --core-database=${core_database} \
-            --core-user=${core_user} \
-            --core-port=${core_port} \
-            --prod-host=${prod_host} \
-            --prod-database=${prod_database} \
-            --prod-user=${prod_user} \
-            --prod-port=${prod_port} \
-            ${args}
+        def backup_script = '''
+            (
+                umask 077
+
+                credentials=$(mktemp)
+                trap 'rm -f -- "$credentials" "$BACKUP_FILENAME.part"' EXIT
+
+                password=${CORE_DB_PASSWORD-}
+                printf '[client]\\npassword="%s"\\n' "$password" > "$credentials"
+                unset password CORE_DB_PASSWORD
+
+                mysqldump --defaults-file="$credentials" --no-login-paths \\
+                    --host="$BACKUP_DB_HOST" \\
+                    --port="$BACKUP_DB_PORT" \\
+                    --user="$BACKUP_DB_USER" \\
+                    --no-tablespaces \\
+                    --set-gtid-purged=OFF \\
+                    --databases -- "$BACKUP_DB_NAME" \\
+                    | gzip -c > "$BACKUP_FILENAME.part"
+
+                mv -- "$BACKUP_FILENAME.part" "$BACKUP_FILENAME"
+            )
+        '''
+
+        def load_script = """
+            features_core_load --input-file "${features_json}" \\
+                --core-host="\$BACKUP_DB_HOST" \\
+                --core-database="\$BACKUP_DB_NAME" \\
+                --core-user="\$BACKUP_DB_USER" \\
+                --core-port="\$BACKUP_DB_PORT" \\
+                --prod-host="${prod_host}" \\
+                --prod-database="${prod_database}" \\
+                --prod-user="${prod_user}" \\
+                --prod-port="${prod_port}" \\
+                ${args}
         """
 
+        return 'set -euo pipefail\n' + (backup_before_load ? backup_script : '') + load_script
+
     stub:
-        """
-        true
-        """
+        def backup_stub = backup_before_load ? '''
+            printf '%s\\n' '-- Stub MySQL dump' | gzip -c > "$BACKUP_FILENAME"
+        ''' : ''
+        return 'set -euo pipefail\n' + backup_stub
 }
