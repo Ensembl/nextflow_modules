@@ -1,15 +1,61 @@
 {
-    "Stub loads feature JSON into core": {
+    "Stub skips backup when backup_before_load is false": {
         "content": [
-            [
-                [
-                    "FEATURES_LOAD_CORE",
-                    "features_core_load",
-                    "1.9.0"
+            {
+                "0": [
+                    {
+                        "backups": [
+
+                        ],
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
+                ],
+                "backups": [
+                    {
+                        "backups": [
+
+                        ],
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
                 ]
-            ]
+            }
         ],
-        "timestamp": "2026-11-20T11:16:13.823961",
+        "timestamp": "2026-11-20T16:28:25.082325",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    },
+    "Stub creates backup when backup_before_load is true": {
+        "content": [
+            {
+                "0": [
+                    {
+                        "backups": [
+                            "test.sql.gz:md5,db9db64b4181b10dfb6ba53fc7613f17"
+                        ],
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
+                ],
+                "backups": [
+                    {
+                        "backups": [
+                            "test.sql.gz:md5,db9db64b4181b10dfb6ba53fc7613f17"
+                        ],
+                        "meta": {
+                            "id": "test"
+                        }
+                    }
+                ]
+            }
+        ],
+        "timestamp": "2026-11-20T16:28:23.021861",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.3"

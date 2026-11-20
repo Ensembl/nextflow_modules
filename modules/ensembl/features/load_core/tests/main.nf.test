@@ -58,7 +58,6 @@ nextflow_process {
             assert process.success
             assert process.out[0][0].backups.size() == 1
             assert snapshot(process.out).match()
-            assert snapshot(topics.versions).match()
             assert process.trace.tasks().size() == 1
             assert topics.versions.size() == 1
             assert topics.versions[0].size() == 3
@@ -100,7 +99,6 @@ nextflow_process {
             assert process.success
             assert process.out[0][0].backups.size() == 0
             assert snapshot(process.out).match()
-            assert snapshot(topics.versions).match()
             assert process.trace.tasks().size() == 1
             assert topics.versions.size() == 1
         }

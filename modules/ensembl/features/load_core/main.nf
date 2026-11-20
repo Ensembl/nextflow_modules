@@ -41,7 +41,8 @@ process FEATURES_LOAD_CORE {
         )
 
     stage:
-        env 'BACKUP_FILENAME', meta.id
+        env 'BACKUP_FILENAME', "${meta.id}.sql.gz"
+        env 'BACKUP_BEFORE_LOAD', "${backup_before_load}"
         env 'CORE_DB_HOST', core_host
         env 'CORE_DB_NAME', core_database
         env 'CORE_DB_USER', core_user
@@ -99,8 +100,10 @@ process FEATURES_LOAD_CORE {
         return 'set -euo pipefail\n' + (backup_before_load ? backup_script : '') + load_script
 
     stub:
-        def backup_stub = backup_before_load ? '''
+        '''
+        set -euo pipefail
+        if [[ "$BACKUP_BEFORE_LOAD" == true ]]; then
             printf '%s\\n' '-- Stub MySQL dump' | gzip -c > "$BACKUP_FILENAME"
-        ''' : ''
-        return 'set -euo pipefail\n' + backup_stub
+        fi
+        '''
 }
