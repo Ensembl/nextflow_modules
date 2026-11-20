@@ -1,0 +1,18 @@
+{
+    "Stub loads feature JSON into core": {
+        "content": [
+            [
+                [
+                    "FEATURES_LOAD_CORE",
+                    "features_core_load",
+                    "1.9.0"
+                ]
+            ]
+        ],
+        "timestamp": "2026-11-20T11:16:13.823961",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    }
+}
