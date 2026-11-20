@@ -68,7 +68,7 @@ process FEATURES_LOAD_CORE {
                 trap 'rm -f -- "$credentials" "$BACKUP_FILENAME.part"' EXIT
 
                 password=${CORE_DB_PASSWORD-}
-                printf '[client]\\npassword="%s"\\n' "$password" > "$credentials"
+                printf '[client]\\npassword="%s"\\n' "$password" >| "$credentials"
                 unset password CORE_DB_PASSWORD
 
                 mysqldump --defaults-file="$credentials" --no-login-paths \\
