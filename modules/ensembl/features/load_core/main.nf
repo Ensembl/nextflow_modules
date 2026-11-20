@@ -48,7 +48,7 @@ process FEATURES_LOAD_CORE {
         env 'BACKUP_DB_PORT', "${core_port}"
 
     output:
-        split = record(
+        backups = record(
             meta: meta,
             backups: files("*.sql.gz", optional: true)
         )
