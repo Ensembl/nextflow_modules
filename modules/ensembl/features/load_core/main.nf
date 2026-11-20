@@ -15,13 +15,6 @@
 
 nextflow.enable.types = true
 
-def optionalArg(name: String, value) -> String {
-    if (value == null) {
-        return ''
-    }
-    '--' + name + '=' + value.toString()
-}
-
 process FEATURES_LOAD_CORE {
     tag "${meta.id}"
     label 'process_medium'
@@ -38,22 +31,16 @@ process FEATURES_LOAD_CORE {
             core_database: String,
             core_user: String,
             core_port: Integer,
-            prod_host: String?,
-            prod_database: String?,
-            prod_user: String?,
-            prod_port: Integer?,
+            prod_host: String,
+            prod_database: String,
+            prod_user: String,
+            prod_port: Integer,
         )
 
     topic:
         tuple(task.process, 'features_core_load', eval("features_core_load --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
-        def optional_args = [
-            optionalArg('prod-host', prod_host),
-            optionalArg('prod-database', prod_database),
-            optionalArg('prod-user', prod_user),
-            optionalArg('prod-port', prod_port),
-        ].join(' ')
         def args = task.ext.args ?: ''
 
         """
@@ -62,7 +49,10 @@ process FEATURES_LOAD_CORE {
             --core-database=${core_database} \
             --core-user=${core_user} \
             --core-port=${core_port} \
-            ${optional_args} \
+            --prod-host=${prod_host} \
+            --prod-database=${prod_database} \
+            --prod-user=${prod_user} \
+            --prod-port=${prod_port} \
             ${args}
         """
 
