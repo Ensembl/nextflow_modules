@@ -71,12 +71,10 @@ process FEATURES_LOAD_CORE {
                 printf '[client]\\npassword="%s"\\n' "$password" >| "$credentials"
                 unset password CORE_DB_PASSWORD
 
-                mysqldump --defaults-file="$credentials" --no-login-paths \\
+                mysqldump --defaults-file="$credentials" \\
                     --host="$CORE_DB_HOST" \\
                     --port="$CORE_DB_PORT" \\
                     --user="$CORE_DB_USER" \\
-                    --no-tablespaces \\
-                    --set-gtid-purged=OFF \\
                     --databases -- "$CORE_DB_NAME" \\
                     | gzip -c > "$BACKUP_FILENAME.part"
 
