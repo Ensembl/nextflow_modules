@@ -49,10 +49,7 @@ process FEATURES_LOAD_CORE {
         env 'CORE_DB_PORT', "${core_port}"
 
     output:
-        backups = record(
-            meta: meta,
-            backups: files("*.sql.gz", optional: true)
-        )
+        backup = record(meta: meta, backup: file("${meta.id}.sql.gz", optional: true))
 
     topic:
         tuple(task.process, 'features_core_load', eval("features_core_load --version 2>/dev/null || echo unknown")) >> 'versions'
