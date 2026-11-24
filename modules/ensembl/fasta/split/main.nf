@@ -17,10 +17,10 @@ nextflow.enable.types = true
 
 process FASTA_SPLIT {
     tag "${meta.id}"
-    label 'process_medium'
+    label 'process_single'
 
     conda "${moduleDir}/environment.yml"
-    container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"
+    container "docker.io/ensemblorg/ensembl-genomio:v1.8.0"
 
     input:
         record(meta: Map, fasta: Path, longest_seq_bp: Long)

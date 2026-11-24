@@ -1,0 +1,47 @@
+name: TAXONOMY_CLASSIFICATION
+description: Retrieve a species lineage and write it as a JSON classification using datasets-cli.
+keywords:
+  - taxonomy
+  - classification
+  - datasets-cli
+  - genomics
+tools:
+  - datasets:
+      description: NCBI Datasets command-line tool.
+      homepage: https://www.ncbi.nlm.nih.gov/datasets/
+      documentation: https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/
+      licence: ["Public Domain"]
+input:
+  - - meta:
+        type: channelMap
+        description: Groovy map containing sample metadata, including a unique id.
+    - species:
+        type: string
+        description: Scientific species name passed to datasets-cli.
+output:
+  classification:
+    - - meta:
+          type: channelMap
+          description: Sample metadata propagated from the input.
+      - species:
+          type: string
+          description: Species name propagated from the input.
+      - json:
+          type: file
+          description: JSON file containing the retrieved lineage classification.
+          pattern: "classification.json"
+topics:
+  versions:
+    - - "${task.process}":
+          type: string
+          description: Name of the process producing the version.
+      - datasets:
+          type: string
+          description: Name of the tool.
+      - 'datasets --version | sed "s/^.*datasets version: //"':
+          type: eval
+          description: Command used to obtain the datasets version.
+authors:
+  - "@ensembl-dev"
+maintainers:
+  - "@ensembl-dev"

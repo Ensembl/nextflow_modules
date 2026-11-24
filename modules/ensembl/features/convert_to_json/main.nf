@@ -30,7 +30,9 @@ def optionalArg(name: String, value, quote: Boolean = false) -> String {
 
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
-    label 'process_small'
+    label 'process_single'
+
+    conda "${moduleDir}/environment.yml"
     container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
 
     secret 'PROD_DB_PASSWORD'
@@ -64,7 +66,7 @@ process FEATURES_CONVERT_TO_JSON {
         tuple(task.process, 'features_convert_to_genomio_json', eval("features_convert_to_genomio_json --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
-        def prefix = ''
+        def subcommand = ''
         def repeatmasker_consensus_lib_arg = ''
         if (analysis_logic_name) {
             def repeatmasker_analyses = ['repeatmask_repbase', 'repeatmask_customlib']
@@ -77,15 +79,15 @@ process FEATURES_CONVERT_TO_JSON {
                 repeatmasker_consensus_lib_arg = "--consensus-lib ${repeatmasker_consensus_lib}"
             }
             if (analysis_logic_name == 'trf') {
-                prefix = 'trf'
+                subcommand = 'trf'
             } else if (analysis_logic_name == 'repeatdetector') {
-                prefix = 'red'
+                subcommand = 'red'
             } else if (analysis_logic_name == 'repeatmask_repbase') {
-                prefix = 'repeatmasker repbase'
+                subcommand = 'repeatmasker repbase'
             } else if (analysis_logic_name == 'repeatmask_customlib') {
-                prefix = 'repeatmasker custom'
+                subcommand = 'repeatmasker custom'
             } else if (analysis_logic_name == 'trnascan') {
-                prefix = 'trnascan'
+                subcommand = 'trnascan'
             } else {
                 throw new IllegalArgumentException("Unsupported analysis logic name '${analysis_logic_name}'")
             }
@@ -108,7 +110,7 @@ process FEATURES_CONVERT_TO_JSON {
         """
         touch ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt
 
-        features_convert_to_genomio_json ${prefix} \
+        features_convert_to_genomio_json ${subcommand} \
             --input ${features_out} \
             --output ${meta.id}.${analysis_logic_name}.features.json \
             --invalid-tool-output ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt \
