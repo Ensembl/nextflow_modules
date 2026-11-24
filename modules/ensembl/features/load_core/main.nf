@@ -17,7 +17,7 @@ nextflow.enable.types = true
 
 process FEATURES_LOAD_CORE {
     tag "${meta.id}"
-    label 'process_medium'
+    label 'process_single'
     maxForks 1
     conda "${moduleDir}/environment.yml"
     container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
