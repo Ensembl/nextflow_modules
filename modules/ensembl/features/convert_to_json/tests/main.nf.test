@@ -46,7 +46,8 @@ nextflow_process {
                     program_version: '4.1.7',
                     program_parameters: '-species stub',
                     annotation_provider: 'stub_provider',
-                    is_primary_source: false
+                    is_primary_source: false,
+                    is_strict_mode: true
                 )
                 """
             }
@@ -61,6 +62,9 @@ nextflow_process {
 
             assert jsonFile.exists()
             assert jsonFile.name == "test.trf.features.json"
+            def invalidOutputFile = path(process.out[0][0].invalid_tool_output).toFile()
+            assert invalidOutputFile.exists()
+            assert invalidOutputFile.name == "test.trf.features.invalid_tool_output.txt"
             assert process.out[0][0].meta.id == "test"
             assert topics.versions.size() == 1
             assert topics.versions[0].size() == 3
@@ -90,7 +94,8 @@ nextflow_process {
                     program_version: '4.1.7',
                     program_parameters: '-species stub',
                     annotation_provider: 'stub_provider',
-                    is_primary_source: false
+                    is_primary_source: false,
+                    is_strict_mode: true
                 )
                 """
             }
@@ -105,6 +110,9 @@ nextflow_process {
 
             assert jsonFile.exists()
             assert jsonFile.name == "test.repeatmasker_repbase.features.json"
+            def invalidOutputFile = path(process.out[0][0].invalid_tool_output).toFile()
+            assert invalidOutputFile.exists()
+            assert invalidOutputFile.name == "test.repeatmasker_repbase.features.invalid_tool_output.txt"
             assert process.out[0][0].meta.id == "test"
             assert topics.versions.size() == 1
             assert topics.versions[0].size() == 3
@@ -134,7 +142,8 @@ nextflow_process {
                     program_version: '4.1.7',
                     program_parameters: '-species stub',
                     annotation_provider: 'stub_provider',
-                    is_primary_source: true
+                    is_primary_source: true,
+                    is_strict_mode: true
                 )
                 """
             }
@@ -149,6 +158,9 @@ nextflow_process {
 
             assert jsonFile.exists()
             assert jsonFile.name == "test.repeatmask_customlib.features.json"
+            def invalidOutputFile = path(process.out[0][0].invalid_tool_output).toFile()
+            assert invalidOutputFile.exists()
+            assert invalidOutputFile.name == "test.repeatmask_customlib.features.invalid_tool_output.txt"
             assert process.out[0][0].meta.id == "test"
             assert topics.versions.size() == 1
             assert topics.versions[0].size() == 3

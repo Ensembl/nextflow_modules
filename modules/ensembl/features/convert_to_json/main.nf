@@ -17,8 +17,10 @@ nextflow.enable.types = true
 
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
-    label 'process_small'
-    container 'docker.io/ensemblorg/ensembl-genomio:v1.7.0'
+    label 'process_single'
+    
+    conda "${moduleDir}/environment.yml"
+    container 'docker.io/ensemblorg/ensembl-genomio:v1.8.0'
 
     input:
         record(
@@ -33,53 +35,70 @@ process FEATURES_CONVERT_TO_JSON {
         )
 
     output:
-        features_json = record(meta: meta, features_json: file("${meta.id}.${analysis_logic_name}.features.json"))
+        features_json = record(
+            meta: meta,
+            features_json: file("${meta.id}.${analysis_logic_name}.features.json"),
+            invalid_tool_output: file("${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt")
+        )
 
     topic:
         tuple(task.process, 'features_convert_to_genomio_json', eval("features_convert_to_genomio_json --version 2>/dev/null || echo unknown")) >> 'versions'
 
     script:
-        def prefix = ''
+        def subcommand = ''
         def repeatmasker_consensus_lib_arg = ''
         if (analysis_logic_name) {
-            if (analysis_logic_name == 'trf') {
-                prefix = 'trf'
-            } else if (analysis_logic_name == 'repeatdetector') {
-                prefix = 'red'
-            } else if (analysis_logic_name == 'repeatmask_repbase') {
-                prefix = 'repeatmasker repbase'
-            } else if (analysis_logic_name == 'repeatmask_customlib') {
-                prefix = 'repeatmasker custom'
-                if (repeatmasker_consensus_lib == null || repeatmasker_consensus_lib.name == "NO_FILE") {
-                    throw new IllegalArgumentException("RepeatMasker consensus library is required for analysis logic name '${analysis_logic_name}'")
+            def repeatmasker_analyses = ['repeatmask_repbase', 'repeatmask_customlib']
+            if (repeatmasker_analyses.contains(analysis_logic_name)) {
+                if (repeatmasker_consensus_lib == null || repeatmasker_consensus_lib.name == 'NO_FILE') {
+                    throw new IllegalArgumentException(
+                        "RepeatMasker consensus library is required for analysis logic name '${analysis_logic_name}'"
+                    )
                 }
                 repeatmasker_consensus_lib_arg = "--consensus-lib ${repeatmasker_consensus_lib}"
+            }
+            if (analysis_logic_name == 'trf') {
+                subcommand = 'trf'
+            } else if (analysis_logic_name == 'repeatdetector') {
+                subcommand = 'red'
+            } else if (analysis_logic_name == 'repeatmask_repbase') {
+                subcommand = 'repeatmasker repbase'
+            } else if (analysis_logic_name == 'repeatmask_customlib') {
+                subcommand = 'repeatmasker custom'
             } else if (analysis_logic_name == 'trnascan') {
-                prefix = 'trnascan'
+                subcommand = 'trnascan'
             } else {
                 throw new IllegalArgumentException("Unsupported analysis logic name '${analysis_logic_name}'")
             }
         }
 
-        def program_parameters_arg = program_parameters != null ? "--program-parameters '${program_parameters}'" : ''
-        def annotation_provider_arg = annotation_provider != null ? "--source-provider '${annotation_provider}'" : ''
+        def program_parameters_arg = program_parameters ? "--program-parameters '${program_parameters}'" : ''
+        def annotation_provider_arg = annotation_provider ? "--source-provider '${annotation_provider}'" : ''
         def primary_provider = is_primary_source ? '--is-primary' : ''
+        def args = task.ext.args ?: ''
 
         """
-        features_convert_to_genomio_json ${prefix} \
+        touch ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt
+
+        features_convert_to_genomio_json ${subcommand} \
             --input ${features_out} \
             --output ${meta.id}.${analysis_logic_name}.features.json \
+            --invalid-tool-output ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt \
             ${repeatmasker_consensus_lib_arg} \
             --program-version '${program_version}' \
             ${program_parameters_arg} \
             ${annotation_provider_arg} \
-            ${primary_provider}
+            ${primary_provider} \
+            ${args}
         """
 
     stub:
         """
         cat > "${meta.id}.${analysis_logic_name}.features.json" <<'EOF'
         {}
+        EOF
+        cat > "${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt" <<'EOF'
+        stub invalid output
         EOF
         """
 }
