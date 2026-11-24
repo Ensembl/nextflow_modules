@@ -1,0 +1,66 @@
+// See the NOTICE file distributed with this work for additional information
+// regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+nextflow_process {
+
+    name "Test Process FEATURES_LOAD_CORE"
+    script "../main.nf"
+    process "FEATURES_LOAD_CORE"
+
+    tag "modules"
+    tag "modules_ensembl"
+    tag "features"
+    tag "features/load_core"
+    topics "versions"
+
+    test("Stub loads feature JSON into core") {
+
+        when {
+            options "-stub"
+
+            process {
+                """
+                def featuresJson = file("features.json")
+                featuresJson.text = "{}"
+
+                input[0] = record(
+                    meta: [ id: 'test' ],
+                    features_json: featuresJson,
+                    prod_host: 'production.example.org',
+                    prod_database: 'production_db',
+                    prod_user: 'prod_user',
+                    prod_port: 3306,
+                    prod_password: null,
+                    core_host: 'core.example.org',
+                    core_database: 'core_db',
+                    core_user: 'core_user',
+                    core_port: 3306,
+                    core_password: null
+                )
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert snapshot(topics.versions).match()
+            assert process.trace.tasks().size() == 1
+            assert topics.versions.size() == 1
+            assert topics.versions[0].size() == 3
+            assert topics.versions[0][0] == 'FEATURES_LOAD_CORE'
+            assert topics.versions[0][1] == 'features_core_load'
+        }
+    }
+}
