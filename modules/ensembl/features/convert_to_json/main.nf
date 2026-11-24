@@ -15,12 +15,27 @@
 
 nextflow.enable.types = true
 
+def quoteArg(value) {
+    "'" + value.toString().replace("'", "'\"'\"'") + "'"
+}
+
+def optionalArg(name: String, value, quote: Boolean = false) -> String {
+    if (value == null) {
+        return ''
+    }
+    
+    def str_value = quote ? quoteArg(value) : value.toString()
+    '--' + name + '=' + str_value
+}
+
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
     label 'process_single'
-    
+
     conda "${moduleDir}/environment.yml"
-    container 'docker.io/ensemblorg/ensembl-genomio:v1.8.0'
+    container 'docker.io/ensemblorg/ensembl-genomio:v1.9.0'
+
+    secret 'PROD_DB_PASSWORD'
 
     input:
         record(
@@ -31,6 +46,12 @@ process FEATURES_CONVERT_TO_JSON {
             program_version: String,
             program_parameters: String?,
             annotation_provider: String?,
+            analysis_description: String?,
+            analysis_display_label: String?,
+            prod_host: String?,
+            prod_database: String?,
+            prod_user: String?,
+            prod_port: Integer?,
             is_primary_source: Boolean
         )
 
@@ -72,10 +93,19 @@ process FEATURES_CONVERT_TO_JSON {
             }
         }
 
-        def program_parameters_arg = program_parameters ? "--program-parameters '${program_parameters}'" : ''
-        def annotation_provider_arg = annotation_provider ? "--source-provider '${annotation_provider}'" : ''
+        def optional_args = [
+            optionalArg('program-parameters', program_parameters, true),
+            optionalArg('source-provider', annotation_provider, true),
+            optionalArg('analysis-description', analysis_description, true),
+            optionalArg('analysis-display-label', analysis_display_label, true),
+            optionalArg('prod-host', prod_host),
+            optionalArg('prod-database', prod_database),
+            optionalArg('prod-user', prod_user),
+            optionalArg('prod-port', prod_port),
+        ].join(' ')
+        
         def primary_provider = is_primary_source ? '--is-primary' : ''
-        def args = task.ext.args ?: ''
+        def external_args = task.ext.args ?: ''
 
         """
         touch ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt
@@ -86,10 +116,9 @@ process FEATURES_CONVERT_TO_JSON {
             --invalid-tool-output ${meta.id}.${analysis_logic_name}.features.invalid_tool_output.txt \
             ${repeatmasker_consensus_lib_arg} \
             --program-version '${program_version}' \
-            ${program_parameters_arg} \
-            ${annotation_provider_arg} \
             ${primary_provider} \
-            ${args}
+            ${optional_args} \
+            ${external_args}
         """
 
     stub:
