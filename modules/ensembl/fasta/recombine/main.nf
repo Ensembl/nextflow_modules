@@ -18,7 +18,7 @@ nextflow.enable.types = true
 process FASTA_RECOMBINE {
 
     tag "${meta.id}"
-    label 'process_medium'
+    label 'process_single'
 
     conda "${moduleDir}/environment.yml"
     container "docker.io/ensemblorg/ensembl-genomio:v1.7.0"

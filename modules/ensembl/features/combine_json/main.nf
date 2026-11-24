@@ -17,7 +17,7 @@ nextflow.enable.types = true
 
 process FEATURES_COMBINE_JSON {
     tag "${meta.id}"
-    label 'process_medium'
+    label 'process_single'
 
     conda "${moduleDir}/environment.yml"
     container "docker.io/ensemblorg/ensembl-genomio:v1.8.0"

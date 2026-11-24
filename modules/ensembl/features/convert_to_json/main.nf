@@ -17,7 +17,9 @@ nextflow.enable.types = true
 
 process FEATURES_CONVERT_TO_JSON {
     tag "${meta.id}"
-    label 'process_small'
+    label 'process_single'
+    
+    conda "${moduleDir}/environment.yml"
     container 'docker.io/ensemblorg/ensembl-genomio:v1.8.0'
 
     input:
@@ -70,8 +72,8 @@ process FEATURES_CONVERT_TO_JSON {
             }
         }
 
-        def program_parameters_arg = program_parameters != null ? "--program-parameters '${program_parameters}'" : ''
-        def annotation_provider_arg = annotation_provider != null ? "--source-provider '${annotation_provider}'" : ''
+        def program_parameters_arg = program_parameters ? "--program-parameters '${program_parameters}'" : ''
+        def annotation_provider_arg = annotation_provider ? "--source-provider '${annotation_provider}'" : ''
         def primary_provider = is_primary_source ? '--is-primary' : ''
         def args = task.ext.args ?: ''
 
